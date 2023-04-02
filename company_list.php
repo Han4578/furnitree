@@ -1,5 +1,5 @@
 <?php
-$conn = require('connect.php');
+require 'connect.php';
 
 $query = $conn->query('SELECT logo FROM company');
 

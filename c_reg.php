@@ -6,7 +6,7 @@
     $imgName =  $image['name'];
     $imgTempName =  $image['tmp_name'];
 
-    $conn = require('connect.php');
+    require 'connect.php';
 
     if (!is_array(pathinfo($imgTempName, 'PATHINFO_EXTENSION'), ['jpg', 'png', 'webp', 'jpeg'])) {
         die('File uploaded was not an image ');
