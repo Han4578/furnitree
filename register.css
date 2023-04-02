@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    gap: 5vh;
+    background-color: rgb(165, 255, 255);
+    padding: 5%;
+    height: 60vh;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 5%;
+    height: 50%;
+}
+
+#price::before {
+    content: 'RM';
+}
