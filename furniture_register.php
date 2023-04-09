@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="register.css">
-    <script src="./register.js" defer></script>
+    <script src="./functions.js" defer></script>
     <title>Register your furniture here</title>
 </head>
 
@@ -46,7 +46,7 @@
                     <option value="1">Latitude Run</option>
                     <option value="2">Apt2B</option>
                 </select>
-                <input type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required> 
+                <input type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
             </div>
         </div>
         <div class="vertical">
@@ -54,10 +54,17 @@
             <input type="file" name="image" id="image" required>
         </div>
 
-        <div>
-            <button type="submit">Submit</button>
+        <div class="space-between">
+            <button type="submit">Hantar</button>
+            <button type="reset">Reset</button>
         </div>
     </form>
 
 </body>
+<script>
+    let price = document.querySelector('#price')
+
+    price.addEventListener('keypress', e => excludeSymbols(e))
+</script>
+
 </html>

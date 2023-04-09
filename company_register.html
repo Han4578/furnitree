@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register your furniture here</title>
 </head>
+
 <body>
-    <form action="./c_reg.php" method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column;">
+    <form action="./c_reg.php" method="post" enctype="multipart/form-data"
+        style="display: flex; flex-direction: column;">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
 
         <label for="image">Insert logo image:</label>
         <input type="file" name="image" id="image">
 
-        <button type="submit">Submit</button>
+        <button type="submit">Hantar</button>
+        <button type="reset">Reset</button>
     </form>
 
     <form action="./company_list.php" method="post">
         <button> Show all companies</button>
     </form>
 </body>
+
 </html>

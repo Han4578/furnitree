@@ -12,40 +12,38 @@
 
 <body>
 
-    <form action="./u_reg.php" method="post" enctype="multipart/form-data" class="vertical">
+    <form action="./signin_check.php" method="post" enctype="multipart/form-data" class="vertical">
 
         <div class="container">
             <div class="vertical space-between">
-                <label for="name">Nama:</label>
-                <label for="password">Kata Laluan:</label>
-                <label for="pnumber">Nombor telefon:</label>
+                <label for="name">Name:</label>
+                <label for="password">Password:</label>
 
             </div>
             <div class="vertical space-between">
-                <input type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required>
+                <input type="text" name="name" id="name" required>
                 <div>
-                    <input type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
-                    <input type="checkbox" name="togglePw" id="Togglepw">
+                    <input type="password" name="password" id="password" required>
+                    <input type="checkbox" name="Togglepw" id="Togglepw">
                 </div>
-                <input type="number" name="pnumber" id="pnumber" max="99999999999" onblur="roundNumber(this, value)">
             </div>
         </div>
+        <br>
+        <br>
         <div class="space-between">
             <button type="submit">Hantar</button>
             <button type="reset">Reset</button>
         </div>
     </form>
 
+
+
 </body>
 <script>
     let togglepw = document.querySelector('#Togglepw')
     let password = document.querySelector('#password')
-    let pnumber = document.querySelector('#pnumber')
 
     togglepw.addEventListener('click', () => togglePassword(togglepw, password))
-    pnumber.addEventListener('keydown', e => {
-        excludeSymbols(e)
-    })
 </script>
 
 </html>

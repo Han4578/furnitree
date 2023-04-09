@@ -33,6 +33,11 @@ form {
     height: 50%;
 }
 
-#price::before {
-    content: 'RM';
+#Togglepw {
+    margin-left: -15px;
+    position: absolute;
+}
+
+#password {
+    width: 100%;
 }
