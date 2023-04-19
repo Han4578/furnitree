@@ -4,7 +4,7 @@
     $pnumber = $_POST['pnumber'];
     $aras = 'user';
   
-    require 'connect.php';
+    require "../connect.php";
 
     $stmt = $conn->prepare("INSERT INTO pengguna(name, password, aras, nomhp) VALUES (?, ?, ?, ?);");
     $stmt->bind_param('sssi', $name, $password, $aras, $pnumber);
@@ -21,5 +21,3 @@
                 </script>";
     $conn->close();
     $stmt->close();
-
-?>

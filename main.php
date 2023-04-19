@@ -1,9 +1,10 @@
 <?php
-    require 'connect.php';
+    require "./connect.php";
     session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <script src="script.js" defer></script>
     <title>FURNITREE</title>
 </head>
+
 <body>
     <div class="atas">
         <div class="ikon close" id="menu">
@@ -140,4 +142,5 @@
 
     </div>
 </body>
+
 </html>

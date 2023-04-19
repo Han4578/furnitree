@@ -1,5 +1,5 @@
 <?php
-    require 'connect.php';
+    require "../connect.php";
     session_start();
 
     $name = $_POST['name'];
@@ -21,4 +21,3 @@
         $_SESSION['level'] = $row['aras'];
         header("location: main.php");
     }
-?>

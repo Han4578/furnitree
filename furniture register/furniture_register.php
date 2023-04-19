@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "../connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +9,8 @@ require "connect.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="register.css">
-    <script src="./functions.js"></script>
+    <link rel="stylesheet" href="../register.css">
+    <script src="../functions.js"></script>
     <title>Register your furniture here</title>
 </head>
 
@@ -31,49 +31,49 @@ require "connect.php";
                 <select name="color" id="color">
                     <option value="0">Pilih warna...</option>
                     <?php
-                        $query = $conn->query("SELECT * FROM color");
+                    $query = $conn->query("SELECT * FROM color");
 
-                        if ($query->num_rows > 0) {
-                            while ($row = $query->fetch_assoc()) {
-                                $name = $row['name'];
-                                $value = $row['id'];
-                                echo "<script>
+                    if ($query->num_rows > 0) {
+                        while ($row = $query->fetch_assoc()) {
+                            $name = $row['name'];
+                            $value = $row['id'];
+                            echo "<script>
                                         displayOptions('$name', document.getElementById('color'), '$value');
                                     </script>";
-                            }
                         }
+                    }
                     ?>
                 </select>
                 <select name="category" id="category">
                     <option value="0">Pilih kategori...</option>
                     <?php
-                        $query = $conn->query("SELECT * FROM category");
+                    $query = $conn->query("SELECT * FROM category");
 
-                        if ($query->num_rows > 0) {
-                            while ($row = $query->fetch_assoc()) {
-                                $name = $row['name'];
-                                $value = $row['id'];
-                                echo "<script>
+                    if ($query->num_rows > 0) {
+                        while ($row = $query->fetch_assoc()) {
+                            $name = $row['name'];
+                            $value = $row['id'];
+                            echo "<script>
                                         displayOptions('$name', document.getElementById('category'), '$value');
                                     </script>";
-                            }
                         }
+                    }
                     ?>
                 </select>
                 <select name="company" id="company">
                     <option value="0">Pilih syarikat...</option>
                     <?php
-                        $query = $conn->query("SELECT * FROM company");
+                    $query = $conn->query("SELECT * FROM company");
 
-                        if ($query->num_rows > 0) {
-                            while ($row = $query->fetch_assoc()) {
-                                $name = $row['name'];
-                                $value = $row['id'];
-                                echo "<script>
+                    if ($query->num_rows > 0) {
+                        while ($row = $query->fetch_assoc()) {
+                            $name = $row['name'];
+                            $value = $row['id'];
+                            echo "<script>
                                         displayOptions('$name', document.getElementById('company'), '$value');
                                     </script>";
-                            }
                         }
+                    }
                     ?>
                 </select>
                 <input type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
@@ -112,7 +112,7 @@ require "connect.php";
                     case 'category':
                         select = 'kategori'
                         break;
-                
+
                     default:
                         break;
                 }

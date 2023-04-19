@@ -6,7 +6,7 @@
     $imgName =  $image['name'];
     $imgTempName =  $image['tmp_name'];
 
-    require 'connect.php';
+    require "../connect.php";
 
     if (!exif_imagetype($imgTempName)) {
         die('File uploaded was not an image');
@@ -22,4 +22,3 @@
         window.location = 'company_register.php';
         </script>";
     }
-?>

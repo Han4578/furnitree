@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require "../connect.php";
 
 $query = $conn->query('SELECT * FROM company');
 
@@ -14,4 +14,3 @@ if ($query->num_rows > 0) {
             <br />";
     }
 }
-?>
