@@ -15,6 +15,9 @@ require "../connect.php";
 </head>
 
 <body>
+    <?php 
+        require "../menu.php";
+    ?>
 
     <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical" onsubmit="return submitForm()">
 

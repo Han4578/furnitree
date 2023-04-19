@@ -11,6 +11,9 @@
 </head>
 
 <body>
+    <?php 
+        require "../menu.php";
+    ?>
 
     <form action="./signin_check.php" method="post" enctype="multipart/form-data" class="vertical">
 

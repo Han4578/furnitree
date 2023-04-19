@@ -10,6 +10,10 @@
 </head>
 
 <body>
+    <?php 
+        require "../menu.php";
+    ?>
+
     <form action="./c_reg.php" method="post" enctype="multipart/form-data" class="vertical">
 
         <div class="container">

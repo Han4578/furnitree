@@ -2,12 +2,6 @@
     box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
 
 form {
     gap: 5vh;
@@ -15,6 +9,7 @@ form {
     padding: 5%;
     height: 60vh;
     aspect-ratio: 6 / 5;
+    margin: 5% auto;
 }
 
 input {
