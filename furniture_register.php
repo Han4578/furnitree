@@ -1,3 +1,7 @@
+<?php
+require "connect.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,45 +10,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="register.css">
-    <script src="./functions.js" defer></script>
+    <script src="./functions.js"></script>
     <title>Register your furniture here</title>
 </head>
 
 <body>
 
-    <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical">
+    <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical" onsubmit="return submitForm()">
 
         <div class="container">
             <div class="vertical space-between">
-                <label for="name">Name:</label>
-                <label for="color">Color:</label>
-                <label for="category">Category:</label>
-                <label for="company">Company:</label>
-                <label for="price">Price:</label>
+                <label for="name">Nama:</label>
+                <label for="color">Warna:</label>
+                <label for="category">Kategori:</label>
+                <label for="company">Syarikat:</label>
+                <label for="price">Harga:</label>
             </div>
             <div class="vertical space-between">
                 <input type="text" name="name" id="name" required>
                 <select name="color" id="color">
-                    <option value="1">Red</option>
-                    <option value="2">Orange</option>
-                    <option value="3">Yellow</option>
-                    <option value="4">Green</option>
-                    <option value="5">Blue</option>
-                    <option value="6">Pink</option>
-                    <option value="7">Purple</option>
-                    <option value="8">Black</option>
-                    <option value="9">White</option>
-                    <option value="10">Grey</option>
-                    <option value="11">Brown</option>
+                    <option value="0">Pilih warna...</option>
+                    <?php
+                        $query = $conn->query("SELECT * FROM color");
+
+                        if ($query->num_rows > 0) {
+                            while ($row = $query->fetch_assoc()) {
+                                $name = $row['name'];
+                                $value = $row['id'];
+                                echo "<script>
+                                        displayOptions('$name', document.getElementById('color'), '$value');
+                                    </script>";
+                            }
+                        }
+                    ?>
                 </select>
                 <select name="category" id="category">
-                    <option value="1">Chair</option>
-                    <option value="2">Desk</option>
-                    <option value="3">Bookshelf</option>
+                    <option value="0">Pilih kategori...</option>
+                    <?php
+                        $query = $conn->query("SELECT * FROM category");
+
+                        if ($query->num_rows > 0) {
+                            while ($row = $query->fetch_assoc()) {
+                                $name = $row['name'];
+                                $value = $row['id'];
+                                echo "<script>
+                                        displayOptions('$name', document.getElementById('category'), '$value');
+                                    </script>";
+                            }
+                        }
+                    ?>
                 </select>
                 <select name="company" id="company">
-                    <option value="1">Latitude Run</option>
-                    <option value="2">Apt2B</option>
+                    <option value="0">Pilih syarikat...</option>
+                    <?php
+                        $query = $conn->query("SELECT * FROM company");
+
+                        if ($query->num_rows > 0) {
+                            while ($row = $query->fetch_assoc()) {
+                                $name = $row['name'];
+                                $value = $row['id'];
+                                echo "<script>
+                                        displayOptions('$name', document.getElementById('company'), '$value');
+                                    </script>";
+                            }
+                        }
+                    ?>
                 </select>
                 <input type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
             </div>
@@ -65,6 +95,33 @@
     let price = document.querySelector('#price')
 
     price.addEventListener('keypress', e => excludeSymbols(e))
+
+    function submitForm() {
+        let selections = document.querySelectorAll('select')
+
+        for (const s of selections) {
+            if (s.selectedIndex == '0') {
+                let select
+                switch (s.id) {
+                    case 'color':
+                        select = 'warna'
+                        break;
+                    case 'company':
+                        select = 'syarikat'
+                        break;
+                    case 'category':
+                        select = 'kategori'
+                        break;
+                
+                    default:
+                        break;
+                }
+                alert('Sila pilih ' + select)
+                return false
+            } else continue
+        }
+        return true
+    }
 </script>
 
 </html>

@@ -20,10 +20,12 @@
         VALUES(?, ?, ?, ?, ?, ?)');
         $stmt->bind_param('sisiid', $name, $color, $imgName, $company, $category, $price);
         $stmt->execute();
-        if (move_uploaded_file($imgTempName, 'images/'.$imgName)) echo 'file uploaded succesfully';
-        else echo 'file failed to upload';
         $conn->close();
         $stmt->close();
+        if (move_uploaded_file($imgTempName, 'images/'.$imgName)) echo "<script>
+        alert('file uploaded succesfully');
+        window.location = 'furniture_register.php';
+        </script>";
 
     }
 

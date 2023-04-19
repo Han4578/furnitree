@@ -12,3 +12,14 @@ function roundNumber(e, value) {
 function togglePassword(checkbox, password) {
     password.type = (checkbox.checked) ? 'text' : 'password';
 }
+
+function displayItems(assoc, container) {
+
+}
+
+function displayOptions(name, container, value) {
+    let option = document.createElement('option')
+    option.innerText = name
+    option.value = value
+    container.appendChild(option)
+}
