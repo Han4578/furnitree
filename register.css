@@ -14,6 +14,11 @@ form {
     background-color: rgb(165, 255, 255);
     padding: 5%;
     height: 60vh;
+    aspect-ratio: 6 / 5;
+}
+
+input {
+    width: 100%;
 }
 
 .vertical {
