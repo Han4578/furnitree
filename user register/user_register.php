@@ -30,7 +30,7 @@
                     <input type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
                     <input type="checkbox" name="togglePw" id="Togglepw">
                 </div>
-                <input type="number" name="pnumber" id="pnumber" max="99999999999" onblur="roundNumber(this, value)">
+                <input type="number" name="pnumber" id="pnumber" max="99999999999" min="0" onblur="roundNumber(this, value)" placeholder='Tanpa  " - "'>
             </div>
         </div>
         <div class="space-between">

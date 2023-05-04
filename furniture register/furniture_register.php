@@ -28,6 +28,7 @@ require "../connect.php";
                 <label for="category">Kategori:</label>
                 <label for="company">Syarikat:</label>
                 <label for="price">Harga:</label>
+                <label for="place">Tempat:</label>
             </div>
             <div class="vertical space-between">
                 <input type="text" name="name" id="name" required>
@@ -43,6 +44,7 @@ require "../connect.php";
                             echo "<script>
                                         displayOptions('$name', document.getElementById('color'), '$value');
                                     </script>";
+                                    
                         }
                     }
                     ?>
@@ -80,6 +82,18 @@ require "../connect.php";
                     ?>
                 </select>
                 <input type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
+                <div class="space-between">
+                    <div>
+                        <input type="radio" class="radio" name="indoors" id="indoors" value="1" required>
+                        <label for="indoors">dalam rumah</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="radio" name="indoors" id="outdoors" value="0" required>
+                        <label for="outdoors">luar rumah</label>
+                    </div>
+                    <div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="vertical">

@@ -65,8 +65,9 @@
                             $company = $row['company_name'];
 
                             echo "  <script>
-                                        displayItems(document.querySelector('.recommended-list'), '$name', '$image', $price, '$company', document.querySelector('template'))
+                                        displayItems(document.querySelector('.recommended-list'), '$name', '$image', $price, '$company', document.querySelector('template'));
                                     </script>";
+
                         }
                     }
                 ?>

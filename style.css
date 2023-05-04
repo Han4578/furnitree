@@ -18,7 +18,6 @@ hr {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;    
 }
 
@@ -138,7 +137,7 @@ hr {
     gap: 0.5vw;
 }
 
-.item {
+.item, .result-item {
     aspect-ratio: 1;
     border: 1px black solid;
     border-radius: 10px;
@@ -146,7 +145,19 @@ hr {
     grid-template-rows: 70% 10% 10% 10%;
     height: 100%;
     padding: 3px;
+}
 
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5vw;
+    margin-top: 5%;
+    height: 1000vh;
+}
+
+.result-item {
+    width: 24.5%;
+    height: 40vh;
 }
 
 .category-list {

@@ -28,8 +28,8 @@ function displayItems(container, name, image, price, company, template) {
     let itemImg = item.querySelector('[data-image]')
 
     itemName.innerText = name
-    itemPrice.innerText = 'RM'+ price.toFixed(2)
-    itemImg.src = './images/'+image
+    itemPrice.innerText = 'RM'+ price.toFixed(2);
+    itemImg.src = './images/'+ image
     companyName.innerText = 'Dari ' + company
     container.appendChild(item)
 }

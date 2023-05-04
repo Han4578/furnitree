@@ -16,6 +16,10 @@ input {
     width: 100%;
 }
 
+button[type='submit'], button[type='reset'] {
+    padding: 2px;
+}
+
 .vertical {
     display: flex;
     flex-direction: column;
@@ -33,9 +37,17 @@ input {
     height: 50%;
 }
 
+.radio {
+    width: 13px;
+    
+}
+
+
 #Togglepw {
     margin-left: -15px;
     position: absolute;
+    width: auto;
+    margin-top: 3px;
 }
 
 #password {

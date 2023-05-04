@@ -5,6 +5,7 @@
     $company = $_POST['company'];
     $price = $_POST['price'];
     $image = $_FILES['image'];
+    $indoors = $_POST['indoors'];
     
 
     $imgName =  $image['name'];
@@ -16,9 +17,9 @@
          die('File uploaded was not an image');
     }
     else {
-        $stmt = $conn->prepare('INSERT INTO furniture(name, color, image, company_id, category, price)
-        VALUES(?, ?, ?, ?, ?, ?)');
-        $stmt->bind_param('sisiid', $name, $color, $imgName, $company, $category, $price);
+        $stmt = $conn->prepare('INSERT INTO furniture(name, color, image, company_id, category, price, indoors)
+        VALUES(?, ?, ?, ?, ?, ?, ?)');
+        $stmt->bind_param('sisiidi', $name, $color, $imgName, $company, $category, $price, $indoors);
         $stmt->execute();
         $conn->close();
         $stmt->close();
