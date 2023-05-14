@@ -1,15 +1,14 @@
 <?php
     session_start();
-    require 'connect.php';
+    require '../require/connect.php';
+
+    $_SESSION['query'] = $_GET['search'];
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-        <script src="functions.js"></script>
         <title>Cari</title>
     </head>
     <body>
@@ -21,27 +20,14 @@
                 <div data-price></div>
             </div>
         </template>
-        <div class="atas">
-            <div class="ikon close" id="menu">
-                <img src="./images/Hamburger_icon.png" alt="hamburger-icon">
-            </div>
-            <h1>FURNITREE</h1>
-            <div class="ikon">
-                <img src="./images/user_icon.png" id="user" alt="user-icon">
-            </div>
-        </div>
-        <div class="darken close"></div>
-        <div id="menu-list">
-            <h1 class="menu-logo">Menu</h1>
-            <div class="menu-button">home</div>
-            <div class="menu-button">filter</div>
-            <div class="menu-button">settings</div>
-        </div>
+        <?php 
+            require '../require/main_menu.php';
+        ?>
         <div class="main">
-            <div class="search-container">
-                <input type="text" name="search" id="search-bar" placeholder="Search...">
-                <button class="search">S</button>
-            </div>
+            <form class="search-container" action="filter.php" method="get">
+                <input type="text" name="search" id="search-bar" placeholder="Search..." value="<?php echo $_SESSION['query']; ?>">
+                <button type="submit" class="search">S</button>
+            </form>
             <div class="results">
                 <?php
                     $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.id");

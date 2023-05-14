@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="../style.css">
+<script src="../functions.js"></script>
 
 <div class="atas">
     <div class="ikon close" id="menu">
@@ -12,9 +13,12 @@
 <div class="darken close"></div>
 <div id="menu-list">
     <h1 class="menu-logo">Menu</h1>
-    <div class="menu-button">home</div>
-    <div class="menu-button">filter</div>
+    <div class="menu-button" data-home>home</div>
+    <div class="menu-button" data-filter>filter</div>
     <div class="menu-button">settings</div>
 </div>
-
-<script src="../script.js" defer></script>
+<script>
+    <?php 
+        require "menu.js";
+    ?>
+</script>

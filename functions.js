@@ -29,7 +29,7 @@ function displayItems(container, name, image, price, company, template) {
 
     itemName.innerText = name
     itemPrice.innerText = 'RM'+ price.toFixed(2);
-    itemImg.src = './images/'+ image
+    itemImg.src = '../images/'+ image
     companyName.innerText = 'Dari ' + company
     container.appendChild(item)
 }

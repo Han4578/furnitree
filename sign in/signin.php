@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <?php 
-        require "../menu.php";
+    <?php
+    require "../require/register_menu.php";
     ?>
 
     <form action="./signin_check.php" method="post" enctype="multipart/form-data" class="vertical">

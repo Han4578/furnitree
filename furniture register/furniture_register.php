@@ -1,5 +1,5 @@
 <?php
-require "../connect.php";
+require "../require/connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,8 +15,8 @@ require "../connect.php";
 </head>
 
 <body>
-    <?php 
-        require "../menu.php";
+    <?php
+    require "../require/register_menu.php";
     ?>
 
     <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical" onsubmit="return submitForm()">
@@ -44,7 +44,6 @@ require "../connect.php";
                             echo "<script>
                                         displayOptions('$name', document.getElementById('color'), '$value');
                                     </script>";
-                                    
                         }
                     }
                     ?>

@@ -1,6 +1,6 @@
 <?php
-    require "./connect.php";
-    session_start();
+require "../require/connect.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,14 +9,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <script src="functions.js"></script>
     <title>FURNITREE</title>
 </head>
 
 <body>
-    <template>    
+    <template>
         <div class="item">
             <div data-imgCon><img src="" alt="" data-image></div>
             <div data-name></div>
@@ -24,29 +21,16 @@
             <div data-price></div>
         </div>
     </template>
-    <div class="atas">
-        <div class="ikon close" id="menu">
-            <img src="./images/Hamburger_icon.png" alt="hamburger-icon">
-        </div>
-        <h1>FURNITREE</h1>
-        <div class="ikon">
-            <img src="./images/user_icon.png" id="user" alt="user-icon">
-        </div>
-    </div>
-    <div class="darken close"></div>
-    <div id="menu-list">
-        <h1 class="menu-logo">Menu</h1>
-        <div class="menu-button">home</div>
-        <div class="menu-button">filter</div>
-        <div class="menu-button">settings</div>
-    </div>
+    <?php
+    require '../require/main_menu.php';
+    ?>
     <div class="main">
-        <div class="search-container">
+        <form class="search-container" action="filter.php">
             <input type="text" name="search" id="search-bar" placeholder="Search...">
-            <button class="search">S</button>
-        </div>
+            <button type="submit" class="search">S</button>
+        </form>
         <div class="banner">
-            <img class="ad" src="./images/banner.png" alt="BEEG SALE">
+            <img class="ad" src="../images/banner.png" alt="BEEG SALE">
         </div>
         <div class="section">
             <div class="space-between">
@@ -55,21 +39,20 @@
             </div>
             <div class="recommended-list">
                 <?php
-                    $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.id GROUP BY name");
+                $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.id GROUP BY name");
 
-                    if ($query->num_rows > 0) {
-                        while ($row = $query->fetch_assoc()) {
-                            $name = $row['name'];
-                            $image = $row['image'];
-                            $price = $row['price'];
-                            $company = $row['company_name'];
+                if ($query->num_rows > 0) {
+                    while ($row = $query->fetch_assoc()) {
+                        $name = $row['name'];
+                        $image = $row['image'];
+                        $price = $row['price'];
+                        $company = $row['company_name'];
 
-                            echo "  <script>
+                        echo "  <script>
                                         displayItems(document.querySelector('.recommended-list'), '$name', '$image', $price, '$company', document.querySelector('template'));
                                     </script>";
-
-                        }
                     }
+                }
                 ?>
             </div>
         </div>

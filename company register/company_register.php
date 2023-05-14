@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <?php 
-        require "../menu.php";
+    <?php
+    require "../require/register_menu.php";
     ?>
 
     <form action="./c_reg.php" method="post" enctype="multipart/form-data" class="vertical">
