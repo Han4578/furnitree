@@ -1,8 +1,5 @@
 <?php
-    session_start();
-    require '../require/connect.php';
-
-    $_SESSION['query'] = $_GET['search'];
+    $_SESSION['query'] = $_GET['search'] ?? '';
 ?>
 <html>
     <head>
