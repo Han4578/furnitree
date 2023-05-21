@@ -18,10 +18,10 @@ hr {
     height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
 }
 
-.atas {
+.top {
     height: 15vh;
     background-image: url(./images/oak\ background.png);
     display: flex;
@@ -30,19 +30,18 @@ hr {
     padding: 1vw;
 }
 
-.ikon {
+.icon {
     background-color: transparent;
-    height: 100%;
+    height: 80%;
     border-radius: 50%;
-    /* padding: 0.5%; */
     aspect-ratio: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.ikon:hover {
-    background-color: #c6a581;
+.icon:hover {
+    background-color: #c6a58170;
     filter: brightness(0.9);
 }
 
@@ -56,12 +55,23 @@ hr {
     justify-content: center;
 }
 
+.user-button {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+
 .menu-button:hover {
     filter: brightness(0.9);
 }
 
+.user-button:hover {
+    background-color: rgba(218, 218, 218, 0.493);
+}
+
 .open {
-    display: flex !important; 
+    display: flex !important;
 }
 
 .open#menu-list {
@@ -137,7 +147,8 @@ hr {
     gap: 0.5vw;
 }
 
-.item, .result-item {
+.item,
+.result-item {
     aspect-ratio: 1;
     border: 1px black solid;
     border-radius: 10px;
@@ -177,7 +188,6 @@ hr {
     justify-content: space-between;
 }
 
-
 #menu-list {
     position: fixed;
     top: 0;
@@ -192,17 +202,31 @@ hr {
     transition: transform 0.5s;
 }
 
+#user-menu {
+    background-color: white;
+    border-radius: 5%;
+    position: absolute;
+    right: 6vw;
+    top: 4vh;
+    box-shadow: 0 0 5px 5px rgba(135, 134, 134, 0.384);
+    width: 10vw;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 #search-bar {
     width: 80%;
     height: 5vh;
     margin: 0;
     border-radius: 15px 0 0 15px;
-    padding-left: 1vw ;
+    padding-left: 1vw;
 }
 
-[data-price], [data-name], [data-company] {
+[data-price],
+[data-name],
+[data-company] {
     padding: 2%;
-    
 }
 
 [data-company] {
