@@ -19,15 +19,15 @@
 
         <div class="container">
             <div class="vertical space-between">
-                <label for="name">Name:</label>
-                <label for="password">Password:</label>
+                <label for="name">E-mel:</label>
+                <label for="password">Kata Laluan:</label>
 
             </div>
             <div class="vertical space-between">
                 <input type="text" name="name" id="name" required>
                 <div>
                     <input type="password" name="password" id="password" required>
-                    <input type="checkbox" name="Togglepw" id="Togglepw">
+                    <!-- <input type="checkbox" name="Togglepw" id="Togglepw"> -->
                 </div>
             </div>
         </div>

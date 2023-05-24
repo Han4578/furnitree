@@ -33,3 +33,4 @@ function displayItems(container, name, image, price, company, template) {
     companyName.innerText = 'Dari ' + company
     container.appendChild(item)
 }
+

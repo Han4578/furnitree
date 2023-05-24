@@ -19,5 +19,6 @@ if ($query->num_rows == 0) {
     $_SESSION['id'] = $row['id'];
     $_SESSION['username'] = $row['name'];
     $_SESSION['level'] = $row['aras'];
-    header("location: main.php");
+    $_SESSION['isLoggedIn'] = true;
+    header("location: ../main_pages/main_page.php");
 }

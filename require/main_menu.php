@@ -17,7 +17,9 @@
 </div>
 <div id="user-menu">
     <?php         
-        echo (key_exists('isLogged in', $_SESSION) and $_SESSION['isLoggedIn'] == 1)? "<div class='user-button' data-profile>Profil</div>": "<div class='user-button' data-login>Log masuk</div>";
+        echo (key_exists('isLoggedIn', $_SESSION) and $_SESSION['isLoggedIn'] == true)? 
+        "<div class='user-button' data-profile>Profil</div><div class='user-button' data-logout>Log keluar</div>": 
+        "<div class='user-button' data-login>Log masuk</div><div class='user-button' data-signup>Daftar</div>";
     ?>
     <div class="user-button">Profil</div>
     <div class="user-button">Profil</div>
