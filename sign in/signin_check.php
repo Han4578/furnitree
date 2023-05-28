@@ -2,12 +2,12 @@
 require "../require/connect.php";
 session_start();
 
-$name = $_POST['name'];
+$email = $_POST['email'];
 $password = $_POST['password'];
-$user = $conn->real_escape_string($name);
+$user = $conn->real_escape_string($email);
 $pass = $conn->real_escape_string($password);
 
-$query = $conn->query("SELECT * FROM pengguna WHERE name = '$user' AND password = '$password';");
+$query = $conn->query("SELECT * FROM pengguna WHERE email = '$user' AND password = '$password';");
 $row = $query->fetch_assoc();
 
 if ($query->num_rows == 0) {
@@ -17,8 +17,12 @@ if ($query->num_rows == 0) {
                 </script>";
 } else {
     $_SESSION['id'] = $row['id'];
-    $_SESSION['username'] = $row['name'];
+    $_SESSION['name'] = $row['name'];
+    $_SESSION['password'] = $password;
+    $_SESSION['email'] = $user;
+    $_SESSION['pnumber'] = $row['nomhp'];
     $_SESSION['level'] = $row['aras'];
+    $_SESSION['pfp'] = $row['picture'];
     $_SESSION['isLoggedIn'] = true;
     header("location: ../main_pages/main_page.php");
 }

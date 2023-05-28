@@ -21,8 +21,6 @@
         "<div class='user-button' data-profile>Profil</div><div class='user-button' data-logout>Log keluar</div>": 
         "<div class='user-button' data-login>Log masuk</div><div class='user-button' data-signup>Daftar</div>";
     ?>
-    <div class="user-button">Profil</div>
-    <div class="user-button">Profil</div>
 </div>
 <div class="darken"></div>
 <div id="menu-list">

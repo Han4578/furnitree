@@ -15,7 +15,6 @@ hr {
 
 .main {
     margin: 1vh 10vw;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,6 +22,7 @@ hr {
 
 .top {
     height: 15vh;
+    min-height: 100px;
     background-image: url(./images/oak\ background.png);
     display: flex;
     justify-content: space-between;
@@ -109,6 +109,7 @@ hr {
 }
 
 .ad {
+    object-fit: cover;
     border: 1px black solid;
     width: 100%;
 }
@@ -186,6 +187,56 @@ hr {
 .space-between {
     display: flex;
     justify-content: space-between;
+}
+
+.space-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+.background {
+    background-image: url(./images/profile\ background.jpg);
+    margin-top: 5vh;
+    width: 80vw;
+    height: 32vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5% 0 5% 10%;
+    border-radius: 20px;
+}
+
+.info {
+    height: 100% !important;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10%;
+    font-size: 1.5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5%;
+    height: 50%;
+}
+
+.pfp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24vw;
+}
+
+.pfp > img {
+    height: 95%;
+    aspect-ratio: 1;
+    border: 3px solid black;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.edit {
+    position: absolute;
+    right: 11vw;
+    top: 16vh;
+    padding: 5px;
+
 }
 
 #menu-list {

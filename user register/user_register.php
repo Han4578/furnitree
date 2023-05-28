@@ -22,6 +22,7 @@
                 <label for="name">Nama:</label>
                 <label for="password">Kata Laluan:</label>
                 <label for="pnumber">Nombor telefon:</label>
+                <label for="pnumber">E-mel:</label>
 
             </div>
             <div class="vertical space-between">
@@ -31,6 +32,7 @@
                     <input type="checkbox" name="togglePw" id="Togglepw">
                 </div>
                 <input type="number" name="pnumber" id="pnumber" max="99999999999" min="0" onblur="roundNumber(this, value)" placeholder='Tanpa  " - "'>
+                <input type="email" name="email" id="email">
             </div>
         </div>
         <div class="space-between">

@@ -19,6 +19,7 @@
         </template>
         <?php 
             require '../require/main_menu.php';
+            $_SESSION['query'] = $_GET['search'] ?? '';
         ?>
         <div class="main">
             <form class="search-container" action="filter.php" method="get">

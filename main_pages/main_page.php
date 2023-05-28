@@ -18,11 +18,13 @@
         </div>
     </template>
     <?php
-    require '../require/main_menu.php';
+        require '../require/main_menu.php';
+        $_SESSION['query'] = $_GET['search'] ?? '';
+
     ?>
     <div class="main">
         <form class="search-container" action="filter.php">
-            <input type="text" name="search" id="search-bar" placeholder="Search...">
+            <input type="text" name="search" id="search-bar" placeholder="Search..." value="<?php echo $_SESSION['query']; ?>">
             <button type="submit" class="search">S</button>
         </form>
         <div class="banner">

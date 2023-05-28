@@ -16,13 +16,13 @@
 
     <form action="./c_reg.php" method="post" enctype="multipart/form-data" class="vertical">
 
-        <div class="container">
-            <div class="vertical space-between">
+        <div class="info">
+            <div class="vertical space-around">
                 <label for="name">Name:</label>
                 <label for="image">Logo:</label>
                 <div></div>
             </div>
-            <div class="vertical space-between">
+            <div class="vertical space-around">
                 <input type="text" name="name" id="name">
                 <input type="file" name="image" id="image">
                 <div></div>

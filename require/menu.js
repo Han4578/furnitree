@@ -12,14 +12,36 @@ let logout = document.querySelector('[data-logout]') ?? document.createElement('
 let signup = document.querySelector('[data-signup]') ?? document.createElement('div')
 let profile = document.querySelector('[data-profile]') ?? document.createElement('div')
 
+let redirect = {
+    home() {
+        window.location = '../main_pages/main_page.php';
+    },
+
+    filter() {
+        window.location = '../main_pages/filter.php';
+    },
+
+    login() {
+        window.location = '../sign in/signin.php';
+    },
+
+    profile() {
+        window.location = '../main_pages/profile.php';
+    },
+
+    signup() {
+        window.location = '../user register/user_register.php';
+    }
+}
+
 menu.addEventListener('click', openMenu)
 darken.addEventListener('click', closeMenu)
-home.addEventListener('click', redirectHome)
-filter.addEventListener('click', redirectFilter)
-login.addEventListener('click', redirectLogin)
-signup.addEventListener('click', redirectSignUp)
-profile.addEventListener('click', redirectProfile)
-logo.addEventListener('click', redirectHome)
+home.addEventListener('click', redirect.home)
+filter.addEventListener('click', redirect.filter)
+login.addEventListener('click', redirect.login)
+signup.addEventListener('click', redirect.signup)
+profile.addEventListener('click', redirect.profile)
+logo.addEventListener('click', redirect.home)
 logout.addEventListener('click', logOut)
 window.addEventListener('click', closeUser)
 user.addEventListener('click', openUser)
@@ -39,26 +61,6 @@ function closeMenu(e) {
     body.style.marginRight = 0
 }
 
-function redirectHome() {
-    window.location = '../main_pages/main_page.php';
-}
-
-function redirectFilter() {
-    window.location = '../main_pages/filter.php';
-}
-
-function redirectLogin() {
-    window.location = '../sign in/signin.php';
-}
-
-function redirectProfile() {
-    window.location = '../main_pages/profile.php';
-}
-
-function redirectSignUp() {
-    window.location = '../user register/user_register.php';
-}
-
 function logOut() {
     window.location = '../require/logout.php';
 }
@@ -71,4 +73,5 @@ function openUser(e) {
 function closeUser() {
     userMenu.classList.remove('open')
 }
+
 
