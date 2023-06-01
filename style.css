@@ -149,7 +149,8 @@ hr {
 }
 
 .item,
-.result-item {
+.result-item,
+.related-item {
     aspect-ratio: 1;
     border: 1px black solid;
     border-radius: 10px;
@@ -193,6 +194,8 @@ hr {
     display: flex;
     justify-content: space-around;
 }
+
+/* --------------------------------------------------------------------------------------------------- */
 
 .background {
     background-image: url(./images/profile\ background.jpg);
@@ -238,6 +241,87 @@ hr {
     padding: 5px;
 
 }
+
+/* --------------------------------------------------------------------------------------------------- */
+
+.split {
+    display: grid;
+    grid-template-columns: 66% 33%;
+    align-items: start;
+}
+
+.product-info {
+    margin-right: 5%;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 78vh;
+    background-color: rgb(255, 242, 218);
+    border-radius: 20px;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-image {
+    aspect-ratio: 9 / 10;
+    border: 2px solid black;
+    border-radius: 20px ;
+}
+
+.product-image > img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.name {
+    font-size: 1.5vw;
+}
+
+.company {
+    color: gray;
+    font-size: 1vw;
+}
+
+.price {
+    font-size: 2vw;
+}
+
+.related-list {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    gap: 3%;
+    padding: 2%;
+    border-radius: 20px;
+}
+
+.related-item {
+    height: 6vw;
+}
+
+.color-list {
+    margin-top: 5%;
+    height: 6vw;
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    padding: 5%;
+}
+
+.color {
+    aspect-ratio: 1;
+    height: 4vw;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 0 3px 1px black;
+}
+
+/* --------------------------------------------------------------------------------------------------- */
 
 #menu-list {
     position: fixed;
