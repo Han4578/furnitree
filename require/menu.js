@@ -7,6 +7,7 @@ let darken = document.querySelector('.darken')
 let home = document.querySelector('[data-home]')
 let filter = document.querySelector('[data-filter]')
 let logo = document.querySelector('[data-logo]')
+let items
 let login = document.querySelector('[data-login]') ?? document.createElement('div')
 let logout = document.querySelector('[data-logout]') ?? document.createElement('div')
 let signup = document.querySelector('[data-signup]') ?? document.createElement('div')
@@ -74,4 +75,14 @@ function closeUser() {
     userMenu.classList.remove('open')
 }
 
+function updateItems() {
+    items = document.getElementsByClassName('item')
+    
+    for (const item of items) {
+        item.addEventListener('click', () => {
+            console.log(item.id);
+            window.location = "./product.php?id=" + item.id
+        })
+    }
+}
 

@@ -20,13 +20,15 @@ function displayOptions(name, container, value) {
     container.appendChild(option)
 }
 
-function displayItems(container, name, image, price, company, template) {
+function displayItems(container, name, image, price, company, template, id) {
     let item = template.content.cloneNode(true)
+    let div = item.querySelector('.item')
     let itemName = item.querySelector('[data-name]')
     let companyName = item.querySelector('[data-company]')
     let itemPrice = item.querySelector('[data-price]')
-    let itemImg = item.querySelector('[data-image]')
-
+    let itemImg = item.querySelector('[data-image]');
+    
+    div.id = id
     itemName.innerText = name
     itemPrice.innerText = 'RM'+ price.toFixed(2);
     itemImg.src = '../images/'+ image

@@ -28,7 +28,7 @@
             </form>
             <div class="results">
                 <?php
-                    $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.id");
+                    $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id");
 
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {

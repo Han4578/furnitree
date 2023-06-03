@@ -10,7 +10,7 @@
 
 <body>
     <template>
-        <div class="item">
+        <div class="item" id="0">
             <div data-imgCon><img src="" alt="" data-image></div>
             <div data-name></div>
             <div data-company></div>
@@ -37,17 +37,18 @@
             </div>
             <div class="recommended-list">
                 <?php
-                $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.id GROUP BY name");
+                $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY name");
 
                 if ($query->num_rows > 0) {
                     while ($row = $query->fetch_assoc()) {
+                        $id = $row['id'];
                         $name = $row['name'];
                         $image = $row['image'];
                         $price = $row['price'];
                         $company = $row['company_name'];
 
                         echo "  <script>
-                                        displayItems(document.querySelector('.recommended-list'), '$name', '$image', $price, '$company', document.querySelector('template'));
+                                        displayItems(document.querySelector('.recommended-list'), '$name', '$image', $price, '$company', document.querySelector('template'), $id);
                                     </script>";
                     }
                 }
@@ -127,8 +128,9 @@
         </div>
 
     </div>
-
-
 </body>
+<script>
+    updateItems()
+</script>
 
 </html>
