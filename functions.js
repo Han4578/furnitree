@@ -22,17 +22,36 @@ function displayOptions(name, container, value) {
 
 function displayItems(container, name, image, price, company, template, id) {
     let item = template.content.cloneNode(true)
-    let div = item.querySelector('.item')
-    let itemName = item.querySelector('[data-name]')
-    let companyName = item.querySelector('[data-company]')
-    let itemPrice = item.querySelector('[data-price]')
-    let itemImg = item.querySelector('[data-image]');
+    let div = item.querySelector('.item') ?? item.querySelector('.result-item') ?? item.querySelector('.related-item')
+    let itemName = item.querySelector('[data-name]') ?? item.querySelector('[data-relName]')
+    let companyName = item.querySelector('[data-company]') ?? item.querySelector('[data-relCompany]')
+    let itemPrice = item.querySelector('[data-price]') ?? item.querySelector('[data-relPrice]')
+    let itemImg = item.querySelector('[data-image]') ?? item.querySelector('[data-relImage]')
     
     div.id = id
     itemName.innerText = name
     itemPrice.innerText = 'RM'+ price.toFixed(2);
     itemImg.src = '../images/'+ image
     companyName.innerText = 'Dari ' + company
-    container.appendChild(item)
+
+    div.addEventListener('click', () => {
+        window.location = "./product.php?id=" + div.id
+    })
+
+    container.appendChild(div)
+}
+
+function displayAlt(container, image, template, id, highlight){
+    let item = template.content.cloneNode(true)
+    let div = item.querySelector('.color-img')
+    let img = item.querySelector('img')
+
+    if (highlight) div.classList.add('highlighted');
+
+    div.id = id
+    img.src = "../images/" + image
+    div.dataset.src = img.src
+
+    container.appendChild(div)
 }
 

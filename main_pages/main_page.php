@@ -10,8 +10,10 @@
 
 <body>
     <template>
-        <div class="item" id="0">
-            <div data-imgCon><img src="" alt="" data-image></div>
+        <div class="item">
+            <div data-imgCon>
+                <img src="" alt="" data-image>
+            </div>
             <div data-name></div>
             <div data-company></div>
             <div data-price></div>
@@ -129,8 +131,5 @@
 
     </div>
 </body>
-<script>
-    updateItems()
-</script>
 
 </html>

@@ -36,8 +36,10 @@
                             $price = $row['price'];
                             $name = $row['name'];
                             $company = $row['company_name'];
+                            $id = $row['id'];
+
                             echo "<script>
-                                    displayItems(document.querySelector('.results'), '$name', '$image', $price, '$company', document.querySelector('template'))
+                                    displayItems(document.querySelector('.results'), '$name', '$image', $price, '$company', document.querySelector('template'), $id)
                             </script>";
                         }
                     }

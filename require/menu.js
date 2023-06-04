@@ -74,15 +74,3 @@ function openUser(e) {
 function closeUser() {
     userMenu.classList.remove('open')
 }
-
-function updateItems() {
-    items = document.getElementsByClassName('item')
-    
-    for (const item of items) {
-        item.addEventListener('click', () => {
-            console.log(item.id);
-            window.location = "./product.php?id=" + item.id
-        })
-    }
-}
-
