@@ -51,7 +51,7 @@ function openMenu() {
     menuList.classList.add('open')
     darken.classList.add('open')
     body.style.overflow = 'hidden'
-    body.style.marginRight = '15px'
+    body.style.marginRight = '17px'
 }
 
 function closeMenu(e) {

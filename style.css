@@ -217,10 +217,16 @@ hr {
     margin-top: 5vh;
     width: 80vw;
     height: 32vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     padding: 5% 0 5% 10%;
     border-radius: 20px;
+    display:flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.equal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .info {
@@ -228,10 +234,13 @@ hr {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 10%;
     font-size: 1.5vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 5%;
     height: 50%;
+}
+
+.grow {
+    flex-grow: 1;
 }
 
 .pfp {
@@ -241,7 +250,7 @@ hr {
     height: 24vw;
 }
 
-.pfp > img {
+.pfp > img:last-child {
     height: 95%;
     aspect-ratio: 1;
     border: 3px solid black;
@@ -249,13 +258,111 @@ hr {
     object-fit: cover;
 }
 
-.edit {
+.edit, .delete {
     position: absolute;
     right: 11vw;
-    top: 16vh;
+    top: 23vh;
     padding: 5px;
+    width: 3vw;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 0.6vw;
+    background-color: rgb(233, 233, 233);
+    transition: 0.2s all ;
+}
+
+.edit:hover {
+    filter: brightness(0.9);
+}
+
+.delete:hover {
+    background-color: rgb(247, 88, 88);
+}
+
+.camera {
+    position: absolute;
+    filter: opacity(0);
+    height: 22.8vw;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transition: 0.3s filter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera > img {
+    height: 50%;
+}
+
+
+.camera:hover {
+    filter: opacity(1);
+    background-color: var(--hover);
+}
+
+.options {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10vw;
+    padding: 5px;
+}
+
+.custom {
+    border: none;
+    border-radius: 10px;
+}
+
+.custom.input {
+    height: 30px;
+    padding: 3%;
+    
+}
+
+.custom.button {
+    padding: 1%;
+    background-color: rgb(240, 240, 240);
+    width: 6vw;
+    transition: 0.3s background-color;
+}
+
+.custom.button:hover, .dialog-button:hover {
+    background-color: lightgray;
+}
+
+.confirm {
+    position: absolute;
+    left: 30%;
+    width: 40%;
+    aspect-ratio: 4 / 1;
+    flex-direction: column;
+}
+
+.confirm > div {
+    height: 100%;
 
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-button {
+    width: 5vw;
+    aspect-ratio: 2 / 1;
+    border-radius: 10px;
+    transition: 0.3s background-color;
+}
+
+.yes:hover {
+    background-color: rgb(37, 255, 37) !important;
+}
+
 
 /* --------------------------------------------------------------------------------------------------- */
 
@@ -398,6 +505,16 @@ hr {
     padding-left: 1vw;
 }
 
+#user {
+    object-fit: contain;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+#image {
+    display: none;
+}
+
 [data-price],
 [data-name],
 [data-company] {
@@ -405,12 +522,12 @@ hr {
 }
 
 [data-company] {
-    font-size: 75%;
+    font-size: 14px;
     color: gray;
 }
 
 [data-price] {
-    font-size: 87.5%;
+    font-size: 16px;
 }
 
 [data-imgCon] {

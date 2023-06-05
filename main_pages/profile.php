@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="main">
-        <div class="background">
+        <div class="background equal">
             <div class="info">
                 <div class="vertical space-around">
                     <div>Nama:  </div>
@@ -29,11 +29,19 @@
                 </div>
             </div>
             <div class="pfp">
-                <a href="../edit/profile" class="edit">Kemas kini</a>
                 <img src="../images/<?php echo $_SESSION['pfp']; ?>" alt="gambar profil">
             </div>
+            <div class="edit">
+                <img src="../images/edit-pencil.svg" alt="">
+            </div>
         </div>
-
     </div>
+    <script>
+        let edit = document.querySelector('.edit')
+
+        edit.addEventListener('click', () => {
+            window.location = '../edit/profile.php'
+        })
+    </script>
 </body>
 </html>

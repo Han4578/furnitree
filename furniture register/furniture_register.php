@@ -97,7 +97,7 @@ require "../require/connect.php";
         </div>
         <div class="vertical">
             <label for="image">Insert image:</label>
-            <input type="file" name="image" id="image" required>
+            <input type="file" name="image" id="image" accept="image/*" required>
         </div>
 
         <div class="space-between">

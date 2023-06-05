@@ -11,8 +11,8 @@
         <img src="../images/Hamburger_icon.png" alt="hamburger-icon">
     </div>
     <img src="../images/furnitree logo full.png" alt="furnitree logo" data-logo>
-    <div class="icon" id="user">
-        <img src="../images/user_icon.png" alt="user-icon">
+    <div class="icon">
+    <img src="../images/<?php echo (key_exists('isLoggedIn', $_SESSION))? $_SESSION['pfp']: "user_icon.png";?>" alt="user-icon" id="user">
     </div>
 </div>
 <div id="user-menu">
