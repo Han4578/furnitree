@@ -7,6 +7,8 @@ let darken = document.querySelector('.darken')
 let home = document.querySelector('[data-home]')
 let filter = document.querySelector('[data-filter]')
 let logo = document.querySelector('[data-logo]')
+let furniture = document.querySelector('[data-furniture]') ?? document.createElement('div')
+let dataUser = document.querySelector('[data-user]') ?? document.createElement('div')
 let items
 let login = document.querySelector('[data-login]') ?? document.createElement('div')
 let logout = document.querySelector('[data-logout]') ?? document.createElement('div')
@@ -30,6 +32,14 @@ let redirect = {
         window.location = '../main_pages/profile.php';
     },
 
+    furniture() {
+        window.location = '../manage/furniture.php';
+    },
+
+    user() {
+        window.location = '../manage/user.php';
+    },
+
     signup() {
         window.location = '../user register/user_register.php';
     }
@@ -40,12 +50,16 @@ darken.addEventListener('click', closeMenu)
 home.addEventListener('click', redirect.home)
 filter.addEventListener('click', redirect.filter)
 login.addEventListener('click', redirect.login)
-signup.addEventListener('click', redirect.signup)
 profile.addEventListener('click', redirect.profile)
+signup.addEventListener('click', redirect.signup)
 logo.addEventListener('click', redirect.home)
+furniture.addEventListener('click', redirect.furniture)
+dataUser.addEventListener('click', redirect.user)
 logout.addEventListener('click', logOut)
 window.addEventListener('click', closeUser)
 user.addEventListener('click', openUser)
+
+
 
 function openMenu() {
     menuList.classList.add('open')

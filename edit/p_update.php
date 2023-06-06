@@ -26,6 +26,12 @@
         alert('Profil berjaya dikemas kini');
         window.location = '../main_pages/profile.php';
         </script>";
+
+        $_SESSION['name'] = $name;
+        $_SESSION['password'] = $password;
+        $_SESSION['email'] = $email;
+        $_SESSION['pnumber'] = $pnumber;
+        $_SESSION['pfp'] = $imageName;
     }
 
 ?>

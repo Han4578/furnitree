@@ -10,18 +10,31 @@
     <div class="icon close" id="menu">
         <img src="../images/Hamburger_icon.png" alt="hamburger-icon">
     </div>
-    <img src="../images/furnitree logo full.png" alt="furnitree logo" data-logo>
+    <img src="../images/furnitree logo full.png" alt="furnitree logo" class="pointer" data-logo>
     <div class="icon">
     <img src="../images/<?php echo (key_exists('isLoggedIn', $_SESSION))? $_SESSION['pfp']: "user_icon.png";?>" alt="user-icon" id="user">
     </div>
 </div>
 <div id="user-menu">
-    <?php         
-        echo (key_exists('isLoggedIn', $_SESSION) and $_SESSION['isLoggedIn'] == true)? 
-        "<div class='user-button' data-profile>Profil</div><div class='user-button' data-logout>Log keluar</div>": 
-        "<div class='user-button' data-login>Log masuk</div><div class='user-button' data-signup>Daftar</div>";
-    ?>
-</div>
+    <?php
+        $notLogged = "<div class='user-button' data-login>Log masuk</div>
+                      <div class='user-button' data-signup>Daftar</div>";
+                      
+        $isLogged = "<div class='user-button' data-profile>Profil</div>
+                     <div class='user-button' data-logout>Log keluar</div>";
+         if (key_exists('isLoggedIn', $_SESSION) and $_SESSION['isLoggedIn'] == true) {
+            if ($_SESSION['level'] > 1) {
+                $isLogged = $isLogged."<div class='user-button' data-furniture> Mengurus perabot</div>";
+            
+                if ($_SESSION['level'] > 2) {
+                    $isLogged = $isLogged."<div class='user-button' data-user> Mengurus pengguna</div>";
+                }
+            }
+        
+            echo $isLogged;
+        }else echo $notLogged;
+        ?>
+    </div>
 <div class="darken"></div>
 <div id="menu-list">
     <h1 class="menu-logo">Menu</h1>

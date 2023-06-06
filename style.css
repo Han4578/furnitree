@@ -180,7 +180,6 @@ hr {
     flex-wrap: wrap;
     gap: 0.5vw;
     margin-top: 5%;
-    height: 1000vh;
 }
 
 .result-item {
@@ -208,6 +207,10 @@ hr {
 .space-around {
     display: flex;
     justify-content: space-around;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 /* --------------------------------------------------------------------------------------------------- */
@@ -269,7 +272,7 @@ hr {
     border-radius: 50%;
     padding: 0.6vw;
     background-color: rgb(233, 233, 233);
-    transition: 0.2s all ;
+    transition: 0.2s all;
 }
 
 .edit:hover {
@@ -495,6 +498,7 @@ hr {
     display: none;
     flex-direction: column;
     justify-content: space-around;
+    z-index: 2;
 }
 
 #search-bar {
@@ -506,9 +510,10 @@ hr {
 }
 
 #user {
-    object-fit: contain;
+    object-fit: cover;
     border: 2px solid black;
     border-radius: 50%;
+    aspect-ratio: 1;
 }
 
 #image {

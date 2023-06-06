@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="options grow">
-                <button class="custom button" data-profile>Batalkan</button>
+                <button class="custom button" data-profile2 type="button">Batalkan</button>
                 <button class="custom button yes" type="submit">Kemas kini</button>
             </div>
             <div class="delete">
@@ -62,6 +62,7 @@
         let confirm = document.querySelector('.confirm')
         let yes = document.querySelector('#yes')
         let no = document.querySelector('#no')
+        let p = document.querySelector('[data-profile2]')
         
         edit.onchange = () => {
             img.src = URL.createObjectURL(edit.files[0]); 
@@ -78,6 +79,8 @@
         yes.addEventListener('click', () => {
             window.location = './p_delete.php'
         })
+
+        p.addEventListener('click', redirect.profile)
     </script>
 </body>
 </html>

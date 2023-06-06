@@ -4,7 +4,7 @@
 
     $id = $_SESSION['id'];
 
-    $stmt = true; #$conn->query("DELETE FROM pengguna WHERE id = '$id");
+    $stmt = $conn->query("DELETE FROM pengguna WHERE id = '$id'");
 
     if ($stmt) {
         echo "<script> 
