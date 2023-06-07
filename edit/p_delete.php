@@ -2,7 +2,7 @@
     require '../require/connect.php';
     session_start();
 
-    $id = $_SESSION['id'];
+    $id = $_GET['id'];
 
     $stmt = $conn->query("DELETE FROM pengguna WHERE id = '$id'");
 

@@ -2,7 +2,7 @@
     require "../require/connect.php";
     session_start();
 
-    $id = $_SESSION['id'];
+    $id = $_GET['id'];
     $name = $conn->real_escape_string($_POST['name']);
     $password = $conn->real_escape_string($_POST['password']);
     $email = $conn->real_escape_string($_POST['email']);
@@ -24,14 +24,16 @@
 
         echo "<script>
         alert('Profil berjaya dikemas kini');
-        window.location = '../main_pages/profile.php';
+        window.location = '../main_pages/profile.php?id=".$id."';
         </script>";
 
-        $_SESSION['name'] = $name;
-        $_SESSION['password'] = $password;
-        $_SESSION['email'] = $email;
-        $_SESSION['pnumber'] = $pnumber;
-        $_SESSION['pfp'] = $imageName;
+        if ($_SESSION['id'] == $id) {   
+            $_SESSION['name'] = $name;
+            $_SESSION['password'] = $password;
+            $_SESSION['email'] = $email;
+            $_SESSION['pnumber'] = $pnumber;
+            $_SESSION['pfp'] = $imageName;
+        }
     }
 
 ?>

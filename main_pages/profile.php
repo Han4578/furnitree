@@ -40,7 +40,7 @@
         let edit = document.querySelector('.edit')
 
         edit.addEventListener('click', () => {
-            window.location = '../edit/profile.php'
+            window.location = '../edit/profile.php?id=' + <?php echo $_SESSION['id']; ?>
         })
     </script>
 </body>

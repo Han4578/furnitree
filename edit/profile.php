@@ -1,5 +1,11 @@
 <?php
-    require "../require/register_menu.php"
+    require "../require/register_menu.php";
+
+    $id = $_GET['id'];
+
+    $query = $conn->query("SELECT * FROM pengguna WHERE id = $id");
+    $row = $query->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +19,7 @@
 </head>
 <body>
     <div class="main">
-        <form class="background" action="./p_update.php" method="post" enctype="multipart/form-data">
+        <form class="background" action="./p_update.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
             <div class="equal">
                 <div class="info">
                     <div class="vertical space-around">
@@ -23,10 +29,10 @@
                         <div>Number telefon: </div>
                     </div>
                     <div class="vertical space-around grow">
-                        <input class="custom input" name="name" value="<?php echo $_SESSION['name'] ?>" >
-                        <input class="custom input" name="password" type="password" value="<?php echo $_SESSION['password'] ?>" >
-                        <input class="custom input" name="email" type="email" value="<?php echo $_SESSION['email'] ?>" >
-                        <input class="custom input" name="pnumber" value="0<?php echo $_SESSION['pnumber'] ?>" >
+                        <input class="custom input" name="name" value="<?php echo $row['name'] ?>" >
+                        <input class="custom input" name="password" type="password" value="<?php echo $row['password'] ?>" >
+                        <input class="custom input" name="email" type="email" value="<?php echo $row['email'] ?>" >
+                        <input class="custom input" name="pnumber" value="0<?php echo $row['nomhp'] ?>" >
                     </div>
                 </div>
                 <input type="file" id="image" name="image" accept="image/*">
@@ -34,7 +40,7 @@
                     <label for="image" class="camera">
                         <img src="../images/camera.png" alt="">
                     </label>
-                    <img data-pfp src="../images/<?php echo $_SESSION['pfp']; ?>" alt="gambar profil">
+                    <img data-pfp src="../images/<?php echo $row['picture']; ?>" alt="gambar profil">
                 </div>
             </div>
             <div class="options grow">
@@ -77,10 +83,12 @@
         })
 
         yes.addEventListener('click', () => {
-            window.location = './p_delete.php'
+            window.location = './p_delete.php?id=' + <?php echo $row['id']; ?>
         })
 
-        p.addEventListener('click', redirect.profile)
+        p.addEventListener('click', () => {
+            redirect.profile(<?php echo $row['id']; ?>)
+        })
     </script>
 </body>
 </html>

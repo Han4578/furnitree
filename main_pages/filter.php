@@ -28,22 +28,7 @@
             </form>
             <div class="results">
                 <?php
-                    $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id");
-
-                    if ($query->num_rows > 0) {
-                        while ($row = $query->fetch_assoc()) {
-                            $image = $row['image'];
-                            $price = $row['price'];
-                            $name = $row['name'];
-                            $company = $row['company_name'];
-                            $id = $row['id'];
-
-                            echo "<script>
-                                    displayItems(document.querySelector('.results'), '$name', '$image', $price, '$company', document.querySelector('template'), $id)
-                            </script>";
-                        }
-                    }
-                
+                    displayItems("document.querySelector('.results')", "document.querySelector('template')", "SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id");
                 ?>
             </div>
         </div>

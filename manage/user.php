@@ -10,7 +10,25 @@
 <body>
     <?php
         require '../require/main_menu.php';
-
     ?>
+
+    <div class="main">
+        <div class="columns">
+            <span class="column">No.</span>
+            <span class="column">Nama</span>
+            <span class="column">Kata laluan</span>
+            <span class="column">No. telefon</span>
+            <span class="column">Aras</span>
+            <span class="column email">E-mail</span>
+            <span class="column email">Imej</span>
+            <span class="column">Tindakan</span>
+        </div>
+        <div class="rows">
+            <hr>
+            <?php
+                displayRows("document.querySelector('.rows')", "SELECT * FROM pengguna ORDER BY name")
+            ?>
+        </div>
+    </div>
 </body>
 </html>

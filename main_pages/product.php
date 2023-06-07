@@ -84,22 +84,8 @@
         Yang berkaitan: <br>
         <div class="related-list">
             <?php
-                $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY name");
-
-                if ($query->num_rows > 0) {
-                    while ($row = $query->fetch_assoc()) {
-                        $id = $row['id'];
-                        $name = $row['name'];
-                        $image = $row['image'];
-                        $price = $row['price'];
-                        $company = $row['company_name'];
-
-                        echo "  <script>
-                                        displayItems(document.querySelector('.related-list'), '$name', '$image', $price, '$company', document.querySelector('#temp2'), '$id');
-                                    </script>";
-                    }
-                }
-                ?>
+                displayItems("document.querySelector('.related-list')", "document.querySelector('#temp2')", "SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY name");
+            ?>
         </div>
     </div>
     <script>

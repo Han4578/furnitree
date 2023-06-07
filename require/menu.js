@@ -28,8 +28,8 @@ let redirect = {
         window.location = '../sign in/signin.php';
     },
 
-    profile() {
-        window.location = '../main_pages/profile.php';
+    profile(id) {
+        window.location = '../main_pages/profile.php?id=' + id;
     },
 
     furniture() {
@@ -50,7 +50,6 @@ darken.addEventListener('click', closeMenu)
 home.addEventListener('click', redirect.home)
 filter.addEventListener('click', redirect.filter)
 login.addEventListener('click', redirect.login)
-profile.addEventListener('click', redirect.profile)
 signup.addEventListener('click', redirect.signup)
 logo.addEventListener('click', redirect.home)
 furniture.addEventListener('click', redirect.furniture)

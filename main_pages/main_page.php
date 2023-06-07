@@ -39,21 +39,7 @@
             </div>
             <div class="recommended-list">
                 <?php
-                $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY name");
-
-                if ($query->num_rows > 0) {
-                    while ($row = $query->fetch_assoc()) {
-                        $id = $row['id'];
-                        $name = $row['name'];
-                        $image = $row['image'];
-                        $price = $row['price'];
-                        $company = $row['company_name'];
-
-                        echo "  <script>
-                                        displayItems(document.querySelector('.recommended-list'), '$name', '$image', $price, '$company', document.querySelector('template'), $id);
-                                    </script>";
-                    }
-                }
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY name");
                 ?>
             </div>
         </div>
