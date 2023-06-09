@@ -20,10 +20,11 @@
         $notLogged = "<div class='user-button' data-login>Log masuk</div>
                       <div class='user-button' data-signup>Daftar</div>";
                       
-        $isLogged = "<div class='user-button' onclick='redirect.profile(".$_SESSION['id'].")'>Profil</div>
-                     <div class='user-button' data-logout>Log keluar</div>";
-
-        if (key_exists('isLoggedIn', $_SESSION) and $_SESSION['isLoggedIn'] == true) {
+                      
+            if (key_exists('isLoggedIn', $_SESSION) and $_SESSION['isLoggedIn'] == true) {
+                
+                $isLogged = "<div class='user-button' onclick='redirect.profile(".$_SESSION['id'].")'>Profil</div>
+                         <div class='user-button' data-logout>Log keluar</div>";
             if ($_SESSION['level'] > 1) {
                 $isLogged = $isLogged."<div class='user-button' data-furniture> Mengurus perabot</div>";
 

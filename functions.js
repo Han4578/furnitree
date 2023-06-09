@@ -55,7 +55,38 @@ function displayAlt(container, image, template, id, highlight){
     container.appendChild(div)
 }
 
-function displayRows(container, name, password, nomhp, level, email, pfp, no, id) {
+function displayUsers(container, name, password, nomhp, level, email, pfp, no, id) {
+    let row = document.createElement('div')
+    let actions = document.createElement('a')
+    let columns = [no, name, password, nomhp, level, email, pfp]
+
+    actions.href =  "../edit/profile.php?id="+id
+    actions.innerHTML = "Kemas kini"
+    actions.classList.add('column')
+    row.classList.add('row')
+
+    for (const data of columns) {
+        let column = document.createElement('span')
+
+        if (data == email) column.classList.add('email')
+        if (data == pfp) {
+            let img = document.createElement('img')
+            
+            column.classList.add('image')
+            img.src = "../images/" + data
+            column.appendChild(img)
+            
+        } else column.innerText = data
+
+        column.classList.add('column')
+        row.appendChild(column)
+    }
+
+    row.appendChild(actions)
+
+    container.appendChild(row)
+}
+function displayUsers(container, name, password, nomhp, level, email, pfp, no, id) {
     let row = document.createElement('div')
     let actions = document.createElement('a')
     let columns = [no, name, password, nomhp, level, email, pfp]

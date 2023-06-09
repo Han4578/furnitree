@@ -24,7 +24,7 @@
         }
      }
 
-     function displayRows($container, $stmt) {
+     function displayUsers($container, $stmt) {
         global $conn;
         $query = $conn->query($stmt);
         $no = 1;
@@ -40,7 +40,31 @@
                 $image = $row['picture'];
 
                 echo "  <script>
-                            displayRows($container, '$name', '$password', $nomhp, $aras, '$email', '$image', $no, $id);
+                            displayUsers($container, '$name', '$password', $nomhp, $aras, '$email', '$image', $no, $id);
+                        </script>";
+
+                $no++;
+            }
+        }
+     }
+
+     function displayFurniture($container, $stmt) {
+        global $conn;
+        $query = $conn->query($stmt);
+        $no = 1;
+        
+        if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                $id = $row['id'];
+                $name = $row['name'];
+                $password = $row['password'];
+                $nomhp = $row['nomhp'];
+                $aras = $row['aras'];
+                $email = $row['email'];
+                $image = $row['picture'];
+
+                echo "  <script>
+                            displayFurniture($container, '$name', '$password', $nomhp, $aras, '$email', '$image', $no, $id);
                         </script>";
 
                 $no++;

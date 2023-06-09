@@ -26,7 +26,7 @@
         <div class="rows">
             <hr>
             <?php
-                displayRows("document.querySelector('.rows')", "SELECT * FROM pengguna ORDER BY name")
+                displayUsers("document.querySelector('.rows')", "SELECT * FROM pengguna ORDER BY name")
             ?>
         </div>
     </div>
