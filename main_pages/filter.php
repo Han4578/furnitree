@@ -23,7 +23,7 @@
         ?>
         <div class="main">
             <form class="search-container" action="filter.php" method="get">
-                <input type="text" name="search" id="search-bar" placeholder="Search..." value="<?php echo $_SESSION['query']; ?>">
+                <input type="search" name="search" id="search-bar" placeholder="Search..." value="<?php echo $_SESSION['query']; ?>">
                 <button type="submit" class="search">S</button>
             </form>
             <div class="results">

@@ -12,7 +12,7 @@
         if ($query->num_rows > 0) {
             while ($row = $query->fetch_assoc()) {
                 $id = $row['id'];
-                $name = $row['name'];
+                $name = $row['furniture_name'];
                 $image = $row['image'];
                 $price = $row['price'];
                 $company = $row['company_name'];
@@ -20,6 +20,29 @@
                 echo "  <script>
                                 displayItems($container, '$name', '$image', $price, '$company', $template, $id);
                             </script>";
+            }
+        }
+     }
+
+     function displayFurniture($container, $stmt) {
+        global $conn;
+        $query = $conn->query($stmt);
+        $no = 1;
+        
+        if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                $id = $row['id'];
+                $name = $row['furniture_name'];
+                $color = $row['name'];
+                $company = $row['pengguna_name'];
+                $price = $row['price'];
+                $image = $row['image'];
+
+                echo "  <script>
+                            displayFurniture($container, '$name', '$color', '$company', $price, '$image', $no, $id);
+                        </script>";
+
+                $no++;
             }
         }
      }
@@ -32,7 +55,7 @@
         if ($query->num_rows > 0) {
             while ($row = $query->fetch_assoc()) {
                 $id = $row['id'];
-                $name = $row['name'];
+                $name = $row['pengguna_name'];
                 $password = $row['password'];
                 $nomhp = $row['nomhp'];
                 $aras = $row['aras'];
@@ -48,26 +71,18 @@
         }
      }
 
-     function displayFurniture($container, $stmt) {
+    function displayOptions($stmt, $container, $selected = '') {
         global $conn;
+
         $query = $conn->query($stmt);
-        $no = 1;
-        
+
         if ($query->num_rows > 0) {
             while ($row = $query->fetch_assoc()) {
-                $id = $row['id'];
                 $name = $row['name'];
-                $password = $row['password'];
-                $nomhp = $row['nomhp'];
-                $aras = $row['aras'];
-                $email = $row['email'];
-                $image = $row['picture'];
-
-                echo "  <script>
-                            displayFurniture($container, '$name', '$password', $nomhp, $aras, '$email', '$image', $no, $id);
+                $value = $row['id'];
+                echo "<script>
+                            displayOptions('$name',$container, '$value', $selected);
                         </script>";
-
-                $no++;
             }
         }
      }

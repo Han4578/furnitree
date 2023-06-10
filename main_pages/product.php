@@ -38,7 +38,7 @@
         <div class="product-info">
             <div class="space-between">
                 <div>
-                    <div class="name"><?php echo $row1['name'] ?></div>
+                    <div class="name"><?php echo $row1['furniture_name'] ?></div>
                     <div class="company">Dari <?php echo $row1['company_name'] ?></div>
                 </div>
                 <div class="price"><?php echo $row1['price'] ?></div>
@@ -51,8 +51,8 @@
             </div>
             <div class="color-list">
                 <?php 
-                    $name = $row1['name'];
-                    $query2 = $conn->query("SELECT * FROM furniture WHERE name = '$name'");
+                    $name = $row1['furniture_name'];
+                    $query2 = $conn->query("SELECT * FROM furniture WHERE furniture_name = '$name'");
 
                     if ($query2->num_rows > 0) {
                         while ($row2 = $query2->fetch_assoc()) {
@@ -84,7 +84,7 @@
         Yang berkaitan: <br>
         <div class="related-list">
             <?php
-                displayItems("document.querySelector('.related-list')", "document.querySelector('#temp2')", "SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY name");
+                displayItems("document.querySelector('.related-list')", "document.querySelector('#temp2')", "SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY furniture_name");
             ?>
         </div>
     </div>

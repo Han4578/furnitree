@@ -26,7 +26,7 @@
     ?>
     <div class="main">
         <form class="search-container" action="filter.php">
-            <input type="text" name="search" id="search-bar" placeholder="Search..." value="<?php echo $_SESSION['query']; ?>">
+            <input type="search" name="search" id="search-bar" placeholder="Search..." value="<?php echo $_SESSION['query']; ?>">
             <button type="submit" class="search">S</button>
         </form>
         <div class="banner">
@@ -39,7 +39,7 @@
             </div>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY name");
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY furniture_name");
                 ?>
             </div>
         </div>

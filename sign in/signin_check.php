@@ -7,6 +7,13 @@ $password = $_POST['password'];
 $user = $conn->real_escape_string($email);
 $pass = $conn->real_escape_string($password);
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "<script> 
+                    window.location = './signin.php'
+                    alert('Format e-mel tidak betul, sila cuba sekali')
+                </script>";
+}
+
 $query = $conn->query("SELECT * FROM pengguna WHERE email = '$user' AND password = '$password';");
 $row = $query->fetch_assoc();
 
@@ -17,7 +24,7 @@ if ($query->num_rows == 0) {
                 </script>";
 } else {
     $_SESSION['id'] = $row['id'];
-    $_SESSION['name'] = $row['name'];
+    $_SESSION['name'] = $row['pengguna_name'];
     $_SESSION['password'] = $password;
     $_SESSION['email'] = $user;
     $_SESSION['pnumber'] = $row['nomhp'];

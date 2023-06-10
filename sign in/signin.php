@@ -15,29 +15,34 @@
     require "../require/register_menu.php";
     ?>
 
-    <form action="./signin_check.php" method="post" enctype="multipart/form-data" class="vertical">
-
-        <div class="container">
-            <div class="vertical space-between">
-                <label for="email">E-mel:</label>
-                <label for="password">Kata Laluan:</label>
-
-            </div>
-            <div class="vertical space-between">
-                <input type="email" name="email" id="email" required>
-                <div>
-                    <input type="password" name="password" id="password" required>
-                    <!-- <input type="checkbox" name="Togglepw" id="Togglepw"> -->
+    <div class="main">
+        
+        <form action="./signin_check.php" method="post" enctype="multipart/form-data" class="vertical">
+            <div class="center">Log masuk</div>
+            <div class="container">
+                <div class="vertical space-between">
+                    <label for="email">E-mel:</label>
+                    <label for="password">Kata Laluan:</label>
+                </div>
+                <div class="vertical space-between">
+                    <input type="email" name="email" id="email" required>
+                    <div>
+                        <input type="password" name="password" id="password" required>
+                        <input type="checkbox" name="Togglepw" id="Togglepw">
+                    </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <br>
-        <div class="space-between">
-            <button type="submit">Hantar</button>
-            <button type="reset">Reset</button>
-        </div>
-    </form>
+            <div></div>
+            <div class="space-between">
+                <button type="reset">Set semula</button>
+                <button type="submit">Hantar</button>
+            </div>
+            <div class="space-between">
+                <a href="../company register/company_register.php">Daftar sebagai syarikat</a>
+                <a href="../user register/user_register.php">Dafter sebagai pengguna</a>
+            </div>
+        </form>
+    </div>
 
 
 

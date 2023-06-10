@@ -202,12 +202,14 @@ hr {
 .space-between {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .space-around {
     display: flex;
     justify-content: space-around;
 }
+
 
 .pointer {
     cursor: pointer;
@@ -510,7 +512,8 @@ hr {
 }
 
 .image > img {
-    object-fit: cover;
+    object-fit: contain;
+    max-width: 60%;
 }
 
 

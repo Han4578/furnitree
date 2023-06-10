@@ -1,5 +1,20 @@
 <?php
-    require "../require/register_menu.php"
+    require "../require/register_menu.php";
+
+    $id = $_GET['id'] ?? 1;
+
+    if ($id !== $_SESSION['id'] and $_SESSION['level'] != '3') {
+        echo "
+        <script>
+            alert('Anda tidak dibenarkan mengakses maklumat ini')
+            history.back()
+        </script>";
+        die;
+    }
+
+    $query = $conn->query("SELECT * FROM pengguna WHERE id = $id");
+    $row = $query->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -20,16 +35,23 @@
                     <div>Kata laluan:  </div>
                     <div>E-mel:  </div> 
                     <div>Number telefon: </div>
+                    <?php
+                        if ($_SESSION['level'] == 3) echo "<div>Aras: </div>";
+                    ?>
                 </div>
                 <div class="vertical space-around">
-                    <div><?php echo $_SESSION['name'] ?></div>
-                    <div><?php echo $_SESSION['password'] ?></div>
-                    <div><?php echo $_SESSION['email'] ?></div>
-                    <div>0<?php echo $_SESSION['pnumber'] ?></div>
+                    <div><?php echo $row['pengguna_name'] ?></div>
+                    <div><?php echo $row['password'] ?></div>
+                    <div><?php echo $row['email'] ?></div>
+                    <div>0<?php echo $row['nomhp'] ?></div>
+                    <?php
+                        $aras = $row['aras'];
+                        if ($_SESSION['level'] == 3) echo "<div>$aras</div>";
+                    ?>
                 </div>
             </div>
             <div class="pfp">
-                <img src="../images/<?php echo $_SESSION['pfp']; ?>" alt="gambar profil">
+                <img src="../images/<?php echo $row['picture']; ?>" alt="gambar profil">
             </div>
             <div class="edit">
                 <img src="../images/edit-pencil.svg" alt="">
@@ -40,7 +62,7 @@
         let edit = document.querySelector('.edit')
 
         edit.addEventListener('click', () => {
-            window.location = '../edit/profile.php?id=' + <?php echo $_SESSION['id']; ?>
+            window.location = '../edit/profile.php?id=' + <?php echo $id; ?>
         })
     </script>
 </body>

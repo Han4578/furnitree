@@ -3,7 +3,7 @@
 
     $id = $_GET['id'];
 
-    $query = $conn->query("SELECT * FROM pengguna WHERE id = $id");
+    $query = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id WHERE id = $id");
     $row = $query->fetch_assoc();
 
 ?>
@@ -19,37 +19,38 @@
 </head>
 <body>
     <div class="main">
-        <form class="background" action="./p_update.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
+        <form class="background" action="./f_update.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
             <div class="equal">
                 <div class="info">
                     <div class="vertical space-around">
-                        <label for="name">Nama:  </label>
-                        <label for="password">Kata laluan:  </label>
-                        <label for="email">E-mel:  </label>
-                        <label for="pnumber">Numbor telefon: </label>
-                        <?php
-                            if ($_SESSION['level'] == 3) echo "<label for='level'>Aras: </label>";
-                        ?>
+                        <div>Nama:  </div>
+                        <div>Warna:  </div>
+                        <div>Syarikat:  </div>
+                        <div>Harga: </div>
                     </div>
                     <div class="vertical space-around grow">
-                        <input class="custom input" id="name" name="name" value="<?php echo $row['pengguna_name'] ?>" required>
-                        <input class="custom input" id="password" name="password" type="password" value="<?php echo $row['password'] ?>" required>
-                        <input class="custom input" id="email" name="email" type="email" value="<?php echo $row['email'] ?>"required>
-                        <input class="custom input" id="pnumber" name="pnumber" value="0<?php echo $row['nomhp'] ?>" required>
-                        
-                        <?php
-                            if ($_SESSION['level'] == 3) {
-                                echo '<select class="custom" id="aras" name="aras">';
-                                for ($i=1; $i <= 3; $i++) {
-                                    $selected = $row['aras'];
-                                    echo "<script>
-                                              displayOptions($i, document.querySelector('#aras'), $i, $selected)
-                                          </script>";
-                                }
-                                echo '</select>';
-                            }
-                        ?>
-                        
+                        <input class="custom input" name="name" value="<?php echo $row['furniture_name'] ?>" required>
+                        <select class="custom" name="color" id="color">
+                            <?php
+                                displayOptions("SELECT * FROM color", "document.getElementById('color')", $row['color'])    
+                            ?>
+                        </select>
+                        <select class="custom" name="company" id="company">
+                            <?php
+                                $query = $conn->query("SELECT * FROM company");
+
+                                if ($query->num_rows > 0) {
+                                    while ($row2 = $query->fetch_assoc()) {
+                                        $name = $row2['company_name'];
+                                        $value = $row2['id'];
+                                        echo "<script>
+                                                    displayOptions('$name', document.getElementById('company'), '$value');
+                                                </script>";
+                                    }
+                                }                            
+                            ?>
+                        </select>
+                        <input class="custom input" name="price" value="<?php echo $row['price'] ?>"required>
                     </div>
                 </div>
                 <input type="file" id="image" name="image" accept="image/*">
@@ -57,7 +58,7 @@
                     <label for="image" class="camera">
                         <img src="../images/camera.png" alt="">
                     </label>
-                    <img data-pfp src="../images/<?php echo $row['picture']; ?>" alt="gambar profil">
+                    <img data-pfp src="../images/<?php echo $row['image']; ?>" alt="gambar profil">
                 </div>
             </div>
             <div class="options grow">

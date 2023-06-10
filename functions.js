@@ -13,10 +13,11 @@ function togglePassword(checkbox, password) {
     password.type = (checkbox.checked) ? 'text' : 'password';
 }
 
-function displayOptions(name, container, value) {
+function displayOptions(name, container, value, selected) {
     let option = document.createElement('option')
     option.innerText = name
     option.value = value
+    if (value == selected) option.selected = true
     container.appendChild(option)
 }
 
@@ -59,17 +60,20 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
     let row = document.createElement('div')
     let actions = document.createElement('a')
     let columns = [no, name, password, nomhp, level, email, pfp]
+    let i = 1
 
     actions.href =  "../edit/profile.php?id="+id
     actions.innerHTML = "Kemas kini"
     actions.classList.add('column')
     row.classList.add('row')
 
+
     for (const data of columns) {
+        console.log(data);
         let column = document.createElement('span')
 
-        if (data == email) column.classList.add('email')
-        if (data == pfp) {
+        if (i == 6) column.classList.add('email')
+        if (i == 7) {
             let img = document.createElement('img')
             
             column.classList.add('image')
@@ -80,18 +84,20 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
 
         column.classList.add('column')
         row.appendChild(column)
+        i++
     }
 
     row.appendChild(actions)
 
     container.appendChild(row)
 }
-function displayUsers(container, name, password, nomhp, level, email, pfp, no, id) {
+function displayFurniture(container, name, color, company, price, pfp, no, id) {
     let row = document.createElement('div')
     let actions = document.createElement('a')
-    let columns = [no, name, password, nomhp, level, email, pfp]
+    let columns = [no, name, color, company, price, pfp]
+    let i = 1
 
-    actions.href =  "../edit/profile.php?id="+id
+    actions.href =  "../edit/furniture.php?id="+id
     actions.innerHTML = "Kemas kini"
     actions.classList.add('column')
     row.classList.add('row')
@@ -99,8 +105,9 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
     for (const data of columns) {
         let column = document.createElement('span')
 
-        if (data == email) column.classList.add('email')
-        if (data == pfp) {
+        if (i == 2) column.classList.add('email')
+        if (i == 5) column.classList.add('price')
+        if (i == 6) {
             let img = document.createElement('img')
             
             column.classList.add('image')
@@ -111,10 +118,13 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
 
         column.classList.add('column')
         row.appendChild(column)
+        i++
     }
 
     row.appendChild(actions)
 
     container.appendChild(row)
+    let priceSpan = row.querySelector('.price')
+    priceSpan.innerText = parseFloat(priceSpan.innerText).toFixed(2)
 }
 

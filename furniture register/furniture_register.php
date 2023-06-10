@@ -1,7 +1,3 @@
-<?php
-require "../require/connect.php";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,33 +31,13 @@ require "../require/connect.php";
                 <select name="color" id="color">
                     <option value="0">Pilih warna...</option>
                     <?php
-                    $query = $conn->query("SELECT * FROM color");
-
-                    if ($query->num_rows > 0) {
-                        while ($row = $query->fetch_assoc()) {
-                            $name = $row['name'];
-                            $value = $row['id'];
-                            echo "<script>
-                                        displayOptions('$name', document.getElementById('color'), '$value');
-                                    </script>";
-                        }
-                    }
+                        displayOptions("SELECT * FROM color", "document.getElementById('color')")
                     ?>
                 </select>
                 <select name="category" id="category">
                     <option value="0">Pilih kategori...</option>
                     <?php
-                    $query = $conn->query("SELECT * FROM category");
-
-                    if ($query->num_rows > 0) {
-                        while ($row = $query->fetch_assoc()) {
-                            $name = $row['name'];
-                            $value = $row['id'];
-                            echo "<script>
-                                        displayOptions('$name', document.getElementById('category'), '$value');
-                                    </script>";
-                        }
-                    }
+                        displayOptions("SELECT * FROM category", "document.getElementById('category')")
                     ?>
                 </select>
                 <select name="company" id="company">
@@ -71,7 +47,7 @@ require "../require/connect.php";
 
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
-                            $name = $row['name'];
+                            $name = $row['company_name'];
                             $value = $row['id'];
                             echo "<script>
                                         displayOptions('$name', document.getElementById('company'), '$value');
