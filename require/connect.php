@@ -7,6 +7,7 @@
 
      function displayItems($container, $template, $stmt) {
         global $conn;
+        // echo $stmt;
         $query = $conn->query($stmt);
 
         if ($query->num_rows > 0) {
@@ -15,7 +16,7 @@
                 $name = $row['furniture_name'];
                 $image = $row['image'];
                 $price = $row['price'];
-                $company = $row['company_name'];
+                $company = $row['pengguna_name'];
 
                 echo "  <script>
                                 displayItems($container, '$name', '$image', $price, '$company', $template, $id);
@@ -83,6 +84,27 @@
                 echo "<script>
                             displayOptions('$name',$container, '$value', $selected);
                         </script>";
+            }
+        }
+     }
+
+     function displaySelections($container, $stmt, $n, $id, $idname, $checked) {
+        global $conn;
+
+        $query = $conn->query($stmt);
+        $i = 1;
+        $checked = str_replace(' ', '', $checked);
+        
+        if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                
+                $name = $row[$n];
+                $value = $row[$id];
+
+                echo "<script>
+                            displaySelections('$name',$container, '$value', $i, '$idname', '$checked');
+                        </script>";
+                $i++;
             }
         }
      }

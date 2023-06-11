@@ -28,7 +28,7 @@
                     <input type="email" name="email" id="email" required>
                     <div>
                         <input type="password" name="password" id="password" required>
-                        <input type="checkbox" name="Togglepw" id="Togglepw">
+                        <input type="checkbox" name="Togglepw" id="toggle">
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
 
 </body>
 <script>
-    let togglepw = document.querySelector('#Togglepw')
+    let togglepw = document.querySelector('#toggle')
     let password = document.querySelector('#password')
 
     togglepw.addEventListener('click', () => togglePassword(togglepw, password))

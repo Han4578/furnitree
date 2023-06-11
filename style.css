@@ -122,12 +122,20 @@ hr {
     width: 100%;
 }
 
+.search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    width: 100%;
+}
+
 .search {
     margin: 0;
     aspect-ratio: 1;
     height: 5vh;
     border-radius: 0 15px 15px 0;
     background-color: #efc89d;
+    transition: all 0.3s;
 }
 
 .search:hover {
@@ -138,6 +146,53 @@ hr {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.filter {
+    height: 4.6vh;
+    display: inline;
+    position: absolute;
+    right: 19.5%;
+    margin: 0.2vh 0;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.filter:hover {
+    background-color: var(--hover);
+}
+
+.filter-menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#filter-menu {
+    width: 83%;
+    margin: 0 auto;
+    background-color: #ffd4a7;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.search-column {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.selections {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    align-items: start;
+    padding: 5%;
+    height: 28vh;
+    flex-wrap: wrap;
 }
 
 .section {
@@ -180,6 +235,7 @@ hr {
     flex-wrap: wrap;
     gap: 0.5vw;
     margin-top: 5%;
+    width: 100%;
 }
 
 .result-item {
@@ -213,6 +269,10 @@ hr {
 
 .pointer {
     cursor: pointer;
+}
+
+.max-width {
+    width: 100%;
 }
 
 /* --------------------------------------------------------------------------------------------------- */
@@ -331,6 +391,7 @@ hr {
     padding: 1%;
     background-color: rgb(240, 240, 240);
     width: 6vw;
+    aspect-ratio: 2 / 1;
     transition: 0.3s background-color;
 }
 
@@ -564,6 +625,14 @@ hr {
 
 #image {
     display: none;
+}
+
+
+#toggle {
+    margin-left: -15px;
+    position: absolute;
+    width: auto;
+    margin-top: 3px;
 }
 
 [data-price],

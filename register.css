@@ -39,15 +39,6 @@ button[type='submit'], button[type='reset'] {
 
 .radio {
     width: 13px;
-    
-}
-
-
-#Togglepw {
-    margin-left: -15px;
-    position: absolute;
-    width: auto;
-    margin-top: 3px;
 }
 
 #password {

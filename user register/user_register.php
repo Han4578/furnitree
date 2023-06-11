@@ -30,7 +30,7 @@
                     <input type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required>
                     <div>
                         <input type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
-                        <input type="checkbox" name="togglePw" id="Togglepw">
+                        <input type="checkbox" name="togglePw" id="toggle">
                     </div>
                     <input type="tel" name="pnumber" id="pnumber" pattern="[0-9]{10}" minlength="9" placeholder='Tanpa  " - "' title="0123456789" required>
                     <input type="email" id="email" name="email" title="user@example.com" required />
@@ -48,7 +48,7 @@
 </div>
 </body>
 <script>
-    let togglepw = document.querySelector('#Togglepw')
+    let togglepw = document.querySelector('#toggle')
     let password = document.querySelector('#password')
     let pnumber = document.querySelector('#pnumber')
 

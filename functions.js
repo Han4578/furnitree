@@ -128,3 +128,26 @@ function displayFurniture(container, name, color, company, price, pfp, no, id) {
     priceSpan.innerText = parseFloat(priceSpan.innerText).toFixed(2)
 }
 
+function displaySelections(name, container, value, i, id, selected) {
+    let div = document.createElement('div')
+    let label = document.createElement('label')
+    let input = document.createElement('input')
+    let selectedArray = selected.split(',')
+
+    input.type = 'checkbox'
+    input.value = value
+    input.name = id + '[]'
+    input.classList.add('custom')
+    input.id = 'filter-'+ id + i
+    label.for = 'filter-'+ id + i
+    label.innerHTML += " " + name
+
+    
+    div.appendChild(input)
+    div.appendChild(label)
+
+    container.appendChild(div)
+    
+    if (selectedArray.includes(value)) input.checked = !input.checked
+}
+

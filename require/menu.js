@@ -5,15 +5,15 @@ let userMenu = document.querySelector('#user-menu')
 let menuList = document.querySelector('#menu-list')
 let darken = document.querySelector('.darken')
 let home = document.querySelector('[data-home]')
-let filter = document.querySelector('[data-filter]')
+let filterButton = document.querySelector('[data-filter]')
 let logo = document.querySelector('[data-logo]')
 let furniture = document.querySelector('[data-furniture]') ?? document.createElement('div')
 let dataUser = document.querySelector('[data-user]') ?? document.createElement('div')
-let items
 let login = document.querySelector('[data-login]') ?? document.createElement('div')
 let logout = document.querySelector('[data-logout]') ?? document.createElement('div')
 let signup = document.querySelector('[data-signup]') ?? document.createElement('div')
 let profile = document.querySelector('[data-profile]') ?? document.createElement('div')
+let filterIcon = document.querySelector('.filter') ?? document.createElement('div')
 
 let redirect = {
     home() {
@@ -48,7 +48,7 @@ let redirect = {
 menu.addEventListener('click', openMenu)
 darken.addEventListener('click', closeMenu)
 home.addEventListener('click', redirect.home)
-filter.addEventListener('click', redirect.filter)
+filterButton.addEventListener('click', redirect.filter)
 login.addEventListener('click', redirect.login)
 signup.addEventListener('click', redirect.signup)
 logo.addEventListener('click', redirect.home)
