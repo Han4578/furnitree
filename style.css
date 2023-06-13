@@ -127,6 +127,7 @@ hr {
     flex-direction: column;
     gap: 1vh;
     width: 100%;
+    margin-top: -1vh;
 }
 
 .search {
@@ -146,6 +147,10 @@ hr {
     width: 100%;
     display: flex;
     justify-content: center;
+    background-color: white;
+    height: 7vh;
+    padding: 1vh 0;
+    transition: all 1s;
 }
 
 .filter {
@@ -169,13 +174,31 @@ hr {
 }
 
 #filter-menu {
-    width: 83%;
-    margin: 0 auto;
+    width: 66.4vw;
+    left: 16.8vw;
     background-color: #ffd4a7;
     padding: 1%;
     display: flex;
     flex-direction: column;
     align-items: end;
+    transition: all 1s;
+    z-index: -1;
+    position: absolute;
+    transform: translateY(-38vh);
+    transition: transform 1s;
+
+}
+
+#filter-menu.down {
+    transform: translateY(8vh);
+}
+
+#filter-menu.index {
+    z-index: 1;
+}
+
+.search-container.down {
+    margin-bottom: 40vh;
 }
 
 .search-column {
@@ -236,6 +259,7 @@ hr {
     gap: 0.5vw;
     margin-top: 5%;
     width: 100%;
+    min-height: 100vh;
 }
 
 .result-item {

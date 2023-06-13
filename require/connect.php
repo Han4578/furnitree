@@ -7,7 +7,6 @@
 
      function displayItems($container, $template, $stmt) {
         global $conn;
-        // echo $stmt;
         $query = $conn->query($stmt);
 
         if ($query->num_rows > 0) {
@@ -22,7 +21,7 @@
                                 displayItems($container, '$name', '$image', $price, '$company', $template, $id);
                             </script>";
             }
-        }
+        } else echo "<div style='margin: 0 auto;'>Tiada perabot yang bersetuju dengan kriteria yang diberikan</div>";
      }
 
      function displayFurniture($container, $stmt) {

@@ -137,9 +137,9 @@ function displaySelections(name, container, value, i, id, selected) {
     input.type = 'checkbox'
     input.value = value
     input.name = id + '[]'
-    input.classList.add('custom')
+    input.classList.add('custom');
     input.id = 'filter-'+ id + i
-    label.for = 'filter-'+ id + i
+    label.htmlFor = 'filter-'+ id + i
     label.innerHTML += " " + name
 
     
