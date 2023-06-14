@@ -40,7 +40,7 @@
                     ?>
                 </div>
                 <div class="vertical space-around">
-                    <div><?php echo $row['pengguna_name'] ?></div>
+                    <div><?php echo $row['name'] ?></div>
                     <div><?php echo $row['password'] ?></div>
                     <div><?php echo $row['email'] ?></div>
                     <div>0<?php echo $row['nomhp'] ?></div>

@@ -29,7 +29,7 @@
                         <div>Harga: </div>
                     </div>
                     <div class="vertical space-around grow">
-                        <input class="custom input" name="name" value="<?php echo $row['furniture_name'] ?>" required>
+                        <input class="custom input" name="name" value="<?php echo $row['name'] ?>" required>
                         <select class="custom" name="color" id="color">
                             <?php
                                 displayOptions("SELECT * FROM color", "document.getElementById('color')", $row['color'])    
@@ -41,7 +41,7 @@
 
                                 if ($query->num_rows > 0) {
                                     while ($row2 = $query->fetch_assoc()) {
-                                        $name = $row2['company_name'];
+                                        $name = $row2['company'];
                                         $value = $row2['id'];
                                         echo "<script>
                                                     displayOptions('$name', document.getElementById('company'), '$value');

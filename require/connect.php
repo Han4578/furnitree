@@ -12,10 +12,10 @@
         if ($query->num_rows > 0) {
             while ($row = $query->fetch_assoc()) {
                 $id = $row['id'];
-                $name = $row['furniture_name'];
+                $name = $row['name'];
                 $image = $row['image'];
                 $price = $row['price'];
-                $company = $row['pengguna_name'];
+                $company = $row['company'];
 
                 echo "  <script>
                                 displayItems($container, '$name', '$image', $price, '$company', $template, $id);
@@ -32,9 +32,9 @@
         if ($query->num_rows > 0) {
             while ($row = $query->fetch_assoc()) {
                 $id = $row['id'];
-                $name = $row['furniture_name'];
-                $color = $row['name'];
-                $company = $row['pengguna_name'];
+                $name = $row['name'];
+                $color = $row['color'];
+                $company = $row['company'];
                 $price = $row['price'];
                 $image = $row['image'];
 
@@ -55,7 +55,7 @@
         if ($query->num_rows > 0) {
             while ($row = $query->fetch_assoc()) {
                 $id = $row['id'];
-                $name = $row['pengguna_name'];
+                $name = $row['name'];
                 $password = $row['password'];
                 $nomhp = $row['nomhp'];
                 $aras = $row['aras'];

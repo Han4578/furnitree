@@ -26,7 +26,8 @@
             <hr>
             <?php
             $id = $_SESSION['id'];
-                $query = ($_SESSION['level'] == 3)? "SELECT * FROM furniture LEFT JOIN pengguna ON furniture.company_id = pengguna.id LEFT JOIN color ON furniture.color = color.id ORDER BY furniture_name" :"SELECT * FROM furniture LEFT JOIN pengguna ON furniture.company_id = pengguna.id LEFT JOIN color ON furniture.color = color.id WHERE pengguna.id = $id ORDER BY furniture_name";
+                $query = ($_SESSION['level'] == 3)? "SELECT furniture.id AS id, furniture_info.name AS name, color.name AS color, pengguna.name as company, price, image FROM furniture LEFT JOIN furniture_info on furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN color ON furniture.color = color.id ORDER BY furniture_info.name" 
+                                                    :"SELECT furniture.id AS id, furniture_info.name AS name, color.name AS color, pengguna.name as company, price, image FROM furniture LEFT JOIN furniture_info on furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN color ON furniture.color = color.id WHERE pengguna.id = $id ORDER BY furniture_info.name";
                 displayFurniture("document.querySelector('.rows')", $query);
             ?>
         </div>

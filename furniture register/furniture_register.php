@@ -47,7 +47,7 @@
 
                     if ($query->num_rows > 0) {
                         while ($row = $query->fetch_assoc()) {
-                            $name = $row['company_name'];
+                            $name = $row['company'];
                             $value = $row['id'];
                             echo "<script>
                                         displayOptions('$name', document.getElementById('company'), '$value');

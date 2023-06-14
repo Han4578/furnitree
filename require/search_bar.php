@@ -11,8 +11,8 @@
 <form action="../require/filter.php" class="search-section" method="post">
     <div class="search-container">
         <input type="text" name="search" id="search-bar" placeholder="Search..." value="<?php echo $_SESSION['query']; ?>">
-        <img src="../images/filter.png" class="filter pointer">
         <button type="submit" class="search">S</button>
+        <img src="../images/filter.png" class="filter pointer">
     </div>
     <div id="filter-menu">
         <div class="filter-menu">
@@ -22,7 +22,7 @@
                 <div class="selections S1">
                     <?php
                         $color = $_SESSION['color'];
-                        displaySelections('document.querySelector(".S1")', "SELECT color.name AS name, color.id AS id FROM furniture INNER JOIN color ON furniture.color = color.id", 'name', 'id', 'color', $color);
+                        displaySelections('document.querySelector(".S1")', "SELECT color.name AS name, color.id AS id FROM furniture INNER JOIN color ON furniture.color = color.id GROUP BY color.name", 'name', 'id', 'color', $color);
                     ?>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <div class="selections S2">
                     <?php
                         $brand = $_SESSION['brand'];
-                        displaySelections('document.querySelector(".S2")', "SELECT * FROM pengguna WHERE aras = '2'", 'pengguna_name', 'id', 'brand', $brand);
+                        displaySelections('document.querySelector(".S2")', "SELECT * FROM pengguna WHERE aras = '2'", 'name', 'id', 'brand', $brand);
                     ?>
                 </div>
             </div>
@@ -52,9 +52,9 @@
                 <br>
                 <div class="selections">
                     <label for="filter-price">Dari RM</label>
-                    <input class="custom input" type="number" name="from" id="filter-price" value="<?php echo $_SESSION['from'] ?>">
+                    <input class="custom input" type="number" name="from" id="filter-price" onblur="roundNumber(this, value)" min="0" value="<?php echo $_SESSION['from']  ?>">
                     <label for="filter-price">Hingga RM</label>
-                    <input class="custom input  " type="number" name="to" id="filter-price" value="<?php echo $_SESSION['to'] ?>">
+                    <input class="custom input  " type="number" name="to" id="filter-price" onblur="roundNumber(this, value)" min="0" value="<?php echo $_SESSION['to'] ?>">
                 </div>
             </div>
         </div>
@@ -72,17 +72,19 @@
     let php = document.querySelector('.php')
     let searchContainer = document.querySelector('.search-container')
     let filterMenu = document.querySelector('#filter-menu')
+    let timeOutId = '' 
 
     filter.onclick = () => {
         if(filterMenu.classList.contains('down')) {
             filterMenu.classList.remove('down')
             searchContainer.classList.remove('down')
             filterMenu.classList.remove('index')
+            clearTimeout(timeOutId)
         } else {
             filterMenu.classList.add('down')
             searchContainer.classList.add('down')
 
-            setTimeout(() => {
+            timeOutId = setTimeout(() => {
                 filterMenu.classList.add('index')
             }, 1000);
         }

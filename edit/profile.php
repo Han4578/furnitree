@@ -32,7 +32,7 @@
                         ?>
                     </div>
                     <div class="vertical space-around grow">
-                        <input class="custom input" id="name" name="name" value="<?php echo $row['pengguna_name'] ?>" required>
+                        <input class="custom input" id="name" name="name" value="<?php echo $row['name'] ?>" required>
                         <input class="custom input" id="password" name="password" type="password" value="<?php echo $row['password'] ?>" required>
                         <input class="custom input" id="email" name="email" type="email" value="<?php echo $row['email'] ?>"required>
                         <input class="custom input" id="pnumber" name="pnumber" value="0<?php echo $row['nomhp'] ?>" required>

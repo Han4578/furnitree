@@ -25,7 +25,7 @@
             ?>
             <div class="results">
                 <?php
-                    $stmt = $_SESSION['stmt'] ?? "SELECT * FROM furniture LEFT JOIN pengguna ON furniture.company_id = pengguna.id";
+                    $stmt = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, pengguna.name AS company, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN category ON furniture_info.category = category.id";
                     displayItems("document.querySelector('.results')", "document.querySelector('template')", $stmt);
                 ?>
             </div>

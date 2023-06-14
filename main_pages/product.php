@@ -15,7 +15,7 @@
         }
 
         $productID = $_GET['id'];
-        $query1 = $conn->query("SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id WHERE furniture.id = $productID");
+        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, description, furniture_info.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id WHERE furniture.id = $productID  GROUP BY name");
         $row1 = $query1->fetch_assoc()
     ?>
     <template id="temp1">
@@ -38,8 +38,8 @@
         <div class="product-info">
             <div class="space-between">
                 <div>
-                    <div class="name"><?php echo $row1['furniture_name'] ?></div>
-                    <div class="company">Dari <?php echo $row1['company_name'] ?></div>
+                    <div class="name"><?php echo $row1['name'] ?></div>
+                    <div class="company">Dari <?php echo $row1['company'] ?></div>
                 </div>
                 <div class="price"><?php echo $row1['price'] ?></div>
             </div>
@@ -51,8 +51,8 @@
             </div>
             <div class="color-list">
                 <?php 
-                    $name = $row1['furniture_name'];
-                    $query2 = $conn->query("SELECT * FROM furniture WHERE furniture_name = '$name'");
+                    $name = $row1['name'];
+                    $query2 = $conn->query("SELECT image, furniture.id AS id FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id WHERE furniture_info.name = '$name'");
 
                     if ($query2->num_rows > 0) {
                         while ($row2 = $query2->fetch_assoc()) {
@@ -84,7 +84,7 @@
         Yang berkaitan: <br>
         <div class="related-list">
             <?php
-                displayItems("document.querySelector('.related-list')", "document.querySelector('#temp2')", "SELECT * FROM furniture LEFT JOIN company ON furniture.company_id = company.company_id GROUP BY furniture_name");
+                displayItems("document.querySelector('.related-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture_info.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id  GROUP BY name");
             ?>
         </div>
     </div>

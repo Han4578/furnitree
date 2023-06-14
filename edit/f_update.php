@@ -12,11 +12,11 @@
     $imgTempName = $image['tmp_name'];
     $imageName = $image['name'];
     
-    $query = "UPDATE pengguna SET pengguna_name = '$name', password = '$password', nomhp = $pnumber, email = '$email', picture = '$imageName' WHERE id = $id";
+    $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, email = '$email', picture = '$imageName' WHERE id = $id";
 
     if ($imgTempName !== "") {
         if (!exif_imagetype($imgTempName)) die("Fail yang dimuat naik bukan imej");
-    } else $query = "UPDATE pengguna SET pengguna_name = '$name', password = '$password', nomhp = $pnumber, email = '$email' WHERE id = $id";
+    } else $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, email = '$email' WHERE id = $id";
 
 
     $stmt = $conn->query($query);

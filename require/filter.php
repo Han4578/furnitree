@@ -12,7 +12,7 @@
     $category = $_POST['category'] ?? '';
     $and = false;
 
-    $stmt = "SELECT * FROM furniture LEFT JOIN pengguna ON furniture.company_id = pengguna.id WHERE ";
+    $stmt = "SELECT furniture_info.name as name, furniture_info.id AS id, pengguna.name AS company, category.name AS category, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN category ON furniture_info.category = category.id WHERE ";
 
     if (!empty($color)) {
         $color = implode(", ", $color);
@@ -22,7 +22,7 @@
     if (!empty($brand)) {
         if ($and) $stmt .= " AND ";
         $brand = implode(", ", $brand);
-        $stmt  .= "company_id IN ($brand)";
+        $stmt  .= "company IN ($brand)";
         $and = true;
     }
     if (!empty($category)) {
@@ -33,7 +33,7 @@
     }
     if (!empty($query)) {
         if ($and) $stmt .= " AND ";
-        $stmt  .= "furniture_name LIKE '%$query%'";
+        $stmt  .= " name LIKE '%$query%'";
         $and = true;
     }
 

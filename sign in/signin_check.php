@@ -24,12 +24,15 @@ if ($query->num_rows == 0) {
                 </script>";
 } else {
     $_SESSION['id'] = $row['id'];
-    $_SESSION['name'] = $row['pengguna_name'];
+    $_SESSION['name'] = $row['name'];
     $_SESSION['password'] = $password;
     $_SESSION['email'] = $user;
     $_SESSION['pnumber'] = $row['nomhp'];
     $_SESSION['level'] = $row['aras'];
     $_SESSION['pfp'] = $row['picture'];
     $_SESSION['isLoggedIn'] = true;
-    header("location: ../main_pages/main_page.php");
+
+    echo    "<script>
+                history.go(-2)
+            </script>";
 }
