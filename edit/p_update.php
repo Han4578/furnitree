@@ -20,9 +20,9 @@
                     </script>";
     }
     
-    $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, aras = $aras, email = '$email', picture = '$imageName' WHERE id = $id";
-
+    
     if ($imgTempName !== "") {
+        $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, aras = $aras, email = '$email', picture = '$imageName' WHERE id = $id";
         if (!exif_imagetype($imgTempName)) die("Fail yang dimuat naik bukan imej");
     } else $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, aras = $aras, email = '$email' WHERE id = $id";
 

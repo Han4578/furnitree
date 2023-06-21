@@ -15,7 +15,7 @@
         }
 
         $productID = $_GET['id'];
-        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, description, furniture_info.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id WHERE furniture.id = $productID  GROUP BY name");
+        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, description, furniture.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id WHERE furniture.id = $productID  GROUP BY name");
         $row1 = $query1->fetch_assoc()
     ?>
     <template id="temp1">
@@ -84,14 +84,26 @@
         Yang berkaitan: <br>
         <div class="related-list">
             <?php
-                displayItems("document.querySelector('.related-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture_info.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id  GROUP BY name");
+                displayItems("document.querySelector('.related-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id  GROUP BY name");
             ?>
         </div>
+    </div>
+    <div class="space-around max-width">
+        <div></div>
+        <button class="print custom button" onclick="printInfo()">Cetak</button>
+    </div>
+    <div class="edit">
+        <img src="../images/edit-pencil.svg" alt="">
     </div>
     <script>
         let price = document.querySelector(".price")
         let alts = document.querySelector('.color-list')
         let img = document.querySelector('.product-image').firstElementChild
+        let edit = document.querySelector('.edit')
+
+        edit.addEventListener('click', () => {
+            window.location = '../edit/furniture.php?id=' + <?php echo $productID; ?>
+        })
 
         price.innerText = "RM" + parseFloat(price.innerText).toFixed(2)
 

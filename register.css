@@ -12,9 +12,6 @@ form {
     margin-top: 5%;
 }
 
-input {
-    width: 100%;
-}
 
 button[type='submit'], button[type='reset'] {
     padding: 2px;

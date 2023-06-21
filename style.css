@@ -8,6 +8,10 @@
     margin: 0;
 }
 
+body {
+    margin-bottom: 10vh;
+}
+
 img {
     display: inline;
     height: 100%;
@@ -15,6 +19,10 @@ img {
 
 hr {
     width: 100%;
+}
+
+textarea {
+    resize: none;
 }
 
 .main, .related {
@@ -26,13 +34,14 @@ hr {
 
 .top {
     height: 15vh;
-    min-height: 100px;
+    /* min-height: 100px; */
+    /* max-height: 114px; */
     background-image: url(./images/oak\ background.png);
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1vw;
+    padding: 10px;
 }
 
 .icon {
@@ -300,6 +309,15 @@ hr {
     width: 100%;
 }
 
+.max-height {
+    height: 100%;
+}
+
+.square {
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
 /* --------------------------------------------------------------------------------------------------- */
 
 .background {
@@ -392,6 +410,14 @@ hr {
     background-color: var(--hover);
 }
 
+.camera.furniture {
+    height: 6vw;
+    position: relative;
+    /* width: 8vw; */
+    left: 28%;
+    /* border: 1px solid black; */
+}
+
 .options {
     width: 100%;
     display: flex;
@@ -406,19 +432,21 @@ hr {
     border-radius: 10px;
 }
 
-.custom.input {
+.input {
+    border-radius: 10px;
     height: 30px;
     padding: 3%;
-    
 }
 
-.custom.button {
-    padding: 1%;
+.button {
+    border-radius: 10px;
+    padding: 0.5%;
     background-color: rgb(240, 240, 240);
     width: 6vw;
     aspect-ratio: 2 / 1;
     transition: 0.3s background-color;
 }
+
 
 .custom.button:hover, .dialog-button:hover {
     background-color: lightgray;
@@ -454,12 +482,19 @@ hr {
     background-color: rgb(37, 255, 37) !important;
 }
 
+.none {
+    display: none;
+}
+
+.border {
+    border: 2px solid grey;
+}
 
 /* --------------------------------------------------------------------------------------------------- */
 
 .split {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 55% 45%;
     align-items: start;
 }
 
@@ -565,7 +600,7 @@ hr {
     margin: 5vh 0;
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .rows {
@@ -586,7 +621,8 @@ hr {
 .row {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .email {
@@ -600,6 +636,43 @@ hr {
 .image > img {
     object-fit: contain;
     max-width: 60%;
+}
+
+
+/* --------------------------------------------------------------------------------------------------- */
+.edit-furniture {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.variant-delete, .variant-white {
+    aspect-ratio: 1;
+    height: 6vh;
+    border-radius: 50%;
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+.variant-delete:hover {
+    background-color: rgb(247, 88, 88);
+}
+
+.add {
+    font-size: 25px;
+    color: blue;
+    font-weight: bold;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+.hapus {
+    color: red;
+    padding: 0.5%;
 }
 
 
@@ -664,15 +737,16 @@ hr {
 [data-name],
 [data-company] {
     padding: 2%;
+    font-size: 1.2vw;
 }
 
 [data-company] {
-    font-size: 14px;
+    font-size: 1.1vw;
     color: gray;
 }
 
 [data-price] {
-    font-size: 16px;
+    font-size: 1.3vw;
 }
 
 [data-imgCon] {
@@ -683,6 +757,22 @@ hr {
     border-radius: 10px;
 }
 
+[data-pfp] {
+    aspect-ratio: 1;
+    height: 10vh;
+}
+
 [data-logout] {
     order: 5;
 }
+
+[data-logo] {
+    max-height: 150px;
+}
+
+@media screen and (max-width: 100vh) {
+    .top {
+        height: 10vh;
+    }
+}
+    

@@ -27,13 +27,13 @@
     
                 </div>
                 <div class="vertical space-between">
-                    <input type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required>
+                    <input class="custom input" type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required>
                     <div>
-                        <input type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
+                        <input class="custom input" type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
                         <input type="checkbox" name="togglePw" id="toggle">
                     </div>
-                    <input type="tel" name="pnumber" id="pnumber" pattern="[0-9]{10}" minlength="9" placeholder='Tanpa  " - "' title="0123456789" required>
-                    <input type="email" id="email" name="email" title="user@example.com" required />
+                    <input class="custom input" type="tel" name="pnumber" id="pnumber" pattern="[0-9]{10}" minlength="9" placeholder='Tanpa  " - "' title="0123456789" required>
+                    <input class="custom input" type="email" id="email" name="email" title="user@example.com" required />
                 </div>
             </div>
             <div class="space-between">

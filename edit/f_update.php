@@ -2,40 +2,41 @@
     require "../require/connect.php";
     session_start();
 
-    $id = $_GET['id'];
+    $productID = $_GET['id'];
+    $info = $_GET['info'];
     $name = $conn->real_escape_string($_POST['name']);
-    $color = $conn->real_escape_string($_POST['color']);
-    $company = $conn->real_escape_string($_POST['company']);
+    $brand = $conn->real_escape_string($_POST['brand']);
     $price = $_POST['price'];
-    $image = $_FILES['image'];
+    $description = $_POST['description'];
+    $color = $_POST['color'];
+    $image = $_FILES['image']['name'];
+    $count = 0;
     
-    $imgTempName = $image['tmp_name'];
-    $imageName = $image['name'];
-    
-    $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, email = '$email', picture = '$imageName' WHERE id = $id";
-
-    if ($imgTempName !== "") {
-        if (!exif_imagetype($imgTempName)) die("Fail yang dimuat naik bukan imej");
-    } else $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, email = '$email' WHERE id = $id";
-
+    $query = "UPDATE furniture_info SET name = '$name', company = $brand, price = $price, description = '$description' WHERE id = $info";
 
     $stmt = $conn->query($query);
 
+
+    $query2 = $conn->query("SELECT color, image, id FROM furniture WHERE info = $info");
+    while ($row = $query2->fetch_assoc()) {
+        $id = $row['id'];
+        $c = $color[$count];
+        $i = ($image[$count] !== '')? $image[$count]: $row['image'];
+
+        $stmt2 = $conn->query("UPDATE furniture SET color = $c, image = '$i' WHERE id = $id");
+        $imgTempName = $_FILES['image']['tmp_name'][$count];
+        if ($imgTempName !== "") move_uploaded_file($imgTempName, '../images/' . $i);
+        $count++;
+        
+    }
+
+
+
     if ($stmt) {
-        if ($imgTempName !== "") move_uploaded_file($imgTempName, '../images/' . $imageName);
-
         echo "<script>
-        alert('Profil berjaya dikemas kini');
-        window.location = '../main_pages/profile.php?id=".$id."';
+        alert('Perabot berjaya dikemas kini.');
+        window.location = '../main_pages/product.php?id=".$productID."';
         </script>";
-
-        if ($_SESSION['id'] == $id) {   
-            $_SESSION['name'] = $name;
-            $_SESSION['password'] = $password;
-            $_SESSION['email'] = $email;
-            $_SESSION['pnumber'] = $pnumber;
-            $_SESSION['pfp'] = $imageName;
-        }
     }
 
 ?>

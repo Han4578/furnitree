@@ -9,7 +9,7 @@
 <div class="top">
     <div class="icon close" id="menu">
         <img src="../images/Hamburger_icon.png" alt="hamburger-icon">
-    </div>
+    </div>  
     <img src="../images/furnitree logo full.png" alt="furnitree logo" class="pointer" data-logo>
     <div class="icon" >
         <img src="../images/<?php echo (key_exists('isLoggedIn', $_SESSION))? $_SESSION['pfp']: "user_icon.png";?>" alt="user-icon" id="user">

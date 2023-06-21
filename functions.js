@@ -151,3 +151,15 @@ function displaySelections(name, container, value, i, id, selected) {
     if (selectedArray.includes(value)) input.checked = !input.checked
 }
 
+function printInfo() {
+    let top = document.getElementsByClassName('top')[0]
+    
+    top.style.display = 'none'
+
+    window.addEventListener('afterprint', () => {
+        top.style.display = 'flex'
+    })
+
+    window.print()
+
+}

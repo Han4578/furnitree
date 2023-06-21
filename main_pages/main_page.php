@@ -37,7 +37,7 @@
             </div>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture_info.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id  GROUP BY name");
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id  GROUP BY name");
                 ?>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 <div class="category"></div>
             </div>
         </div>
-        <div class="section">
+        <!-- <div class="section">
             <div class="space-between">
                 <span>Outdoor furnitures</span>
                 <span>see more</span>
@@ -111,7 +111,7 @@
                 <div class="item"></div>
                 <div class="item"></div>
             </div>
-        </div>
+        </div> -->
 
     </div>
 </body>

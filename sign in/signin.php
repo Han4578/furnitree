@@ -25,9 +25,9 @@
                     <label for="password">Kata Laluan:</label>
                 </div>
                 <div class="vertical space-between">
-                    <input type="email" name="email" id="email" required>
+                    <input class="custom input" type="email" name="email" id="email" required>
                     <div>
-                        <input type="password" name="password" id="password" required>
+                        <input class="custom input" type="password" name="password" id="password" required>
                         <input type="checkbox" name="Togglepw" id="toggle">
                     </div>
                 </div>
