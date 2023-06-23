@@ -19,44 +19,35 @@
         <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical">
             <div class="container">
                 <div class="vertical space-between">
-                    <label for="name">Nama:</label>
-                    <label for="color">Warna:</label>
-                    <label for="category">Kategori:</label>
-                    <label for="company">Syarikat:</label>
-                    <label for="price">Harga:</label>
-                    <label for="place">Tempat:</label>
+                    <label class="input" for="name">Nama:</label>
+                    <label class="" for="color">Warna:</label>
+                    <label class="" for="category">Kategori:</label>
+                    <label class="<?php if ($_SESSION['level'] == 2) echo "none" ?>" for="company">Syarikat:</label>
+                    <label class="input" for="price">Harga:</label>
+                    <!-- <label for="place">Tempat:</label> -->
                 </div>
                 <div class="vertical space-between">
-                    <input type="text" name="name" id="name" required>
-                    <select name="color" id="color" required>
+                    <input class="custom input" type="text" name="name" id="name" required>
+                    <select class="custom" name="color" id="color" required>
                         <option value="" selected disabled hidden>Pilih warna...</option>
                         <?php
                             displayOptions("SELECT * FROM color", "document.getElementById('color')")
                         ?>
                     </select>
-                    <select name="category" id="category" required>
+                    <select class="custom" name="category" id="category" required>
                         <option value="" selected disabled hidden>Pilih kategori...</option>
                         <?php
                             displayOptions("SELECT * FROM category", "document.getElementById('category')")
                         ?>
                     </select>
-                    <select name="company" id="company" required>
+                    <select class="custom <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="company" id="company" required>
                         <option value="" selected disabled hidden>Pilih syarikat...</option>
                         <?php
-                        $query = $conn->query("SELECT * FROM company");
-                        if ($query->num_rows > 0) {
-                            while ($row = $query->fetch_assoc()) {
-                                $name = $row['company'];
-                                $value = $row['id'];
-                                echo "<script>
-                                            displayOptions('$name', document.getElementById('company'), '$value');
-                                        </script>";
-                            }
-                        }
+                            displayOptions("SELECT name, id FROM pengguna WHERE aras = 2", "document.getElementById('company')", $_SESSION['id'])
                         ?>
                     </select>
-                    <input type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
-                    <div class="space-between">
+                    <input class="custom input" type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
+                    <!-- <div class="space-between">
                         <div>
                             <input type="radio" class="radio" name="indoors" id="indoors" value="1" required>
                             <label for="indoors">dalam rumah</label>
@@ -67,7 +58,7 @@
                         </div>
                         <div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="vertical">
@@ -75,8 +66,8 @@
                 <input type="file" name="image" id="image" accept="image/*" required>
             </div>
             <div class="space-between">
-                <button type="submit">Hantar</button>
                 <button type="reset">Reset</button>
+                <button type="submit">Hantar</button>
             </div>
         </form>
     </div>

@@ -39,7 +39,7 @@
             </div>
             <div class="space-between">
                 <a href="../company register/company_register.php">Daftar sebagai syarikat</a>
-                <a href="../user register/user_register.php">Dafter sebagai pengguna</a>
+                <a href="../user register/user_register.php">Daftar sebagai pengguna</a>
             </div>
         </form>
     </div>

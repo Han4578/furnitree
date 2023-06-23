@@ -12,7 +12,12 @@
         require '../require/main_menu.php';
     ?>
 
-    <div class="main">
+
+<div class="main">
+        <div class="list-options">
+            <button onclick="window.location='../furniture register/furniture_register.php'">Tambah Perabot</button>
+            <button onclick="printInfo()">Cetak</button>
+        </div>
         <div class="columns">
             <span class="column">No.</span>
             <span class="column email">Nama</span>
@@ -26,8 +31,9 @@
             <hr>
             <?php
             $id = $_SESSION['id'];
-                $query = ($_SESSION['level'] == 3)? "SELECT furniture.id AS id, furniture_info.name AS name, color.name AS color, pengguna.name as company, price, image FROM furniture LEFT JOIN furniture_info on furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN color ON furniture.color = color.id ORDER BY furniture_info.name" 
-                                                    :"SELECT furniture.id AS id, furniture_info.name AS name, color.name AS color, pengguna.name as company, price, image FROM furniture LEFT JOIN furniture_info on furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN color ON furniture.color = color.id WHERE pengguna.id = $id ORDER BY furniture_info.name";
+                $query = "SELECT furniture.id AS id, furniture_info.name AS name, color.name AS color, pengguna.name as company, price, image FROM furniture LEFT JOIN furniture_info on furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN color ON furniture.color = color.id";
+                if ($_SESSION['level'] == 2) $query .= " WHERE pengguna.id = $id";
+                $query .= " ORDER BY furniture_info.name";
                 displayFurniture("document.querySelector('.rows')", $query);
             ?>
         </div>

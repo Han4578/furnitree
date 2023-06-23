@@ -26,7 +26,7 @@
     </div>
     <br>
     <form action="./f_update.php?info=<?php echo $row1['info']?>&id=<?php echo $productID?>" method="post" enctype="multipart/form-data" onsubmit="checkError()">
-        <div class="main split">
+        <div class="main card">
             <div class="product-info">
                 <div class="split">
                     <div class="edit-furniture">
@@ -39,18 +39,17 @@
                     </div>
                     <div class="edit-furniture">
                         <input class="input" id="name" name="name" value="<?php echo $row1['name'] ?>" required></input>
-                        <?php if ($_SESSION['level'] == 3) { ?>
-                            <select class="input border" name="brand" id="brand" required>
-                                <?php
-                                 $brandQuery = $conn->query("SELECT name, id FROM pengguna WHERE aras = 2");
-                                 while ($row3 = $brandQuery->fetch_assoc()) {
-                                     ?>
-                                     <option value="<?php echo $row3['id'] ?>"  <?php if ($row3['name'] == $row1['company']) echo "selected" ?>><?php echo $row3['name'] ?></option>
-                                     <?php
-                                 }
-                                                            ?>
-                            </select>
-                        <?php } ?>
+                        
+                        <select class="input border <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="brand" id="brand" required>
+                            <?php
+                                $brandQuery = $conn->query("SELECT name, id FROM pengguna WHERE aras = 2");
+                                while ($row3 = $brandQuery->fetch_assoc()) {
+                                    ?>
+                                    <option value="<?php echo $row3['id'] ?>"  <?php if ($row3['name'] == $row1['company']) echo "selected" ?>><?php echo $row3['name'] ?></option>
+                                    <?php
+                                }
+                            ?>
+                        </select>
                         <input class="input" id="price" name="price" value="<?php echo $row1['price'] ?>" required></input>
                         <textarea name="description" id="description" cols="51" rows="5" maxlength="255"><?php echo $row1['description'] ?></textarea>
                     </div>
@@ -87,10 +86,12 @@
                             ?>
                         </select>
                         <input class="none" type="file" id="image<?php echo $i ?>" name="image[]" accept="image/*">
-                        <label for="image<?php echo $i ?>" class="camera furniture">
-                                    <img src="../images/camera.png" alt="">
-                        </label>
-                        <img class="square image<?php echo $i ?>" data-pfp src="../images/<?php echo $image; ?>" alt="gambar warna">
+                        <div class="center">
+                            <label for="image<?php echo $i ?>" class="camera furniture">
+                                        <img src="../images/camera.png" alt="">
+                            </label>
+                            <img class="square image<?php echo $i ?>" data-pfp src="../images/<?php echo $image; ?>" alt="gambar warna">
+                        </div>
                         <?php 
                             if ($length > 1) {
                         ?>

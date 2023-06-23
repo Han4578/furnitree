@@ -9,7 +9,7 @@
 }
 
 body {
-    margin-bottom: 10vh;
+    margin-bottom: 8vh;
 }
 
 img {
@@ -23,6 +23,11 @@ hr {
 
 textarea {
     resize: none;
+}
+
+label {
+    display: flex;
+    align-items: center;
 }
 
 .main, .related {
@@ -260,7 +265,7 @@ textarea {
 .item:hover,
 .result-item:hover,
 .related-item:hover {
-    background-color: rgba(218, 218, 218, 0.5);
+    background-color: var(--hover);
 }
 
 .results {
@@ -298,6 +303,11 @@ textarea {
 .space-around {
     display: flex;
     justify-content: space-around;
+}
+
+.end {
+    display: flex;
+    justify-content: end;
 }
 
 
@@ -411,11 +421,8 @@ textarea {
 }
 
 .camera.furniture {
-    height: 6vw;
-    position: relative;
-    /* width: 8vw; */
-    left: 28%;
-    /* border: 1px solid black; */
+    height: 12vh;
+    position: absolute; 
 }
 
 .options {
@@ -492,7 +499,7 @@ textarea {
 
 /* --------------------------------------------------------------------------------------------------- */
 
-.split {
+.split, .card {
     display: grid;
     grid-template-columns: 55% 45%;
     align-items: start;
@@ -517,7 +524,8 @@ textarea {
 .product-image {
     aspect-ratio: 9 / 10;
     border: 2px solid black;
-    border-radius: 20px ;
+    border-radius: 20px;
+    margin-left: 10%;
 }
 
 .product-image > img {
@@ -597,7 +605,7 @@ textarea {
 /* --------------------------------------------------------------------------------------------------- */
 
 .columns {
-    margin: 5vh 0;
+    margin: 2vh 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -615,7 +623,10 @@ textarea {
     text-align: center;
     width: 10%;
     font-size: 1.25vw;
-    height: 5vh;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .row {
@@ -636,6 +647,13 @@ textarea {
 .image > img {
     object-fit: contain;
     max-width: 60%;
+}
+
+.list-options {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    gap: 5vw;
 }
 
 
@@ -721,9 +739,6 @@ textarea {
     aspect-ratio: 1;
 }
 
-#image {
-    display: none;
-}
 
 
 #toggle {
@@ -773,6 +788,12 @@ textarea {
 @media screen and (max-width: 100vh) {
     .top {
         height: 10vh;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
     }
 }
     

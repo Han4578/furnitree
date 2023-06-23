@@ -11,8 +11,11 @@
     if (!exif_imagetype($imgTempName)) die('Fail yang dimuat naik bukan imej');
 
 
-    $conn->query("INSERT INTO furniture(color, image, info) VALUES ($color, '$imgName', $id)");
+    $stmt = $conn->query("INSERT INTO furniture(color, image, info) VALUES ($color, '$imgName', $id)");
 
+    if (move_uploaded_file($imgTempName, '../images/' . $imgName) and $stmt) echo "<script>
+    alert('Warna berjaya ditambah');
+    </script>";
 ?>
 
 <script>

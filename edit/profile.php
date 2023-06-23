@@ -28,7 +28,7 @@
                         <label for="email">E-mel:  </label>
                         <label for="pnumber">Numbor telefon: </label>
                         <?php
-                            if ($_SESSION['level'] == 3) echo "<label for='level'>Aras: </label>";
+                            if ($_SESSION['level'] == 3 and $_SESSION['id'] !== $id) echo "<label for='level'>Aras: </label>";
                         ?>
                     </div>
                     <div class="vertical space-around grow">
@@ -38,7 +38,7 @@
                         <input class="custom input" id="pnumber" name="pnumber" value="0<?php echo $row['nomhp'] ?>" required>
                         
                         <?php
-                            if ($_SESSION['level'] == 3) {
+                            if ($_SESSION['level'] == 3 and $_SESSION['id'] !== $id) {
                                 echo '<select class="custom" id="aras" name="aras">';
                                 for ($i=1; $i <= 3; $i++) {
                                     $selected = $row['aras'];
@@ -52,7 +52,7 @@
                         
                     </div>
                 </div>
-                <input type="file" id="image" name="image" accept="image/*">
+                <input type="file" id="image" class = "none" name="image" accept="image/*">
                 <div class="pfp">
                     <label for="image" class="camera">
                         <img src="../images/camera.png" alt="">

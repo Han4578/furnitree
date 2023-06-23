@@ -28,12 +28,12 @@
             require "../require/search_bar.php";
         ?>
         <div class="banner">
-            <img class="ad" src="../images/banner.png" alt="BEEG SALE">
+            <img class="ad" src="../images/banner.png" alt="BEEG SALE" onclick="window.location = './product.php?id=6'">
         </div>
         <div class="section">
             <div class="space-between">
-                <span>Recommended items</span>
-                <span>see more</span>
+                <span>Yang direkemen</span>
+                <a onclick="redirect.filter()">lihat semua</a>
             </div>
             <div class="recommended-list">
                 <?php

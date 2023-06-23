@@ -1,5 +1,5 @@
 <?php
-    $_SESSION['stmt'] = $_SESSION['stmt'] ?? '';
+    $_SESSION['stmt'] = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, pengguna.name AS company, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN category ON furniture_info.category = category.id";
     $_SESSION['query'] = $_SESSION['query'] ?? '';
     $_SESSION['brand'] = $_SESSION['brand'] ?? '';
     $_SESSION['color'] = $_SESSION['color'] ?? '';

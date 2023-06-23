@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 </head>
 <body>
     <?php
@@ -15,9 +14,10 @@
         }
 
         $productID = $_GET['id'];
-        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, description, furniture.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id WHERE furniture.id = $productID  GROUP BY name");
+        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, description, furniture.id AS id, pengguna.name AS company, pengguna.id AS companyID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id WHERE furniture.id = $productID  GROUP BY name");
         $row1 = $query1->fetch_assoc()
     ?>
+    <title><?php echo $row1['name']; ?></title>
     <template id="temp1">
         <div class="color-img">
             <img src="" alt="">
@@ -92,14 +92,21 @@
         <div></div>
         <button class="print custom button" onclick="printInfo()">Cetak</button>
     </div>
-    <div class="edit">
-        <img src="../images/edit-pencil.svg" alt="">
-    </div>
+    <?php
+        if (($_SESSION['level'] ?? 1) == 3 or $_SESSION['id'] == $row1['companyID']) {
+    ?>
+        <div class="edit">
+            <img src="../images/edit-pencil.svg" alt="">
+        </div>
+
+    <?php 
+        }
+    ?>
     <script>
         let price = document.querySelector(".price")
         let alts = document.querySelector('.color-list')
         let img = document.querySelector('.product-image').firstElementChild
-        let edit = document.querySelector('.edit')
+        let edit = document.querySelector('.edit') ?? document.createElement('div')
 
         edit.addEventListener('click', () => {
             window.location = '../edit/furniture.php?id=' + <?php echo $productID; ?>
@@ -118,4 +125,5 @@
         }
     </script>
 </body>
+
 </html>
