@@ -3,5 +3,7 @@
 
     $_SESSION = array();
 
-    header("location: ../main_pages/main_page.php");
+   echo "<script>
+           history.back()
+       </script>";
  ?>

@@ -12,7 +12,7 @@
     $category = $_POST['category'] ?? '';
     $and = false;
 
-    $stmt = "SELECT furniture_info.name as name, furniture_info.id AS id, pengguna.name AS company, category.name AS category, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN category ON furniture_info.category = category.id WHERE ";
+    $stmt = "SELECT furniture_info.name as name, furniture_info.id AS id, company.name AS company, category.name AS category, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id WHERE ";
 
     if (!empty($color)) {
         $color = implode(", ", $color);

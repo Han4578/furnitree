@@ -30,9 +30,10 @@ if ($query->num_rows == 0) {
     $_SESSION['pnumber'] = $row['nomhp'];
     $_SESSION['level'] = $row['aras'];
     $_SESSION['pfp'] = $row['picture'];
+    $_SESSION['brand'] = $row['brand'] ?? '';
     $_SESSION['isLoggedIn'] = true;
 
     echo    "<script>
-                history.go(-2)
+                history.back()
             </script>";
 }

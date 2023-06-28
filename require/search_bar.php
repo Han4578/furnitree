@@ -1,5 +1,5 @@
 <?php
-    $_SESSION['stmt'] = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, pengguna.name AS company, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id LEFT JOIN category ON furniture_info.category = category.id";
+    $_SESSION['stmt'] = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, company.name AS company, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id";
     $_SESSION['query'] = $_SESSION['query'] ?? '';
     $_SESSION['brand'] = $_SESSION['brand'] ?? '';
     $_SESSION['color'] = $_SESSION['color'] ?? '';
@@ -32,7 +32,7 @@
                 <div class="selections S2">
                     <?php
                         $brand = $_SESSION['brand'];
-                        displaySelections('document.querySelector(".S2")', "SELECT * FROM pengguna WHERE aras = '2'", 'name', 'id', 'brand', $brand);
+                        displaySelections('document.querySelector(".S2")', "SELECT * FROM company", 'name', 'id', 'brand', $brand);
                     ?>
                 </div>
             </div>

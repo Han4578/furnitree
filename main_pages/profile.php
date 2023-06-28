@@ -1,7 +1,12 @@
 <?php
     require "../require/register_menu.php";
 
-    $id = $_GET['id'] ?? 1;
+    if (!key_exists('id', $_GET)) {
+        echo "<script>
+                alert('Profil ini tidak wujud')
+                history.back()
+            </script>";
+    } else $id = $_GET['id'];
 
     if ($id !== $_SESSION['id'] and $_SESSION['level'] != '3') {
         echo "

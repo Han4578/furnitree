@@ -33,11 +33,11 @@
         <div class="section">
             <div class="space-between">
                 <span>Yang direkemen</span>
-                <a onclick="redirect.filter()">lihat semua</a>
+                <a class="pointer" onclick="redirect.filter()">lihat semua →</a>
             </div>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id  GROUP BY name");
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, company.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id GROUP BY name");
                 ?>
             </div>
         </div>

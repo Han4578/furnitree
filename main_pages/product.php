@@ -10,12 +10,25 @@
         require "../require/main_menu.php";
 
         if (!key_exists('id', $_GET)) {
-            die("Produk ini tidak wujud");
+            echo "<script>
+                    alert('Produk ini tidak wujud')
+                    history.back()
+                </script>";
         }
 
         $productID = $_GET['id'];
-        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, description, furniture.id AS id, pengguna.name AS company, pengguna.id AS companyID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id WHERE furniture.id = $productID  GROUP BY name");
-        $row1 = $query1->fetch_assoc()
+        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, furniture_info.description AS description, furniture.id AS id, company.name AS company, company.id AS companyID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id WHERE furniture.id = $productID  GROUP BY name");
+        
+        if ($query1->num_rows == 0) {
+            echo "<script>
+                    alert('Produk ini tidak wujud')
+                    history.back()
+                </script>";
+            die();
+        }       
+
+        $row1 = $query1->fetch_assoc();
+        $companyID = $row1['companyID'];
     ?>
     <title><?php echo $row1['name']; ?></title>
     <template id="temp1">
@@ -38,12 +51,12 @@
         <div class="product-info">
             <div class="space-between">
                 <div>
-                    <div class="name"><?php echo $row1['name'] ?></div>
-                    <div class="company">Dari <?php echo $row1['company'] ?></div>
+                    <div class="name"><?php echo $row1['name']; ?></div>
+                    <div class="company">Dari <a href="./brand.php?id=<?php echo $companyID; ?>" class="company"><?php echo $row1['company']; ?></a></div>
                 </div>
-                <div class="price"><?php echo $row1['price'] ?></div>
+                <div class="price"><?php displayPrice($row1['price'], "document.querySelector('.price')"); ?></div>
             </div>
-            <div>
+            <div class="description">
                 Diskripsi: <br>
                 <?php 
                     echo ($row1['description'] !== "")? $row1['description'] : "Tiada deskripsi";
@@ -81,10 +94,12 @@
         </div>
     </div>
     <div class="related">
-        Yang berkaitan: <br>
-        <div class="related-list">
+        Yang berkaitan: 
+        <br>
+        <br>
+        <div class="recommended-list">
             <?php
-                displayItems("document.querySelector('.related-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, pengguna.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN pengguna ON furniture_info.company = pengguna.id  GROUP BY name");
+                displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, company.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id WHERE furniture_info.name != '$name' GROUP BY name");
             ?>
         </div>
     </div>
@@ -92,18 +107,12 @@
         <div></div>
         <button class="print custom button" onclick="printInfo()">Cetak</button>
     </div>
-    <?php
-        if (($_SESSION['level'] ?? 1) == 3 or $_SESSION['id'] == $row1['companyID']) {
-    ?>
+    <?php if (($_SESSION['level'] ?? 1) == 3 or ($_SESSION['id'] ?? 0) == $row1['companyID']) { ?>
         <div class="edit">
             <img src="../images/edit-pencil.svg" alt="">
         </div>
-
-    <?php 
-        }
-    ?>
+    <?php } ?>
     <script>
-        let price = document.querySelector(".price")
         let alts = document.querySelector('.color-list')
         let img = document.querySelector('.product-image').firstElementChild
         let edit = document.querySelector('.edit') ?? document.createElement('div')
@@ -112,7 +121,6 @@
             window.location = '../edit/furniture.php?id=' + <?php echo $productID; ?>
         })
 
-        price.innerText = "RM" + parseFloat(price.innerText).toFixed(2)
 
         for (const alt of alts.children) {
             alt.addEventListener('click', () => {

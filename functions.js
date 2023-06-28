@@ -4,6 +4,12 @@ function excludeSymbols(e) {
     }
 }
 
+function displayPrice(num) {
+    let split = num.toFixed(2).split('.');
+    
+    return parseInt(split[0]).toLocaleString("en-US") + '.' + split[1]
+}
+
 function roundNumber(e, value) {
     let newNum = Math.round(value * 100) / 100
     e.value = newNum
@@ -28,10 +34,11 @@ function displayItems(container, name, image, price, company, template, id) {
     let companyName = item.querySelector('[data-company]') ?? item.querySelector('[data-relCompany]')
     let itemPrice = item.querySelector('[data-price]') ?? item.querySelector('[data-relPrice]')
     let itemImg = item.querySelector('[data-image]') ?? item.querySelector('[data-relImage]')
+
     
     div.id = id
     itemName.innerText = name
-    itemPrice.innerText = 'RM'+ price.toFixed(2);
+    itemPrice.innerText = 'RM'+ displayPrice(price)
     itemImg.src = '../images/'+ image
     companyName.innerText = 'Dari ' + company
 
@@ -69,7 +76,6 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
 
 
     for (const data of columns) {
-        console.log(data);
         let column = document.createElement('span')
 
         if (i == 6) column.classList.add('email')
@@ -86,11 +92,43 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
         row.appendChild(column)
         i++
     }
-
     row.appendChild(actions)
-
     container.appendChild(row)
 }
+
+function displayBrands(container, name, pfp, no, id) {
+    let row = document.createElement('div')
+    let actions = document.createElement('a')
+    let columns = [no, name, pfp]
+    let i = 1
+
+    actions.href =  "../edit/brand.php?id="+id
+    actions.innerHTML = "Kemas kini"
+    actions.classList.add('column')
+    row.classList.add('row')
+
+
+    for (const data of columns) {
+        let column = document.createElement('span')
+
+        if (i == 3) {
+            let img = document.createElement('img')
+            
+            column.classList.add('image')
+            column.classList.add('grow')
+            img.src = "../images/" + data
+            column.appendChild(img)
+            
+        } else column.innerText = data
+
+        column.classList.add('column')
+        row.appendChild(column)
+        i++
+    }
+    row.appendChild(actions)
+    container.appendChild(row)
+}
+
 function displayFurniture(container, name, color, company, price, pfp, no, id) {
     let row = document.createElement('div')
     let actions = document.createElement('a')
@@ -125,7 +163,7 @@ function displayFurniture(container, name, color, company, price, pfp, no, id) {
 
     container.appendChild(row)
     let priceSpan = row.querySelector('.price')
-    priceSpan.innerText = parseFloat(priceSpan.innerText).toFixed(2)
+    priceSpan.innerText = parseFloat(priceSpan.innerText).toFixed(2).toLocaleString("en-US")
 }
 
 function displaySelections(name, container, value, i, id, selected) {

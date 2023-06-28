@@ -71,6 +71,26 @@
         }
      }
 
+     function displayBrands($container, $stmt) {
+        global $conn;
+        $query = $conn->query($stmt);
+        $no = 1;
+        
+        if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                $id = $row['id'];
+                $name = $row['name'];
+                $image = $row['logo'];
+
+                echo "  <script>
+                            displayBrands($container, '$name', '$image', $no, $id);
+                        </script>";
+
+                $no++;
+            }
+        }
+     }
+
     function displayOptions($stmt, $container, $selected = '') {
         global $conn;
 
@@ -106,5 +126,11 @@
                 $i++;
             }
         }
+     }
+
+     function displayPrice($num, $price) {
+        echo "<script>
+                $price.innerText = 'RM' + displayPrice($num);
+            </script>";
      }
 ?>

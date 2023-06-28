@@ -26,7 +26,7 @@ textarea {
 }
 
 label {
-    display: flex;
+    /* display: flex; */
     align-items: center;
 }
 
@@ -279,7 +279,8 @@ label {
 
 .result-item {
     width: 24.5%;
-    height: 40vh;
+    /* height: 40vh; */
+    aspect-ratio: 1;
 }
 
 .category-list {
@@ -551,14 +552,15 @@ label {
     display: flex;
     width: 100%;
     overflow-x: auto;
+    flex: 0 0 20vw;
     flex-wrap: nowrap;
     gap: 3%;
     padding: 1%;
     border-radius: 20px;
 }
 
+
 .related-item {
-    width: 15vw;
     padding-bottom: 1%;
 }
 
@@ -696,6 +698,79 @@ label {
 
 /* --------------------------------------------------------------------------------------------------- */
 
+.company-container {
+    display: flex;
+    width: 60%;
+    margin: 5% 0;
+}
+
+.company-info {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+}
+
+.company-logo {
+    display: flex;
+    aspect-ratio: 1;
+    width: 30%;
+    border: 2px solid black;
+    padding: 1%;
+}
+
+.company-logo > img {
+    object-fit: contain;
+    width: 100%;
+}
+
+.company-name {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    height: 50%;
+    padding-left: 5%;
+    padding-bottom: 1%;
+    font-size: 18px;
+}
+
+.company-name > span {
+    font-size: 3vw;
+}
+
+.social {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-grow: 1;
+    gap: 2%;
+}
+
+.social-link {
+    aspect-ratio: 1;
+    height: 7vh;
+    border-radius: 50%;
+}
+
+.cat {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+    margin: 5% 0;
+}
+
+.description {
+    font-size: 20px;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+
 #menu-list {
     position: fixed;
     top: 0;
@@ -753,6 +828,8 @@ label {
 [data-company] {
     padding: 2%;
     font-size: 1.2vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 [data-company] {
@@ -794,6 +871,33 @@ label {
         display: flex;
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .related-item {
+        width: 35vw;
+    }
+
+    .price {
+        font-size: 4vw;
+    }
+
+    .description {
+        font-size: 2vw;
+    }
+
+    [data-price],
+    [data-name],
+    [data-company] {
+        font-size: 2vw;
+    }
+
+    [data-company] {
+        font-size: 1.4vw;
+        color: gray;
+    }
+
+    [data-price] {
+        font-size: 1.3vw;
     }
 }
     

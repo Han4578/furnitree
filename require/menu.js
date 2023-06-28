@@ -8,6 +8,7 @@ let home = document.querySelector('[data-home]')
 let filterButton = document.querySelector('[data-filter]')
 let logo = document.querySelector('[data-logo]')
 let furniture = document.querySelector('[data-furniture]') ?? document.createElement('div')
+let brand = document.querySelector('[data-brand]') ?? document.createElement('div')
 let dataUser = document.querySelector('[data-user]') ?? document.createElement('div')
 let login = document.querySelector('[data-login]') ?? document.createElement('div')
 let logout = document.querySelector('[data-logout]') ?? document.createElement('div')
@@ -40,6 +41,10 @@ let redirect = {
         window.location = '../manage/user.php';
     },
 
+    brand() {
+        window.location = '../manage/brand.php';
+    },
+
     signup() {
         window.location = '../user register/user_register.php';
     }
@@ -53,6 +58,7 @@ login.addEventListener('click', redirect.login)
 signup.addEventListener('click', redirect.signup)
 logo.addEventListener('click', redirect.home)
 furniture.addEventListener('click', redirect.furniture)
+brand.addEventListener('click', redirect.brand)
 dataUser.addEventListener('click', redirect.user)
 logout.addEventListener('click', logOut)
 window.addEventListener('click', closeUser)

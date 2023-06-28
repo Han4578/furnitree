@@ -13,10 +13,16 @@
 <body>
     <?php
     require "../require/register_menu.php";
+    
+    if (key_exists('isLoggedIn', $_SESSION)) {
+        echo "<script>
+                history.back()
+            </script>";
+        die;
+    }
     ?>
 
     <div class="main">
-        
         <form action="./signin_check.php" method="post" enctype="multipart/form-data" class="vertical">
             <div class="center">Log masuk</div>
             <div class="container">
