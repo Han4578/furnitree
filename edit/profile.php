@@ -1,11 +1,28 @@
 <?php
     require "../require/register_menu.php";
 
-    $id = $_GET['id'];
+    if (key_exists('id', $_GET)) {
+        $exists = true;
+        $id = $_GET['id'];
+        $query = $conn->query("SELECT * FROM pengguna WHERE id = $id");
+        ($query->num_rows > 0)? $row = $query->fetch_assoc(): $exists = false; 
+    } 
 
-    $query = $conn->query("SELECT * FROM pengguna WHERE id = $id");
-    $row = $query->fetch_assoc();
+    if (!key_exists('id', $_GET) or !$exists){
+        echo "<script>
+                alert('Profil ini tidak wujud')
+                history.back()
+            </script>";
+    }
 
+    if (!checkLogin() or ($id !== $_SESSION['id'] and $_SESSION['level'] != '3')) {
+        echo "
+        <script>
+        alert('Anda tidak dibenarkan mengakses maklumat ini')
+        history.back()
+        </script>";
+        die;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -68,23 +85,11 @@
                 <img src="../images/delete.png" alt="">
             </div>
         </form>
-        <dialog class="confirm">
-            <div class="vertical">
-                <div class="grow center">Memadamkan akaun?</div>
-                <div class="options">
-                    <button class="dialog-button" id="no">tidak</button>
-                    <button class="dialog-button yes" id="yes">ya</button>
-                </div>
-            </div>
-        </dialog>
     </div>
     <script>
         let edit = document.querySelector("#image")
         let img = document.querySelector('[data-pfp]')
         let del = document.querySelector('.delete')
-        let confirm = document.querySelector('.confirm')
-        let yes = document.querySelector('#yes')
-        let no = document.querySelector('#no')
         let p = document.querySelector('[data-profile2]')
         
         edit.onchange = () => {
@@ -92,15 +97,11 @@
         }
 
         del.addEventListener('click', () => {
-            confirm.open = true
-        })
+            let result = window.confirm("Memadamkan akaun?")
 
-        no.addEventListener('click', () => {
-            confirm.open = false
-        })
-
-        yes.addEventListener('click', () => {
-            window.location = './p_delete.php?id=' + <?php echo $row['id']; ?>
+            if(result) {
+                window.location = "./p_delete.php?id=" + <?php echo $row['id']; ?>
+            }
         })
 
         p.addEventListener('click', () => {

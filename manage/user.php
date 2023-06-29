@@ -10,9 +10,20 @@
 <body>
     <?php
         require '../require/main_menu.php';
-    ?>
 
+        if (!checkLogin() or $_SESSION['level'] == 1) {
+            echo "
+            <script>
+            alert('Anda tidak dibenarkan mengakses maklumat ini')
+            history.back()
+            </script>";
+            die;
+        }
+    ?>
     <div class="main">
+        <div class="list-options">
+            <button onclick="printInfo()">Cetak</button>
+        </div>
         <div class="columns">
             <span class="column">No.</span>
             <span class="column">Nama</span>

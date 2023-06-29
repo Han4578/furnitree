@@ -22,13 +22,12 @@
     <div class="space-around">
         <div></div>
         <div></div>
-        <button class="hapus" onclick="deleteFurniture()">Hapuskan</button>
+        <button class="hapus" onclick="deleteFurniture()">Hapuskan Perabot</button>
     </div>
-    <br>
     <form action="./f_update.php?info=<?php echo $row1['info']?>&id=<?php echo $productID?>" method="post" enctype="multipart/form-data" onsubmit="checkError()">
         <div class="main card">
             <div class="product-info">
-                <div class="split">
+                <div class="input-split">
                     <div class="edit-furniture">
                         <label class="input" for="name">Nama: </label>
                         <?php if ($_SESSION['level'] == 3) { ?>
@@ -42,7 +41,7 @@
                         
                         <select class="input border <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="brand" id="brand" required>
                             <?php
-                                $brandQuery = $conn->query("SELECT name, id FROM pengguna WHERE aras = 2");
+                                $brandQuery = $conn->query("SELECT name, id FROM company");
                                 while ($row3 = $brandQuery->fetch_assoc()) {
                                     ?>
                                     <option value="<?php echo $row3['id'] ?>"  <?php if ($row3['name'] == $row1['company']) echo "selected" ?>><?php echo $row3['name'] ?></option>

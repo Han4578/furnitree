@@ -23,10 +23,10 @@ hr {
 
 textarea {
     resize: none;
+    padding: 5px;
 }
 
 label {
-    /* display: flex; */
     align-items: center;
 }
 
@@ -39,8 +39,6 @@ label {
 
 .top {
     height: 15vh;
-    /* min-height: 100px; */
-    /* max-height: 114px; */
     background-image: url(./images/oak\ background.png);
     background-color: white;
     display: flex;
@@ -247,6 +245,7 @@ label {
     overflow-x: auto;
     flex: 0 0 20vw;
     gap: 0.5vw;
+    width: 100%;
 }
 
 .item,
@@ -383,7 +382,7 @@ label {
     top: 23vh;
     padding: 5px;
     width: 3vw;
-    height: auto;
+    height: 3vw;
     aspect-ratio: 1;
     border-radius: 50%;
     padding: 0.6vw;
@@ -443,7 +442,7 @@ label {
 .input {
     border-radius: 10px;
     height: 30px;
-    padding: 3%;
+    padding: 5px;
 }
 
 .button {
@@ -498,12 +497,24 @@ label {
     border: 2px solid grey;
 }
 
+.wrap {
+    flex-wrap: wrap;
+}
+
+.gap {
+    gap: 5vh;
+}
+
 /* --------------------------------------------------------------------------------------------------- */
 
-.split, .card {
+.split, .card, .input-split {
     display: grid;
     grid-template-columns: 55% 45%;
     align-items: start;
+}
+
+.input-split {
+    grid-template-columns: 30% 70%;
 }
 
 .product-info {
@@ -701,11 +712,14 @@ label {
 .company-container {
     display: flex;
     width: 60%;
+    height: 14.4vw;
     margin: 5% 0;
+    align-items: center;
 }
 
 .company-info {
     width: 70%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -717,7 +731,6 @@ label {
     aspect-ratio: 1;
     width: 30%;
     border: 2px solid black;
-    padding: 1%;
 }
 
 .company-logo > img {
@@ -748,6 +761,7 @@ label {
     align-items: center;
     flex-grow: 1;
     gap: 2%;
+    padding-top: 1%;
 }
 
 .social-link {
@@ -764,9 +778,25 @@ label {
     margin: 5% 0;
 }
 
-.description {
+.company-description {
     font-size: 20px;
     text-align: center;
+    white-space: pre-line;
+}
+
+.camera.company {
+    width: 14vw;
+    height: auto;
+    position: absolute;
+    border-radius: 0 !important;
+}
+
+.social-list {
+    width: 400px;
+    margin: 0 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
 }
 
 /* --------------------------------------------------------------------------------------------------- */
@@ -874,7 +904,7 @@ label {
     }
 
     .related-item {
-        width: 35vw;
+        /* width: 35vw; */
     }
 
     .price {

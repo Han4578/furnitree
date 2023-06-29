@@ -3,9 +3,9 @@
 
     if($conn->connect_error) {
         die('Connection error'.$conn->connect_error);
-     } 
+    } 
 
-     function displayItems($container, $template, $stmt) {
+    function displayItems($container, $template, $stmt) {
         global $conn;
         $query = $conn->query($stmt);
 
@@ -22,9 +22,9 @@
                             </script>";
             }
         } else echo "<div style='margin: 0 auto;'>Tiada perabot yang bersetuju dengan kriteria yang diberikan</div>";
-     }
+    }
 
-     function displayFurniture($container, $stmt) {
+    function displayFurniture($container, $stmt) {
         global $conn;
         $query = $conn->query($stmt);
         $no = 1;
@@ -45,9 +45,9 @@
                 $no++;
             }
         }
-     }
+    }
 
-     function displayUsers($container, $stmt) {
+    function displayUsers($container, $stmt) {
         global $conn;
         $query = $conn->query($stmt);
         $no = 1;
@@ -69,9 +69,9 @@
                 $no++;
             }
         }
-     }
+    }
 
-     function displayBrands($container, $stmt) {
+    function displayBrands($container, $stmt) {
         global $conn;
         $query = $conn->query($stmt);
         $no = 1;
@@ -89,7 +89,7 @@
                 $no++;
             }
         }
-     }
+    }
 
     function displayOptions($stmt, $container, $selected = '') {
         global $conn;
@@ -105,9 +105,9 @@
                         </script>";
             }
         }
-     }
+    }
 
-     function displaySelections($container, $stmt, $n, $id, $idname, $checked) {
+    function displaySelections($container, $stmt, $n, $id, $idname, $checked) {
         global $conn;
 
         $query = $conn->query($stmt);
@@ -126,11 +126,15 @@
                 $i++;
             }
         }
-     }
+    }
 
-     function displayPrice($num, $price) {
+    function displayPrice($num, $price) {
         echo "<script>
                 $price.innerText = 'RM' + displayPrice($num);
             </script>";
-     }
+    }
+
+    function checkLogin() {
+        return key_exists('isLoggedIn' , $_SESSION);
+    }
 ?>

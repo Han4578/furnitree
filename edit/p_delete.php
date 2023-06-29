@@ -6,10 +6,12 @@
 
     $stmt = $conn->query("DELETE FROM pengguna WHERE id = '$id'");
 
+    
     if ($stmt) {
+        $location = ($_SESSION['id'] == $id)? '../require/logout.php' : '../manage/user.php';
         echo "<script> 
             alert('akaun sudah dipadamkan')
-            window.location = '../require/logout.php'
+            window.location = '$location'
         </script>";
 
     }

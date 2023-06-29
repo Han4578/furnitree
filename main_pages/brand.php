@@ -34,7 +34,7 @@
                 <div class="company-name">
                     <a href="<?php echo $row1['official'] ?>" target="_blank"><?php echo $row1['official'] ?></a>
                     <span><?php echo $row1['name'] ?></span>
-                    <?php if (($_SESSION['level'] ?? 1) == 3 or ($_SESSION['brand']) == $brandID) { ?>
+                    <?php if (checkLogin() and ($_SESSION['level'] == 3 or ($_SESSION['brand']) == $brandID)) { ?>
                         <div class="edit">
                             <img src="../images/edit-pencil.svg" alt="">
                         </div>
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="description">
+        <div class="company-description">
             <?php echo $row1['description']; ?>
         </div>
         <div class="results">

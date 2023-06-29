@@ -17,14 +17,14 @@
 
     <div class="main">
         <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical">
+            <div class="center">Daftar Perabot</div>
             <div class="container">
                 <div class="vertical space-between">
                     <label class="input" for="name">Nama:</label>
                     <label class="" for="color">Warna:</label>
                     <label class="" for="category">Kategori:</label>
-                    <label class="<?php if ($_SESSION['level'] == 2) echo "none" ?>" for="company">Syarikat:</label>
+                    <label class="<?php if ($_SESSION['level'] == 2) echo "none" ?>" for="company">Jenama:</label>
                     <label class="input" for="price">Harga:</label>
-                    <!-- <label for="place">Tempat:</label> -->
                 </div>
                 <div class="vertical space-between">
                     <input class="custom input" type="text" name="name" id="name" required>
@@ -43,22 +43,10 @@
                     <select class="custom <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="company" id="company" required>
                         <option value="" selected disabled hidden>Pilih syarikat...</option>
                         <?php
-                            displayOptions("SELECT name, id FROM pengguna WHERE aras = 2", "document.getElementById('company')", $_SESSION['id'])
+                            displayOptions("SELECT name, id FROM company", "document.getElementById('company')", $_SESSION['id'])
                         ?>
                     </select>
                     <input class="custom input" type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
-                    <!-- <div class="space-between">
-                        <div>
-                            <input type="radio" class="radio" name="indoors" id="indoors" value="1" required>
-                            <label for="indoors">dalam rumah</label>
-                        </div>
-                        <div>
-                            <input type="radio" class="radio" name="indoors" id="outdoors" value="0" required>
-                            <label for="outdoors">luar rumah</label>
-                        </div>
-                        <div>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div class="vertical">

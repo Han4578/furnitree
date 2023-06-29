@@ -1,27 +1,3 @@
-<?php
-    require "../require/register_menu.php";
-
-    if (!key_exists('id', $_GET)) {
-        echo "<script>
-                alert('Profil ini tidak wujud')
-                history.back()
-            </script>";
-    } else $id = $_GET['id'];
-
-    if ($id !== $_SESSION['id'] and $_SESSION['level'] != '3') {
-        echo "
-        <script>
-            alert('Anda tidak dibenarkan mengakses maklumat ini')
-            history.back()
-        </script>";
-        die;
-    }
-
-    $query = $conn->query("SELECT * FROM pengguna WHERE id = $id");
-    $row = $query->fetch_assoc();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +8,32 @@
     <title>Profil</title>
 </head>
 <body>
+    <?php
+        require "../require/register_menu.php";
+        
+        if (key_exists('id', $_GET)) {
+            $exists = true;
+            $id = $_GET['id'];
+            $query = $conn->query("SELECT * FROM pengguna WHERE id = $id");
+            ($query->num_rows > 0)? $row = $query->fetch_assoc(): $exists = false; 
+        } 
+
+        if (!key_exists('id', $_GET) or !$exists){
+            echo "<script>
+            alert('Profil ini tidak wujud')
+                    history.back()
+                </script>";
+            }
+
+        if (!checkLogin() or ($id !== $_SESSION['id'] and $_SESSION['level'] != '3')) {
+            echo "
+            <script>
+            alert('Anda tidak dibenarkan mengakses maklumat ini')
+            history.back()
+            </script>";
+            die;
+        }
+    ?>
     <div class="main">
         <div class="background equal">
             <div class="info">

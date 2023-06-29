@@ -28,7 +28,9 @@
             if ($_SESSION['level'] > 1) {
 
                 if ($_SESSION['level'] == 2) {
-                    $isLogged .= "<div class='user-button' onclick=\"window.location = '../main_pages/brand.php?id=".$_SESSION['brand']."'\">Jenama</div>";
+                    if ($_SESSION['brand'] == '') {
+                        $isLogged .= "<div class='user-button' onclick=\"window.location = '../brand register/brand_register.php'\">Daftar Jenama</div>";
+                    } else $isLogged .= "<div class='user-button' onclick=\"window.location = '../main_pages/brand.php?id=".$_SESSION['brand']."'\">Jenama</div>";
                 }
 
                 $isLogged .= "<div class='user-button' data-furniture> Mengurus Perabot</div>";
