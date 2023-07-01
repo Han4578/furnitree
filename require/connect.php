@@ -107,7 +107,7 @@
         }
     }
 
-    function displaySelections($container, $stmt, $n, $id, $idname, $checked) {
+    function displaySelections($container, $stmt, $idname, $checked) {
         global $conn;
 
         $query = $conn->query($stmt);
@@ -117,9 +117,9 @@
         if ($query->num_rows > 0) {
             while ($row = $query->fetch_assoc()) {
                 
-                $name = $row[$n];
-                $value = $row[$id];
-
+                $name = $row['name'];
+                $value = $row['id'];
+                
                 echo "<script>
                             displaySelections('$name',$container, '$value', $i, '$idname', '$checked');
                         </script>";

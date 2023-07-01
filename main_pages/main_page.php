@@ -42,76 +42,20 @@
             </div>
         </div>
         <div class="section">
-            <div>Categories</div>
+            <br>
+            <hr>
             <div class="category-list">
-                <div class="category"></div>
-                <div class="category"></div>
-                <div class="category"></div>
-                <div class="category"></div>
-                <div class="category"></div>
-                <div class="category"></div>
-                <div class="category"></div>
-                <div class="category"></div>
+                <?php
+                    $menuQuery = $conn->query("SELECT * FROM category");
+                    
+                    while ($menuRow = $menuQuery->fetch_assoc()) {
+                        ?> 
+                        <div class="category" data-category-item id="<?php echo $menuRow['id'];?>" onclick="redirect.category(this.id)"><img src="../images/<?php echo $menuRow['image'] ?>" alt=""><span><?php echo $menuRow['name'] ?></span></div>
+                        <?php
+                    }
+                ?>
             </div>
         </div>
-        <!-- <div class="section">
-            <div class="space-between">
-                <span>Outdoor furnitures</span>
-                <span>see more</span>
-            </div>
-            <div class="recommended-list">
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-            </div>
-        </div>
-        <div class="section">
-            <div class="space-between">
-                <span>Furniture sets</span>
-                <span>see more</span>
-            </div>
-            <div class="recommended-list">
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-                <div class="item"></div>
-            </div>
-        </div> -->
 
     </div>
 </body>

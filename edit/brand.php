@@ -50,7 +50,7 @@
             </div>
             <div class="social-list">
                 <div>Pautan Media Sosial</div>
-                <div class="row wrap">
+                <div class="row ">
                     <img class="social-link" src="../images/fb logo.webp" alt="">
                     <label for="fb">Facebook:</label>
                     <input class="input" type="url" id="fb" name="fb" value="<?php echo $row1['fb']; ?>">

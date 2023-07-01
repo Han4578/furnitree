@@ -73,11 +73,11 @@
                 <h2><?php echo $name; ?></h2>
                 <br>
                 <hr>
-                <div class="<?php echo $name; ?> cat"></div>
+                <div class="<?php echo str_replace(' ', '', $name); ?> cat"></div>
             </div>
 
             <?php
-                    displayItems("document.querySelector('.$name')", "document.querySelector('template')", "SELECT furniture_info.name as name, furniture_info.id AS id, company.name AS company, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id WHERE category = $cat and furniture_info.company = $brandID"); 
+                    displayItems("document.querySelector('.".str_replace(' ', '', $name)."')", "document.querySelector('template')", "SELECT furniture_info.name as name, furniture.id AS id, company.name AS company, price, furniture.image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id WHERE category = $cat and furniture_info.company = $brandID"); 
                 }
 
             ?>

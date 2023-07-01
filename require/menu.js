@@ -4,9 +4,14 @@ let user = document.querySelector('#user')
 let userMenu = document.querySelector('#user-menu')
 let menuList = document.querySelector('#menu-list')
 let darken = document.querySelector('.darken')
-let home = document.querySelector('[data-home]')
-let filterButton = document.querySelector('[data-filter]')
+let categoryMenu = document.querySelector('[data-category-menu]')
+let brandMenu = document.querySelector('[data-brand-menu]')
+let categoryList = document.querySelector('[data-category-list]')
+let brandList = document.querySelector('[data-brand-list]')
+let categoryItems = document.querySelectorAll('[data-category-item]')
+let brandItems = document.querySelectorAll('[data-brand-item]')
 let logo = document.querySelector('[data-logo]')
+let random = document.querySelector('[data-random]')
 let furniture = document.querySelector('[data-furniture]') ?? document.createElement('div')
 let brand = document.querySelector('[data-brand]') ?? document.createElement('div')
 let dataUser = document.querySelector('[data-user]') ?? document.createElement('div')
@@ -47,13 +52,22 @@ let redirect = {
 
     signup() {
         window.location = '../user register/user_register.php';
+    },
+
+    category(id) {
+        window.location = "../require/category.php?id=" + id
+    },
+
+    random() {
+        window.location = '../require/random.php';
     }
 }
 
 menu.addEventListener('click', openMenu)
 darken.addEventListener('click', closeMenu)
-home.addEventListener('click', redirect.home)
-filterButton.addEventListener('click', redirect.filter)
+categoryMenu.addEventListener('click', toggleCategory)
+brandMenu.addEventListener('click', toggleBrand)
+random.addEventListener('click', redirect.random)
 login.addEventListener('click', redirect.login)
 signup.addEventListener('click', redirect.signup)
 logo.addEventListener('click', redirect.home)
@@ -64,6 +78,20 @@ logout.addEventListener('click', logOut)
 window.addEventListener('click', closeUser)
 user.addEventListener('click', openUser)
 
+
+
+for (const categoryItem of categoryItems) {
+    categoryItem.addEventListener('click', () => {
+        redirect.category(categoryItem.id)
+    })
+}
+
+
+for (const brandItem of brandItems) {
+    brandItem.addEventListener('click', () => {
+        window.location = "../main_pages/brand.php?id=" + brandItem.id
+    })
+}
 
 
 function openMenu() {
@@ -92,4 +120,16 @@ function openUser(e) {
 
 function closeUser() {
     userMenu.classList.remove('open')
+}
+
+function toggleBrand() {
+    let arrow = brandMenu.querySelector('img')
+    brandList.classList.toggle("none")
+    arrow.classList.toggle('flip')
+}
+
+function toggleCategory() {
+    let arrow = categoryMenu.querySelector('img')
+    categoryList.classList.toggle("none")
+    arrow.classList.toggle('flip')
 }

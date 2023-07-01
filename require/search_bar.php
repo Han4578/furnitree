@@ -1,5 +1,5 @@
 <?php
-    $_SESSION['stmt'] = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, company.name AS company, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id";
+    $_SESSION['stmt'] = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, company.name AS company, price, furniture.image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id";
     $_SESSION['query'] = $_SESSION['query'] ?? '';
     $_SESSION['brand'] = $_SESSION['brand'] ?? '';
     $_SESSION['color'] = $_SESSION['color'] ?? '';
@@ -22,7 +22,27 @@
                 <div class="selections S1">
                     <?php
                         $color = $_SESSION['color'];
-                        displaySelections('document.querySelector(".S1")', "SELECT color.name AS name, color.id AS id FROM furniture INNER JOIN color ON furniture.color = color.id GROUP BY color.name", 'name', 'id', 'color', $color);
+
+                        $query = $conn->query("SELECT * FROM color");
+                        $i = 1;
+                        $checked = str_replace(', ', '', $color);
+                        
+                        if ($query->num_rows > 0) {
+                            while ($row = $query->fetch_assoc()) {
+                                
+                                $name = $row['name'];
+                                $value = $row['id'];
+                                $code = $row['code'];
+                                ?>  
+                                    <input type="checkbox" class="none" name="color[]" id="filter-color<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked"; ?>>
+                                    <label for="filter-color<?php echo $i; ?>" class="filter-label  <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)">
+                                        <span class="color-circle" style="background-color: <?php echo $code; ?>;"></span>
+                                        <span><?php echo $name; ?></span>
+                                    </label>             
+                                <?php
+                                $i++;
+                            }
+                        }
                     ?>
                 </div>
             </div>
@@ -32,7 +52,28 @@
                 <div class="selections S2">
                     <?php
                         $brand = $_SESSION['brand'];
-                        displaySelections('document.querySelector(".S2")', "SELECT * FROM company", 'name', 'id', 'brand', $brand);
+
+                        $query = $conn->query("SELECT * FROM company");
+                        $i = 1;
+                        $checked = str_replace(', ', '', $brand);
+                        
+                        if ($query->num_rows > 0) {
+                            while ($row = $query->fetch_assoc()) {
+                                
+                                $name = $row['name'];
+                                $value = $row['id'];
+                                $src = $row['logo'];
+
+                                ?>  
+                                    <input type="checkbox" class="none" name="brand[]" id="filter-brand<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked"; ?>>
+                                    <label for="filter-brand<?php echo $i; ?>" class="filter-label <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)">
+                                        <img class="square" src="../images/<?php echo $src; ?>" alt="">
+                                        <span><?php echo $name; ?></span>
+                                    </label>             
+                                <?php
+                                $i++;
+                            }
+                        }
                     ?>
                 </div>
             </div>
@@ -42,7 +83,28 @@
                 <div class="selections S3">
                     <?php
                         $category = $_SESSION['category'];
-                        displaySelections('document.querySelector(".S3")', "SELECT * FROM category", 'name', 'id', 'category', $category);
+
+                        $query = $conn->query("SELECT * FROM category");
+                        $i = 1;
+                        $checked = str_replace(', ', '', $category);
+                        
+                        if ($query->num_rows > 0) {
+                            while ($row = $query->fetch_assoc()) {
+                                
+                                $name = $row['name'];
+                                $value = $row['id'];
+                                $src = $row['image'];
+
+                                ?>  
+                                    <input type="checkbox" class="none" name="category[]" id="filter-category<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked"; ?>>
+                                    <label for="filter-category<?php echo $i; ?>" class="filter-label  <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)">
+                                        <img class="square" src="../images/<?php echo $src; ?>" alt="">
+                                        <span><?php echo $name; ?></span>
+                                    </label>             
+                                <?php
+                                $i++;
+                            }
+                        }
                     ?>
                 </div>
             </div>
@@ -52,15 +114,15 @@
                 <br>
                 <div class="selections">
                     <label for="filter-price">Dari RM</label>
-                    <input class="custom input" type="number" name="from" id="filter-price" onblur="roundNumber(this, value)" min="0" value="<?php echo $_SESSION['from']  ?>">
+                    <input class="custom input max-width" type="number" name="from" id="filter-price" onblur="roundNumber(this, value)" min="0" value="<?php echo $_SESSION['from']  ?>">
                     <label for="filter-price">Hingga RM</label>
-                    <input class="custom input  " type="number" name="to" id="filter-price" onblur="roundNumber(this, value)" min="0" value="<?php echo $_SESSION['to'] ?>">
+                    <input class="custom input max-width  " type="number" name="to" id="filter-price" onblur="roundNumber(this, value)" min="0" value="<?php echo $_SESSION['to'] ?>">
                 </div>
             </div>
         </div>
         <div class="space-evenly">
             <div class="php"></div>
-            <button type="button" data-reset name="" id="" class="custom button">Set semula</button>
+            <button type="button" data-reset  name="" id="" class="custom button">Set semula</button>
             <button type="submit" name="" id="" class="custom button yes">Terapkan</button>
         </div>
     </div>
@@ -72,7 +134,30 @@
     let php = document.querySelector('.php')
     let searchContainer = document.querySelector('.search-container')
     let filterMenu = document.querySelector('#filter-menu')
+    let filterLabel = document.querySelectorAll('.filter-label')
+    let reset = document.querySelector('[data-reset]')
     let timeOutId = '' 
+
+    let number = document.querySelectorAll('input[type="number"]')
+    let input = document.querySelectorAll('input')
+
+    for (const n of number) {
+        n.addEventListener('keydown', e => {
+            excludeSymbols(e)
+        })
+    }
+
+    reset.addEventListener('click', () => {
+        for (const i of input) {
+            if (i.type == 'text' || i.type == 'number') i.value = ''
+            else i.checked = false
+            
+        }      
+
+        for (const f of filterLabel) {
+            f.classList.remove('label-highlight')
+        }
+    })
 
     filter.onclick = () => {
         if(filterMenu.classList.contains('down')) {
@@ -99,4 +184,5 @@
         searchContainer.classList.add('down')
         filterMenu.classList.add('index')
     }
+
 </script>

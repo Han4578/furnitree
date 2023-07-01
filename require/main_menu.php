@@ -1,57 +1,7 @@
 <?php
-    require "../require/connect.php";
-    session_start();    
+    require "../require/menu.php";
 ?>
 
-<link rel="stylesheet" href="../style.css">
-<script src="../functions.js"></script>
-
-<div class="top">
-    <div class="icon close" id="menu">
-        <img src="../images/Hamburger_icon.png" alt="hamburger-icon">
-    </div>  
-    <img src="../images/furnitree logo full.png" alt="furnitree logo" class="pointer" data-logo>
-    <div class="icon" >
-        <img src="../images/<?php echo (key_exists('isLoggedIn', $_SESSION))? $_SESSION['pfp']: "user_icon.png";?>" alt="user-icon" id="user">
-    </div>
-</div>
-<div id="user-menu">
-    <?php
-        $notLogged = "<div class='user-button' data-login>Log masuk</div>
-                      <div class='user-button' data-signup>Daftar</div>";
-                      
-                      
-            if (key_exists('isLoggedIn', $_SESSION)) {
-                
-                $isLogged = "<div class='user-button' onclick='redirect.profile(".$_SESSION['id'].")'>Profil</div>
-                         <div class='user-button' data-logout>Log keluar</div>";
-            if ($_SESSION['level'] > 1) {
-
-                if ($_SESSION['level'] == 2) {
-                    if ($_SESSION['brand'] == '') {
-                        $isLogged .= "<div class='user-button' onclick=\"window.location = '../brand register/brand_register.php'\">Daftar Jenama</div>";
-                    } else $isLogged .= "<div class='user-button' onclick=\"window.location = '../main_pages/brand.php?id=".$_SESSION['brand']."'\">Jenama</div>";
-                }
-
-                $isLogged .= "<div class='user-button' data-furniture> Mengurus Perabot</div>";
-
-                if ($_SESSION['level'] > 2) {
-                    $isLogged .= "<div class='user-button' data-user> Mengurus Pengguna</div>";
-                    $isLogged .= "<div class='user-button' data-brand> Mengurus Jenama</div>";
-                }
-            }
-
-            echo $isLogged;
-        }else echo $notLogged;
-    ?>
-</div>
-<div class="darken"></div>
-<div id="menu-list">
-    <h1 class="menu-logo">Menu</h1>
-    <div class="menu-button" data-home>home</div>
-    <div class="menu-button" data-filter>filter</div>
-    <div class="menu-button">settings</div>
-</div>
 <script>
     <?php
     require "menu.js";

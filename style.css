@@ -8,6 +8,7 @@
     margin: 0;
 }
 
+
 body {
     margin-bottom: 8vh;
 }
@@ -39,6 +40,7 @@ label {
 
 .top {
     height: 15vh;
+    width: 100%;
     background-image: url(./images/oak\ background.png);
     background-color: white;
     display: flex;
@@ -63,15 +65,52 @@ label {
     filter: brightness(0.9);
 }
 
-.menu-button {
-    background-color: wheat;
-    font-size: 2vw;
-    padding: 5%;
-    border-radius: 10px;
-    width: 10vw;
+.menu-button, .menu-item {
+    font-size: 20px;
+    padding: 10%;
+    height: 10vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
+}
+
+.menu-logo {
+    margin-bottom: 5vh;
+    height: 15vh;
+    display: flex;
+    gap: 10%;
+    padding: 10px;
+    align-items: center;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item {
+    padding:3% 5% 3% 15%;
+    justify-content: start;
+    background-color: rgb(255 247 238);
+    gap: 20%;
+    height: 8vh;
+}
+
+.menu-item:hover {
+    filter: brightness(0.9);
+}
+
+.random {
+    padding: 8% 10% 8% 10%;
+}
+
+.flip {
+    transform: rotate(-180deg);
+}
+
+.transition {
+    transition: all 0.3s;
 }
 
 .user-button {
@@ -83,7 +122,7 @@ label {
 }
 
 .menu-button:hover {
-    filter: brightness(0.9);
+    background-color: var(--hover);
 }
 
 .user-button:hover {
@@ -95,7 +134,7 @@ label {
 }
 
 .open#menu-list {
-    transform: translateX(15vw);
+    transform: translateX(600px);
 }
 
 .open.darken {
@@ -114,11 +153,9 @@ label {
     background-color: rgb(51, 51, 51);
     transition: filter 0.5s;
     pointer-events: none;
+    z-index: 2;
 }
 
-.menu-logo {
-    margin: 5vh 0 15vh 0;
-}
 
 .banner {
     margin-top: 5vh;
@@ -183,7 +220,7 @@ label {
 .filter-menu {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 #filter-menu {
@@ -218,17 +255,42 @@ label {
     width: 25%;
     display: flex;
     flex-direction: column;
-
+    /* flex-grow: 1; */
 }
 
 .selections {
     display: flex;
     flex-direction: column;
     gap: 1vh;
-    align-items: start;
     padding: 5%;
     height: 28vh;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.filter-label {
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    height: 8vh;
+    padding: 2%;
+    align-items: center;
+    background-color: #ffd4a7;
+    flex: 0 0 8vh;
+    gap: 20%;
+    user-select: none;
+}
+
+.filter-label:hover {
+    filter: brightness(0.9);
+}
+
+.color-circle {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    height: 5vh;
+    margin-left: 5%;
 }
 
 .section {
@@ -285,13 +347,31 @@ label {
 .category-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1vw;
+    justify-content: center;
+    gap: 10%;
 }
 
 .category {
     aspect-ratio: 1;
-    width: 15%;
-    border: 1px black solid;
+    width: 12%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.category > span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.category > img {
+    height: 80%;
+}
+
+.category:hover {
+    background-color: var(--hover);
 }
 
 .space-between {
@@ -443,6 +523,7 @@ label {
     border-radius: 10px;
     height: 30px;
     padding: 5px;
+    /* width: 100%; */
 }
 
 .button {
@@ -455,34 +536,14 @@ label {
 }
 
 
-.custom.button:hover, .dialog-button:hover {
+.custom.button:hover {
     background-color: lightgray;
-}
-
-.confirm {
-    position: absolute;
-    left: 30%;
-    width: 40%;
-    aspect-ratio: 4 / 1;
-    flex-direction: column;
-}
-
-.confirm > div {
-    height: 100%;
-
 }
 
 .center {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.dialog-button {
-    width: 5vw;
-    aspect-ratio: 2 / 1;
-    border-radius: 10px;
-    transition: 0.3s background-color;
 }
 
 .yes:hover {
@@ -613,6 +674,11 @@ label {
 
 .highlighted {
     border: 5px solid yellow;
+}
+
+.label-highlight {
+    /* border: 2px solid yellow; */
+    background-color: yellow;
 }
 
 /* --------------------------------------------------------------------------------------------------- */
@@ -804,15 +870,23 @@ label {
 #menu-list {
     position: fixed;
     top: 0;
-    left: -15vw;
+    left: -600px;
     height: 100%;
-    width: 15vw;
+    width: 300px;
     display: flex;
     flex-direction: column;
-    background-color: rgb(198, 197, 197);
-    align-items: center;
-    gap: 5vh;
+    background-color: rgb(255 239 218);
     transition: transform 0.5s;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    user-select: none;
+    z-index: 3;
+
+}
+
+#menu-list::-webkit-scrollbar {
+    display: none;
 }
 
 #user-menu {

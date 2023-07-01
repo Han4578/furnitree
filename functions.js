@@ -175,8 +175,10 @@ function displaySelections(name, container, value, i, id, selected) {
     input.type = 'checkbox'
     input.value = value
     input.name = id + '[]'
-    input.classList.add('custom');
     input.id = 'filter-'+ id + i
+    input.classList.add('none');
+    label.classList.add('filter-label')
+    label.classList.add('pointer')
     label.htmlFor = 'filter-'+ id + i
     label.innerHTML += " " + name
 
@@ -200,4 +202,9 @@ function printInfo() {
 
     window.print()
 
+}
+
+
+function toggleHighlight(label) {
+    label.classList.toggle('label-highlight')
 }

@@ -16,8 +16,6 @@
         </template>
         <?php 
             require '../require/main_menu.php';
-
-            
         ?>
         <div class="main">
             <?php
@@ -25,29 +23,10 @@
             ?>
             <div class="results">
                 <?php
-                    $stmt = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, company.name AS company, price, image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id";
+                    $stmt = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture.id AS id, company.name AS company, price, furniture.image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id";
                     displayItems("document.querySelector('.results')", "document.querySelector('template')", $stmt);
                 ?>
             </div>
         </div>
-        <script>
-            let number = document.querySelectorAll('input[type="number"]')
-            let reset = document.querySelector('[data-reset]')
-            let input = document.querySelectorAll('input')
-
-            for (const n of number) {
-                n.addEventListener('keydown', e => {
-                    excludeSymbols(e)
-                })
-            }
-
-            reset.addEventListener('click', () => {
-                for (const i of input) {
-                    if (i.type == 'text' || i.type == 'number') i.value = ''
-                    else i.checked = false
-                    
-                }      
-            })
-        </script>
     </body>
 </html>
