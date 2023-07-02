@@ -27,7 +27,7 @@ function displayOptions(name, container, value, selected) {
     container.appendChild(option)
 }
 
-function displayItems(container, name, image, price, company, template, id) {
+function displayItems(container, name, image, price, company, template, id, color) {
     let item = template.content.cloneNode(true)
     let div = item.querySelector('.item') ?? item.querySelector('.result-item') ?? item.querySelector('.related-item')
     let itemName = item.querySelector('[data-name]') ?? item.querySelector('[data-relName]')
@@ -35,6 +35,10 @@ function displayItems(container, name, image, price, company, template, id) {
     let itemPrice = item.querySelector('[data-price]') ?? item.querySelector('[data-relPrice]')
     let itemImg = item.querySelector('[data-image]') ?? item.querySelector('[data-relImage]')
 
+    div.dataset.name_value = name
+    div.dataset.price_value = price
+    div.dataset.brand_value = company
+    div.dataset.color_value = color
     
     div.id = id
     itemName.innerText = name
@@ -207,4 +211,60 @@ function printInfo() {
 
 function toggleHighlight(label) {
     label.classList.toggle('label-highlight')
+}
+
+function sortResult(criteria, container) {
+    let items = Array.from(container.children)
+    items = items.filter(i => {return i.nodeName == 'DIV'})
+
+    let criteriaArray = items.map(i => {
+        switch (criteria) {
+            case 'name':
+                return i.dataset.name_value
+            case 'brand':
+                return i.dataset.brand_value
+            case 'color':
+                return i.dataset.color_value
+            case 'price':
+                return i.dataset.price_value
+            default:
+                break;
+        }
+    })
+
+    if (criteria == 'name') {
+        criteriaArray.sort()
+    } else criteriaArray.sort((a, b) => {return a - b})
+
+    container.innerHTML = ''
+
+    for (const c of criteriaArray) {
+        for (const i of items) {
+            let value = ''
+
+            switch (criteria) {
+                case 'name':
+                    value = i.dataset.name_value
+                    break;
+                case 'brand':
+                    value = i.dataset.brand_value
+                    break;
+                case 'color':
+                    value = i.dataset.color_value
+                    break;
+                case 'price':
+                    value = i.dataset.price_value
+                    break;
+                default:
+                    break;
+            }
+
+            if (value == c) {
+                container.appendChild(i)
+                let index = items.indexOf(i)
+                items.splice(index, 1)
+                break
+            }
+        }
+    }
 }

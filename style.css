@@ -248,7 +248,7 @@ label {
 }
 
 .search-container.down {
-    margin-bottom: 40vh;
+    margin-bottom: 45vh;
 }
 
 .search-column {
@@ -293,6 +293,42 @@ label {
     margin-left: 5%;
 }
 
+.sort-bar {
+    width: 100%;
+    height: 5vh;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    margin: 5% 0 1% 0;
+}
+
+.sort-button {
+    width: 10%;
+    height: 100%;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    user-select: none;
+}
+
+.sort-button.sort {
+    background-color: black;
+    color: white;
+    pointer-events: none;
+}
+
+.sort-button.sort:hover {
+    background-color: black;
+}
+
+.sort-button:hover {
+    background-color: var(--hover);
+}
+
 .section {
     width: 100%;
     display: flex;
@@ -333,7 +369,7 @@ label {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5vw;
-    margin-top: 5%;
+    margin-top: 1%;
     width: 100%;
     min-height: 100vh;
 }

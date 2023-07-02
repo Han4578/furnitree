@@ -62,7 +62,7 @@
         </div>
         <div class="results">
             <?php 
-                $categories = $conn->query("SELECT category.name AS name, category FROM furniture_info LEFT JOIN category ON furniture_info.category = category.id WHERE furniture_info.company = $brandID");
+                $categories = $conn->query("SELECT category.name AS name, category, FROM furniture_info LEFT JOIN category ON furniture_info.category = category.id WHERE furniture_info.company = $brandID");
 
                 while($category = $categories->fetch_assoc()) {
                     $name = $category['name'];
@@ -77,7 +77,7 @@
             </div>
 
             <?php
-                    displayItems("document.querySelector('.".str_replace(' ', '', $name)."')", "document.querySelector('template')", "SELECT furniture_info.name as name, furniture.id AS id, company.name AS company, price, furniture.image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id WHERE category = $cat and furniture_info.company = $brandID"); 
+                    displayItems("document.querySelector('.".str_replace(' ', '', $name)."')", "document.querySelector('template')", "SELECT furniture_info.name as name, furniture.id AS id, company.name AS company, price, furniture.image, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id WHERE category = $cat and furniture_info.company = $brandID"); 
                 }
 
             ?>

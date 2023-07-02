@@ -16,9 +16,10 @@
                 $image = $row['image'];
                 $price = $row['price'];
                 $company = $row['company'];
+                $color = $row['color'];
 
                 echo "  <script>
-                                displayItems($container, '$name', '$image', $price, '$company', $template, $id);
+                                displayItems($container, '$name', '$image', $price, '$company', $template, $id, $color);
                             </script>";
             }
         } else echo "<div style='margin: 0 auto;'>Tiada perabot yang bersetuju dengan kriteria yang diberikan</div>";

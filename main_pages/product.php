@@ -99,7 +99,7 @@
         <br>
         <div class="recommended-list">
             <?php
-                displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, company.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id WHERE furniture_info.name != '$name' GROUP BY name");
+                displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, company.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id WHERE furniture_info.name != '$name' GROUP BY name");
             ?>
         </div>
     </div>
