@@ -47,6 +47,7 @@
         </div>
     </template>
     <br>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt=""> Balik</div>
     <div class="main split">
         <div class="product-info">
             <div class="space-between">

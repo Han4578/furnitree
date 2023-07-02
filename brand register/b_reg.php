@@ -8,7 +8,11 @@
     $description = $conn->real_escape_string($_POST['description']);
     $img = $_FILES['image'];
     $imgTempName = $img['tmp_name'];
-    $imgName = $img['name'];
+    $imgName = date('YmdHis');
+    $imgType = (explode('.', $image['name']))[1]
+;
+
+    $newName = $imgName.'.'.$imgType;
 
     if (!exif_imagetype($imgTempName)) {
         echo "<script> 
@@ -30,10 +34,10 @@
     }
 
     $stmt = $conn->prepare("INSERT INTO company(name, logo, description, account) VALUES (?, ?, ?, ?);");
-    $stmt->bind_param('sssi', $name, $imgName, $description, $account);
+    $stmt->bind_param('sssi', $name, $newName, $description, $account);
     $result = $stmt->execute();
 
-    move_uploaded_file($imgTempName, '../images/' . $imgName);
+    move_uploaded_file($imgTempName, '../images/' . $newName);
 
     $id = $conn->query("SELECT id FROM company WHERE name = '$name'")->fetch_assoc()['id'];
     

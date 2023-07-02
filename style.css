@@ -717,6 +717,15 @@ label {
     background-color: yellow;
 }
 
+.back {
+    height: 3vh;
+    margin: 0 5%;
+    font-size: 20px;
+    color: orange;
+    display: flex;
+    align-items: center;
+}
+
 /* --------------------------------------------------------------------------------------------------- */
 
 .columns {

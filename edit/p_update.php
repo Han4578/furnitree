@@ -11,7 +11,9 @@
     $aras = $_POST['aras'] ?? $_SESSION['level'];
     
     $imgTempName = $image['tmp_name'];
-    $imageName = $image['name'];
+    $imageType = (explode('.', $image['name']))[1];
+    $imageName = date('YmdHis');
+    $newName = $imageName.'.'.$imageType;
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script> 
@@ -22,19 +24,26 @@
     
     
     if ($imgTempName !== "") {
-        $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, aras = $aras, email = '$email', picture = '$imageName' WHERE id = $id";
+        $delete = $conn->query("SELECT picture FROM pengguna WHERE id = $id")->fetch_assoc()['picture'];
+        $path = realpath("../images/$delete");
+        unlink($path);
+
+        $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, aras = $aras, email = '$email', picture = '$newName' WHERE id = $id";
         if (!exif_imagetype($imgTempName)) die("Fail yang dimuat naik bukan imej");
     } else $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, aras = $aras, email = '$email' WHERE id = $id";
 
 
     $stmt = $conn->query($query);
-
+    
     if ($stmt) {
-        if ($imgTempName !== "") move_uploaded_file($imgTempName, '../images/' . $imageName);
+        if ($imgTempName !== "") {
+            move_uploaded_file($imgTempName, '../images/' . $newName);
+            $_SESSION['pfp'] = $newName;
+        }
 
         echo "<script>
         alert('Profil berjaya dikemas kini');
-        window.location = '../main_pages/profile.php?id=".$id."';
+        window.location = '../main_pages/profile.php?id=$id'
         </script>";
 
         if ($imageName == '') $imageName = $_SESSION['pfp'];
@@ -44,7 +53,6 @@
             $_SESSION['password'] = $password;
             $_SESSION['email'] = $email;
             $_SESSION['pnumber'] = $pnumber;
-            $_SESSION['pfp'] = $imageName;
             $_SESSION['level'] = $aras;
         }
     }

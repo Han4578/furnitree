@@ -10,6 +10,7 @@
     $description = $_POST['description'];
     $color = $_POST['color'];
     $image = $_FILES['image']['name'];
+;
     $count = 0;
     
     $query = "UPDATE furniture_info SET name = '$name', company = $brand, price = $price, description = '$description' WHERE id = $info";
@@ -21,11 +22,19 @@
     while ($row = $query2->fetch_assoc()) {
         $id = $row['id'];
         $c = $color[$count];
-        $i = ($image[$count] !== '')? $image[$count]: $row['image'];
+        $i = ($image[$count] !== '')? date('YmdHis').'.' : $row['image'];
+        $t = ($image[$count] !== '')? explode('.', $image[$count])[1]: '';
+        $newName = $i.$t;
 
-        $stmt2 = $conn->query("UPDATE furniture SET color = $c, image = '$i' WHERE id = $id");
+        if ($image[$count] !== '') {
+            $delete = $conn->query("SELECT image FROM furniture WHERE id = $id")->fetch_assoc()['image'];
+            $path = realpath("../images/$delete");
+            unlink($path);
+        }
+
+        $stmt2 = $conn->query("UPDATE furniture SET color = $c, image = '$newName' WHERE id = $id");
         $imgTempName = $_FILES['image']['tmp_name'][$count];
-        if ($imgTempName !== "") move_uploaded_file($imgTempName, '../images/' . $i);
+        if ($imgTempName !== "") move_uploaded_file($imgTempName, '../images/' . $newName);
         $count++;
         
     }
