@@ -38,17 +38,15 @@
     if ($stmt) {
         if ($imgTempName !== "") {
             move_uploaded_file($imgTempName, '../images/' . $newName);
-            $_SESSION['pfp'] = $newName;
         }
-
+        
         echo "<script>
         alert('Profil berjaya dikemas kini');
         window.location = '../main_pages/profile.php?id=$id'
         </script>";
-
-        if ($imageName == '') $imageName = $_SESSION['pfp'];
-
+        
         if ($_SESSION['id'] == $id) {   
+            $_SESSION['pfp'] = $newName;
             $_SESSION['name'] = $name;
             $_SESSION['password'] = $password;
             $_SESSION['email'] = $email;
