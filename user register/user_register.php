@@ -23,7 +23,7 @@
     ?>
 <div class="main">
     
-        <form action="./u_reg.php" method="post" enctype="multipart/form-data" class="vertical">
+        <form action="./u_reg.php?aras=1" method="post" enctype="multipart/form-data" class="vertical">
             <div class="center">Daftar Sebagai Pengguna</div>
             <div class="container">
                 <div class="vertical space-between">
@@ -34,7 +34,7 @@
     
                 </div>
                 <div class="vertical space-between">
-                    <input class="custom input" type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required>
+                    <input class="custom input" type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required autofocus>
                     <div>
                         <input class="custom input" type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
                         <input type="checkbox" name="togglePw" id="toggle">
@@ -48,7 +48,7 @@
                 <button type="submit">Hantar</button>
             </div>
             <div class="space-between">
-                <a href="../company register/company_register.php">Daftar sebagai syarikat</a>
+                <a href="../user register/company_register.php">Daftar sebagai penjual</a>
                 <a href="../sign in/signin.php">Log masuk</a>
             </div>
         </form>

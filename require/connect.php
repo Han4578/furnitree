@@ -25,7 +25,7 @@
         } else echo "<div style='margin: 0 auto;'>Tiada perabot yang bersetuju dengan kriteria yang diberikan</div>";
     }
 
-    function displayFurniture($container, $stmt) {
+    function displayFurniture($container, $stmt, $update) {
         global $conn;
         $query = $conn->query($stmt);
         $no = 1;
@@ -34,14 +34,38 @@
             while ($row = $query->fetch_assoc()) {
                 $id = $row['id'];
                 $name = $row['name'];
-                $color = $row['color'];
+                $color = $row['color'] ?? $row['amount'];
                 $company = $row['company'];
                 $price = $row['price'];
                 $image = $row['image'];
 
-                echo "  <script>
-                            displayFurniture($container, '$name', '$color', '$company', $price, '$image', $no, $id);
-                        </script>";
+                echo "<script>";
+                echo ($update)? "displayFurniture($container, '$name', '$color', '$company', $price, '$image', $no, $id)": "displayChoice($container, '$name', '$color', '$company', $price, '$image', $no, $id)";
+                echo "</script>";
+
+                $no++;
+            }
+        }
+    }
+
+    function displayStatistics($container, $stmt) {
+        global $conn;
+        $query = $conn->query($stmt);
+        $no = 1;
+        
+        if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                $id = $row['id'];
+                $username = $row['username'];
+                $productName = $row['name'];
+                $userID = $row['userID'];
+                $amount = $row['amount'];
+                $price = $row['price'];
+                $image = $row['image'];
+
+                echo "<script>";
+                echo     "displayStatistics($container, '$username', '$productName', $userID, $id, '$image', $amount, $price, $no)";
+                echo "</script>";
 
                 $no++;
             }
@@ -138,4 +162,5 @@
     function checkLogin() {
         return key_exists('isLoggedIn' , $_SESSION);
     }
+
 ?>

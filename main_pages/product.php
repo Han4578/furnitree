@@ -47,7 +47,42 @@
         </div>
     </template>
     <br>
-    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt=""> Balik</div>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
+    <div class="action-bar">
+        <?php if (checkLogin()) {
+            if ($_SESSION['level'] == 3 or $_SESSION['id'] == $row1['companyID']) { ?>
+                <div class="action-button" onclick="edit()">
+                    <img src="../images/edit-pencil.svg" alt="">
+                </div>
+        <?php  
+            } 
+
+            if ($_SESSION['level'] == 1) { 
+                $userID = $_SESSION['id'];
+                $pilihan = $conn->query("SELECT * FROM pilihan WHERE pengguna = $userID AND produk = $productID")->num_rows;
+
+                if ($pilihan == 0) {
+                ?>
+                <div class="counter">
+                    <span class="sub"> - </span>
+                    <span class="number"> 1 </span>
+                    <span class="addition"> + </span>
+                </div>
+                <?php } ?>
+                <div class="action-button <?php 
+
+                    if($pilihan > 0) echo "green";
+                ?>" onclick="<?php echo ($pilihan > 0)? "deleteChosen()" : "choose()" ; ?>;" title="<?php echo ($pilihan > 0)? "Batalkan pilihan": "Tambah pilihan"; ?>">
+                    <img src="../images/choose.png" alt="">
+                </div>
+        <?php  
+            } 
+        }
+        ?>
+            <div class="action-button" onclick="printInfo()">
+                <img src="../images/print.png" alt="" title="Cetak">
+            </div>
+    </div>
     <div class="main split">
         <div class="product-info">
             <div class="space-between">
@@ -104,34 +139,41 @@
             ?>
         </div>
     </div>
-    <div class="space-around max-width">
-        <div></div>
-        <button class="print custom button" onclick="printInfo()">Cetak</button>
-    </div>
-    <?php if (($_SESSION['level'] ?? 1) == 3 or ($_SESSION['id'] ?? 0) == $row1['companyID']) { ?>
-        <div class="edit">
-            <img src="../images/edit-pencil.svg" alt="">
-        </div>
-    <?php } ?>
     <script>
         let alts = document.querySelector('.color-list')
         let img = document.querySelector('.product-image').firstElementChild
-        let edit = document.querySelector('.edit') ?? document.createElement('div')
+        let addition = document.querySelector('.addition') ?? document.createElement('div')
+        let number = document.querySelector('.number') ?? document.createElement('div')
+        let sub = document.querySelector('.sub') ?? document.createElement('div')
+        let counter = 1
 
-        edit.addEventListener('click', () => {
+        function edit() {
             window.location = '../edit/furniture.php?id=' + <?php echo $productID; ?>
-        })
+        }
+
+        function choose() {
+            window.location = '../require/pilihan_insert.php?id=' + <?php echo $productID; ?> + "&num=" + counter
+        }
+
+        function deleteChosen() {
+            window.location = '../require/pilihan_delete.php?id=' + <?php echo $productID; ?>
+        }
 
 
         for (const alt of alts.children) {
             alt.addEventListener('click', () => {
-                img.src = alt.dataset.src
-                for (const a of alts.children) {
-                    a.classList.remove('highlighted')
-                    if (a == alt) a.classList.add('highlighted')
-                }
+                window.location = "./product.php?id=" + alt.id
             })
         }
+
+        addition.addEventListener('click', () => {
+            number.innerText = ++counter
+        })
+
+        sub.addEventListener('click', () => {
+            if (--counter < 1) counter = 1
+            number.innerText = counter
+        })
     </script>
 </body>
 

@@ -19,6 +19,7 @@ let login = document.querySelector('[data-login]') ?? document.createElement('di
 let logout = document.querySelector('[data-logout]') ?? document.createElement('div')
 let signup = document.querySelector('[data-signup]') ?? document.createElement('div')
 let profile = document.querySelector('[data-profile]') ?? document.createElement('div')
+let pilih = document.querySelector('[data-pilih]') ?? document.createElement('div')
 let filterIcon = document.querySelector('.filter') ?? document.createElement('div')
 
 let redirect = {
@@ -30,12 +31,16 @@ let redirect = {
         window.location = '../main_pages/filter.php';
     },
 
+    profile(id) {
+        window.location = '../main_pages/profile.php?id=' + id;
+    },
+
     login() {
         window.location = '../sign in/signin.php';
     },
 
-    profile(id) {
-        window.location = '../main_pages/profile.php?id=' + id;
+    signup() {
+        window.location = '../user register/user_register.php';
     },
 
     furniture() {
@@ -46,12 +51,12 @@ let redirect = {
         window.location = '../manage/user.php';
     },
 
-    brand() {
-        window.location = '../manage/brand.php';
+    pilih() {
+        window.location = "../manage/pilihan.php";
     },
 
-    signup() {
-        window.location = '../user register/user_register.php';
+    brand() {
+        window.location = '../manage/brand.php';
     },
 
     category(id) {
@@ -74,6 +79,7 @@ logo.addEventListener('click', redirect.home)
 furniture.addEventListener('click', redirect.furniture)
 brand.addEventListener('click', redirect.brand)
 dataUser.addEventListener('click', redirect.user)
+pilih.addEventListener('click', redirect.pilih)
 logout.addEventListener('click', logOut)
 window.addEventListener('click', closeUser)
 user.addEventListener('click', openUser)

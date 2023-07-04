@@ -713,7 +713,6 @@ label {
 }
 
 .label-highlight {
-    /* border: 2px solid yellow; */
     background-color: yellow;
 }
 
@@ -724,6 +723,64 @@ label {
     color: orange;
     display: flex;
     align-items: center;
+}
+
+.action-bar {
+    display: flex;
+    position: absolute;
+    height: 8vh;
+    width: auto;
+    right: 3vw;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+}
+
+.action-button {
+    height: 8vh;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: rgb(225, 225, 225);
+    padding: 2vh;
+}
+
+.action-button.green {
+    background-color: rgb(33, 253, 33);
+}
+
+.action-button:hover, .addition:hover, .sub:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.action-button.green:hover {
+    background-color: rgb(18, 187, 18);
+}
+
+.addition, .number, .sub {
+    user-select: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+    background-color: rgb(225, 225, 225);
+    height: 5vh;
+    width: 100%;
+}
+
+.addition {
+    border-radius: 0 10px 10px 0;
+    border-left: solid  1px grey;
+}
+
+.sub {
+    border-radius: 10px 0 0 10px;
+    border-right: solid  1px grey;
+}
+
+.counter {
+    display: flex;
+    width: 100%;
 }
 
 /* --------------------------------------------------------------------------------------------------- */

@@ -5,7 +5,7 @@ function excludeSymbols(e) {
 }
 
 function displayPrice(num) {
-    let split = num.toFixed(2).split('.');
+    let split = parseFloat(num).toFixed(2).split('.');
     
     return parseInt(split[0]).toLocaleString("en-US") + '.' + split[1]
 }
@@ -148,7 +148,7 @@ function displayFurniture(container, name, color, company, price, pfp, no, id) {
         let column = document.createElement('span')
 
         if (i == 2) column.classList.add('email')
-        if (i == 5) column.classList.add('price')
+        if (i == 5) column.classList.add('price-column')
         if (i == 6) {
             let img = document.createElement('img')
             
@@ -158,6 +158,7 @@ function displayFurniture(container, name, color, company, price, pfp, no, id) {
             
         } else column.innerText = data
 
+
         column.classList.add('column')
         row.appendChild(column)
         i++
@@ -166,8 +167,114 @@ function displayFurniture(container, name, color, company, price, pfp, no, id) {
     row.appendChild(actions)
 
     container.appendChild(row)
-    let priceSpan = row.querySelector('.price')
-    priceSpan.innerText = parseFloat(priceSpan.innerText).toFixed(2).toLocaleString("en-US")
+    let priceSpan = row.querySelector('.price-column')
+    priceSpan.innerText = displayPrice(priceSpan.innerText)
+}
+
+function displayChoice(container, name, num, company, price, pfp, no, id) {
+    let row = document.createElement('div')
+    let actions = document.createElement('a')
+    let columns = [no, name, pfp, company, num, price]
+    let i = 1
+
+    actions.href =  "../require/pilihan_delete.php?id="+id
+    actions.innerHTML = "Batalkan"
+    actions.classList.add('column')
+    row.classList.add('row')
+
+    for (const data of columns) {
+        let column = document.createElement('span')
+
+        switch (i) {
+            case 2:
+                let product = document.createElement('a')
+                product.innerText = data
+                product.href = "../main_pages/product.php?id=" + id
+                column.appendChild(product)
+                column.classList.add('email')
+                break;
+            case 3:
+                let img = document.createElement('img')
+                column.innerText = ''
+                column.classList.add('image')
+                img.src = "../images/" + data
+                column.appendChild(img)
+                break;
+            case 6:
+                column.classList.add('price-column')
+                column.innerText = num * price
+                break;
+            default:
+            column.innerText = data
+        }
+
+        column.classList.add('column')
+        row.appendChild(column)
+        i++
+    }
+
+    row.appendChild(actions)
+
+    container.appendChild(row)
+    let priceSpan = row.querySelector('.price-column')
+    priceSpan.innerText = displayPrice(priceSpan.innerText)
+}
+
+function displayStatistics(container, username, productname, userId, productId, productImage, amount, price, no) {
+    let row = document.createElement('div')
+    let actions = document.createElement('a')
+    let columns = [no, username, productname, productImage, amount, price]
+    let i = 1
+
+    actions.href =  "../require/pilihan_delete.php?id="+ productId
+    actions.innerHTML = "Batalkan"
+    actions.classList.add('column')
+    row.classList.add('row')
+
+    for (const data of columns) {
+        let column = document.createElement('span')
+
+        switch (i) {
+            case 2:
+                let user = document.createElement('a')
+                user.innerText = data
+                user.href = "../main_pages/profile.php?id=" + userId
+                column.appendChild(user)
+                column.classList.add('email')
+                break;
+            case 3:
+                let product = document.createElement('a')
+                product.innerText = data
+                product.href = "../main_pages/product.php?id=" + productId
+                column.appendChild(product)
+                column.classList.add('email')
+                break;
+            case 4:
+                let img = document.createElement('img')
+                column.innerText = ''
+                column.classList.add('image')
+                img.src = "../images/" + data
+                column.appendChild(img)
+                break;
+            case 6:
+                column.classList.add('price-column')
+                column.innerText = amount * price
+                break;
+            default:
+                column.innerText = data
+                break;
+        }
+
+        column.classList.add('column')
+        row.appendChild(column)
+        i++
+    }
+
+    row.appendChild(actions)
+
+    container.appendChild(row)
+    let priceSpan = row.querySelector('.price-column')
+    priceSpan.innerText = displayPrice(priceSpan.innerText)
 }
 
 function displaySelections(name, container, value, i, id, selected) {
@@ -197,11 +304,17 @@ function displaySelections(name, container, value, i, id, selected) {
 
 function printInfo() {
     let top = document.getElementsByClassName('top')[0]
+    let actionBar = document.getElementsByClassName('action-bar')[0] ?? document.createElement('div')
+    let back = document.getElementsByClassName('back')[0] ?? document.createElement('div')
     
     top.style.display = 'none'
+    actionBar.style.display = 'none'
+    back.style.display = 'none'
 
     window.addEventListener('afterprint', () => {
         top.style.display = 'flex'
+        actionBar.style.display = 'flex'
+        back.style.display = 'flex'
     })
 
     window.print()

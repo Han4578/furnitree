@@ -41,7 +41,7 @@
                         ?>
                     </select>
                     <select class="custom <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="company" id="company" required>
-                        <option value="" selected disabled hidden>Pilih syarikat...</option>
+                        <option value="" selected disabled hidden>Pilih jenama...</option>
                         <?php
                             displayOptions("SELECT name, id FROM company", "document.getElementById('company')", $_SESSION['id'])
                         ?>

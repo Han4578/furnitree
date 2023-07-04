@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./../register.css">
-    <title>Daftar Sebagai Syarikat</title>
+    <title>Daftar Sebagai Penjual</title>
 </head>
 
 <body>
@@ -22,8 +22,8 @@
     ?>
     
     <div class="main">
-        <form action="./c_reg.php" method="post" enctype="multipart/form-data" class="vertical">
-            <div class="center">Daftar Sebagai Syarikat</div>
+        <form action="./u_reg.php?aras=2" method="post" enctype="multipart/form-data" class="vertical">
+            <div class="center">Daftar Sebagai Penjual</div>
             <div class="container">
                 <div class="vertical space-between">
                     <label for="name">Nama:</label>
@@ -32,7 +32,7 @@
                     <label for="email">E-mel:</label>
                 </div>
                 <div class="vertical space-between">
-                    <input class="custom input" type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required>
+                    <input class="custom input" type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required autofocus>
                     <div>
                         <input class="custom input" type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
                         <input type="checkbox" name="togglePw" id="toggle">

@@ -1,9 +1,9 @@
 <?php
-    $name = $_POST['name'];
-    $password = $_POST['password'];
+    $name = $conn->real_escape_string($_POST['name']);
+    $password = $conn->real_escape_string($_POST['password']);
+    $email = $conn->real_escape_string($_POST['email']);
     $pnumber = $_POST['pnumber'];
-    $email = $_POST['email'];
-    $aras = 'user';
+    $aras = $_GET['aras'];
     $img = 'default-icon.webp';
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -15,12 +15,21 @@
 
     require "../require/connect.php";
 
-    $query = $conn->query("SELECT * FROM pengguna WHERE email = $email");
+    $EmailQuery = $conn->query("SELECT * FROM pengguna WHERE email = '$email'");
 
-    if ($query->num_rows > 0) {
+    if ($EmailQuery->num_rows > 0) {
         echo "<script> 
-                window.location = './user_register.php'
+                histpry.back()
                 alert('E-mel sudah digunakan, sila mengguna e-mel yang lain')
+            </script>";
+    }
+
+    $NameQuery = $conn->query("SELECT * FROM pengguna WHERE name = '$name'");
+
+    if ($NameQuery->num_rows > 0) {
+        echo "<script> 
+                history.back()
+                alert('Nama sudah digunakan, sila mengguna nama yang lain')
             </script>";
     }
 
@@ -34,7 +43,7 @@
                         alert('Pendaftaran berjaya, sila log masuk')
                     </script>";
     } else echo "<script> 
-                        window.location = './user_register.php'
+                        history.back()
                         alert('Pendaftaran gagal, sila cuba sekali')
                     </script>";
     $conn->close();

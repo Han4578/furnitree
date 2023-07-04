@@ -27,11 +27,11 @@
             <div class="center">Log masuk</div>
             <div class="container">
                 <div class="vertical space-between">
-                    <label for="email">E-mel:</label>
+                    <label for="email">Nama/ <br>E-mel:</label>
                     <label for="password">Kata Laluan:</label>
                 </div>
                 <div class="vertical space-between">
-                    <input class="custom input" type="email" name="email" id="email" required>
+                    <input class="custom input" type="text" name="email" id="email" required autofocus>
                     <div>
                         <input class="custom input" type="password" name="password" id="password" required>
                         <input type="checkbox" name="Togglepw" id="toggle">
@@ -44,7 +44,7 @@
                 <button type="submit">Hantar</button>
             </div>
             <div class="space-between">
-                <a href="../company register/company_register.php">Daftar sebagai syarikat</a>
+                <a href="../user register/company_register.php">Daftar sebagai penjual</a>
                 <a href="../user register/user_register.php">Daftar sebagai pengguna</a>
             </div>
         </form>
