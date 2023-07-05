@@ -106,9 +106,11 @@
                 $id = $row['id'];
                 $name = $row['name'];
                 $image = $row['logo'];
+                $account = $row['account'];
+                $accountID = $row['accountID'];
 
                 echo "  <script>
-                            displayBrands($container, '$name', '$image', $no, $id);
+                            displayBrands($container, '$name', '$image', $no, $id, '$account', $accountID);
                         </script>";
 
                 $no++;

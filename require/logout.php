@@ -4,6 +4,6 @@
     $_SESSION = array();
 
    echo "<script>
-           history.back()
+            window.location = '../main_pages/main_page.php';
        </script>";
  ?>

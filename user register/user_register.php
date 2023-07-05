@@ -40,7 +40,7 @@
                         <input type="checkbox" name="togglePw" id="toggle">
                     </div>
                     <input class="custom input" type="tel" name="pnumber" id="pnumber" pattern="[0-9]{10}" minlength="9" placeholder='Tanpa  " - "' title="0123456789" required>
-                    <input class="custom input" type="email" id="email" name="email" title="user@example.com" required />
+                    <input class="custom input" type="email" id="email" name="email" title="user@example.com" required maxlength="40" />
                 </div>
             </div>
             <div class="space-between">

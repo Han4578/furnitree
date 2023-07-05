@@ -28,7 +28,7 @@
                 <div class="vertical space-between">
                     <label for="name">Nama:</label>
                     <label for="password">Kata Laluan:</label>
-                    <label for="pnum">Nombor Telefon:</label>
+                    <label for="pnumber">Nombor Telefon:</label>
                     <label for="email">E-mel:</label>
                 </div>
                 <div class="vertical space-between">
@@ -37,8 +37,8 @@
                         <input class="custom input" type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
                         <input type="checkbox" name="togglePw" id="toggle">
                     </div>
-                    <input class="custom input" type="tel" name="pnum" id="pnum" pattern="[0-9]{10}" minlength="9" placeholder='Tanpa  " - "' title="0123456789" required>
-                    <input class="custom input" type="text" name="email" id="email" title="user@example.com" required>
+                    <input class="custom input" type="tel" name="pnumber" id="pnumber" pattern="[0-9]{10}" minlength="9" placeholder='Tanpa  " - "' title="0123456789" required>
+                    <input class="custom input" type="text" name="email" id="email" title="user@example.com" maxlength="40" required>
                 </div>
             </div>
             <div class="space-between">

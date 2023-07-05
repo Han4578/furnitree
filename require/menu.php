@@ -29,10 +29,10 @@
             if ($_SESSION['level'] > 1) {
             
                 if ($_SESSION['level'] == 2) {
-                    if ($_SESSION['brand'] == '') {
+                    if ($_SESSION['brandID'] == '') {
                         $isLogged .= "<div class='user-button' onclick=\"window.location = '../brand register/brand_register.php'\">Daftar Jenama</div>";
                     } else {
-                        $isLogged .= "<div class='user-button' onclick=\"window.location = '../main_pages/brand.php?id=".$_SESSION['brand']."'\">Jenama</div>";
+                        $isLogged .= "<div class='user-button' onclick=\"window.location = '../main_pages/brand.php?id=".$_SESSION['brandID']."'\">Jenama</div>";
                         $isLogged .= "<div class='user-button' data-furniture> Mengurus Perabot</div>";
                     }
                 }
@@ -83,4 +83,5 @@
         ?>
     </div>
     <div class="menu-button random" data-random>Perabot Rawak<img src="../images/shuffle.png" alt=""></div>
+
 </div>

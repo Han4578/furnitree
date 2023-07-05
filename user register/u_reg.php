@@ -1,4 +1,6 @@
 <?php
+    require "../require/connect.php";
+
     $name = $conn->real_escape_string($_POST['name']);
     $password = $conn->real_escape_string($_POST['password']);
     $email = $conn->real_escape_string($_POST['email']);
@@ -12,8 +14,6 @@
                         alert('Format e-mel tidak betul, sila cuba sekali')
                     </script>";
     }
-
-    require "../require/connect.php";
 
     $EmailQuery = $conn->query("SELECT * FROM pengguna WHERE email = '$email'");
 

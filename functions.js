@@ -100,10 +100,10 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
     container.appendChild(row)
 }
 
-function displayBrands(container, name, pfp, no, id) {
+function displayBrands(container, name, pfp, no, id, seller, sellerID) {
     let row = document.createElement('div')
     let actions = document.createElement('a')
-    let columns = [no, name, pfp]
+    let columns = [no, name, seller, pfp]
     let i = 1
 
     actions.href =  "../edit/brand.php?id="+id
@@ -115,15 +115,29 @@ function displayBrands(container, name, pfp, no, id) {
     for (const data of columns) {
         let column = document.createElement('span')
 
-        if (i == 3) {
-            let img = document.createElement('img')
-            
-            column.classList.add('image')
-            column.classList.add('grow')
-            img.src = "../images/" + data
-            column.appendChild(img)
-            
-        } else column.innerText = data
+        switch (i) {
+            case 2:
+                let brand = document.createElement('a')
+                brand.innerText = data
+                brand.href = "../main_pages/brand.php?id=" + id
+                column.appendChild(brand)
+                break;
+            case 3:
+                let account = document.createElement('a')
+                account.innerText = data
+                account.href = "../main_pages/profile.php?id=" + sellerID
+                column.appendChild(account)
+                break;
+            case 4:
+                let img = document.createElement('img')
+                column.classList.add('image')
+                column.classList.add('grow')
+                img.src = "../images/" + data
+                column.appendChild(img)
+                break;
+            default:
+                column.innerText = data
+        }
 
         column.classList.add('column')
         row.appendChild(column)
@@ -195,7 +209,6 @@ function displayChoice(container, name, num, company, price, pfp, no, id) {
                 break;
             case 3:
                 let img = document.createElement('img')
-                column.innerText = ''
                 column.classList.add('image')
                 img.src = "../images/" + data
                 column.appendChild(img)

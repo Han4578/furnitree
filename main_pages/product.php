@@ -50,7 +50,7 @@
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="action-bar">
         <?php if (checkLogin()) {
-            if ($_SESSION['level'] == 3 or $_SESSION['id'] == $row1['companyID']) { ?>
+            if ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $row1['companyID']) { ?>
                 <div class="action-button" onclick="edit()">
                     <img src="../images/edit-pencil.svg" alt="">
                 </div>

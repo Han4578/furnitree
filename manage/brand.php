@@ -31,6 +31,7 @@
         <div class="columns">
             <span class="column">No.</span>
             <span class="column ">Nama</span>
+            <span class="column ">Penjual</span>
             <span class="column email grow">Imej</span>
             <span class="column">Tindakan</span>
         </div>
@@ -38,8 +39,7 @@
             <hr>
             <?php
             $id = $_SESSION['id'];
-                $query = "SELECT brand.id AS id, brand.name AS name, brand.logo AS logo FROM brand";
-                if ($_SESSION['level'] == 2) $query .= " LEFT JOIN pengguna ON brand.id = pengguna.brand WHERE pengguna.id = $id";
+                $query = "SELECT brand.id AS id, brand.name AS name, brand.logo AS logo, pengguna.name AS account, pengguna.id AS accountID FROM brand LEFT JOIN pengguna ON brand.account = pengguna.id";
                 $query .= " ORDER BY name";
                 displayBrands("document.querySelector('.rows')", $query);
             ?>

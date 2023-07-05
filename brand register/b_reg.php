@@ -1,16 +1,14 @@
 <?php
-
     require "../require/connect.php";
+    session_start();
     
-    $id = $_POST['id'];
     $account = $_POST['account'];
     $name = $conn->real_escape_string($_POST['name']);
     $description = $conn->real_escape_string($_POST['description']);
     $img = $_FILES['image'];
     $imgTempName = $img['tmp_name'];
     $imgName = date('YmdHis');
-    $imgType = (explode('.', $image['name']))[1]
-;
+    $imgType = (explode('.', $img['name']))[1];
 
     $newName = $imgName.'.'.$imgType;
 
@@ -33,7 +31,7 @@
         die;
     }
 
-    $stmt = $conn->prepare("INSERT INTO company(name, logo, description, account) VALUES (?, ?, ?, ?);");
+    $stmt = $conn->prepare("INSERT INTO brand(name, logo, description, account) VALUES (?, ?, ?, ?);");
     $stmt->bind_param('sssi', $name, $newName, $description, $account);
     $result = $stmt->execute();
 
@@ -41,15 +39,16 @@
 
     $id = $conn->query("SELECT id FROM brand WHERE name = '$name'")->fetch_assoc()['id'];
     
-    $_SESSION['brand'] = $id;
+    $_SESSION['brandID'] = $id;
 
     echo "<script> 
         if ($result) {
             window.location = '../main_pages/brand.php?id=$id'
             alert('Pendaftaran berjaya')
-        } else
+        } else {
             alert('Pendaftaran gagal, sila cuba sekali')
             history.back()
+        }
         </script>";
     $conn->close();
     $stmt->close();
