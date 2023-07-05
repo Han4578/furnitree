@@ -43,7 +43,7 @@
                     <select class="custom <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="company" id="company" required>
                         <option value="" selected disabled hidden>Pilih jenama...</option>
                         <?php
-                            displayOptions("SELECT name, id FROM company", "document.getElementById('company')", $_SESSION['id'])
+                            displayOptions("SELECT name, id FROM brand", "document.getElementById('company')", $_SESSION['id'])
                         ?>
                     </select>
                     <input class="custom input" type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>

@@ -14,7 +14,7 @@
 
 
         $brandID = $_GET['id'];
-        $query1 = $conn->query("SELECT * FROM company WHERE id = $brandID");
+        $query1 = $conn->query("SELECT * FROM brand WHERE id = $brandID");
         $row1 = $query1->fetch_assoc()
     ?>
         <div class="delete">

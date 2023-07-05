@@ -7,7 +7,7 @@ $password = $_POST['password'];
 $user = $conn->real_escape_string($email);
 $pass = $conn->real_escape_string($password);
 
-$query = $conn->query("SELECT * FROM pengguna WHERE (email = '$user' OR name = '$user') AND password = '$password';");
+$query = $conn->query("SELECT pengguna.name AS name, aras, pengguna.id AS id, picture, brand.account AS brand FROM pengguna LEFT JOIN brand ON brand.account = pengguna.id WHERE (email = '$user' OR pengguna.name = '$user') AND password = '$password';");
 $row = $query->fetch_assoc();
 
 if ($query->num_rows == 0) {
@@ -18,9 +18,6 @@ if ($query->num_rows == 0) {
 } else {
     $_SESSION['id'] = $row['id'];
     $_SESSION['name'] = $row['name'];
-    $_SESSION['password'] = $password;
-    $_SESSION['email'] = $user;
-    $_SESSION['pnumber'] = $row['nomhp'];
     $_SESSION['level'] = $row['aras'];
     $_SESSION['pfp'] = $row['picture'];
     $_SESSION['brand'] = $row['brand'] ?? '';

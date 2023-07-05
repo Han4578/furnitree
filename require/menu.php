@@ -41,7 +41,7 @@
                     $isLogged .= "<div class='user-button' data-furniture> Mengurus Perabot</div>";
                     $isLogged .= "<div class='user-button' data-user> Mengurus Pengguna</div>";
                     $isLogged .= "<div class='user-button' data-brand> Mengurus Jenama</div>";
-                    $isLogged .= "<div class='user-button' data-pilih> Pilihan Pengguna</div>";
+                    $isLogged .= "<div class='user-button' data-statistic> Pilihan Pengguna</div>";
                 }
                      
             } else $isLogged .= "<div class='user-button' data-pilih>Pilihan Anda</div>";
@@ -73,7 +73,7 @@
     <div class="menu-button" data-brand-menu>Jenama <img src="../images/dropdown-icon.png" alt="" class="transition"></div>
     <div class="menu-list none" data-brand-list>
         <?php
-            $menuQuery2 = $conn->query("SELECT name, logo, id FROM company");
+            $menuQuery2 = $conn->query("SELECT name, logo, id FROM brand");
             
             while ($menuRow2 = $menuQuery2->fetch_assoc()) {
                 ?>

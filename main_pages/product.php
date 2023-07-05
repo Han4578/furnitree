@@ -17,7 +17,7 @@
         }
 
         $productID = $_GET['id'];
-        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, furniture_info.description AS description, furniture.id AS id, company.name AS company, company.id AS companyID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id WHERE furniture.id = $productID  GROUP BY name");
+        $query1 = $conn->query("SELECT furniture_info.name as name, price, image, furniture_info.description AS description, furniture.id AS id, brand.name AS company, brand.id AS companyID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture.id = $productID  GROUP BY name");
         
         if ($query1->num_rows == 0) {
             echo "<script>
@@ -135,7 +135,7 @@
         <br>
         <div class="recommended-list">
             <?php
-                displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, company.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id WHERE furniture_info.name != '$name' GROUP BY name");
+                displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture_info.name != '$name' GROUP BY name");
             ?>
         </div>
     </div>

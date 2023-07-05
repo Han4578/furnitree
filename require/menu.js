@@ -20,6 +20,7 @@ let logout = document.querySelector('[data-logout]') ?? document.createElement('
 let signup = document.querySelector('[data-signup]') ?? document.createElement('div')
 let profile = document.querySelector('[data-profile]') ?? document.createElement('div')
 let pilih = document.querySelector('[data-pilih]') ?? document.createElement('div')
+let statistic = document.querySelector('[data-statistic]') ?? document.createElement('div')
 let filterIcon = document.querySelector('.filter') ?? document.createElement('div')
 
 let redirect = {
@@ -55,6 +56,10 @@ let redirect = {
         window.location = "../manage/pilihan.php";
     },
 
+    statistic() {
+        window.location = "../manage/statistics.php";
+    },
+
     brand() {
         window.location = '../manage/brand.php';
     },
@@ -80,6 +85,7 @@ furniture.addEventListener('click', redirect.furniture)
 brand.addEventListener('click', redirect.brand)
 dataUser.addEventListener('click', redirect.user)
 pilih.addEventListener('click', redirect.pilih)
+statistic.addEventListener('click', redirect.statistic)
 logout.addEventListener('click', logOut)
 window.addEventListener('click', closeUser)
 user.addEventListener('click', openUser)

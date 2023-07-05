@@ -4,7 +4,7 @@
 
     $id = $_GET['id'];
 
-    $stmt = $conn->query("DELETE FROM company WHERE id = '$id'");
+    $stmt = $conn->query("DELETE FROM brand WHERE id = '$id'");
 
     if ($stmt) {
         echo "<script> 

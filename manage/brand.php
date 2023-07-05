@@ -38,8 +38,8 @@
             <hr>
             <?php
             $id = $_SESSION['id'];
-                $query = "SELECT company.id AS id, company.name AS name, company.logo AS logo FROM company";
-                if ($_SESSION['level'] == 2) $query .= " LEFT JOIN pengguna ON company.id = pengguna.brand WHERE pengguna.id = $id";
+                $query = "SELECT brand.id AS id, brand.name AS name, brand.logo AS logo FROM brand";
+                if ($_SESSION['level'] == 2) $query .= " LEFT JOIN pengguna ON brand.id = pengguna.brand WHERE pengguna.id = $id";
                 $query .= " ORDER BY name";
                 displayBrands("document.querySelector('.rows')", $query);
             ?>

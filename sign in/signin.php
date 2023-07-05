@@ -31,10 +31,10 @@
                     <label for="password">Kata Laluan:</label>
                 </div>
                 <div class="vertical space-between">
-                    <input class="custom input" type="text" name="email" id="email" required autofocus>
+                    <input class="custom input" type="text" name="email" id="email" maxlength="30" required autofocus>
                     <div>
-                        <input class="custom input" type="password" name="password" id="password" required>
-                        <input type="checkbox" name="Togglepw" id="toggle">
+                        <input class="custom input" type="password" name="password" maxlength="20" id="password" required>
+                        <!-- <input type="checkbox" name="Togglepw" id="toggle"> -->
                     </div>
                 </div>
             </div>

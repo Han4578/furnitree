@@ -21,7 +21,6 @@
     </template>
     <?php
         require '../require/main_menu.php';
-
     ?>
     <div class="main">
         <?php
@@ -37,7 +36,7 @@
             </div>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, company.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id GROUP BY name");
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id GROUP BY name");
                 ?>
             </div>
         </div>

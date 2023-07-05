@@ -15,7 +15,7 @@
         }
 
         $productID = $_GET['id'];
-        $query1 = $conn->query("SELECT info, furniture_info.name as name, price, image, furniture_info.description, furniture_info.id AS id, company.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id WHERE furniture.id = $productID  GROUP BY name");
+        $query1 = $conn->query("SELECT info, furniture_info.name as name, price, image, furniture_info.description, furniture_info.id AS id, brand.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture.id = $productID  GROUP BY name");
         $row1 = $query1->fetch_assoc()
     ?>
     <br>
@@ -41,7 +41,7 @@
                         
                         <select class="input border <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="brand" id="brand" required>
                             <?php
-                                $brandQuery = $conn->query("SELECT name, id FROM company");
+                                $brandQuery = $conn->query("SELECT name, id FROM brand");
                                 while ($row3 = $brandQuery->fetch_assoc()) {
                                     ?>
                                     <option value="<?php echo $row3['id'] ?>"  <?php if ($row3['name'] == $row1['company']) echo "selected" ?>><?php echo $row3['name'] ?></option>

@@ -49,8 +49,6 @@
             $_SESSION['pfp'] = $newName;
             $_SESSION['name'] = $name;
             $_SESSION['password'] = $password;
-            $_SESSION['email'] = $email;
-            $_SESSION['pnumber'] = $pnumber;
             $_SESSION['level'] = $aras;
         }
     }

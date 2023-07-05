@@ -30,7 +30,7 @@
             </div>
             <div class="results">
                 <?php
-                    $stmt = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture.id AS id, company.name AS company, price, furniture.image, furniture.color AS color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id";
+                    $stmt = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture.id AS id, brand.name AS company, price, furniture.image, furniture.color AS color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id LEFT JOIN category ON furniture_info.category = category.id";
                     displayItems("document.querySelector('.results')", "document.querySelector('template')", $stmt);
                 ?>
             </div>

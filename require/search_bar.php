@@ -1,5 +1,5 @@
 <?php
-    $_SESSION['stmt'] = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, company.name AS company, price, furniture.image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN company ON furniture_info.company = company.id LEFT JOIN category ON furniture_info.category = category.id";
+    $_SESSION['stmt'] = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, brand.name AS company, price, furniture.image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id LEFT JOIN category ON furniture_info.category = category.id";
     $_SESSION['query'] = $_SESSION['query'] ?? '';
     $_SESSION['brand'] = $_SESSION['brand'] ?? '';
     $_SESSION['color'] = $_SESSION['color'] ?? '';
@@ -53,7 +53,7 @@
                     <?php
                         $brand = $_SESSION['brand'];
 
-                        $query = $conn->query("SELECT * FROM company");
+                        $query = $conn->query("SELECT * FROM brand");
                         $i = 1;
                         $checked = str_replace(', ', '', $brand);
                         

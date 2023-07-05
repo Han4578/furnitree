@@ -29,8 +29,8 @@
         <div class="columns">
             <span class="column">No.</span>
             <span class="column email">Nama</span>
+            <span class="column email">Produk</span>
             <span class="column email">Imej</span>
-            <span class="column">Jenama</span>
             <span class="column">Bilangan</span>
             <span class="column price">Jumlah</span>
             <span class="column">Tindakan</span>
@@ -44,7 +44,7 @@
 
                 $query .= " ORDER BY furniture_info.name";
 
-                displayFurniture("document.querySelector('.rows')", $query, false);
+                displayStatistics("document.querySelector('.rows')", $query);
             ?>
         </div>
     </div>

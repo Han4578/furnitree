@@ -19,7 +19,7 @@
     
     
     if ($imgTempName !== "") {
-        $delete = $conn->query("SELECT logo FROM company WHERE id = $brandID")->fetch_assoc()['logo'];
+        $delete = $conn->query("SELECT logo FROM brand WHERE id = $brandID")->fetch_assoc()['logo'];
         $path = realpath("../images/$delete");
         unlink($path);
 

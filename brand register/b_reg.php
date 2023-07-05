@@ -23,7 +23,7 @@
     }
 
 
-    $query = $conn->query("SELECT * FROM company WHERE name = '$name'");
+    $query = $conn->query("SELECT * FROM brand WHERE name = '$name'");
 
     if ($query->num_rows > 0) {
         echo "<script> 
@@ -39,7 +39,7 @@
 
     move_uploaded_file($imgTempName, '../images/' . $newName);
 
-    $id = $conn->query("SELECT id FROM company WHERE name = '$name'")->fetch_assoc()['id'];
+    $id = $conn->query("SELECT id FROM brand WHERE name = '$name'")->fetch_assoc()['id'];
     
     $_SESSION['brand'] = $id;
 
