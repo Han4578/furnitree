@@ -36,11 +36,12 @@
                 $name = $row['name'];
                 $color = $row['color'] ?? $row['amount'];
                 $company = $row['company'];
+                $companyID = $row['companyID'];
                 $price = $row['price'];
                 $image = $row['image'];
 
                 echo "<script>";
-                echo ($update)? "displayFurniture($container, '$name', '$color', '$company', $price, '$image', $no, $id)": "displayChoice($container, '$name', '$color', '$company', $price, '$image', $no, $id)";
+                echo ($update)? "displayFurniture($container, '$name', '$color', '$company', $price, '$image', $no, $id, $companyID)": "displayChoice($container, '$name', '$color', '$company', $price, '$image', $no, $id, $companyID)";
                 echo "</script>";
 
                 $no++;
@@ -130,27 +131,6 @@
                 echo "<script>
                             displayOptions('$name',$container, '$value', $selected);
                         </script>";
-            }
-        }
-    }
-
-    function displaySelections($container, $stmt, $idname, $checked) {
-        global $conn;
-
-        $query = $conn->query($stmt);
-        $i = 1;
-        $checked = str_replace(' ', '', $checked);
-        
-        if ($query->num_rows > 0) {
-            while ($row = $query->fetch_assoc()) {
-                
-                $name = $row['name'];
-                $value = $row['id'];
-                
-                echo "<script>
-                            displaySelections('$name',$container, '$value', $i, '$idname', '$checked');
-                        </script>";
-                $i++;
             }
         }
     }

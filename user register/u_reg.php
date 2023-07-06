@@ -6,7 +6,7 @@
     $email = $conn->real_escape_string($_POST['email']);
     $pnumber = $_POST['pnumber'];
     $aras = $_GET['aras'];
-    $img = 'default-icon.webp';
+    $img = date('YmdHis').'jpg';
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script> 
@@ -32,6 +32,8 @@
                 alert('Nama sudah digunakan, sila mengguna nama yang lain')
             </script>";
     }
+
+    copy("../images/default-icon.jpg", "../images/".$img);
 
     $stmt = $conn->prepare("INSERT INTO pengguna(name, password, aras, nomhp, email, picture) VALUES (?, ?, ?, ?, ?, ?);");
     $stmt->bind_param('sssiss', $name, $password, $aras, $pnumber, $email, $img);

@@ -82,15 +82,26 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
     for (const data of columns) {
         let column = document.createElement('span')
 
-        if (i == 6) column.classList.add('email')
-        if (i == 7) {
-            let img = document.createElement('img')
-            
-            column.classList.add('image')
-            img.src = "../images/" + data
-            column.appendChild(img)
-            
-        } else column.innerText = data
+        switch (i) {
+            case 2:
+                let account = document.createElement('a')
+                account.innerText = data
+                account.href = "../main_pages/profile.php?id=" + id
+                column.appendChild(account)
+                break;
+            case 6:
+                column.classList.add('email')
+                column.innerText = data
+                break;
+            case 7:
+                let img = document.createElement('img')
+                column.classList.add('image')
+                img.src = "../images/" + data
+                column.appendChild(img)
+                break;
+            default:
+                column.innerText = data
+        }
 
         column.classList.add('column')
         row.appendChild(column)
@@ -147,7 +158,7 @@ function displayBrands(container, name, pfp, no, id, seller, sellerID) {
     container.appendChild(row)
 }
 
-function displayFurniture(container, name, color, company, price, pfp, no, id) {
+function displayFurniture(container, name, color, company, price, pfp, no, id, companyID) {
     let row = document.createElement('div')
     let actions = document.createElement('a')
     let columns = [no, name, color, company, price, pfp]
@@ -161,17 +172,33 @@ function displayFurniture(container, name, color, company, price, pfp, no, id) {
     for (const data of columns) {
         let column = document.createElement('span')
 
-        if (i == 2) column.classList.add('email')
-        if (i == 5) column.classList.add('price-column')
-        if (i == 6) {
-            let img = document.createElement('img')
-            
-            column.classList.add('image')
-            img.src = "../images/" + data
-            column.appendChild(img)
-            
-        } else column.innerText = data
-
+        switch (i) {
+            case 2:
+                let product = document.createElement('a')
+                product.innerText = data
+                product.href = "../main_pages/product.php?id=" + id
+                column.appendChild(product)
+                column.classList.add('email')
+                break;
+            case 4:
+                let brand = document.createElement('a')
+                brand.innerText = data
+                brand.href = "../main_pages/brand.php?id=" + companyID
+                column.appendChild(brand)
+                break;
+            case 5:
+                column.classList.add('price-column')
+                column.innerText = data
+                break;
+            case 6:
+                let img = document.createElement('img')
+                column.classList.add('image')
+                img.src = "../images/" + data
+                column.appendChild(img)
+                break;
+            default:
+                column.innerText = data
+        }
 
         column.classList.add('column')
         row.appendChild(column)
@@ -185,7 +212,7 @@ function displayFurniture(container, name, color, company, price, pfp, no, id) {
     priceSpan.innerText = displayPrice(priceSpan.innerText)
 }
 
-function displayChoice(container, name, num, company, price, pfp, no, id) {
+function displayChoice(container, name, num, company, price, pfp, no, id, companyID) {
     let row = document.createElement('div')
     let actions = document.createElement('a')
     let columns = [no, name, pfp, company, num, price]
@@ -212,6 +239,12 @@ function displayChoice(container, name, num, company, price, pfp, no, id) {
                 column.classList.add('image')
                 img.src = "../images/" + data
                 column.appendChild(img)
+                break;
+            case 4:
+                let brand = document.createElement('a')
+                brand.innerText = data
+                brand.href = "../main_pages/brand.php?id=" + companyID
+                column.appendChild(brand)
                 break;
             case 6:
                 column.classList.add('price-column')
@@ -290,31 +323,6 @@ function displayStatistics(container, username, productname, userId, productId, 
     priceSpan.innerText = displayPrice(priceSpan.innerText)
 }
 
-function displaySelections(name, container, value, i, id, selected) {
-    let div = document.createElement('div')
-    let label = document.createElement('label')
-    let input = document.createElement('input')
-    let selectedArray = selected.split(',')
-
-    input.type = 'checkbox'
-    input.value = value
-    input.name = id + '[]'
-    input.id = 'filter-'+ id + i
-    input.classList.add('none');
-    label.classList.add('filter-label')
-    label.classList.add('pointer')
-    label.htmlFor = 'filter-'+ id + i
-    label.innerHTML += " " + name
-
-    
-    div.appendChild(input)
-    div.appendChild(label)
-
-    container.appendChild(div)
-    
-    if (selectedArray.includes(value)) input.checked = !input.checked
-}
-
 function printInfo() {
     let top = document.getElementsByClassName('top')[0]
     let actionBar = document.getElementsByClassName('action-bar')[0] ?? document.createElement('div')
@@ -331,9 +339,7 @@ function printInfo() {
     })
 
     window.print()
-
 }
-
 
 function toggleHighlight(label) {
     label.classList.toggle('label-highlight')
