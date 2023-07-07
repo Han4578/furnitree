@@ -33,7 +33,7 @@
     }
     if (!empty($query)) {
         if ($and) $stmt .= " AND ";
-        $stmt  .= " name LIKE '%$query%'";
+        $stmt  .= " furniture_info.name LIKE '%$query%'";
         $and = true;
     }
 

@@ -24,7 +24,8 @@
 
 <div class="main">
         <div class="list-options">
-            <button onclick="window.location='../furniture register/furniture_register.php'">Tambah Perabot</button>
+            <button onclick="window.location='../import/furniture.php'">Import Produk</button>
+            <button onclick="window.location='../furniture register/furniture_register.php'">Tambah Produk</button>
             <button onclick="printInfo()">Cetak</button>
         </div>
         <div class="columns">

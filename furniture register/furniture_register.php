@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="vertical">
-                <label for="image">Insert image:</label>
+                <label for="image">Gambar:</label>
                 <input type="file" name="image" id="image" accept="image/*" required>
             </div>
             <div class="space-between">

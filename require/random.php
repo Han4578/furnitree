@@ -1,7 +1,7 @@
 <?php
     require "../require/connect.php";
 
-    $query = $conn->query("SELECT id FROM furniture GROUP BY info");
+    $query = $conn->query("SELECT id FROM furniture");
 
     $array = [];
 

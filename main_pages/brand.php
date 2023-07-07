@@ -26,6 +26,13 @@
         </div>
     </template>
     <div class="main">
+    <div class="action-bar">
+        <?php if (checkLogin() and ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $brandID)) { ?>
+            <div class="action-button" onclick="edit()">
+                <img src="../images/edit-pencil.svg" alt="">
+            </div>
+        <?php } ?>
+    </div>
         <div class="company-container">
             <div class="company-logo">
                 <img src="../images/<?php echo $row1['logo'] ?>" alt="">
@@ -34,11 +41,6 @@
                 <div class="company-name">
                     <a href="<?php echo $row1['official'] ?>" target="_blank"><?php echo $row1['official'] ?></a>
                     <span><?php echo $row1['name'] ?></span>
-                    <?php if (checkLogin() and ($_SESSION['level'] == 3 or ($_SESSION['brandID']) == $brandID)) { ?>
-                        <div class="edit">
-                            <img src="../images/edit-pencil.svg" alt="">
-                        </div>
-                    <?php } ?>
                 </div>
                 <hr>
                 <div class="social">                    
@@ -66,7 +68,7 @@
         <br>
         <div class="results">
             <?php 
-                $categories = $conn->query("SELECT category.name AS name, category FROM furniture_info LEFT JOIN category ON furniture_info.category = category.id WHERE furniture_info.company = $brandID");
+                $categories = $conn->query("SELECT category.name AS name, category FROM furniture_info LEFT JOIN category ON furniture_info.category = category.id WHERE furniture_info.company = $brandID ORDER BY category.id");
 
                 while($category = $categories->fetch_assoc()) {
                     $name = $category['name'];
@@ -88,11 +90,9 @@
         </div>
     </div>
     <script>
-        let edit = document.querySelector('.edit') ?? document.createElement('div')
-
-        edit.addEventListener('click', () => {
+        function edit() {
             window.location = '../edit/brand.php?id=' + <?php echo $brandID; ?>
-        })
+        }
     </script>
 </body>
 </html>

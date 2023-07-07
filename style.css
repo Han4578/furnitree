@@ -674,10 +674,11 @@ label {
 
 .color-list {
     margin-top: 5%;
-    height: 6vw;
+    height: 10vw;
     display: flex;
     align-items: center;
     gap: 5%;
+    overflow-x: auto;
 }
 
 .color {

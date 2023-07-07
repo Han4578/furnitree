@@ -8,8 +8,7 @@
 
 
     $imgName =  date('YmdHis');
-    $imgType =  (explode('.', $image['name']))[1]
-;
+    $imgType =  (explode('.', $image['name']))[1];
 
     $imgTempName =  $image['tmp_name'];
 
