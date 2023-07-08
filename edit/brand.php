@@ -17,9 +17,14 @@
         $query1 = $conn->query("SELECT * FROM brand WHERE id = $brandID");
         $row1 = $query1->fetch_assoc()
     ?>
-        <div class="delete">
+
+    <br>
+    <div class="action-bar">
+        <div class="action-button delete">
             <img src="../images/delete.png" alt="">
         </div>
+    </div>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <form class="main" enctype="multipart/form-data" method="post" action="./b_update.php?id=<?php echo $brandID; ?>">
         <input type="file" name="image" id="image" class="none" accept="image/*">
         <div class="company-container">

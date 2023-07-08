@@ -21,7 +21,8 @@
         die;
     }
     ?>
-
+    <br>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form action="./signin_check.php" method="post" enctype="multipart/form-data" class="vertical">
             <div class="center">Log masuk</div>

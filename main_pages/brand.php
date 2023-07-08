@@ -25,14 +25,18 @@
             <div data-price></div>
         </div>
     </template>
+    <title><?php echo $row1['name']; ?></title>
+    <br>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
-    <div class="action-bar">
-        <?php if (checkLogin() and ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $brandID)) { ?>
-            <div class="action-button" onclick="edit()">
-                <img src="../images/edit-pencil.svg" alt="">
-            </div>
-        <?php } ?>
-    </div>
+
+        <div class="action-bar">
+            <?php if (checkLogin() and ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $brandID)) { ?>
+                <div class="action-button" onclick="edit()">
+                    <img src="../images/edit-pencil.svg" alt="">
+                </div>
+            <?php } ?>
+        </div>
         <div class="company-container">
             <div class="company-logo">
                 <img src="../images/<?php echo $row1['logo'] ?>" alt="">

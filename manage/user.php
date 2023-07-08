@@ -22,6 +22,7 @@
     ?>
     <div class="main">
         <div class="list-options">
+            <button onclick="window.location='../import/user.php'">Import Pengguna</button>
             <button onclick="printInfo()">Cetak</button>
         </div>
         <div class="columns">

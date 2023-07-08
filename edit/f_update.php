@@ -44,7 +44,7 @@
     if ($stmt) {
         echo "<script>
         alert('Perabot berjaya dikemas kini.');
-        window.location = '../main_pages/product.php?id=".$productID."';
+        history.go(-2)
         </script>";
     }
 

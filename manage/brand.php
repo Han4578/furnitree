@@ -24,8 +24,8 @@
 
 <div class="main">
         <div class="list-options">
-        <button onclick="window.location='../brand register/brand_register.php'">Tambah Jenama</button>
-
+            <button onclick="window.location='../import/brand.php'">Import Jenama</button>
+            <button onclick="window.location='../brand register/brand_register.php'">Tambah Jenama</button>
             <button onclick="printInfo()">Cetak</button>
         </div>
         <div class="columns">

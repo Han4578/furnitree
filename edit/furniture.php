@@ -15,15 +15,16 @@
         }
 
         $productID = $_GET['id'];
-        $query1 = $conn->query("SELECT info, furniture_info.name as name, price, image, furniture_info.description, furniture_info.id AS id, brand.name AS company FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture.id = $productID  GROUP BY name");
+        $query1 = $conn->query("SELECT info, furniture_info.name as name, price, image, furniture_info.description, furniture_info.id AS id, brand.name AS company, brand.id AS brandID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture.id = $productID  GROUP BY name");
         $row1 = $query1->fetch_assoc()
     ?>
     <br>
-    <div class="space-around">
-        <div></div>
-        <div></div>
-        <button class="hapus" onclick="deleteFurniture()">Hapuskan Perabot</button>
-    </div>
+    <div class="action-bar">
+        <div class="action-button delete" onclick="deleteFurniture()">
+            <img src="../images/delete.png" alt="">
+        </div>
+            </div>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <form action="./f_update.php?info=<?php echo $row1['info']?>&id=<?php echo $productID?>" method="post" enctype="multipart/form-data" onsubmit="checkError()">
         <div class="main card">
             <div class="product-info">
@@ -50,7 +51,7 @@
                             ?>
                         </select>
                         <input class="input" id="price" name="price" value="<?php echo $row1['price'] ?>" required></input>
-                        <textarea name="description" id="description" cols="51" rows="5" maxlength="255"><?php echo $row1['description'] ?></textarea>
+                        <textarea name="description" id="description" cols="51" rows="10" maxlength="1000"><?php echo $row1['description'] ?></textarea>
                     </div>
                 </div>
             </div>
@@ -175,8 +176,8 @@
         }
 
         function deleteFurniture() {
-            window.confirm("Hapuskan perabot ini?")
-            window.location = './f_delete.php?name=' + '<?php echo $row1['name'] ?>'
+            let result = window.confirm("Hapuskan perabot ini?")
+            if (result) window.location = './f_delete.php?name=' + '<?php echo $row1['name'] ?>' + '&brand=' + '<?php echo $row1['brandID'] ?>'
         }
     </script>
 </body>

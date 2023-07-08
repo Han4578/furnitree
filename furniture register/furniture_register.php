@@ -14,7 +14,8 @@
     <?php
     require "../require/register_menu.php";
     ?>
-
+    <br>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical">
             <div class="center">Daftar Perabot</div>

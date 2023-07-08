@@ -492,7 +492,7 @@ label {
     object-fit: cover;
 }
 
-.edit, .delete {
+.edit {
     position: absolute;
     right: 11vw;
     top: 23vh;
@@ -510,8 +510,12 @@ label {
     filter: brightness(0.9);
 }
 
+.delete {
+    transition: all 0.3s;
+}
+
 .delete:hover {
-    background-color: rgb(247, 88, 88);
+    background-color: rgb(247, 88, 88) !important;
 }
 
 .camera {
@@ -718,6 +722,7 @@ label {
 }
 
 .back {
+    position: absolute;
     height: 3vh;
     margin: 0 5%;
     font-size: 20px;
@@ -787,7 +792,7 @@ label {
 /* --------------------------------------------------------------------------------------------------- */
 
 .columns {
-    margin: 2vh 0;
+    margin: 1vh 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -820,10 +825,14 @@ label {
 
 .email {
     width: 20%;
+    padding: 0 1%;
+}
+
+.ellipsis {
     text-overflow: ellipsis;
     overflow: hidden;
     display: inline-block;
-    padding: 0 1%;
+    width: 80%;    
 }
 
 .image {
@@ -1084,8 +1093,8 @@ label {
         align-items: stretch;
     }
 
-    .related-item {
-        /* width: 35vw; */
+    .column {
+        height: 2vh;
     }
 
     .price {
@@ -1094,6 +1103,11 @@ label {
 
     .description {
         font-size: 2vw;
+    }
+
+    .user-button {
+        font-size: 2vw;
+        height: auto;
     }
 
     [data-price],

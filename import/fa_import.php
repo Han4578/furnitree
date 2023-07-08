@@ -7,14 +7,14 @@
     $error = '';
 
     $file = fopen($fileName, 'r');
-
+    
     while ($row = fgetcsv($file)) {
         if ($numRow == 1)  {
             $numRow++;
             continue;
         }
 
-        if (count($row) != 6) {
+        if (count($row) != 7) {
             $error .= "Format fail tidak betul di baris $numRow \\n";
             $numRow++;
             continue;
@@ -22,11 +22,12 @@
         
         $name = $conn->real_escape_string(trim($row[0]));
         $color = trim($row[1]);
-        $category = trim($row[2]);
-        $price = trim($row[3]);
-        $imgName = trim($row[4]);
-        $description = $conn->real_escape_string($row[5]);
-        $brandID = $_SESSION['brandID'];
+        $brand = trim($row[2]);
+        $category = trim($row[3]);
+        $price = trim($row[4]);
+        $imgName = trim($row[5]);
+        $description = $conn->real_escape_string($row[6]);
+
         $img = '';
         $i = 0;
         $imgFound = false;
@@ -39,9 +40,10 @@
             }
             $i++;
         }
-        
+
         if ($imgFound) {
             $colorQuery = $conn->query("SELECT id FROM color WHERE name = '$color'");
+            $brandQuery = $conn->query("SELECT id FROM brand WHERE name = '$brand'");
             $categoryQuery = $conn->query("SELECT id FROM category WHERE name = '$category'");
 
             if($colorQuery->num_rows == 0) {
@@ -49,6 +51,12 @@
                 $numRow++;
                 continue;
             } else $colorID = $colorQuery->fetch_assoc()['id'];
+
+            if($brandQuery->num_rows == 0) {
+                $error .= "Jenama tidak wujud dalam pangkalan data di baris $numRow \\n";
+                $numRow++;
+                continue;
+            } else $brandID = $brandQuery->fetch_assoc()['id'];
 
             if($categoryQuery->num_rows == 0) {
                 $error .= "Warna tidak wujud dalam pangkalan data di baris $numRow \\n";
@@ -77,8 +85,8 @@
                 continue;
             }
             
-            $stmt1 = $conn->query("INSERT INTO furniture_info(name, company, price, category, description) 
-            VALUES ('$name', $brandID, $price, '$categoryID', '$description')");
+            $stmt1 = $conn->query("INSERT INTO furniture_info(name, company, price, category) 
+            VALUES ('$name',$brandID,$price,'$categoryID')");
         
             $info = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brandID")->fetch_assoc();
         
@@ -98,7 +106,7 @@
     if ($error != '') {
         echo "<script>
             alert(\"$error\")
-            history.back()
+            // history.back()
         </script>";
     } else echo "<script>
     alert('Semua produk berjaya dimasukkan');

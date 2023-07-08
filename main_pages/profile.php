@@ -34,7 +34,15 @@
             die;
         }
     ?>
+    <br>
+    <div class="action-bar">
+        <div class="action-button" onclick="edit()">
+            <img src="../images/edit-pencil.svg" alt="">
+        </div>
+    </div>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
+
         <div class="background equal">
             <div class="info">
                 <div class="vertical space-around">
@@ -50,7 +58,7 @@
                     <div><?php echo $row['name'] ?></div>
                     <div><?php echo $row['password'] ?></div>
                     <div><?php echo $row['email'] ?></div>
-                    <div>0<?php echo $row['nomhp'] ?></div>
+                    <div><?php echo (strlen($row['nomhp']) == 9)? '0'.$row['nomhp']: $row['nomhp']; ?></div>
                     <?php
                         $aras = $row['aras'];
                         if ($_SESSION['level'] == 3) echo "<div>$aras</div>";
@@ -60,17 +68,12 @@
             <div class="pfp">
                 <img src="../images/<?php echo $row['picture']; ?>" alt="gambar profil">
             </div>
-            <div class="edit">
-                <img src="../images/edit-pencil.svg" alt="">
-            </div>
         </div>
     </div>
     <script>
-        let edit = document.querySelector('.edit')
-
-        edit.addEventListener('click', () => {
+        function edit() {
             window.location = '../edit/profile.php?id=' + <?php echo $id; ?>
-        })
+        }
     </script>
 </body>
 </html>

@@ -91,7 +91,10 @@ function displayUsers(container, name, password, nomhp, level, email, pfp, no, i
                 break;
             case 6:
                 column.classList.add('email')
-                column.innerText = data
+                let innerBlock = document.createElement('div')
+                innerBlock.classList.add('ellipsis')
+                innerBlock.innerText = data
+                column.appendChild(innerBlock)
                 break;
             case 7:
                 let img = document.createElement('img')
@@ -327,15 +330,19 @@ function printInfo() {
     let top = document.getElementsByClassName('top')[0]
     let actionBar = document.getElementsByClassName('action-bar')[0] ?? document.createElement('div')
     let back = document.getElementsByClassName('back')[0] ?? document.createElement('div')
+    let listOptions = document.getElementsByClassName('list-options')[0] ?? document.createElement('div')
+
     
     top.style.display = 'none'
     actionBar.style.display = 'none'
     back.style.display = 'none'
+    listOptions.style.display = 'none'
 
     window.addEventListener('afterprint', () => {
         top.style.display = 'flex'
         actionBar.style.display = 'flex'
         back.style.display = 'flex'
+        listOptions.style.display = 'flex'
     })
 
     window.print()

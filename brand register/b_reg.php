@@ -30,7 +30,17 @@
             </script>";
         die;
     }
+    
+    $check = $conn->query("SELECT id FROM brand WHERE account = $account");
 
+    if ($check->num_rows > 0) {
+        echo "<script> 
+                alert('Penjual ini sudah memiliki jenama sendiri, sila memilih penjual yang lain')
+                history.back()
+            </script>";
+        die;
+    }
+    
     $stmt = $conn->prepare("INSERT INTO brand(name, logo, description, account) VALUES (?, ?, ?, ?);");
     $stmt->bind_param('sssi', $name, $newName, $description, $account);
     $result = $stmt->execute();

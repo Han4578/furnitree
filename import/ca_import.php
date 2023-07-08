@@ -14,19 +14,16 @@
             continue;
         }
 
-        if (count($row) != 6) {
+        if (count($row) != 4) {
             $error .= "Format fail tidak betul di baris $numRow \\n";
             $numRow++;
             continue;
         }
         
-        $name = $conn->real_escape_string(trim($row[0]));
-        $color = trim($row[1]);
-        $category = trim($row[2]);
-        $price = trim($row[3]);
-        $imgName = trim($row[4]);
-        $description = $conn->real_escape_string($row[5]);
-        $brandID = $_SESSION['brandID'];
+        $name = trim($row[0]);
+        $brand = trim($row[1]);
+        $color = trim($row[2]);
+        $imgName = trim($row[3]);
         $img = '';
         $i = 0;
         $imgFound = false;
@@ -42,20 +39,28 @@
         
         if ($imgFound) {
             $colorQuery = $conn->query("SELECT id FROM color WHERE name = '$color'");
-            $categoryQuery = $conn->query("SELECT id FROM category WHERE name = '$category'");
-
+            $brandQuery = $conn->query("SELECT id FROM brand WHERE name = '$brand'");
+            
+            if($brandQuery->num_rows == 0) {
+                $error .= "Jenama tidak wujud dalam pangkalan data di baris $numRow \\n";
+                $numRow++;
+                continue;
+            } else $brandID = $brandQuery->fetch_assoc()['id'];
+            
             if($colorQuery->num_rows == 0) {
                 $error .= "Warna tidak wujud dalam pangkalan data di baris $numRow \\n";
                 $numRow++;
                 continue;
             } else $colorID = $colorQuery->fetch_assoc()['id'];
-
-            if($categoryQuery->num_rows == 0) {
-                $error .= "Warna tidak wujud dalam pangkalan data di baris $numRow \\n";
+            
+            $produkQuery = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brandID");
+            
+            if($produkQuery->num_rows == 0) {
+                $error .= "Produk $name tidak wujud dalam pangkalan data di baris $numRow \\n";
                 $numRow++;
                 continue;
-            } else $categoryID = $categoryQuery->fetch_assoc()['id'];
-
+            } else $info = $produkQuery->fetch_assoc()['id'];
+            
             $imgName =  date('YmdHis').$numRow;
             $imgType =  (explode('.', $images['name'][$i]))[1];
         
@@ -68,27 +73,11 @@
                 $numRow++;
                 continue;
             }
+
+            $stmt1 = $conn->query("INSERT INTO furniture(color, image, info) 
+            VALUES ($colorID, '$newName', $info)");
         
-            $check = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brandID");
-            
-            if ($check->num_rows > 0) {
-                $error .= "Perabot dengan nama yang sama sudah wujud dalam pengkalan data di baris $numRow \\n";
-                $numRow++;
-                continue;
-            }
-            
-            $stmt1 = $conn->query("INSERT INTO furniture_info(name, company, price, category, description) 
-            VALUES ('$name', $brandID, $price, '$categoryID', '$description')");
-        
-            $info = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brandID")->fetch_assoc();
-        
-            $id = $info['id'];
-        
-            $stmt2 = $conn->query("INSERT INTO furniture(color, image, info) 
-            VALUES ($colorID, '$newName', $id)");
-        
-        
-            if (!(move_uploaded_file($imgTempName, '../images/' . $newName) and $stmt1 and $stmt2)) 
+            if (!(move_uploaded_file($imgTempName, '../images/' . $newName) and $stmt1)) 
             $error .= "Produk tidak berjaya dimasukkan di baris $numRow \\n";
         } else $error .= "Gambar $imgName tidak dapat ditemui di baris $numRow \\n";
 
@@ -101,7 +90,7 @@
             history.back()
         </script>";
     } else echo "<script>
-    alert('Semua produk berjaya dimasukkan');
+    alert('Semua warna berjaya dimasukkan');
     window.location = '../manage/furniture.php';
     </script>";
 ?>

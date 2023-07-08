@@ -13,9 +13,9 @@
     <br>
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
-        <form action="./f_import.php" method="post" enctype="multipart/form-data" class=" vertical">
+        <form action="./fa_import.php" method="post" enctype="multipart/form-data" class=" vertical">
             <div class="vertical space-between max-height">
-                <div class="center">Import Produk Dari Fail CSV</div>
+                <div class="center">Import Produk Dari Fail CSV Sebagai Admin</div>
                 <div class="space-between">
                     <label for="import">Fail:</label>
                     <input type="file" name="import" id="import" accept=".csv" required>
@@ -25,7 +25,7 @@
                     <input type="file" name="images[]" id="images" accept="image/*" required multiple>
                 </div>
                 <p>
-                    Sila mengenal pasti format fail anda ialah "Nama, Warna, Kategori, Harga, Nama Gambar, Deskripsi"<br>
+                    Sila mengenal pasti format fail anda ialah "Nama, Warna, Jenama, Kategori, Harga, Nama Gambar, Deskripsi"<br>
                     Setiap nama gambar mesti sepadan dengan gambar yang dimasukkan. <br>
                     Baris pertama tidak akan dimasukkan.
                 </p>

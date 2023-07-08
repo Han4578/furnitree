@@ -15,9 +15,8 @@
         $image = date('YmdHis');
         $imgType = explode('.', $_FILES['image']['name'])[1];
         $newName = $image.'.'.$imgType;
-    
-        $imgTempName = $_FILES['image']['tmp_name'];
     }
+    $imgTempName = $_FILES['image']['tmp_name'];
     
     
     if ($_FILES['image']['error'] !== 4) {

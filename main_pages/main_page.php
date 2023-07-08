@@ -31,12 +31,12 @@
         </div>
         <div class="section">
             <div class="space-between">
-                <span>Yang direkemen</span>
+                <span>Tambahan terkini</span>
                 <a class="pointer" onclick="redirect.filter()">lihat semua →</a>
             </div>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id GROUP BY name");
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id GROUP BY name LIMIT 10");
                 ?>
             </div>
         </div>

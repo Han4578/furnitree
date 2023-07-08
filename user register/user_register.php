@@ -21,8 +21,9 @@
         die;
     }
     ?>
-<div class="main">
-    
+    <br>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
+    <div class="main">
         <form action="./u_reg.php?aras=1" method="post" enctype="multipart/form-data" class="vertical">
             <div class="center">Daftar Sebagai Pengguna</div>
             <div class="container">
@@ -52,7 +53,7 @@
                 <a href="../sign in/signin.php">Log masuk</a>
             </div>
         </form>
-</div>
+    </div>
 </body>
 <script>
     let togglepw = document.querySelector('#toggle')

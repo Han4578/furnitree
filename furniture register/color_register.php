@@ -10,16 +10,18 @@
     <?php
         include "../require/register_menu.php";
         $id = $_GET['id']
-    ?>
-
+    ?>  
+    <br>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form action="./c_reg.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data" class=" vertical">
+            <div class="center">Tambah Warna</div>
             <div class="container">
-                <div class="vertical space-between">
+                <div class="vertical space-around">
                     <label for="color">Warna: </label>  
                     <label for="img">Gambar: </label>
                 </div>
-                <div class="vertical space-between">
+                <div class="vertical space-around">
                     <select class="custom" name="color" id="color" required>
                         <option value="" selected disabled hidden>Pilih warna...</option>
                         <?php

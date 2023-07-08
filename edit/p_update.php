@@ -11,9 +11,12 @@
     $aras = $_POST['aras'] ?? $_SESSION['level'];
     
     $imgTempName = $image['tmp_name'];
-    $imageType = (explode('.', $image['name']))[1];
-    $imageName = date('YmdHis');
-    $newName = $imageName.'.'.$imageType;
+    
+    if ($image['error'] !== 4) {
+        $imageType = (explode('.', $image['name']))[1];
+        $imageName = date('YmdHis');
+        $newName = $imageName.'.'.$imageType;
+    }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script> 
@@ -42,7 +45,7 @@
         
         echo "<script>
         alert('Profil berjaya dikemas kini');
-        window.location = '../main_pages/profile.php?id=$id'
+        history.go(-2)
         </script>";
         
         if ($_SESSION['id'] == $id) {   

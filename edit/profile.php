@@ -35,6 +35,13 @@
     <title>Kemas Kini Profil</title>
 </head>
 <body>
+    <br>
+    <div class="action-bar">
+        <div class="action-button delete">
+            <img src="../images/delete.png" alt="">
+        </div>
+    </div>
+    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form class="background" action="./p_update.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data">
             <div class="equal">
@@ -81,9 +88,6 @@
                 <button class="custom button" data-profile2 type="button">Batalkan</button>
                 <button class="custom button yes" type="submit">Kemas kini</button>
             </div>
-            <div class="delete">
-                <img src="../images/delete.png" alt="">
-            </div>
         </form>
     </div>
     <script>
@@ -105,7 +109,7 @@
         })
 
         p.addEventListener('click', () => {
-            redirect.profile(<?php echo $row['id']; ?>)
+            history.back()
         })
     </script>
 </body>

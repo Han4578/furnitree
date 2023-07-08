@@ -95,7 +95,7 @@
             <div class="description">
                 Diskripsi: <br>
                 <?php 
-                    echo ($row1['description'] !== "")? $row1['description'] : "Tiada deskripsi";
+                    echo (!empty($row1['description']))? $row1['description'] : "Tiada deskripsi";
                 ?>
             </div>
             <div class="color-list">
