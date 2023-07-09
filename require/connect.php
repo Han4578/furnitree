@@ -145,4 +145,13 @@
         return key_exists('isLoggedIn' , $_SESSION);
     }
 
+    function accessDenied() {
+        echo "
+        <script>
+            alert('Anda tidak dibenarkan mengakses maklumat ini')
+            history.back()
+        </script>";
+        die;
+    }
+
 ?>

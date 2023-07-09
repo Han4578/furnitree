@@ -38,7 +38,7 @@
     }
 
     if ($and) $stmt .= " AND ";
-    $stmt  .= "price BETWEEN $from AND $to";
+    $stmt  .= "price BETWEEN $from AND $to GROUP BY furniture_info.name";
     
     $_SESSION['stmt'] = $stmt;
     $_SESSION['query'] = $query;

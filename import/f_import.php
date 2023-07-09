@@ -1,5 +1,6 @@
 <?php
     require "../require/connect.php";
+    session_start();
 
     $fileName = $_FILES['import']["tmp_name"];
     $images = $_FILES['images'];

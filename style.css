@@ -375,7 +375,7 @@ label {
 }
 
 .result-item {
-    width: 24.5%;
+    width: 23%;
     /* height: 40vh; */
     aspect-ratio: 1;
 }
@@ -743,11 +743,12 @@ label {
 }
 
 .action-button {
-    height: 8vh;
+    height: 4vw;
+    width: 4vw;
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: rgb(225, 225, 225);
-    padding: 2vh;
+    padding: 1vw;
 }
 
 .action-button.green {
@@ -956,7 +957,7 @@ label {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 5%;
+    gap: 2vw;
     margin: 5% 0;
 }
 
@@ -1125,4 +1126,3 @@ label {
         font-size: 1.3vw;
     }
 }
-    

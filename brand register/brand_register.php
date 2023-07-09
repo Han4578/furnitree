@@ -8,7 +8,11 @@
 </head>
 <body>
     <?php
-    require "../require/register_menu.php";
+        require "../require/register_menu.php";
+    
+        if (!checkLogin() or $_SESSION['level'] == 1 or ($_SESSION['brandID'] != '' and $_SESSION['level'] == 2)) {
+            echo "<script>history.back()</script>";
+        }
     ?>
     <br>
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>

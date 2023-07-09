@@ -9,6 +9,8 @@
 <body>
     <?php
         include "../require/register_menu.php";
+
+        if (!checkLogin() or $_SESSION['level'] < 3) accessDenied();
     ?>
     <br>
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>

@@ -91,7 +91,7 @@
             // history.back()
         </script>";
     } else echo "<script>
-    alert('Semua produk berjaya dimasukkan');
+    alert('Semua jenama berjaya dimasukkan');
     window.location = '../manage/brand.php';
     </script>";
 ?>

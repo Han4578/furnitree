@@ -23,16 +23,10 @@
             alert('Profil ini tidak wujud')
                     history.back()
                 </script>";
-            }
-
-        if (!checkLogin() or ($id !== $_SESSION['id'] and $_SESSION['level'] != '3')) {
-            echo "
-            <script>
-            alert('Anda tidak dibenarkan mengakses maklumat ini')
-            history.back()
-            </script>";
             die;
         }
+
+        if (!checkLogin() or ($id !== $_SESSION['id'] and $_SESSION['level'] != '3')) accessDenied();
     ?>
     <br>
     <div class="action-bar">

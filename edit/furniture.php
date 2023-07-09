@@ -11,12 +11,27 @@
         require "../require/register_menu.php";
 
         if (!key_exists('id', $_GET)) {
-            die("Produk ini tidak wujud");
+            echo "<script>
+                    alert('Produk ini tidak wujud')
+                    history.back()
+                </script>";
+            die;
         }
 
         $productID = $_GET['id'];
         $query1 = $conn->query("SELECT info, furniture_info.name as name, price, image, furniture_info.description, furniture_info.id AS id, brand.name AS company, brand.id AS brandID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture.id = $productID  GROUP BY name");
-        $row1 = $query1->fetch_assoc()
+        
+        if ($query1->num_rows == 0) {
+            echo "<script>
+                    alert('Produk ini tidak wujud')
+                    history.back()
+                </script>";
+            die();
+        }      
+        $row1 = $query1->fetch_assoc();
+
+        if (!checkLogin() or ($_SESSION['brandID'] != $row1['brandID'] and $_SESSION['level'] < 3)) accessDenied();
+
     ?>
     <br>
     <div class="action-bar">

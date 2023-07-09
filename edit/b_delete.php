@@ -19,9 +19,11 @@
 
     $stmt = $conn->query("DELETE FROM brand WHERE id = '$id'");
 
+    $_SESSION['brandID'] = '';
+
     if ($stmt) {
         echo "<script> 
-            alert('Jenama sudah dipadamkan')
+            alert('Jenama berjaya dipadamkan')
             window.location = '../manage/brand.php'
         </script>";
 

@@ -11,14 +11,7 @@
     <?php
         require '../require/main_menu.php';
         
-        if (!checkLogin()) {
-            echo "
-            <script>
-                alert('Anda tidak dibenarkan mengakses maklumat ini')
-                history.back()
-            </script>";
-            die;
-        }
+        if (!checkLogin() or $_SESSION['level'] == 2) accessDenied();
     ?>
 
 

@@ -8,14 +8,21 @@
     <?php
         require "../require/main_menu.php";
 
-        if (!key_exists('id', $_GET)) {
-            die("Jenama ini tidak wujud");
+        if (key_exists('id', $_GET)) {
+            $exists = true;
+            $brandID = $_GET['id'];
+            $query = $conn->query("SELECT * FROM brand WHERE id = $brandID");
+            ($query->num_rows > 0)? $row1 = $query->fetch_assoc(): $exists = false; 
+        } 
+
+        if (!key_exists('id', $_GET) or !$exists){
+            echo "<script>
+            alert('Jenama ini tidak wujud')
+                    history.back()
+                </script>";
+            die;
         }
 
-
-        $brandID = $_GET['id'];
-        $query1 = $conn->query("SELECT * FROM brand WHERE id = $brandID");
-        $row1 = $query1->fetch_assoc()
     ?>
     <template>    
         <div class="result-item">
@@ -72,7 +79,7 @@
         <br>
         <div class="results">
             <?php 
-                $categories = $conn->query("SELECT category.name AS name, category FROM furniture_info LEFT JOIN category ON furniture_info.category = category.id WHERE furniture_info.company = $brandID ORDER BY category.id");
+                $categories = $conn->query("SELECT category.name AS name, category FROM furniture_info LEFT JOIN category ON furniture_info.category = category.id WHERE furniture_info.company = $brandID GROUP BY category.id ORDER BY category.id");
 
                 while($category = $categories->fetch_assoc()) {
                     $name = $category['name'];
@@ -89,7 +96,6 @@
             <?php
                     displayItems("document.querySelector('.".str_replace(' ', '', $name)."')", "document.querySelector('template')", "SELECT furniture_info.name as name, furniture.id AS id, brand.name AS company, price, furniture.image, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id LEFT JOIN category ON furniture_info.category = category.id WHERE category = $cat and furniture_info.company = $brandID"); 
                 }
-
             ?>
         </div>
     </div>

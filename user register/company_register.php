@@ -13,7 +13,7 @@
     <?php
     require "../require/register_menu.php";
 
-    if (key_exists('isLoggedIn', $_SESSION)) {
+    if (checkLogin()) {
         echo "<script>
                 history.back()
             </script>";
@@ -21,7 +21,6 @@
     }
     ?>
     <br>
-    <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form action="./u_reg.php?aras=2" method="post" enctype="multipart/form-data" class="vertical">
             <div class="center">Daftar Sebagai Penjual</div>

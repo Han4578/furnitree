@@ -32,7 +32,7 @@
         <div class="section">
             <div class="space-between">
                 <span>Tambahan terkini</span>
-                <a class="pointer" onclick="redirect.filter()">lihat semua →</a>
+                <a class="pointer" href="./filter.php">lihat semua →</a>
             </div>
             <div class="recommended-list">
                 <?php

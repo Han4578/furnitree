@@ -1,5 +1,4 @@
 <?php
-    $_SESSION['stmt'] = $_SESSION['stmt'] ?? "SELECT furniture_info.name as name, furniture_info.id AS id, brand.name AS company, price, furniture.image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id LEFT JOIN category ON furniture_info.category = category.id";
     $_SESSION['query'] = $_SESSION['query'] ?? '';
     $_SESSION['brand'] = $_SESSION['brand'] ?? '';
     $_SESSION['color'] = $_SESSION['color'] ?? '';
@@ -184,5 +183,4 @@
         searchContainer.classList.add('down')
         filterMenu.classList.add('index')
     }
-
 </script>

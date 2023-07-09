@@ -8,14 +8,22 @@
     <?php
         require "../require/main_menu.php";
 
-        if (!key_exists('id', $_GET)) {
-            die("Jenama ini tidak wujud");
+        if (key_exists('id', $_GET)) {
+            $exists = true;
+            $brandID = $_GET['id'];
+            $query1 = $conn->query("SELECT * FROM brand WHERE id = $brandID");
+            ($query1->num_rows > 0)? $row1 = $query1->fetch_assoc(): $exists = false; 
+        } 
+
+        if (!key_exists('id', $_GET) or !$exists){
+            echo "<script>
+            alert('Jenama ini tidak wujud')
+                    history.back()
+                </script>";
+            die;
         }
 
-
-        $brandID = $_GET['id'];
-        $query1 = $conn->query("SELECT * FROM brand WHERE id = $brandID");
-        $row1 = $query1->fetch_assoc()
+        if (!checkLogin() or ($_SESSION['brandID'] != $brandID and $_SESSION['level'] < 3)) accessDenied();
     ?>
 
     <br>
