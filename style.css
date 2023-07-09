@@ -134,7 +134,7 @@ label {
 }
 
 .open#menu-list {
-    transform: translateX(600px);
+    transform: translateX(300px);
 }
 
 .open.darken {
@@ -236,7 +236,6 @@ label {
     position: absolute;
     transform: translateY(-38vh);
     transition: transform 1s;
-
 }
 
 #filter-menu.down {
@@ -987,7 +986,7 @@ label {
 #menu-list {
     position: fixed;
     top: 0;
-    left: -600px;
+    left: -300px;
     height: 100%;
     width: 300px;
     display: flex;
@@ -999,7 +998,6 @@ label {
     -ms-overflow-style: none;
     user-select: none;
     z-index: 3;
-
 }
 
 #menu-list::-webkit-scrollbar {
@@ -1111,18 +1109,111 @@ label {
         height: auto;
     }
 
+    .recommended-list {
+        flex: 0 0 50vw;
+        gap: 5vw;
+    }
+
+    .results {
+        gap: 2vh;
+    }
+
+    .result-item {
+        width: auto;
+    }
+
+    .sort-button {
+        width: 15%;
+        height: 50%;
+        font-size: 10px;
+    }
+    
+    .sort-bar {
+        font-size: 10px;
+    }
+
+    .action-button {
+        padding: 10px;
+        width: 5vh;
+        height: 5vh;
+    }
+
+    .action-bar {
+        right: 2vw;
+        top: 9vh;
+        flex-direction: row;
+    }
+
+    .name {
+        font-size:5vw;
+    }
+
+    .brand {
+        font-size: 2.5vw;
+    }
+
+    .description {
+        font-size: 3vw;
+        margin-top: 1vh;
+    }
+
+    .color-img {
+        height: 8vh;
+    }
+
+    .color-list {
+        height: 10vh;
+    }
+
+    .split {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 5vh;
+    }
+
+    .product-image {
+        height: 20vh;
+        border-radius: 0;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .product-container {
+        width: 100%;
+
+    }
+
+    .filter-label {
+        height: 8vh;
+        width: 100%;
+        font-size: 0px;
+    }
+
+    #filter-menu {
+        font-size: 1px;
+    }
+
+    #menu-list {
+        width: 100%;
+        left: -100%;
+    }
+
+    #menu-list.open {
+        transform: translateX(100%);
+    }
+
     [data-price],
     [data-name],
     [data-brand] {
-        font-size: 2vw;
+        font-size: 3vw;
     }
 
     [data-brand] {
-        font-size: 1.4vw;
+        font-size: 2.8vw;
         color: gray;
     }
 
     [data-price] {
-        font-size: 1.3vw;
+        font-size: 3.1vw;
     }
 }

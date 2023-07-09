@@ -40,7 +40,7 @@
                 if ($_SESSION['level'] == 3) {
                     $isLogged .= "<div class='user-button' data-furniture> Mengurus Perabot</div>";
                     $isLogged .= "<div class='user-button' data-user> Mengurus Pengguna</div>";
-                    $isLogged .= "<div class='user-button' data-brand> Mengurus Jenama</div>";
+                    $isLogged .= "<div class='user-button' data-brandM> Mengurus Jenama</div>";
                     $isLogged .= "<div class='user-button' data-statistic> Pilihan Pengguna</div>";
                 }
                      

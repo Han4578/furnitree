@@ -13,7 +13,7 @@ let brandItems = document.querySelectorAll('[data-brand-item]')
 let logo = document.querySelector('[data-logo]')
 let random = document.querySelector('[data-random]')
 let furniture = document.querySelector('[data-furniture]') ?? document.createElement('div')
-let brand = document.querySelector('[data-brand]') ?? document.createElement('div')
+let brand = document.querySelector('[data-brandM]') ?? document.createElement('div')
 let dataUser = document.querySelector('[data-user]') ?? document.createElement('div')
 let login = document.querySelector('[data-login]') ?? document.createElement('div')
 let logout = document.querySelector('[data-logout]') ?? document.createElement('div')
@@ -116,7 +116,7 @@ function openMenu() {
 function closeMenu(e) {
     menuList.classList.remove('open')
     darken.classList.remove('open')
-    e.stopPropagation()
+    event.stopPropagation()
     body.style.overflow = 'auto'
     body.style.marginRight = 0
 }
