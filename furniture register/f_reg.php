@@ -2,7 +2,7 @@
     $name = $_POST['name'];
     $category = $_POST['category'];
     $color = $_POST['color'];
-    $company = $_POST['company'];
+    $brand = $_POST['brand'];
     $price = $_POST['price'];
     $image = $_FILES['image'];
 
@@ -18,14 +18,14 @@
 
     if (!exif_imagetype($imgTempName)) die('Fail yang dimuat naik bukan imej');
 
-    $check = $conn->query("SELECT * FROM furniture_info WHERE name = '$name' AND company = $company");
+    $check = $conn->query("SELECT * FROM furniture_info WHERE name = '$name' AND brand = $brand");
     
     if ($check->num_rows > 0) die ("Perabot dengan nama yang sama sudah wujud");
     
-    $stmt1 = $conn->query("INSERT INTO furniture_info(name, company, price, category) 
-    VALUES ('$name','$company',$price,'$category')");
+    $stmt1 = $conn->query("INSERT INTO furniture_info(name, brand, price, category) 
+    VALUES ('$name','$brand',$price,'$category')");
 
-    $info = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $company")->fetch_assoc();
+    $info = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND brand = $brand")->fetch_assoc();
 
     $id = $info['id'];
 

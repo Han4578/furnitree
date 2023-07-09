@@ -13,7 +13,7 @@
 ;
     $count = 0;
     
-    $query = "UPDATE furniture_info SET name = '$name', company = $brand, price = $price, description = '$description' WHERE id = $info";
+    $query = "UPDATE furniture_info SET name = '$name', brand = $brand, price = $price, description = '$description' WHERE id = $info";
 
     $stmt = $conn->query($query);
 

@@ -651,7 +651,7 @@ label {
     font-size: 1.7vw;
 }
 
-.company {
+.brand {
     color: gray;
     font-size: 1.2vw;
 }
@@ -892,7 +892,7 @@ label {
 
 /* --------------------------------------------------------------------------------------------------- */
 
-.company-container {
+.brand-container {
     display: flex;
     width: 60%;
     height: 14.4vw;
@@ -900,7 +900,7 @@ label {
     align-items: center;
 }
 
-.company-info {
+.brand-info {
     width: 70%;
     height: 100%;
     display: flex;
@@ -909,19 +909,19 @@ label {
     align-items: end;
 }
 
-.company-logo {
+.brand-logo {
     display: flex;
     aspect-ratio: 1;
     width: 30%;
     border: 2px solid black;
 }
 
-.company-logo > img {
+.brand-logo > img {
     object-fit: contain;
     width: 100%;
 }
 
-.company-name {
+.brand-name {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -932,7 +932,7 @@ label {
     font-size: 18px;
 }
 
-.company-name > span {
+.brand-name > span {
     font-size: 3vw;
 }
 
@@ -961,13 +961,13 @@ label {
     margin: 5% 0;
 }
 
-.company-description {
+.brand-description {
     font-size: 20px;
     text-align: center;
     white-space: pre-line;
 }
 
-.camera.company {
+.camera.brand {
     width: 14vw;
     height: auto;
     position: absolute;
@@ -1046,14 +1046,14 @@ label {
 
 [data-price],
 [data-name],
-[data-company] {
+[data-brand] {
     padding: 2%;
     font-size: 1.2vw;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-[data-company] {
+[data-brand] {
     font-size: 1.1vw;
     color: gray;
 }
@@ -1113,11 +1113,11 @@ label {
 
     [data-price],
     [data-name],
-    [data-company] {
+    [data-brand] {
         font-size: 2vw;
     }
 
-    [data-company] {
+    [data-brand] {
         font-size: 1.4vw;
         color: gray;
     }

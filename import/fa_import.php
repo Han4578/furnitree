@@ -77,7 +77,7 @@
                 continue;
             }
         
-            $check = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brandID");
+            $check = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND brand = $brandID");
             
             if ($check->num_rows > 0) {
                 $error .= "Perabot dengan nama yang sama sudah wujud dalam pengkalan data di baris $numRow \\n";
@@ -85,10 +85,10 @@
                 continue;
             }
             
-            $stmt1 = $conn->query("INSERT INTO furniture_info(name, company, price, category) 
+            $stmt1 = $conn->query("INSERT INTO furniture_info(name, brand, price, category) 
             VALUES ('$name',$brandID,$price,'$categoryID')");
         
-            $info = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brandID")->fetch_assoc();
+            $info = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND brand = $brandID")->fetch_assoc();
         
             $id = $info['id'];
         

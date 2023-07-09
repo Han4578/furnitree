@@ -4,7 +4,7 @@
     $name = $_GET['name'];
     $brand = $_GET['brand'];
 
-    $id = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brand")->fetch_assoc()['id'];
+    $id = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND brand = $brand")->fetch_assoc()['id'];
 
     $query2 = $conn->query("SELECT image FROM furniture WHERE info = $id");
 

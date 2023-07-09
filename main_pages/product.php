@@ -18,7 +18,7 @@
             }
 
             $productID = $_GET['id'];
-            $query1 = $conn->query("SELECT furniture_info.name as name, price, image, furniture_info.description AS description, furniture.id AS id, brand.name AS company, brand.id AS companyID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture.id = $productID  GROUP BY name");
+            $query1 = $conn->query("SELECT furniture_info.name as name, price, image, furniture_info.description AS description, furniture.id AS id, brand.name AS brand, brand.id AS brandID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id WHERE furniture.id = $productID  GROUP BY name");
             
             if ($query1->num_rows == 0) {
                 echo "<script>
@@ -29,7 +29,7 @@
             }       
 
             $row1 = $query1->fetch_assoc();
-            $companyID = $row1['companyID'];
+            $brandID = $row1['brandID'];
         ?>
         <title><?php echo $row1['name']; ?></title>
         <template id="temp1">
@@ -43,7 +43,7 @@
                     <img src="" alt="" data-image>
                 </div>
                 <div data-name></div>
-                <div data-company></div>
+                <div data-brand></div>
                 <div data-price></div>
             </div>
         </template>
@@ -51,7 +51,7 @@
         <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
         <div class="action-bar">
             <?php if (checkLogin()) {
-                if ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $row1['companyID']) { ?>
+                if ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $row1['brandID']) { ?>
                     <div class="action-button" onclick="edit()">
                         <img src="../images/edit-pencil.svg" alt="">
                     </div>
@@ -89,7 +89,7 @@
                 <div class="space-between">
                     <div>
                         <div class="name"><?php echo $row1['name']; ?></div>
-                        <div class="company">Dari <a href="./brand.php?id=<?php echo $companyID; ?>" class="company"><?php echo $row1['company']; ?></a></div>
+                        <div class="brand">Dari <a href="./brand.php?id=<?php echo $brandID; ?>" class="brand"><?php echo $row1['brand']; ?></a></div>
                     </div>
                     <div class="price"><?php displayPrice($row1['price'], "document.querySelector('.price')"); ?></div>
                 </div>
@@ -136,7 +136,7 @@
             <br>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture_info.name != '$name' GROUP BY name");
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS brand, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id WHERE furniture_info.name != '$name' GROUP BY name");
                 ?>
             </div>
         </div>

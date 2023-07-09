@@ -39,7 +39,7 @@
         }
         
         if ($imgFound) {
-            $produkQuery = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brandID");
+            $produkQuery = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND brand = $brandID");
             $colorQuery = $conn->query("SELECT id FROM color WHERE name = '$color'");
 
             if($produkQuery->num_rows == 0) {

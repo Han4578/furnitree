@@ -19,7 +19,7 @@
         }
 
         $productID = $_GET['id'];
-        $query1 = $conn->query("SELECT info, furniture_info.name as name, price, image, furniture_info.description, furniture_info.id AS id, brand.name AS company, brand.id AS brandID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id WHERE furniture.id = $productID  GROUP BY name");
+        $query1 = $conn->query("SELECT info, furniture_info.name as name, price, image, furniture_info.description, furniture_info.id AS id, brand.name AS brand, brand.id AS brandID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id WHERE furniture.id = $productID  GROUP BY name");
         
         if ($query1->num_rows == 0) {
             echo "<script>
@@ -60,7 +60,7 @@
                                 $brandQuery = $conn->query("SELECT name, id FROM brand");
                                 while ($row3 = $brandQuery->fetch_assoc()) {
                                     ?>
-                                    <option value="<?php echo $row3['id'] ?>"  <?php if ($row3['name'] == $row1['company']) echo "selected" ?>><?php echo $row3['name'] ?></option>
+                                    <option value="<?php echo $row3['id'] ?>"  <?php if ($row3['name'] == $row1['brand']) echo "selected" ?>><?php echo $row3['name'] ?></option>
                                     <?php
                                 }
                             ?>

@@ -15,11 +15,11 @@
                 $name = $row['name'];
                 $image = $row['image'];
                 $price = $row['price'];
-                $company = $row['company'];
+                $brand = $row['brand'];
                 $color = $row['color'];
 
                 echo "  <script>
-                                displayItems($container, '$name', '$image', $price, '$company', $template, $id, $color);
+                                displayItems($container, '$name', '$image', $price, '$brand', $template, $id, $color);
                             </script>";
             }
         } else echo "<div style='margin: 0 auto;'>Tiada perabot yang bersetuju dengan kriteria yang diberikan</div>";
@@ -35,13 +35,13 @@
                 $id = $row['id'];
                 $name = $row['name'];
                 $color = $row['color'] ?? $row['amount'];
-                $company = $row['company'];
-                $companyID = $row['companyID'];
+                $brand = $row['brand'];
+                $brandID = $row['brandID'];
                 $price = $row['price'];
                 $image = $row['image'];
 
                 echo "<script>";
-                echo ($update)? "displayFurniture($container, '$name', '$color', '$company', $price, '$image', $no, $id, $companyID)": "displayChoice($container, '$name', '$color', '$company', $price, '$image', $no, $id, $companyID)";
+                echo ($update)? "displayFurniture($container, '$name', '$color', '$brand', $price, '$image', $no, $id, $brandID)": "displayChoice($container, '$name', '$color', '$brand', $price, '$image', $no, $id, $brandID)";
                 echo "</script>";
 
                 $no++;

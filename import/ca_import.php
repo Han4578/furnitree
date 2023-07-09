@@ -53,7 +53,7 @@
                 continue;
             } else $colorID = $colorQuery->fetch_assoc()['id'];
             
-            $produkQuery = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND company = $brandID");
+            $produkQuery = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND brand = $brandID");
             
             if($produkQuery->num_rows == 0) {
                 $error .= "Produk $name tidak wujud dalam pangkalan data di baris $numRow \\n";

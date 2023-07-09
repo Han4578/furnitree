@@ -15,7 +15,7 @@
                 <img src="" alt="" data-image>
             </div>
             <div data-name></div>
-            <div data-company></div>
+            <div data-brand></div>
             <div data-price></div>
         </div>
     </template>
@@ -36,7 +36,7 @@
             </div>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS company, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id GROUP BY name LIMIT 10");
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS brand, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id GROUP BY name LIMIT 10");
                 ?>
             </div>
         </div>

@@ -35,20 +35,20 @@
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <form class="main" enctype="multipart/form-data" method="post" action="./b_update.php?id=<?php echo $brandID; ?>">
         <input type="file" name="image" id="image" class="none" accept="image/*">
-        <div class="company-container">
-            <div class="company-logo">
-                <label for="image" class="company camera">
+        <div class="brand-container">
+            <div class="brand-logo">
+                <label for="image" class="brand camera">
                     <img src="../images/camera.png" alt="">
                 </label>
-                <img src="../images/<?php echo $row1['logo'] ?>" id="company-image" alt="">
+                <img src="../images/<?php echo $row1['logo'] ?>" id="brand-image" alt="">
             </div>
-            <div class="company-info">
-                <div class="company-name">
+            <div class="brand-info">
+                <div class="brand-name">
                     <label for="name">Nama Jenama: </label>
                     <input type="text" value="<?php echo $row1['name'] ?>" name="name" id="name" class="input" required>
                 </div>
                 <hr>
-                <div class="company-name">                    
+                <div class="brand-name">                    
                     <label for="name">Pautan ke Web Rasmi: </label>
                     <input type="url" value="<?php echo $row1['official'] ?>" name="official" id="name" class="input ">
                 </div>
@@ -93,7 +93,7 @@
     </form>
     <script>
         let edit = document.querySelector("#image")
-        let img = document.querySelector("#company-image")
+        let img = document.querySelector("#brand-image")
         let del = document.querySelector('.delete')
 
         del.addEventListener('click', () => {

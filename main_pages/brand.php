@@ -28,7 +28,7 @@
         <div class="result-item">
             <div data-imgCon><img src="" alt="" data-image></div>
             <div data-name></div>
-            <div data-company></div>
+            <div data-brand></div>
             <div data-price></div>
         </div>
     </template>
@@ -44,12 +44,12 @@
                 </div>
             <?php } ?>
         </div>
-        <div class="company-container">
-            <div class="company-logo">
+        <div class="brand-container">
+            <div class="brand-logo">
                 <img src="../images/<?php echo $row1['logo'] ?>" alt="">
             </div>
-            <div class="company-info">
-                <div class="company-name">
+            <div class="brand-info">
+                <div class="brand-name">
                     <a href="<?php echo $row1['official'] ?>" target="_blank"><?php echo $row1['official'] ?></a>
                     <span><?php echo $row1['name'] ?></span>
                 </div>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="company-description">
+        <div class="brand-description">
             <?php echo $row1['description']; ?>
         </div>
         <br>
@@ -79,7 +79,7 @@
         <br>
         <div class="results">
             <?php 
-                $categories = $conn->query("SELECT category.name AS name, category FROM furniture_info LEFT JOIN category ON furniture_info.category = category.id WHERE furniture_info.company = $brandID GROUP BY category.id ORDER BY category.id");
+                $categories = $conn->query("SELECT category.name AS name, category FROM furniture_info LEFT JOIN category ON furniture_info.category = category.id WHERE furniture_info.brand = $brandID GROUP BY category.id ORDER BY category.id");
 
                 while($category = $categories->fetch_assoc()) {
                     $name = $category['name'];
@@ -94,7 +94,7 @@
             </div>
 
             <?php
-                    displayItems("document.querySelector('.".str_replace(' ', '', $name)."')", "document.querySelector('template')", "SELECT furniture_info.name as name, furniture.id AS id, brand.name AS company, price, furniture.image, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id LEFT JOIN category ON furniture_info.category = category.id WHERE category = $cat and furniture_info.company = $brandID"); 
+                    displayItems("document.querySelector('.".str_replace(' ', '', $name)."')", "document.querySelector('template')", "SELECT furniture_info.name as name, furniture.id AS id, brand.name AS brand, price, furniture.image, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id LEFT JOIN category ON furniture_info.category = category.id WHERE category = $cat and furniture_info.brand = $brandID"); 
                 }
             ?>
         </div>

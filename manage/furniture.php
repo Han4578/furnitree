@@ -35,7 +35,7 @@
             <hr>
             <?php
                 $id = $_SESSION['brandID'] ?? '';
-                $query = "SELECT furniture.id AS id, furniture_info.name AS name, color.name AS color, brand.name as company, brand.id AS companyID, price, image FROM furniture LEFT JOIN furniture_info on furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.company = brand.id LEFT JOIN color ON furniture.color = color.id";
+                $query = "SELECT furniture.id AS id, furniture_info.name AS name, color.name AS color, brand.name as brand, brand.id AS brandID, price, image FROM furniture LEFT JOIN furniture_info on furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id LEFT JOIN color ON furniture.color = color.id";
                 if ($_SESSION['level'] == 2) $query .= " WHERE brand.id = $id";
                 $query .= " ORDER BY furniture_info.name";
                 displayFurniture("document.querySelector('.rows')", $query, true);

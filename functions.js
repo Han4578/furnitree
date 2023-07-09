@@ -27,24 +27,24 @@ function displayOptions(name, container, value, selected) {
     container.appendChild(option)
 }
 
-function displayItems(container, name, image, price, company, template, id, color) {
+function displayItems(container, name, image, price, brand, template, id, color) {
     let item = template.content.cloneNode(true)
     let div = item.querySelector('.item') ?? item.querySelector('.result-item') ?? item.querySelector('.related-item')
     let itemName = item.querySelector('[data-name]') ?? item.querySelector('[data-relName]')
-    let companyName = item.querySelector('[data-company]') ?? item.querySelector('[data-relCompany]')
+    let brandName = item.querySelector('[data-brand]') ?? item.querySelector('[data-relbrand]')
     let itemPrice = item.querySelector('[data-price]') ?? item.querySelector('[data-relPrice]')
     let itemImg = item.querySelector('[data-image]') ?? item.querySelector('[data-relImage]')
 
     div.dataset.name_value = name
     div.dataset.price_value = price
-    div.dataset.brand_value = company
+    div.dataset.brand_value = brand
     div.dataset.color_value = color
     
     div.id = id
     itemName.innerText = name
     itemPrice.innerText = 'RM'+ displayPrice(price)
     itemImg.src = '../images/'+ image
-    companyName.innerText = 'Dari ' + company
+    brandName.innerText = 'Dari ' + brand
 
     div.addEventListener('click', () => {
         window.location = "./product.php?id=" + div.id
@@ -161,10 +161,10 @@ function displayBrands(container, name, pfp, no, id, seller, sellerID) {
     container.appendChild(row)
 }
 
-function displayFurniture(container, name, color, company, price, pfp, no, id, companyID) {
+function displayFurniture(container, name, color, brand, price, pfp, no, id, brandID) {
     let row = document.createElement('div')
     let actions = document.createElement('a')
-    let columns = [no, name, color, company, price, pfp]
+    let columns = [no, name, color, brand, price, pfp]
     let i = 1
 
     actions.href =  "../edit/furniture.php?id="+id
@@ -186,7 +186,7 @@ function displayFurniture(container, name, color, company, price, pfp, no, id, c
             case 4:
                 let brand = document.createElement('a')
                 brand.innerText = data
-                brand.href = "../main_pages/brand.php?id=" + companyID
+                brand.href = "../main_pages/brand.php?id=" + brandID
                 column.appendChild(brand)
                 break;
             case 5:
@@ -215,10 +215,10 @@ function displayFurniture(container, name, color, company, price, pfp, no, id, c
     priceSpan.innerText = displayPrice(priceSpan.innerText)
 }
 
-function displayChoice(container, name, num, company, price, pfp, no, id, companyID) {
+function displayChoice(container, name, num, brand, price, pfp, no, id, brandID) {
     let row = document.createElement('div')
     let actions = document.createElement('a')
-    let columns = [no, name, pfp, company, num, price]
+    let columns = [no, name, pfp, brand, num, price]
     let i = 1
 
     actions.href =  "../require/pilihan_delete.php?id="+id
@@ -246,7 +246,7 @@ function displayChoice(container, name, num, company, price, pfp, no, id, compan
             case 4:
                 let brand = document.createElement('a')
                 brand.innerText = data
-                brand.href = "../main_pages/brand.php?id=" + companyID
+                brand.href = "../main_pages/brand.php?id=" + brandID
                 column.appendChild(brand)
                 break;
             case 6:

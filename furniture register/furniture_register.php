@@ -24,7 +24,7 @@
                     <label class="input" for="name">Nama:</label>
                     <label class="" for="color">Warna:</label>
                     <label class="" for="category">Kategori:</label>
-                    <label class="<?php if ($_SESSION['level'] == 2) echo "none" ?>" for="company">Jenama:</label>
+                    <label class="<?php if ($_SESSION['level'] == 2) echo "none" ?>" for="brand">Jenama:</label>
                     <label class="input" for="price">Harga:</label>
                 </div>
                 <div class="vertical space-between">
@@ -41,10 +41,10 @@
                             displayOptions("SELECT * FROM category", "document.getElementById('category')")
                         ?>
                     </select>
-                    <select class="custom <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="company" id="company" required>
+                    <select class="custom <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="brand" id="brand" required>
                         <option value="" selected disabled hidden>Pilih jenama...</option>
                         <?php
-                            displayOptions("SELECT name, id FROM brand", "document.getElementById('company')", $_SESSION['brandID'])
+                            displayOptions("SELECT name, id FROM brand", "document.getElementById('brand')", $_SESSION['brandID'])
                         ?>
                     </select>
                     <input class="custom input" type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>

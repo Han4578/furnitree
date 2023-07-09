@@ -9,7 +9,7 @@
     unlink($path);
 
 
-    $furnitures = $conn->query("SELECT image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id WHERE furniture_info.company = $id");
+    $furnitures = $conn->query("SELECT image FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id WHERE furniture_info.brand = $id");
     
     while ($row = $furnitures->fetch_assoc()) {
         $delete = $row['image'];
