@@ -15,13 +15,7 @@
             ($query1->num_rows > 0)? $row1 = $query1->fetch_assoc(): $exists = false; 
         } 
 
-        if (!key_exists('id', $_GET) or !$exists){
-            echo "<script>
-            alert('Jenama ini tidak wujud')
-                    history.back()
-                </script>";
-            die;
-        }
+        if (!key_exists('id', $_GET) or !$exists) alertError('Jenama ini tidak wujud');
 
         if (!checkLogin() or ($_SESSION['brandID'] != $brandID and $_SESSION['level'] < 3)) accessDenied();
     ?>
@@ -45,12 +39,12 @@
             <div class="brand-info">
                 <div class="brand-name">
                     <label for="name">Nama Jenama: </label>
-                    <input type="text" value="<?php echo $row1['name'] ?>" name="name" id="name" class="input" required>
+                    <input type="text" value="<?php echo $row1['name'] ?>" name="name" id="name" class="input" maxlength="50" required>
                 </div>
                 <hr>
                 <div class="brand-name">                    
                     <label for="name">Pautan ke Web Rasmi: </label>
-                    <input type="url" value="<?php echo $row1['official'] ?>" name="official" id="name" class="input ">
+                    <input type="url" value="<?php echo $row1['official'] ?>" maxlength="100" name="official" id="name" class="input ">
                 </div>
             </div>
         </div>
@@ -66,22 +60,22 @@
                 <div class="row ">
                     <img class="social-link" src="../images/fb logo.webp" alt="">
                     <label for="fb">Facebook:</label>
-                    <input class="input" type="url" id="fb" name="fb" value="<?php echo $row1['fb']; ?>">
+                    <input class="input" type="url" id="fb" name="fb" maxlength="100" value="<?php echo $row1['fb']; ?>">
                 </div>
                 <div class="row">
                     <img class="social-link" src="../images/twitter logo.png" alt="">
                     <label for="twitter">Twitter:</label>
-                    <input class="input " type="url" id="twitter" name="twitter" value="<?php echo $row1['twitter']; ?>">
+                    <input class="input " type="url" id="twitter" name="twitter" maxlength="100" value="<?php echo $row1['twitter']; ?>">
                 </div>
                 <div class="row">
                     <img class="social-link" src="../images/insta logo.jpg" alt="">
                     <label for="insta">Instagram:</label>
-                    <input class="input " type="url" id="insta" name="insta" value="<?php echo $row1['instagram']; ?>">
+                    <input class="input " type="url" id="insta" name="insta" maxlength="100" value="<?php echo $row1['instagram']; ?>">
                 </div>
                 <div class="row">
                     <img class="social-link" src="../images/yt logo.png" alt="">
                     <label for="yt">Youtube:</label>
-                    <input class="input " type="url" id="yt" name="yt" value="<?php echo $row1['yt']; ?>">
+                    <input class="input " type="url" id="yt" name="yt" maxlength="100" value="<?php echo $row1['yt']; ?>">
                 </div>
             </div>
         </div>

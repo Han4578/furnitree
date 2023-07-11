@@ -52,7 +52,7 @@
             } else $colorID = $colorQuery->fetch_assoc()['id'];
 
             if($categoryQuery->num_rows == 0) {
-                $error .= "Warna tidak wujud dalam pangkalan data di baris $numRow \\n";
+                $error .= "Kategori tidak wujud dalam pangkalan data di baris $numRow \\n";
                 $numRow++;
                 continue;
             } else $categoryID = $categoryQuery->fetch_assoc()['id'];
@@ -73,7 +73,7 @@
             $check = $conn->query("SELECT id FROM furniture_info WHERE name = '$name' AND brand = $brandID");
             
             if ($check->num_rows > 0) {
-                $error .= "Perabot dengan nama yang sama sudah wujud dalam pengkalan data di baris $numRow \\n";
+                $error .= "Produk dengan nama yang sama sudah wujud dalam pengkalan data di baris $numRow \\n";
                 $numRow++;
                 continue;
             }

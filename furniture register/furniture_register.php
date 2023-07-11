@@ -18,7 +18,7 @@
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical">
-            <div class="center">Daftar Perabot</div>
+            <div class="center">Daftar Produk</div>
             <div class="container">
                 <div class="vertical space-between">
                     <label class="input" for="name">Nama:</label>
@@ -28,7 +28,7 @@
                     <label class="input" for="price">Harga:</label>
                 </div>
                 <div class="vertical space-between">
-                    <input class="custom input" type="text" name="name" id="name" required>
+                    <input class="custom input" type="text" name="name" id="name" maxlength="30" required>
                     <select class="custom" name="color" id="color" required>
                         <option value="" selected disabled hidden>Pilih warna...</option>
                         <?php
@@ -47,7 +47,7 @@
                             displayOptions("SELECT name, id FROM brand", "document.getElementById('brand')", $_SESSION['brandID'])
                         ?>
                     </select>
-                    <input class="custom input" type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
+                    <input class="custom input" type="number" name="price" id="price" placeholder="RM" min="0.01" max="100000" step="0.01" onblur="roundNumber(this, value)" required>
                 </div>
             </div>
             <div class="vertical">

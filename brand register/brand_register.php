@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="vertical gap">
-                    <input class="input" type="text" name="name" id="name" required>
+                    <input class="input" type="text" name="name" id="name" maxlength="50" required>
                     <select class="custom <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="account" id="account" required>
                         <option value="" selected disabled hidden>Pilih Pengguna...</option>
                         <?php
@@ -37,7 +37,7 @@
                         ?>
                     </select>
                     <input class="input" type="file" name="image" accept="image/*" id="image" required>
-                    <textarea name="description" id="description" cols="30" rows="2" maxlength="1000" placeholder="Tidak lebih daripada 1000 aksara"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="2" maxlength="1000" placeholder="Tidak lebih daripada 1000 huruf"></textarea>
                 </div>
             </div>
             <div class="space-between">

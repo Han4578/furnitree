@@ -349,7 +349,7 @@ label {
 .result-item,
 .related-item {
     aspect-ratio: 1;
-    border: 1px black solid;
+    border: 1px #adadad solid;
     border-radius: 10px;
     display: grid;
     grid-template-rows: 70% 10% 10% 10%;
@@ -541,7 +541,7 @@ label {
 
 .camera.furniture {
     height: 12vh;
-    position: absolute; 
+    position: absolute;
 }
 
 .options {
@@ -635,7 +635,7 @@ label {
 
 .product-image {
     aspect-ratio: 9 / 10;
-    border: 2px solid black;
+    border: 2px solid #d5d5d5;
     border-radius: 20px;
     margin-left: 10%;
 }
@@ -856,9 +856,14 @@ label {
 .edit-furniture {
     display: flex;
     flex-direction: column;
-    gap: 5%;
-    height: 50vh;
+    gap: 4vh;
+    height: 52vh;
     overflow-y: auto;
+    scroll-snap-type: y mandatory;
+}
+
+.edit-furniture > hr {
+    scroll-snap-align: start;
 }
 
 .variant-delete, .variant-white {
@@ -1081,7 +1086,7 @@ label {
     max-height: 150px;
 }
 
-@media screen and (max-width: 100vh) {
+@media all and (max-width: 100vh) {
     .top {
         height: 10vh;
     }
@@ -1093,7 +1098,7 @@ label {
     }
 
     .column {
-        height: 2vh;
+        height: 4vh;
     }
 
     .price {
@@ -1180,7 +1185,10 @@ label {
     
     .product-container {
         width: 100%;
+    }
 
+    .product-info {
+        width: 100%;
     }
 
     .filter-label {

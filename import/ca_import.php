@@ -38,7 +38,6 @@
         }
         
         if ($imgFound) {
-            $colorQuery = $conn->query("SELECT id FROM color WHERE name = '$color'");
             $brandQuery = $conn->query("SELECT id FROM brand WHERE name = '$brand'");
             
             if($brandQuery->num_rows == 0) {
@@ -46,6 +45,8 @@
                 $numRow++;
                 continue;
             } else $brandID = $brandQuery->fetch_assoc()['id'];
+            
+            $colorQuery = $conn->query("SELECT id FROM color WHERE name = '$color'");
             
             if($colorQuery->num_rows == 0) {
                 $error .= "Warna tidak wujud dalam pangkalan data di baris $numRow \\n";
@@ -60,6 +61,14 @@
                 $numRow++;
                 continue;
             } else $info = $produkQuery->fetch_assoc()['id'];
+
+            $colorExistsQuery = $conn->query("SELECT id FROM furniture WHERE color = $color AND info = $id");
+
+            if ($colorExistsQuery->num_rows > 0) {
+                $error .= "Warna ini sudah wujud untuk produk ini di baris $numRow \\n";
+                $numRow++;
+                continue;
+            }
             
             $imgName =  date('YmdHis').$numRow;
             $imgType =  (explode('.', $images['name'][$i]))[1];

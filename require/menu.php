@@ -33,12 +33,12 @@
                         $isLogged .= "<div class='user-button' onclick=\"window.location = '../brand register/brand_register.php'\">Daftar Jenama</div>";
                     } else {
                         $isLogged .= "<div class='user-button' onclick=\"window.location = '../main_pages/brand.php?id=".$_SESSION['brandID']."'\">Jenama</div>";
-                        $isLogged .= "<div class='user-button' data-furniture> Mengurus Perabot</div>";
+                        $isLogged .= "<div class='user-button' data-furniture> Mengurus Produk</div>";
                     }
                 }
                 
                 if ($_SESSION['level'] == 3) {
-                    $isLogged .= "<div class='user-button' data-furniture> Mengurus Perabot</div>";
+                    $isLogged .= "<div class='user-button' data-furniture> Mengurus Produk</div>";
                     $isLogged .= "<div class='user-button' data-user> Mengurus Pengguna</div>";
                     $isLogged .= "<div class='user-button' data-brandM> Mengurus Jenama</div>";
                     $isLogged .= "<div class='user-button' data-statistic> Pilihan Pengguna</div>";
@@ -82,6 +82,6 @@
             }
         ?>
     </div>
-    <div class="menu-button random" data-random>Perabot Rawak<img src="../images/shuffle.png" alt=""></div>
+    <div class="menu-button random" data-random>Produk Rawak<img src="../images/shuffle.png" alt=""></div>
 
 </div>

@@ -8,7 +8,7 @@
 
     $query = $conn->query("INSERT INTO pilihan(pengguna, produk, bilangan) VALUES ($userID, $furnitureID, $num);");
 
-    if (!$query) die("Penambahan pilihan gagal, ".$conn->errno);
+    if (!$query) alertError("Penambahan pilihan gagal, ".$conn->errno);
 ?>
 
 <script>

@@ -18,13 +18,7 @@
             ($query->num_rows > 0)? $row = $query->fetch_assoc(): $exists = false; 
         } 
 
-        if (!key_exists('id', $_GET) or !$exists){
-            echo "<script>
-            alert('Profil ini tidak wujud')
-                    history.back()
-                </script>";
-            die;
-        }
+        if (!key_exists('id', $_GET) or !$exists) alertError('Profil ini tidak wujud');
 
         if (!checkLogin() or ($id !== $_SESSION['id'] and $_SESSION['level'] != '3')) accessDenied();
     ?>

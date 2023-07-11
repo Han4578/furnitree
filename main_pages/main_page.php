@@ -36,7 +36,7 @@
             </div>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS brand, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id GROUP BY name LIMIT 10");
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('template')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS brand, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id GROUP BY name ORDER BY furniture_info.id DESC LIMIT 10");
                 ?>
             </div>
         </div>

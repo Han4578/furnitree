@@ -9,24 +9,12 @@
         <?php
             require "../require/main_menu.php";
 
-            if (!key_exists('id', $_GET)) {
-                echo "<script>
-                        alert('Produk ini tidak wujud')
-                        history.back()
-                    </script>";
-                die;
-            }
+            if (!key_exists('id', $_GET)) alertError('Produk ini tidak wujud');
 
             $productID = $_GET['id'];
-            $query1 = $conn->query("SELECT furniture_info.name as name, price, image, furniture_info.description AS description, furniture.id AS id, brand.name AS brand, brand.id AS brandID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id WHERE furniture.id = $productID  GROUP BY name");
+            $query1 = $conn->query("SELECT furniture_info.name as name, price, image, furniture_info.description AS description, furniture.id AS id, brand.name AS brand, brand.id AS brandID, category FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id WHERE furniture.id = $productID  GROUP BY name");
             
-            if ($query1->num_rows == 0) {
-                echo "<script>
-                        alert('Produk ini tidak wujud')
-                        history.back()
-                    </script>";
-                die();
-            }       
+            if ($query1->num_rows == 0) alertError('Produk ini tidak wujud');       
 
             $row1 = $query1->fetch_assoc();
             $brandID = $row1['brandID'];
@@ -51,7 +39,7 @@
         <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
         <div class="action-bar">
             <?php if (checkLogin()) {
-                if ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $row1['brandID']) { ?>
+                if ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $brandID) { ?>
                     <div class="action-button" onclick="edit()">
                         <img src="../images/edit-pencil.svg" alt="">
                     </div>
@@ -136,7 +124,8 @@
             <br>
             <div class="recommended-list">
                 <?php
-                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS brand, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id WHERE furniture_info.name != '$name' GROUP BY name");
+                    $category = $row1['category'];
+                    displayItems("document.querySelector('.recommended-list')", "document.querySelector('#temp2')", "SELECT furniture_info.name as name, price, image, furniture.id AS id, brand.name AS brand, furniture.color FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id WHERE furniture_info.name != '$name' AND (furniture_info.brand = $brandID OR furniture_info.category = $category) GROUP BY name");
                 ?>
             </div>
         </div>

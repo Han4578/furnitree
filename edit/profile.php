@@ -8,14 +8,7 @@
         ($query->num_rows > 0)? $row = $query->fetch_assoc(): $exists = false; 
     } 
 
-    if (!key_exists('id', $_GET) or !$exists){
-        echo "<script>
-                alert('Profil ini tidak wujud')
-                history.back()
-            </script>";
-        die;
-    }
-
+    if (!key_exists('id', $_GET) or !$exists) alertError('Profil ini tidak wujud');
     if (!checkLogin() or ($id !== $_SESSION['id'] and $_SESSION['level'] != '3')) accessDenied();
 ?>
 
@@ -50,10 +43,10 @@
                         ?>
                     </div>
                     <div class="vertical space-around grow">
-                        <input class="custom input" id="name" name="name" value="<?php echo $row['name'] ?>" required>
-                        <input class="custom input" id="password" name="password" type="password" value="<?php echo $row['password'] ?>" required>
-                        <input class="custom input" id="email" name="email" type="email" value="<?php echo $row['email'] ?>"required>
-                        <input class="custom input" id="pnumber" name="pnumber" value="0<?php echo $row['nomhp'] ?>" required>
+                        <input class="custom input" id="name" name="name" value="<?php echo $row['name'] ?>" maxlength="30" required>
+                        <input class="custom input" id="password" name="password" type="password" value="<?php echo $row['password'] ?>" maxlength="20" required>
+                        <input class="custom input" id="email" name="email" type="email" value="<?php echo $row['email'] ?>" maxlength="40" required>
+                        <input class="custom input" id="pnumber" name="pnumber" value="<?php echo $row['nomhp'] ?>" maxlength="11" required>
                         
                         <?php
                             if ($_SESSION['level'] == 3 and $_SESSION['id'] !== $id) {

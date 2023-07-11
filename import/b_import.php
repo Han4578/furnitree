@@ -88,7 +88,7 @@
     if ($error != '') {
         echo "<script>
             alert(\"$error\")
-            // history.back()
+            history.back()
         </script>";
     } else echo "<script>
     alert('Semua jenama berjaya dimasukkan');

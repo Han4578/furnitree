@@ -18,21 +18,16 @@
         $newName = $imageName.'.'.$imageType;
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<script> 
-                        window.location = './profile.php'
-                        alert('Format e-mel tidak betul, sila cuba sekali')
-                    </script>";
-    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) alertError('Format e-mel tidak betul, sila cuba sekali');
     
     
     if ($imgTempName !== "") {
+        if (!exif_imagetype($imgTempName)) alertError("Fail yang dimuat naik bukan imej");
         $delete = $conn->query("SELECT picture FROM pengguna WHERE id = $id")->fetch_assoc()['picture'];
         $path = realpath("../images/$delete");
         unlink($path);
 
         $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, aras = $aras, email = '$email', picture = '$newName' WHERE id = $id";
-        if (!exif_imagetype($imgTempName)) die("Fail yang dimuat naik bukan imej");
     } else $query = "UPDATE pengguna SET name = '$name', password = '$password', nomhp = $pnumber, aras = $aras, email = '$email' WHERE id = $id";
 
 
@@ -49,10 +44,13 @@
         </script>";
         
         if ($_SESSION['id'] == $id) {   
-            $_SESSION['pfp'] = $newName;
             $_SESSION['name'] = $name;
             $_SESSION['password'] = $password;
             $_SESSION['level'] = $aras;
+
+            if ($imgTempName !== "") {
+                $_SESSION['pfp'] = $newName;
+            }
         }
     }
 

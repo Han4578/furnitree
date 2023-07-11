@@ -43,7 +43,7 @@
 
     if ($stmt) {
         echo "<script>
-        alert('Perabot berjaya dikemas kini.');
+        alert('Produk berjaya dikemas kini.');
         history.go(-2)
         </script>";
     }

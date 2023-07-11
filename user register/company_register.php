@@ -32,10 +32,9 @@
                     <label for="email">E-mel:</label>
                 </div>
                 <div class="vertical space-between">
-                    <input class="custom input" type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 aksara" required autofocus>
+                    <input class="custom input" type="text" name="name" id="name" maxlength="30" placeholder="Tidak lebih daripada 30 huruf" required autofocus>
                     <div>
-                        <input class="custom input" type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 aksara" required>
-                        <!-- <input type="checkbox" name="togglePw" id="toggle"> -->
+                        <input class="custom input" type="password" name="password" id="password" maxlength="20" placeholder="Tidak lebih daripada 20 huruf" required>
                     </div>
                     <input class="custom input" type="tel" name="pnumber" id="pnumber" pattern="[0-9]{10}" minlength="9" maxlength="10" placeholder='Tanpa  " - "' title="0123456789" required>
                     <input class="custom input" type="text" name="email" id="email" title="user@example.com" maxlength="40" required>
@@ -52,11 +51,8 @@
         </form>
     </div>
     <script>
-        let togglepw = document.querySelector('#toggle')
-        let password = document.querySelector('#password')
         let pnumber = document.querySelector('#pnumber')
 
-        togglepw.addEventListener('click', () => togglePassword(togglepw, password))
         pnumber.addEventListener('keydown', e => {
             excludeSymbols(e)
         })

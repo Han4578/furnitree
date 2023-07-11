@@ -6,32 +6,17 @@
     $email = $conn->real_escape_string($_POST['email']);
     $pnumber = $_POST['pnumber'];
     $aras = $_GET['aras'];
-    $img = date('YmdHis').'jpg';
+    $img = date('YmdHis').'.jpg';
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<script> 
-                        window.location = './user_register.php'
-                        alert('Format e-mel tidak betul, sila cuba sekali')
-                    </script>";
-    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) alertError('Format e-mel tidak betul, sila cuba sekali');
 
     $EmailQuery = $conn->query("SELECT * FROM pengguna WHERE email = '$email'");
 
-    if ($EmailQuery->num_rows > 0) {
-        echo "<script> 
-                histpry.back()
-                alert('E-mel sudah digunakan, sila mengguna e-mel yang lain')
-            </script>";
-    }
+    if ($EmailQuery->num_rows > 0) alertError('E-mel sudah digunakan, sila mengguna e-mel yang lain');
 
     $NameQuery = $conn->query("SELECT * FROM pengguna WHERE name = '$name'");
 
-    if ($NameQuery->num_rows > 0) {
-        echo "<script> 
-                history.back()
-                alert('Nama sudah digunakan, sila mengguna nama yang lain')
-            </script>";
-    }
+    if ($NameQuery->num_rows > 0) alertError('Nama sudah digunakan, sila mengguna nama yang lain');
 
     copy("../images/default-icon.jpg", "../images/".$img);
 
@@ -44,10 +29,8 @@
                         window.location = '../sign in/signin.php'
                         alert('Pendaftaran berjaya, sila log masuk')
                     </script>";
-    } else echo "<script> 
-                        history.back()
-                        alert('Pendaftaran gagal, sila cuba sekali')
-                    </script>";
+    } else alertError('Pendaftaran gagal, sila cuba sekali');
+
     $conn->close();
     $stmt->close();
 ?>

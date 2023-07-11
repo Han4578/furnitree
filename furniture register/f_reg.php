@@ -16,11 +16,11 @@
 
     require "../require/connect.php";
 
-    if (!exif_imagetype($imgTempName)) die('Fail yang dimuat naik bukan imej');
+    if (!exif_imagetype($imgTempName)) alertError('Fail yang dimuat naik bukan imej');
 
     $check = $conn->query("SELECT * FROM furniture_info WHERE name = '$name' AND brand = $brand");
     
-    if ($check->num_rows > 0) die ("Perabot dengan nama yang sama sudah wujud");
+    if ($check->num_rows > 0) alertError("Produk dengan nama yang sama sudah wujud");
     
     $stmt1 = $conn->query("INSERT INTO furniture_info(name, brand, price, category) 
     VALUES ('$name','$brand',$price,'$category')");
@@ -34,7 +34,7 @@
 
 
     if (move_uploaded_file($imgTempName, '../images/' . $newName) and $stmt1 and $stmt2) echo "<script>
-        alert('Perabot berjaya didaftar');
+        alert('Produk berjaya didaftar');
         window.location = '../manage/furniture.php';
         </script>";
 ?>

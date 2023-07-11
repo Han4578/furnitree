@@ -18,7 +18,7 @@
 
     if (true) {
         echo "<script>
-            alert('Perabot $name sudah dihapuskan')
+            alert('Produk $name sudah dihapuskan')
             window.location = '../manage/furniture.php'
         </script>"; 
     }

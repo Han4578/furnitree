@@ -12,34 +12,16 @@
 
     $newName = $imgName.'.'.$imgType;
 
-    if (!exif_imagetype($imgTempName)) {
-        echo "<script> 
-                alert('Fail yang dimuat naik bukan imej')
-                history.back()
-             </script>";
-        die;
-    }
+    if (!exif_imagetype($imgTempName)) alertError('Fail yang dimuat naik bukan imej');
 
 
     $query = $conn->query("SELECT * FROM brand WHERE name = '$name'");
 
-    if ($query->num_rows > 0) {
-        echo "<script> 
-                alert('Nama sudah digunakan, sila mengguna nama yang lain')
-                history.back()
-            </script>";
-        die;
-    }
+    if ($query->num_rows > 0) alertError("Nama sudah digunakan, sila mengguna nama yang lain");
     
     $check = $conn->query("SELECT id FROM brand WHERE account = $account");
 
-    if ($check->num_rows > 0) {
-        echo "<script> 
-                alert('Penjual ini sudah memiliki jenama sendiri, sila memilih penjual yang lain')
-                history.back()
-            </script>";
-        die;
-    }
+    if ($check->num_rows > 0) alertError('Penjual ini sudah memiliki jenama sendiri, sila memilih penjual yang lain');
     
     $stmt = $conn->prepare("INSERT INTO brand(name, logo, description, account) VALUES (?, ?, ?, ?);");
     $stmt->bind_param('sssi', $name, $newName, $description, $account);

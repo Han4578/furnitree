@@ -15,14 +15,7 @@
             ($query->num_rows > 0)? $row1 = $query->fetch_assoc(): $exists = false; 
         } 
 
-        if (!key_exists('id', $_GET) or !$exists){
-            echo "<script>
-            alert('Jenama ini tidak wujud')
-                    history.back()
-                </script>";
-            die;
-        }
-
+        if (!key_exists('id', $_GET) or !$exists) alertError('Produk ini tidak wujud');
     ?>
     <template>    
         <div class="result-item">

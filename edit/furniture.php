@@ -4,30 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kemas kini perabot</title>
+    <title>Kemas kini produk</title>
+    <style>
+        body {
+            overflow-y: hidden;
+        }
+    </style>
 </head>
 <body>
     <?php
         require "../require/register_menu.php";
 
-        if (!key_exists('id', $_GET)) {
-            echo "<script>
-                    alert('Produk ini tidak wujud')
-                    history.back()
-                </script>";
-            die;
-        }
+        if (!key_exists('id', $_GET)) alertError('Produk ini tidak wujud');
 
         $productID = $_GET['id'];
         $query1 = $conn->query("SELECT info, furniture_info.name as name, price, image, furniture_info.description, furniture_info.id AS id, brand.name AS brand, brand.id AS brandID FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN brand ON furniture_info.brand = brand.id WHERE furniture.id = $productID  GROUP BY name");
         
-        if ($query1->num_rows == 0) {
-            echo "<script>
-                    alert('Produk ini tidak wujud')
-                    history.back()
-                </script>";
-            die();
-        }      
+        if ($query1->num_rows == 0) alertError('Produk ini tidak wujud');
+
         $row1 = $query1->fetch_assoc();
 
         if (!checkLogin() or ($_SESSION['brandID'] != $row1['brandID'] and $_SESSION['level'] < 3)) accessDenied();
@@ -53,7 +47,7 @@
                         <label class="input" for="description">Deskripsi: </label>
                     </div>
                     <div class="edit-furniture">
-                        <input class="input" id="name" name="name" value="<?php echo $row1['name'] ?>" required></input>
+                        <input class="input" id="name" name="name" value="<?php echo $row1['name'] ?>" maxlength="30" required></input>
                         
                         <select class="input border <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="brand" id="brand" required>
                             <?php
@@ -65,17 +59,17 @@
                                 }
                             ?>
                         </select>
-                        <input class="input" id="price" name="price" value="<?php echo $row1['price'] ?>" required></input>
+                        <input class="input" id="price" name="price" value="<?php echo $row1['price'] ?>"  min="0.01" step="0.01" onblur="roundNumber(this, value)" max="1000000" required></input>
                         <textarea name="description" id="description" cols="51" rows="10" maxlength="1000"><?php echo $row1['description'] ?></textarea>
                     </div>
                 </div>
             </div>
             <div class="product-info">
+                <div class="space-between">
+                    <div>Warna</div>
+                    <div class="add pointer" onclick="window.location='../furniture register/color_register.php?id=<?php echo $row1['info'] ?>'">+</div>
+                </div>
                 <div class="edit-furniture">
-                    <div class="space-between">
-                        <div>Warna</div>
-                        <div class="add pointer" onclick="window.location='../furniture register/color_register.php?id=<?php echo $row1['info'] ?>'">+</div>
-                    </div>
                     <?php
                         $name = $row1['name'];
                         $query2 = $conn->query("SELECT image, color.id AS color, furniture.id AS id FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN color ON furniture.color = color.id WHERE furniture_info.name = '$name'");
@@ -185,13 +179,13 @@
             let errors = document.querySelectorAll('.error')
             
             if (errors.length > 0) {
-                alert("Warna perabot tidak boleh berulang")
+                alert("Warna produk tidak boleh berulang")
                 event.preventDefault()
             }
         }
 
         function deleteFurniture() {
-            let result = window.confirm("Hapuskan perabot ini?")
+            let result = window.confirm("Hapuskan produk ini?")
             if (result) window.location = './f_delete.php?name=' + '<?php echo $row1['name'] ?>' + '&brand=' + '<?php echo $row1['brandID'] ?>'
         }
     </script>

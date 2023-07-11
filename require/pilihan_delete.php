@@ -7,7 +7,7 @@
 
     $query = $conn->query("DELETE FROM pilihan WHERE pengguna = $userID and produk = $furnitureID;");
 
-    if (!$query) die("Penghapusan pilihan gagal, ".$conn->errno);
+    if (!$query) alertError("Penghapusan pilihan gagal, ".$conn->errno);
 ?>
 
 <script>

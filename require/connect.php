@@ -22,7 +22,7 @@
                                 displayItems($container, '$name', '$image', $price, '$brand', $template, $id, $color);
                             </script>";
             }
-        } else echo "<div style='margin: 0 auto;'>Tiada perabot yang bersetuju dengan kriteria yang diberikan</div>";
+        } else echo "<div style='margin: 0 auto;'>Tiada produk yang bersetuju dengan kriteria yang diberikan</div>";
     }
 
     function displayFurniture($container, $stmt, $update) {
@@ -146,12 +146,14 @@
     }
 
     function accessDenied() {
-        echo "
-        <script>
-            alert('Anda tidak dibenarkan mengakses maklumat ini')
-            history.back()
-        </script>";
-        die;
+        alertError('Anda tidak dibenarkan mengakses maklumat ini');
     }
 
+    function alertError($error) {
+        echo "<script>
+                alert('$error');
+                history.back();
+            </script>";
+        die;
+    }
 ?>
