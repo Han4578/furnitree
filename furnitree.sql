@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2023 at 12:02 PM
+-- Generation Time: Jul 11, 2023 at 02:04 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -139,7 +139,16 @@ INSERT INTO `furniture` (`id`, `color`, `image`, `info`) VALUES
 (22, 8, '20230707110736.webp', 10),
 (23, 10, '20230707110751.webp', 10),
 (40, 12, '20230708120303.webp', 27),
-(41, 11, '20230708120315.webp', 27);
+(41, 11, '20230708120315.webp', 27),
+(54, 11, '20230711125550.webp', 36),
+(55, 12, '20230711125606.webp', 36),
+(56, 1, '20230711131656.webp', 37),
+(57, 3, '20230711132216.webp', 37),
+(58, 4, '20230711132226.webp', 37),
+(59, 5, '20230711132234.webp', 37),
+(60, 9, '20230711132246.webp', 37),
+(61, 8, '20230711132259.webp', 37),
+(62, 10, '20230711134931.jpg', 37);
 
 -- --------------------------------------------------------
 
@@ -167,7 +176,9 @@ INSERT INTO `furniture_info` (`id`, `name`, `brand`, `price`, `description`, `ca
 (8, 'BLÅLIDEN', 10, 299, 'Storage can be just as much about reflecting who you are as organising all of your things. In this modern version of a classic glass-door cabinet, you can display the things you love the most.', 6),
 (9, 'LAGKAPTEN / ALEX', 10, 448, 'Limited space doesn’t mean you have to say no to studying or working from home. This desk takes up little floor space yet still has a drawer unit where you can store papers and other important things.', 2),
 (10, 'FRIHETEN', 10, 3495, 'After a good night’s sleep, you can effortlessly convert your bedroom or guest room into a living room again. The built-in storage is easy to access and spacious enough to stow bedding, books and PJs.', 5),
-(27, 'Chorus Bed', 3, 1679, 'Our Chorus Bed does the one thing every single bed should do well: provide a quiet, stable platform for sleep, because a creaky, wobbly, or otherwise distracting bed should be the last thing keeping you up at night. The clean lines, color-matched finishes, and essentially unfussy aesthetic fit with almost any design scheme, and live beautifully alongside the rest of our bedroom collection. We created Chorus to change the way you look at the bedroom, from the very first night. Keep scrolling to discover how.', 4);
+(27, 'Chorus Bed', 3, 1679, 'Our Chorus Bed does the one thing every single bed should do well: provide a quiet, stable platform for sleep, because a creaky, wobbly, or otherwise distracting bed should be the last thing keeping you up at night. The clean lines, color-matched finishes, and essentially unfussy aesthetic fit with almost any design scheme, and live beautifully alongside the rest of our bedroom collection. We created Chorus to change the way you look at the bedroom, from the very first night. Keep scrolling to discover how.', 4),
+(36, 'Carta Credenza', 3, 1195, 'No matter what you call it — credenza, media console, sideboard — this versatile continuation of our Carta Collection rises to the occasion for any living room. The reversible sliding doors conceal a storage compartment with adjustable shelves and plenty of convenient cord management slots, and the sturdy, solid hardwood construction is built to last. Choose between two finishes and two leg options to customize your perfect living room storage cabinet.', 9),
+(37, 'Soto Queen Size Sleeper Sofa B', 2, 2688, '', 4);
 
 -- --------------------------------------------------------
 
@@ -194,7 +205,7 @@ INSERT INTO `pengguna` (`id`, `name`, `password`, `nomhp`, `aras`, `email`, `pic
 (2, 'admin', 'password', 111111111, '3', 'admin@admin.com', '20230702121228.png'),
 (3, 'apple', 'a', 2147483647, '1', 'apple@apple.com', '20230706164656.jpg'),
 (6, 'Apt2B', 'apt2b', 234547568, '2', 'apt2b@apt2b.com', '20230704171108.jpg'),
-(7, 'Burrow', 'burrow', 1276348963, '2', 'burrow@burrow.com', 'burrow.png'),
+(7, 'Burrow', 'burrow', 1276348963, '2', 'a', 'burrow.png'),
 (8, 'IKEA', 'ikea', 379527575, '2', 'customerservice.ikeamy@ikano.asia', '20230705125720.png'),
 (9, 'Cat', 'meow', 2147483647, '1', 'OoO@nyanmail.com', '20230706170454.jpg'),
 (22, 'test1', 'test1', 1111111111, '2', 'test1@test.com', '20230709091919jpg'),
@@ -300,13 +311,13 @@ ALTER TABLE `color`
 -- AUTO_INCREMENT for table `furniture`
 --
 ALTER TABLE `furniture`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `furniture_info`
 --
 ALTER TABLE `furniture_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `pengguna`
