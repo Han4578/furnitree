@@ -1,15 +1,1 @@
-list of furnitures:
-
-chair
-table
-shelf
-cupboard
-sofa
-bed
-wardrobe
-cupboard
-drawer
-cabinet
-counter
-hatstand
-bookshelf
+ADD LIMIT TO input

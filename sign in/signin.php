@@ -43,7 +43,7 @@
                 <button type="submit">Hantar</button>
             </div>
             <div class="space-between">
-                <a href="../user register/brand_register.php">Daftar sebagai penjual</a>
+                <a href="../user register/company_register.php">Daftar sebagai penjual</a>
                 <a href="../user register/user_register.php">Daftar sebagai pengguna</a>
             </div>
         </form>
