@@ -1,5 +1,7 @@
 <?php
-    $name = $_POST['name'];
+    require "../require/connect.php";
+
+    $name = $conn->real_escape_string($_POST['name']);
     $category = $_POST['category'];
     $color = $_POST['color'];
     $brand = $_POST['brand'];
@@ -13,8 +15,6 @@
     $imgTempName =  $image['tmp_name'];
 
     $newName = $imgName.'.'.$imgType;
-
-    require "../require/connect.php";
 
     if (!exif_imagetype($imgTempName)) alertError('Fail yang dimuat naik bukan imej');
 

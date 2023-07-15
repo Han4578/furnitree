@@ -5,11 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kemas kini produk</title>
-    <style>
-        body {
-            overflow-y: hidden;
-        }
-    </style>
 </head>
 <body>
     <?php
@@ -59,7 +54,7 @@
                                 }
                             ?>
                         </select>
-                        <input class="input" id="price" name="price" value="<?php echo $row1['price'] ?>"  min="0.01" step="0.01" onblur="roundNumber(this, value)" max="1000000" required></input>
+                        <input type="number" class="input" id="price" name="price" value="<?php echo $row1['price'] ?>"  min="0.01" step="0.01" onblur="roundNumber(this, value)" max="1000000" required></input>
                         <textarea name="description" id="description" cols="51" rows="10" maxlength="1000"><?php echo $row1['description'] ?></textarea>
                     </div>
                 </div>
@@ -95,7 +90,7 @@
                             ?>
                         </select>
                         <input class="none" type="file" id="image<?php echo $i ?>" name="image[]" accept="image/*">
-                        <div class="center">
+                        <div class="center grow">
                             <label for="image<?php echo $i ?>" class="camera furniture">
                                         <img src="../images/camera.png" alt="">
                             </label>
@@ -135,6 +130,7 @@
         let del = document.querySelectorAll('.variant-delete') ?? document.createElement('div')
         let edit = document.querySelectorAll("input[type='file']")
         let colorSelect = document.querySelectorAll("[data-color]")
+        let price = document.querySelector("#price")
 
         for (const d of del) {
             d.addEventListener('click', () => {
@@ -188,6 +184,8 @@
             let result = window.confirm("Hapuskan produk ini?")
             if (result) window.location = './f_delete.php?name=' + '<?php echo $row1['name'] ?>' + '&brand=' + '<?php echo $row1['brandID'] ?>'
         }
+
+        price.addEventListener('keydown', e => excludeSymbols(e))
     </script>
 </body>
 </html>

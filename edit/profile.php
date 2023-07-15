@@ -46,7 +46,7 @@
                         <input class="custom input" id="name" name="name" value="<?php echo $row['name'] ?>" maxlength="30" required>
                         <input class="custom input" id="password" name="password" type="password" value="<?php echo $row['password'] ?>" maxlength="20" required>
                         <input class="custom input" id="email" name="email" type="email" value="<?php echo $row['email'] ?>" maxlength="40" required>
-                        <input class="custom input" id="pnumber" name="pnumber" value="<?php echo $row['nomhp'] ?>" maxlength="11" required>
+                        <input class="custom input" type="tel" id="pnumber" pattern="[0-9]{10}" title="0123456789" name="pnumber" value="<?php echo $row['nomhp'] ?>" maxlength="11" required>
                         
                         <?php
                             if ($_SESSION['level'] == 3 and $_SESSION['id'] !== $id) {

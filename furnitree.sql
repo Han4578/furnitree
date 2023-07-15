@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2023 at 02:04 PM
+-- Generation Time: Jul 15, 2023 at 11:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -148,7 +148,7 @@ INSERT INTO `furniture` (`id`, `color`, `image`, `info`) VALUES
 (59, 5, '20230711132234.webp', 37),
 (60, 9, '20230711132246.webp', 37),
 (61, 8, '20230711132259.webp', 37),
-(62, 10, '20230711134931.jpg', 37);
+(62, 10, '20230715114323.png', 37);
 
 -- --------------------------------------------------------
 
@@ -202,14 +202,14 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`id`, `name`, `password`, `nomhp`, `aras`, `email`, `picture`) VALUES
 (1, 'yeoh', 'yeoh1234', 137779999, '1', 'yeoh1234@gmail.com', 'stickman.png'),
-(2, 'admin', 'password', 111111111, '3', 'admin@admin.com', '20230702121228.png'),
+(2, 'admin', 'password', 1111111111, '3', 'admin@admin.com', '20230702121228.png'),
 (3, 'apple', 'a', 2147483647, '1', 'apple@apple.com', '20230706164656.jpg'),
 (6, 'Apt2B', 'apt2b', 234547568, '2', 'apt2b@apt2b.com', '20230704171108.jpg'),
 (7, 'Burrow', 'burrow', 1276348963, '2', 'a', 'burrow.png'),
 (8, 'IKEA', 'ikea', 379527575, '2', 'customerservice.ikeamy@ikano.asia', '20230705125720.png'),
 (9, 'Cat', 'meow', 2147483647, '1', 'OoO@nyanmail.com', '20230706170454.jpg'),
-(22, 'test1', 'test1', 1111111111, '2', 'test1@test.com', '20230709091919jpg'),
-(23, 'test2', 'test2', 2147483647, '2', 'test2@test.com', '20230709091940jpg');
+(22, 'test1', 'test1', 1111111111, '2', 'test1@test.com', '20230715111740.png'),
+(23, 'test2', 'test2', 2147483647, '2', 'test2@test.com', '20230715111746.png');
 
 -- --------------------------------------------------------
 
