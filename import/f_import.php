@@ -31,6 +31,24 @@
         $img = '';
         $i = 0;
         $imgFound = false;
+
+        if (!is_numeric($price) or str_contains("$price", 'e')) {
+            $error .= "Harga bukan nombor di baris $numRow \\n";
+            $numRow++;
+            continue;
+        }        
+        
+        if ($price <= 0) {
+            $error .= "Harga mesti lebih daripada 0 di baris $numRow \\n";
+            $numRow++;
+            continue;
+        }
+
+        if ($price > 1000000) {
+            $error .= "Harga tidak lebih daripada 1,000,000 di baris $numRow \\n";
+            $numRow++;
+            continue;
+        }
         
         foreach ($images['name'] as $n) {
             if (strcmp($n, $imgName) == 0) {
