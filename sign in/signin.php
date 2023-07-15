@@ -24,20 +24,21 @@
     <br>
     <div class="main">
         <form action="./signin_check.php" method="post" enctype="multipart/form-data" class="vertical">
-            <div class="center">Log masuk</div>
+            <div class="center"><b>Log masuk</b></div>
             <div class="container">
-                <div class="vertical space-between">
-                    <label for="email">Nama/ <br>E-mel:</label>
-                    <label for="password">Kata Laluan:</label>
+                <div class="vertical center">
+                    <label for="email">Nama/<br>E-mel:</label>
+                    <br>
+                    <br>
+                    <label for="password">Kata <br>Laluan:</label>
                 </div>
-                <div class="vertical space-between">
-                    <input class="custom input" type="text" name="email" id="email" maxlength="30" required autofocus>
-                    <div>
-                        <input class="custom input" type="password" name="password" maxlength="20" id="password" required>
-                    </div>
+                <div class="vertical center">
+                    <input class="custom input max-width" type="text" name="email" id="email" maxlength="30" required autofocus>
+                    <br>
+                    <br>
+                    <input class="custom input" type="password" name="password" maxlength="20" id="password" required>
                 </div>
             </div>
-            <div></div>
             <div class="space-between">
                 <button type="reset">Set semula</button>
                 <button type="submit">Hantar</button>

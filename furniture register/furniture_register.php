@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../register.css">  
     <script src="../functions.js"></script>
-    <title>Register your furniture here</title>
+    <title>Daftar produk</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form action="./f_reg.php" method="post" enctype="multipart/form-data" class="vertical">
-            <div class="center">Daftar Produk</div>
+            <div class="center"><b>Daftar Produk</b></div>
             <div class="container">
                 <div class="vertical space-between">
                     <label class="input" for="name">Nama:</label>

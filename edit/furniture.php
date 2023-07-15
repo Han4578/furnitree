@@ -107,7 +107,6 @@
                             ?>
                                 <div class="variant-white" id="<?php echo $id ?>">
                                 </div>  
-
                         <?php 
                             }
                         ?>

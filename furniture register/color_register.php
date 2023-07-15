@@ -15,7 +15,7 @@
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form action="./c_reg.php?id=<?php echo $id ?>" method="post" enctype="multipart/form-data" class=" vertical">
-            <div class="center">Tambah Warna</div>
+            <div class="center"><b>Tambah Warna</b></div>
             <div class="container">
                 <div class="vertical space-around">
                     <label for="color">Warna: </label>  

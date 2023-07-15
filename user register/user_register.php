@@ -24,7 +24,7 @@
     <br>
     <div class="main">
         <form action="./u_reg.php?aras=1" method="post" enctype="multipart/form-data" class="vertical">
-            <div class="center">Daftar Sebagai Pengguna</div>
+            <div class="center"><b>Daftar Sebagai Pengguna</b></div>
             <div class="container">
                 <div class="vertical space-between">
                     <label for="name">Nama:</label>

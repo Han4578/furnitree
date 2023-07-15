@@ -23,7 +23,7 @@
     <br>
     <div class="main">
         <form action="./u_reg.php?aras=2" method="post" enctype="multipart/form-data" class="vertical">
-            <div class="center">Daftar Sebagai Penjual</div>
+            <div class="center"><b>Daftar Sebagai Penjual</b></div>
             <div class="container">
                 <div class="vertical space-between">
                     <label for="name">Nama:</label>

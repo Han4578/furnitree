@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="space-between">
+        <div class="card max-width">
             <div>
                 <label for="description">Deskripsi</label>
                 <br>

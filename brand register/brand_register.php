@@ -18,7 +18,7 @@
     <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
     <div class="main">
         <form action="./b_reg.php" method="post" enctype="multipart/form-data" class="vertical">
-            <div class="center">Daftar Jenama</div>
+            <div class="center"><b>Daftar Jenama</b></div>
             <div class="input-split ">
                 <div class="vertical gap">
                     <label class="input" for="name">Nama</label>
