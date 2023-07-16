@@ -26,6 +26,5 @@
             alert('Jenama berjaya dipadamkan')
             window.location = '../manage/brand.php'
         </script>";
-
     }
 ?>

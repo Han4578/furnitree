@@ -4,7 +4,7 @@
 
     $_SESSION['query'] = $_POST['search'] ?? '';
 
-    $query = $_POST['search'] ?? '';
+    $query = $conn->real_escape_string($_POST['search']) ?? '';
     $color = $_POST['color'] ?? '';
     $brand = $_POST['brand'] ?? '';
     $from =(!empty($_POST['from']))? $_POST['from'] : 0;
@@ -33,7 +33,8 @@
     }
     if (!empty($query)) {
         if ($and) $stmt .= " AND ";
-        $stmt  .= " furniture_info.name LIKE '%$query%'";
+        $q = str_replace("%", "\%", $query);
+        $stmt  .= " furniture_info.name LIKE '%$q%'";
         $and = true;
     }
 
@@ -47,7 +48,6 @@
     $_SESSION['category'] = $category;
     $_SESSION['from'] = (!empty($_POST['from']))? $_POST['from'] : '';
     $_SESSION['to'] = (!empty($_POST['to']))? $_POST['to'] : '';
-    
     
     header('location: ../main_pages/filter.php')
 ?>

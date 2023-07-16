@@ -10,13 +10,11 @@
     $description = $_POST['description'];
     $color = $_POST['color'];
     $image = $_FILES['image']['name'];
-;
     $count = 0;
     
     $query = "UPDATE furniture_info SET name = '$name', brand = $brand, price = $price, description = '$description' WHERE id = $info";
 
     $stmt = $conn->query($query);
-
 
     $query2 = $conn->query("SELECT color, image, id FROM furniture WHERE info = $info");
     while ($row = $query2->fetch_assoc()) {
@@ -39,13 +37,10 @@
         
     }
 
-
-
     if ($stmt) {
         echo "<script>
         alert('Produk berjaya dikemas kini.');
         history.go(-2)
         </script>";
     }
-
 ?>

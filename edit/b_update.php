@@ -18,7 +18,6 @@
     }
     $imgTempName = $_FILES['image']['tmp_name'];
     
-    
     if ($_FILES['image']['error'] !== 4) {
         $delete = $conn->query("SELECT logo FROM brand WHERE id = $brandID")->fetch_assoc()['logo'];
         $path = realpath("../images/$delete");
@@ -39,5 +38,4 @@
             window.location = '../main_pages/brand.php?id=".$brandID."';
         }
     </script>";
-
 ?>
