@@ -33,7 +33,7 @@
         if ($query->num_rows > 0) {
             while ($row = $query->fetch_assoc()) {
                 $id = $row['id'];
-                $name = $row['name'];
+                $name = addslashes($row['name']);
                 $color = $row['color'] ?? $row['amount'];
                 $brand = $row['brand'];
                 $brandID = $row['brandID'];

@@ -16,7 +16,7 @@
 
 
 <div class="main">
-        <div class="list-options">
+        <div class="list-options print">
             <button onclick="printInfo()">Cetak</button>
         </div>
         <div class="columns">

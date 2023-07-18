@@ -33,7 +33,7 @@
                             }
                         ?>
                     </select>
-                    <input type="file" name="image" id="img" required>
+                    <input type="file" name="image" id="img" accept="image/*" required>
                 </div>
             </div>
             <div class="space-between">

@@ -42,7 +42,7 @@
                         <label class="input" for="description">Deskripsi: </label>
                     </div>
                     <div class="edit-furniture">
-                        <input class="input" id="name" name="name" value="<?php echo $row1['name'] ?>" maxlength="30" required></input>
+                        <input class="input" id="name" name="name" value="<?php echo htmlspecialchars($row1['name']) ?>" maxlength="30" required></input>
                         
                         <select class="input border <?php if ($_SESSION['level'] == 2) echo "none" ?>" name="brand" id="brand" required>
                             <?php
@@ -66,8 +66,8 @@
                 </div>
                 <div class="edit-furniture">
                     <?php
-                        $name = $row1['name'];
-                        $query2 = $conn->query("SELECT image, color.id AS color, furniture.id AS id FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN color ON furniture.color = color.id WHERE furniture_info.name = '$name'");
+                        $info = $row1['info'];
+                        $query2 = $conn->query("SELECT image, color.id AS color, furniture.id AS id FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id LEFT JOIN color ON furniture.color = color.id WHERE furniture.info = '$info'");
                         $i = 1;
                         $length = $query2->num_rows;
                         if ($length > 0) {
@@ -130,6 +130,7 @@
         let edit = document.querySelectorAll("input[type='file']")
         let colorSelect = document.querySelectorAll("[data-color]")
         let price = document.querySelector("#price")
+        let name = document.querySelector("#name")
 
         for (const d of del) {
             d.addEventListener('click', () => {

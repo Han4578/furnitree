@@ -44,7 +44,7 @@
                     </div>
                     <div class="vertical space-around grow">
                         <input class="custom input" id="name" name="name" value="<?php echo $row['name'] ?>" maxlength="30" required>
-                        <input class="custom input" id="password" name="password" type="password" value="<?php echo $row['password'] ?>" maxlength="20" required>
+                        <input class="custom input" id="password" name="password" value="<?php echo $row['password'] ?>" maxlength="20" required>
                         <input class="custom input" id="email" name="email" type="email" value="<?php echo $row['email'] ?>" maxlength="40" required>
                         <input class="custom input" type="number" id="pnumber" title="0123456789" name="pnumber" value="<?php echo $row['nomhp'] ?>" min="100000000" max="9999999999" required>
                         

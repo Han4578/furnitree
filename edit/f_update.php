@@ -7,7 +7,7 @@
     $name = $conn->real_escape_string($_POST['name']);
     $brand = $conn->real_escape_string($_POST['brand']);
     $price = $_POST['price'];
-    $description = $_POST['description'];
+    $description = $conn->real_escape_string($_POST['description']);
     $color = $_POST['color'];
     $image = $_FILES['image']['name'];
     $count = 0;
@@ -20,19 +20,20 @@
     while ($row = $query2->fetch_assoc()) {
         $id = $row['id'];
         $c = $color[$count];
-        $i = ($image[$count] !== '')? date('YmdHis').'.' : $row['image'];
-        $t = ($image[$count] !== '')? explode('.', $image[$count])[1]: '';
+        $i = ($image[$count] !== '')? date('YmdHis').'.' : $row['image']; //img name
+        $t = ($image[$count] !== '')? explode('.', $image[$count])[1]: ''; // type
+        $imgTempName = $_FILES['image']['tmp_name'][$count];
         $newName = $i.$t;
 
         if ($image[$count] !== '') {
+            if (!exif_imagetype($imgTempName)) alertError("Fail yang dimuat naik bukan imej");
             $delete = $conn->query("SELECT image FROM furniture WHERE id = $id")->fetch_assoc()['image'];
             $path = realpath("../images/$delete");
             unlink($path);
+            $stmt2 = $conn->query("UPDATE furniture SET color = $c, image = '$newName' WHERE id = $id");
+            move_uploaded_file($imgTempName, '../images/' . $newName);
         }
 
-        $stmt2 = $conn->query("UPDATE furniture SET color = $c, image = '$newName' WHERE id = $id");
-        $imgTempName = $_FILES['image']['tmp_name'][$count];
-        if ($imgTempName !== "") move_uploaded_file($imgTempName, '../images/' . $newName);
         $count++;
         
     }

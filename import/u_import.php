@@ -6,6 +6,21 @@
     $numRow = 1;
     $error = '';
 
+    $csv_mimetypes = array(
+        'text/csv',
+        'text/plain',
+        'application/csv',
+        'text/comma-separated-values',
+        'application/excel',
+        'application/vnd.ms-excel',
+        'application/vnd.msexcel',
+        'text/anytext',
+        'application/octet-stream',
+        'application/txt',
+    );
+    
+    if (!in_array($_FILES['import']['type'], $csv_mimetypes)) alertError("Fail yang dimasukkan bukan fail csv");
+
     $file = fopen($fileName, 'r');
     
     while ($row = fgetcsv($file)) {

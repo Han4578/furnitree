@@ -16,7 +16,7 @@
 
 
 <div class="main">
-        <div class="list-options">
+        <div class="list-options print">
             <button onclick="window.location='../import/<?php echo ($_SESSION['level'] == 2)? 'color':'color_admin'; ?>.php'">Import Warna</button>
             <button onclick="window.location='../import/<?php echo ($_SESSION['level'] == 2)? 'furniture':'furniture_admin'; ?>.php'">Import Produk</button>
             <button onclick="window.location='../furniture register/furniture_register.php'">Tambah Produk</button>

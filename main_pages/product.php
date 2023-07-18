@@ -36,8 +36,8 @@
             </div>
         </template>
         <br>
-        <div class="back pointer" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
-        <div class="action-bar">
+        <div class="back pointer print" onclick="history.back()"><img src="../images/back.png" alt="">Balik</div>
+        <div class="action-bar print">
             <?php if (checkLogin()) {
                 if ($_SESSION['level'] == 3 or $_SESSION['brandID'] == $brandID) { ?>
                     <div class="action-button" onclick="edit()">
@@ -118,7 +118,7 @@
 
             </div>
         </div>
-        <div class="related">
+        <div class="related print">
             Yang berkaitan: 
             <br>
             <br>

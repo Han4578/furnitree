@@ -14,7 +14,7 @@
         if (!checkLogin() or $_SESSION['level'] < 2) accessDenied();
     ?>
     <div class="main">
-        <div class="list-options">
+        <div class="list-options print">
             <button onclick="window.location='../import/user.php'">Import Pengguna</button>
             <button onclick="printInfo()">Cetak</button>
         </div>

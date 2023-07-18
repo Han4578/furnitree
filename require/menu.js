@@ -125,13 +125,14 @@ function logOut() {
     window.location = '../require/logout.php';
 }
 
-function openUser(e) {
+function openUser() {
     userMenu.classList.add('open')
-    e.stopPropagation()
+    event.stopPropagation()
 }
 
 function closeUser() {
     userMenu.classList.remove('open')
+    userMenu.style.display = 'none'
 }
 
 function toggleBrand() {

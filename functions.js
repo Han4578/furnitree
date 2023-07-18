@@ -323,22 +323,19 @@ function displayStatistics(container, username, productname, userId, productId, 
 }
 
 function printInfo() {
-    let top = document.getElementsByClassName('top')[0]
-    let actionBar = document.getElementsByClassName('action-bar')[0] ?? document.createElement('div')
-    let back = document.getElementsByClassName('back')[0] ?? document.createElement('div')
-    let listOptions = document.getElementsByClassName('list-options')[0] ?? document.createElement('div')
+    let prints = document.getElementsByClassName('print')
 
     
-    top.style.display = 'none'
-    actionBar.style.display = 'none'
-    back.style.display = 'none'
-    listOptions.style.display = 'none'
-
+    for (const p of prints) {
+          p.style.display = 'none'
+          closeUser()
+    }
+    
     window.addEventListener('afterprint', () => {
-        top.style.display = 'flex'
-        actionBar.style.display = 'flex'
-        back.style.display = 'flex'
-        listOptions.style.display = 'flex'
+        for (const p of prints) {
+              p.style.display = 'flex'
+        }        
+        closeUser()
     })
 
     window.print()

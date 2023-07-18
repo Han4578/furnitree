@@ -382,8 +382,9 @@ label {
 .category-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 10%;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .category {
@@ -1211,6 +1212,10 @@ label {
 
     #menu-list.open {
         transform: translateX(100%);
+    }
+
+    .category {
+        width: 120px;
     }
 
     [data-price],

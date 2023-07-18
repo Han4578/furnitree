@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../style.css">
 <script src="../functions.js"></script>
 
-<div class="top">
+<div class="top print">
     <div class="icon" id="menu">
         <img src="../images/Hamburger_icon.png" alt="hamburger-icon">
     </div>
@@ -15,7 +15,7 @@
     <img src="../images/<?php echo (key_exists('isLoggedIn', $_SESSION))? $_SESSION['pfp']: "user_icon.png";?>" alt="user-icon" id="user">
     </div>
 </div>
-<div id="user-menu">
+<div id="user-menu" class="print">
     <?php
         $notLogged = "<div class='user-button' data-login>Log masuk</div>
                       <div class='user-button' data-signup>Daftar</div>";
@@ -58,6 +58,7 @@
         </div>
         <span>Menu</span>
     </h1>
+    <div class="menu-button" onclick="redirect.home()">Home</div>
     <div class="menu-button" data-category-menu>Kategori<img src="../images/dropdown-icon.png" alt="" class="transition"></div>
     <div class="menu-list none" data-category-list>
         <?php
