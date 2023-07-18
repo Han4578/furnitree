@@ -4,7 +4,7 @@
 
     $_SESSION['query'] = $_POST['search'] ?? '';
 
-    $query = $conn->real_escape_string($_POST['search']) ?? '';
+    $query = $_POST['search'] ?? '';
     $color = $_POST['color'] ?? '';
     $brand = $_POST['brand'] ?? '';
     $from =(!empty($_POST['from']))? $_POST['from'] : 0;
@@ -33,7 +33,7 @@
     }
     if (!empty($query)) {
         if ($and) $stmt .= " AND ";
-        $q = str_replace("%", "\%", $query);
+        $q = str_replace("%", "\%", $conn->real_escape_string($query));
         $stmt  .= " furniture_info.name LIKE '%$q%'";
         $and = true;
     }
