@@ -39,7 +39,7 @@
             <div class="brand-info">
                 <div class="brand-name">
                     <label for="name">Nama Jenama: </label>
-                    <input type="text" value="<?php echo $row1['name'] ?>" name="name" id="name" class="input" maxlength="50" required>
+                    <input type="text" value="<?php echo htmlspecialchars($row1['name']) ?>" name="name" id="name" class="input" maxlength="50" required>
                 </div>
                 <hr>
                 <div class="brand-name">                    

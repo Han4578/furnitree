@@ -44,7 +44,7 @@
             <div class="brand-info">
                 <div class="brand-name">
                     <a href="<?php echo $row1['official'] ?>" target="_blank"><?php echo $row1['official'] ?></a>
-                    <span><?php echo $row1['name'] ?></span>
+                    <span><?php echo htmlspecialchars($row1['name']) ?></span>
                 </div>
                 <hr>
                 <div class="social">                    
@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="brand-description">
-            <?php echo $row1['description']; ?>
+            <?php echo htmlspecialchars($row1['description']); ?>
         </div>
         <br>
         <br>

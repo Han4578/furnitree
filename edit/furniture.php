@@ -49,7 +49,7 @@
                                 $brandQuery = $conn->query("SELECT name, id FROM brand");
                                 while ($row3 = $brandQuery->fetch_assoc()) {
                                     ?>
-                                    <option value="<?php echo $row3['id'] ?>"  <?php if ($row3['name'] == $row1['brand']) echo "selected" ?>><?php echo $row3['name'] ?></option>
+                                    <option value="<?php echo $row3['id'] ?>"  <?php if ($row3['name'] == $row1['brand']) echo "selected" ?>><?php echo htmlspecialchars($row3['name']) ?></option>
                                     <?php
                                 }
                             ?>

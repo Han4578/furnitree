@@ -76,15 +76,15 @@
             <div class="product-info">
                 <div class="space-between">
                     <div>
-                        <div class="name"><?php echo $row1['name']; ?></div>
-                        <div class="brand">Dari <a href="./brand.php?id=<?php echo $brandID; ?>" class="brand"><?php echo $row1['brand']; ?></a></div>
+                        <div class="name"><?php echo htmlspecialchars($row1['name']); ?></div>
+                        <div class="brand">Dari <a href="./brand.php?id=<?php echo $brandID; ?>" class="brand"><?php echo htmlspecialchars($row1['brand']); ?></a></div>
                     </div>
                     <div class="price"><?php displayPrice($row1['price'], "document.querySelector('.price')"); ?></div>
                 </div>
                 <div class="description">
                     Diskripsi: <br>
                     <?php 
-                        echo (!empty($row1['description']))? $row1['description'] : "Tiada deskripsi";
+                        echo (!empty($row1['description']))? htmlspecialchars($row1['description']) : "Tiada deskripsi";
                     ?>
                 </div>
                 <div class="color-list">

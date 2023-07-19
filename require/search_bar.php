@@ -7,7 +7,7 @@
     $_SESSION['to'] = $_SESSION['to'] ?? '';
 ?>
 
-<form action="../require/filter.php" class="search-section" method="post">
+<form action="../require/filter.php" class="search-section" method="post" onsubmit="submitCheck()">
     <div class="search-container">
         <input type="text" name="search" id="search-bar" placeholder="Search..." value="<?php echo $_SESSION['query']; ?>">
         <button type="submit" class="search">S</button>
@@ -112,10 +112,10 @@
                 <div>Harga:</div>
                 <br>
                 <div class="selections">
-                    <label for="filter-price">Dari RM</label>
-                    <input class="custom input max-width" type="number" name="from" id="filter-price" onblur="roundNumber(this, value)" min="0" value="<?php echo $_SESSION['from']  ?>">
-                    <label for="filter-price">Hingga RM</label>
-                    <input class="custom input max-width  " type="number" name="to" id="filter-price" onblur="roundNumber(this, value)" min="0" value="<?php echo $_SESSION['to'] ?>">
+                    <label for="from">Dari RM</label>
+                    <input class="custom input max-width" type="number" name="from" id="from" min="0" value="<?php echo $_SESSION['from']  ?>">
+                    <label for="to">Hingga RM</label>
+                    <input class="custom input max-width  " type="number" name="to" id="to" min="0" value="<?php echo $_SESSION['to'] ?>">
                 </div>
             </div>
         </div>
@@ -135,14 +135,21 @@
     let filterMenu = document.querySelector('#filter-menu')
     let filterLabel = document.querySelectorAll('.filter-label')
     let reset = document.querySelector('[data-reset]')
-    let timeOutId = '' 
+    let from = document.querySelector('#from')
+    let to = document.querySelector('#to')
+    let timeOutId = ''
+    let priceError = false
 
-    let number = document.querySelectorAll('input[type="number"]')
+    let numbers = document.querySelectorAll('input[type="number"]')
     let input = document.querySelectorAll('input')
 
-    for (const n of number) {
+    for (const n of numbers) {
         n.addEventListener('keydown', e => {
             excludeSymbols(e)
+        })
+        n.addEventListener('blur', () => {
+            roundNumber(n, n.value)
+            checkValue()
         })
     }
 
@@ -182,5 +189,25 @@
         filterMenu.classList.add('down')
         searchContainer.classList.add('down')
         filterMenu.classList.add('index')
+    }
+
+    function checkValue() {
+        let border = "none"
+        if (!(from.value == '' || to.value == '')) {
+            if (parseFloat(from.value) > parseFloat(to.value)) {
+                border = "solid 2px red"
+                priceError = true
+            } else priceError = false
+        }
+        for (const n of numbers) {
+            n.style.border = border
+        }
+    }
+
+    function submitCheck() {
+        if (priceError) {
+            alert("'Dari RM' tidak boleh lebih daripada 'Hingga RM'")
+            event.preventDefault()
+        }
     }
 </script>
