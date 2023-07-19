@@ -33,8 +33,8 @@
                                 $value = $row['id'];
                                 $code = $row['code'];
                                 ?>  
-                                    <input type="checkbox" class="none" name="color[]" id="filter-color<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked"; ?>>
-                                    <label for="filter-color<?php echo $i; ?>" class="filter-label  <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)">
+                                    <input type="checkbox" class="none" name="color[]" id="filter-color<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked'"; ?>>
+                                    <label for="filter-color<?php echo $i; ?>" class="filter-label  <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)" <?php if (str_contains($checked, $value)) echo "style='order:-1;''"; ?>>
                                         <span class="color-circle" style="background-color: <?php echo $code; ?>;"></span>
                                         <span><?php echo $name; ?></span>
                                     </label>             
@@ -65,7 +65,7 @@
 
                                 ?>  
                                     <input type="checkbox" class="none" name="brand[]" id="filter-brand<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked"; ?>>
-                                    <label for="filter-brand<?php echo $i; ?>" class="filter-label <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)">
+                                    <label for="filter-brand<?php echo $i; ?>" class="filter-label <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)" <?php if (str_contains($checked, $value)) echo "style='order:-1;''"; ?>>
                                         <img class="square" src="../images/<?php echo $src; ?>" alt="">
                                         <span><?php echo $name; ?></span>
                                     </label>             
@@ -96,7 +96,7 @@
 
                                 ?>  
                                     <input type="checkbox" class="none" name="category[]" id="filter-category<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked"; ?>>
-                                    <label for="filter-category<?php echo $i; ?>" class="filter-label  <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)">
+                                    <label for="filter-category<?php echo $i; ?>" class="filter-label  <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)" <?php if (str_contains($checked, $value)) echo "style='order:-1;''"; ?>>
                                         <img class="square" src="../images/<?php echo $src; ?>" alt="">
                                         <span><?php echo $name; ?></span>
                                     </label>             
