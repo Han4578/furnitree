@@ -231,7 +231,7 @@ function displayChoice(container, name, num, brand, price, pfp, no, id, brandID)
             case 2:
                 let product = document.createElement('a')
                 product.innerText = data
-                product.href = "../main_pages/product.php?produk=" + id
+                product.href = "../main_pages/product.php?id=" + id
                 column.appendChild(product)
                 column.classList.add('email')
                 break;
