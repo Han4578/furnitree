@@ -12,6 +12,7 @@ function displayPrice(num) {
 
 function roundNumber(e, value) {
     let newNum = Math.round(value * 100) / 100
+    if (newNum == 0) newNum = ''
     e.value = newNum
 }
 

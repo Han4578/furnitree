@@ -67,7 +67,7 @@
                                     <input type="checkbox" class="none" name="brand[]" id="filter-brand<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked"; ?>>
                                     <label for="filter-brand<?php echo $i; ?>" class="filter-label <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)" <?php if (str_contains($checked, $value)) echo "style='order:-1;''"; ?>>
                                         <img class="square" src="../images/<?php echo $src; ?>" alt="">
-                                        <span><?php echo $name; ?></span>
+                                        <span><?php echo htmlspecialchars($name); ?></span>
                                     </label>             
                                 <?php
                                 $i++;
@@ -115,7 +115,7 @@
                     <label for="from">Dari RM</label>
                     <input class="custom input max-width" type="number" name="from" id="from" min="0" value="<?php echo $_SESSION['from']  ?>">
                     <label for="to">Hingga RM</label>
-                    <input class="custom input max-width  " type="number" name="to" id="to" min="0" value="<?php echo $_SESSION['to'] ?>">
+                    <input class="custom input max-width" type="number" name="to" id="to" min="0" value="<?php echo $_SESSION['to'] ?>">
                 </div>
             </div>
         </div>
@@ -137,11 +137,11 @@
     let reset = document.querySelector('[data-reset]')
     let from = document.querySelector('#from')
     let to = document.querySelector('#to')
+    let numbers = document.querySelectorAll('input[type="number"]')
+    let input = document.querySelectorAll('input')
     let timeOutId = ''
     let priceError = false
 
-    let numbers = document.querySelectorAll('input[type="number"]')
-    let input = document.querySelectorAll('input')
 
     for (const n of numbers) {
         n.addEventListener('keydown', e => {
@@ -157,11 +157,15 @@
         for (const i of input) {
             if (i.type == 'text' || i.type == 'number') i.value = ''
             else i.checked = false
-            
         }      
 
         for (const f of filterLabel) {
             f.classList.remove('label-highlight')
+        }
+
+        for (const n of numbers) {
+            n.style.border = 'none'
+            priceError = false
         }
     })
 

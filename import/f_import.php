@@ -58,12 +58,6 @@
             $numRow++;
             continue;
         }
-
-        if ($price > 1000000) {
-            $error .= "Harga tidak lebih daripada 1,000,000 di baris $numRow \\n";
-            $numRow++;
-            continue;
-        }
         
         foreach ($images['name'] as $n) {
             if (strcmp($n, $imgName) == 0) {

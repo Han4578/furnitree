@@ -7,8 +7,8 @@
     $query = $_POST['search'] ?? '';
     $color = $_POST['color'] ?? '';
     $brand = $_POST['brand'] ?? '';
-    $from =(!empty($_POST['from']))? $_POST['from'] : 0;
-    $to = (!empty($_POST['to']))? $_POST['to'] : 1000000;
+    $to =  $_POST['to'] ?? '';
+    $from = (!empty($_POST['from']))? $_POST['from']: 0;
     $category = $_POST['category'] ?? '';
     $and = false;
 
@@ -37,10 +37,11 @@
         $stmt  .= " furniture_info.name LIKE '%$q%'";
         $and = true;
     }
+    if ($to !== '') {
+        if ($and) $stmt .= " AND ";
+        $stmt  .= "price BETWEEN $from AND $to ";
+    } else $stmt .= "price > $from";
 
-    if ($and) $stmt .= " AND ";
-    $stmt  .= "price BETWEEN $from AND $to ";
-    
     $_SESSION['stmt'] = $stmt;
     $_SESSION['query'] = $query;
     $_SESSION['color'] = $color;

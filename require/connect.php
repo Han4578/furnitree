@@ -19,8 +19,8 @@
                 $color = $row['color'];
 
                 echo "  <script>
-                                displayItems($container, '$name', '$image', $price, '$brand', $template, $id, $color);
-                            </script>";
+                            displayItems($container, '$name', '$image', $price, '$brand', $template, $id, $color);
+                        </script>";
             }
         } else echo "<div style='margin: 0 auto;'>Tiada produk yang bersetuju dengan kriteria yang diberikan</div>";
     }

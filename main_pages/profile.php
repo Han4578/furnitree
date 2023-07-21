@@ -43,7 +43,7 @@
                     ?>
                 </div>
                 <div class="vertical space-around">
-                    <div><?php echo $row['name'] ?></div>
+                    <div><?php echo htmlspecialchars($row['name']) ?></div>
                     <div><?php echo $row['password'] ?></div>
                     <div><?php echo $row['email'] ?></div>
                     <div><?php echo (strlen($row['nomhp']) == 9)? '0'.$row['nomhp']: $row['nomhp']; ?></div>
