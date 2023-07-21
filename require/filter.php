@@ -37,8 +37,8 @@
         $stmt  .= " furniture_info.name LIKE '%$q%'";
         $and = true;
     }
+    if ($and) $stmt .= " AND ";
     if ($to !== '') {
-        if ($and) $stmt .= " AND ";
         $stmt  .= "price BETWEEN $from AND $to ";
     } else $stmt .= "price > $from";
 

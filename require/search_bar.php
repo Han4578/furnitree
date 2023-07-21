@@ -113,9 +113,9 @@
                 <br>
                 <div class="selections">
                     <label for="from">Dari RM</label>
-                    <input class="custom input max-width" type="number" name="from" id="from" min="0" value="<?php echo $_SESSION['from']  ?>">
+                    <input class="custom input max-width" type="number" name="from" id="from" min="0" max="1000000000" maxlength="10" value="<?php echo $_SESSION['from']  ?>">
                     <label for="to">Hingga RM</label>
-                    <input class="custom input max-width" type="number" name="to" id="to" min="0" value="<?php echo $_SESSION['to'] ?>">
+                    <input class="custom input max-width" type="number" name="to" id="to" min="0" max="1000000000" maxlength="10" value="<?php echo $_SESSION['to'] ?>">
                 </div>
             </div>
         </div>

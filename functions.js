@@ -13,6 +13,7 @@ function displayPrice(num) {
 function roundNumber(e, value) {
     let newNum = Math.round(value * 100) / 100
     if (newNum == 0) newNum = ''
+    if (newNum > 1000000000) newNum = 1000000000
     e.value = newNum
 }
 
@@ -187,8 +188,10 @@ function displayFurniture(container, name, color, brand, price, pfp, no, id, bra
                 column.appendChild(brand)
                 break;
             case 5:
-                column.classList.add('price-column')
-                column.innerText = data
+                let innerBlock = document.createElement('div')
+                innerBlock.classList.add('ellipsis')
+                innerBlock.innerText = displayPrice(data)
+                column.appendChild(innerBlock)
                 break;
             case 6:
                 let img = document.createElement('img')
@@ -208,8 +211,6 @@ function displayFurniture(container, name, color, brand, price, pfp, no, id, bra
     row.appendChild(actions)
 
     container.appendChild(row)
-    let priceSpan = row.querySelector('.price-column')
-    priceSpan.innerText = displayPrice(priceSpan.innerText)
 }
 
 function displayChoice(container, name, num, brand, price, pfp, no, id, brandID) {
@@ -218,7 +219,7 @@ function displayChoice(container, name, num, brand, price, pfp, no, id, brandID)
     let columns = [no, name, pfp, brand, num, price]
     let i = 1
 
-    actions.href =  "../require/pilihan_delete.php?id="+id
+    actions.href =  "../require/pilihan_delete.php?produk="+id
     actions.innerHTML = "Batalkan"
     actions.classList.add('column')
     row.classList.add('row')
@@ -230,7 +231,7 @@ function displayChoice(container, name, num, brand, price, pfp, no, id, brandID)
             case 2:
                 let product = document.createElement('a')
                 product.innerText = data
-                product.href = "../main_pages/product.php?id=" + id
+                product.href = "../main_pages/product.php?produk=" + id
                 column.appendChild(product)
                 column.classList.add('email')
                 break;
@@ -247,8 +248,10 @@ function displayChoice(container, name, num, brand, price, pfp, no, id, brandID)
                 column.appendChild(brand)
                 break;
             case 6:
-                column.classList.add('price-column')
-                column.innerText = num * price
+                let innerBlock = document.createElement('div')
+                innerBlock.classList.add('ellipsis')
+                innerBlock.innerText = displayPrice(data)
+                column.appendChild(innerBlock)
                 break;
             default:
             column.innerText = data
@@ -262,8 +265,6 @@ function displayChoice(container, name, num, brand, price, pfp, no, id, brandID)
     row.appendChild(actions)
 
     container.appendChild(row)
-    let priceSpan = row.querySelector('.price-column')
-    priceSpan.innerText = displayPrice(priceSpan.innerText)
 }
 
 function displayStatistics(container, username, productname, userId, productId, productImage, amount, price, no) {
@@ -272,7 +273,7 @@ function displayStatistics(container, username, productname, userId, productId, 
     let columns = [no, username, productname, productImage, amount, price]
     let i = 1
 
-    actions.href =  "../require/pilihan_delete.php?id="+ productId
+    actions.href =  "../require/pilihan_delete.php?produk="+ productId + "&user=" + userId
     actions.innerHTML = "Batalkan"
     actions.classList.add('column')
     row.classList.add('row')
@@ -303,8 +304,10 @@ function displayStatistics(container, username, productname, userId, productId, 
                 column.appendChild(img)
                 break;
             case 6:
-                column.classList.add('price-column')
-                column.innerText = amount * price
+                let innerBlock = document.createElement('div')
+                innerBlock.classList.add('ellipsis')
+                innerBlock.innerText = displayPrice(amount * price)
+                column.appendChild(innerBlock)
                 break;
             default:
                 column.innerText = data
@@ -319,8 +322,6 @@ function displayStatistics(container, username, productname, userId, productId, 
     row.appendChild(actions)
 
     container.appendChild(row)
-    let priceSpan = row.querySelector('.price-column')
-    priceSpan.innerText = displayPrice(priceSpan.innerText)
 }
 
 function printInfo() {

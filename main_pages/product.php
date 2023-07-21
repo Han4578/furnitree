@@ -146,7 +146,7 @@
             }
 
             function deleteChosen() {
-                window.location = '../require/pilihan_delete.php?id=' + <?php echo $productID; ?>
+                window.location = '../require/pilihan_delete.php?produk=' + <?php echo $productID; ?>
             }
 
 

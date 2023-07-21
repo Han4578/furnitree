@@ -47,7 +47,7 @@
                             displayOptions("SELECT name, id FROM brand", "document.getElementById('brand')", $_SESSION['brandID'])
                         ?>
                     </select>
-                    <input class="custom input" type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" onblur="roundNumber(this, value)" required>
+                    <input class="custom input" type="number" name="price" id="price" placeholder="RM" min="0.01" step="0.01" max="1000000000" onblur="roundNumber(this, value)" required>
                 </div>
             </div>
             <div class="vertical">

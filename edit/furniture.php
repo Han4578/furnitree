@@ -54,7 +54,7 @@
                                 }
                             ?>
                         </select>
-                        <input type="number" class="input" id="price" name="price" value="<?php echo $row1['price'] ?>"  min="0.01" step="0.01" onblur="roundNumber(this, value)" required></input>
+                        <input type="number" class="input" id="price" name="price" value="<?php echo $row1['price'] ?>"  min="0.01" step="0.01" onblur="roundNumber(this, value)" max="1000000000" required></input>
                         <textarea name="description" id="description" cols="51" rows="10" maxlength="1000"><?php echo $row1['description'] ?></textarea>
                     </div>
                 </div>

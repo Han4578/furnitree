@@ -2,8 +2,8 @@
     require "./connect.php";
     session_start();
 
-    $userID = $_SESSION['id'];
-    $furnitureID = $_GET['id'];
+    $userID = $_GET['user'] ?? $_SESSION['id'];
+    $furnitureID = $_GET['produk'];
 
     $query = $conn->query("DELETE FROM pilihan WHERE pengguna = $userID and produk = $furnitureID;");
 
