@@ -24,7 +24,7 @@
 
                         $query = $conn->query("SELECT * FROM color");
                         $i = 1;
-                        $checked = str_replace(', ', '', $color);
+                        $checked = explode(', ', $color);
                         
                         if ($query->num_rows > 0) {
                             while ($row = $query->fetch_assoc()) {
@@ -33,8 +33,8 @@
                                 $value = $row['id'];
                                 $code = $row['code'];
                                 ?>  
-                                    <input type="checkbox" class="none" name="color[]" id="filter-color<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked'"; ?>>
-                                    <label for="filter-color<?php echo $i; ?>" class="filter-label  <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)" <?php if (str_contains($checked, $value)) echo "style='order:-1;''"; ?>>
+                                    <input type="checkbox" class="none" name="color[]" id="filter-color<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (in_array($value, $checked)) echo "checked"; ?>>
+                                    <label for="filter-color<?php echo $i; ?>" class="filter-label  <?php if (in_array($value, $checked)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)" <?php if (in_array($value, $checked)) echo "style='order:-1;''"; ?>>
                                         <span class="color-circle" style="background-color: <?php echo $code; ?>;"></span>
                                         <span><?php echo $name; ?></span>
                                     </label>             
@@ -93,7 +93,6 @@
                                 $name = $row['name'];
                                 $value = $row['id'];
                                 $src = $row['image'];
-
                                 ?>  
                                     <input type="checkbox" class="none" name="category[]" id="filter-category<?php echo $i; ?>" value="<?php echo $value; ?>" <?php if (str_contains($checked, $value)) echo "checked"; ?>>
                                     <label for="filter-category<?php echo $i; ?>" class="filter-label  <?php if (str_contains($checked, $value)) echo "label-highlight"; ?>" onclick="toggleHighlight(this)" <?php if (str_contains($checked, $value)) echo "style='order:-1;''"; ?>>
