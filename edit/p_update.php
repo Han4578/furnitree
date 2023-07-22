@@ -19,6 +19,16 @@
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) alertError('Format e-mel tidak betul, sila cuba sekali');
+
+    $EmailQuery = $conn->query("SELECT * FROM pengguna WHERE email = '$email' AND id != $id");
+    if ($EmailQuery->num_rows > 0) alertError('E-mel sudah digunakan, sila mengguna e-mel yang lain');
+    
+    $NameQuery = $conn->query("SELECT * FROM pengguna WHERE name = '$name' AND id != $id");    
+    if ($NameQuery->num_rows > 0) alertError('Nama sudah digunakan, sila mengguna nama yang lain');
+    
+    $pNumQuery = $conn->query("SELECT * FROM pengguna WHERE nomhp = '$pnumber' AND id != $id");    
+    if ($pNumQuery->num_rows > 0) alertError('Nombor telefon sudah digunakan, sila mengguna nombor lain yang lain');
+    
     
     
     if ($imgTempName !== "") {

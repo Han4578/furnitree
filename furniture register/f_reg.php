@@ -19,8 +19,7 @@
     if (!exif_imagetype($imgTempName)) alertError('Fail yang dimuat naik bukan imej');
 
     $check = $conn->query("SELECT * FROM furniture_info WHERE name = '$name' AND brand = $brand");
-    
-    if ($check->num_rows > 0) alertError("Produk dengan nama yang sama sudah wujud");
+    if ($check->num_rows > 0) alertError("Produk dengan nama yang sama sudah wujud dalam jenama ini");
     
     $stmt1 = $conn->query("INSERT INTO furniture_info(name, brand, price, category) 
     VALUES ('$name','$brand',$price,'$category')");

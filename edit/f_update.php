@@ -11,6 +11,9 @@
     $color = $_POST['color'];
     $image = $_FILES['image']['name'];
     $count = 0;
+
+    $check = $conn->query("SELECT * FROM furniture_info WHERE name = '$name' AND brand = $brand AND id != $productID");
+    if ($check->num_rows > 0) alertError("Produk dengan nama yang sama sudah wujud dalam jenama ini");
     
     $query = "UPDATE furniture_info SET name = '$name', brand = $brand, price = $price, description = '$description' WHERE id = $info";
 

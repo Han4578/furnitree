@@ -37,7 +37,7 @@
                     <div>Nama:  </div>
                     <div>Kata laluan:  </div>
                     <div>E-mel:  </div> 
-                    <div>Number telefon: </div>
+                    <div>Nombor telefon: </div>
                     <?php
                         if ($_SESSION['level'] == 3) echo "<div>Aras: </div>";
                     ?>

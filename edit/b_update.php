@@ -11,6 +11,9 @@
     $twitter = $conn->real_escape_string($_POST['twitter']);
     $yt = $conn->real_escape_string($_POST['yt']);
 
+    $check = $conn->query("SELECT * FROM brand WHERE name = '$name' AND id != $brandID");
+    if ($check->num_rows > 0) alertError("Nama sudah digunakan, sila mengguna nama yang lain");
+
     if ($_FILES['image']['error'] !== 4) {
         $image = date('YmdHis');
         $imgType = explode('.', $_FILES['image']['name'])[1];

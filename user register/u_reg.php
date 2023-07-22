@@ -21,6 +21,10 @@
     $NameQuery = $conn->query("SELECT * FROM pengguna WHERE name = '$name'");    
     if ($NameQuery->num_rows > 0) alertError('Nama sudah digunakan, sila mengguna nama yang lain');
 
+        
+    $pNumQuery = $conn->query("SELECT * FROM pengguna WHERE nomhp = '$pnumber'");    
+    if ($pNumQuery->num_rows > 0) alertError('Nombor telefon sudah digunakan, sila menggunakan nombor lain yang lain');
+
     #Mencipta gambar profil
     copy("../images/default-icon.jpg", "../images/".$img);
 
