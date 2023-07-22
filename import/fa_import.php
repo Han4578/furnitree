@@ -47,7 +47,7 @@
         $i = 0;
         $imgFound = false;
 
-        if (!is_numeric($price)) {
+        if (!is_numeric($price) or str_contains("$price", 'e')) {
             $error .= "Harga bukan nombor di baris $numRow \\n";
             $numRow++;
             continue;
@@ -59,8 +59,8 @@
             continue;
         }
         
-        if ($price > 1000000) {
-            $error .= "Harga tidak lebih daripada 1,000,000 di baris $numRow \\n";
+        if ($price > 1e9) {
+            $error .= "Harga tidak lebih daripada 1,000,000,000 di baris $numRow \\n";
             $numRow++;
             continue;
         }

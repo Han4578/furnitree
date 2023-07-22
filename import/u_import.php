@@ -56,17 +56,22 @@
 
         if ($imgFound) {
             $checkName = $conn->query("SELECT id FROM pengguna WHERE name = '$name'");
-            
             if ($checkName->num_rows > 0) {
                 $error .= "Pengguna dengan nama yang sama sudah wujud dalam pengkalan data di baris $numRow \\n";
                 $numRow++;
                 continue;
             }
 
-            $checkName = $conn->query("SELECT id FROM pengguna WHERE email = '$email'");
-            
-            if ($checkName->num_rows > 0) {
+            $checkEmail = $conn->query("SELECT id FROM pengguna WHERE email = '$email'");
+            if ($checkEmail->num_rows > 0) {
                 $error .= "Pengguna dengan email yang sama sudah wujud dalam pengkalan data di baris $numRow \\n";
+                $numRow++;
+                continue;
+            }
+
+            $checkTel = $conn->query("SELECT id FROM pengguna WHERE nomhp = '$nomhp'");
+            if ($checkTel->num_rows > 0) {
+                $error .= "Pengguna dengan nombor telefon yang sama sudah wujud dalam pengkalan data di baris $numRow \\n";
                 $numRow++;
                 continue;
             }
