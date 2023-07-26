@@ -21,10 +21,10 @@
             <div class="center"><b>Daftar Jenama</b></div>
             <div class="input-split ">
                 <div class="vertical gap">
-                    <label class="input" for="name">Nama</label>
+                    <label class="input" for="name">Nama: </label>
                     <label class="<?php if ($_SESSION['level'] == 2) echo "none" ?>" for="account">Pengguna:</label>
-                    <label class="input" for="image">Gambar</label>
-                    <label for="description">Deskripsi</label>
+                    <label class="input" for="image">Gambar: </label>
+                    <label for="description">Deskripsi: </label>
 
                 </div>
 

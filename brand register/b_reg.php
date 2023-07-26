@@ -37,7 +37,7 @@
 
     echo "<script> 
         if ($result) {
-            window.location = '../main_pages/brand.php?id=$id'
+            window.location = '../manage/furniture.php
             alert('Pendaftaran berjaya')
         } else {
             alert('Pendaftaran gagal, sila cuba sekali')
