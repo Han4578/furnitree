@@ -1,9 +1,12 @@
 <?php
     require "../require/connect.php";
     session_start();
+
+    $_SESSION['darkMode'] = $_SESSION['darkMode'] ?? false;
 ?>
 
 <link rel="stylesheet" href="../style.css">
+<?php if (checkMode()) echo "<link rel='stylesheet' href='../dark.css'>" ?>
 <script src="../functions.js"></script>
 
 <div class="top print">
@@ -84,5 +87,5 @@
         ?>
     </div>
     <div class="menu-button random" data-random>Produk Rawak<img src="../images/shuffle.png" alt=""></div>
-
+    <div class="menu-button random" data-dark>Mod <?php echo (checkMode())? "Cahaya" : "Gelap"; ?><img src="../images/swap.webp" alt=""></div>
 </div>

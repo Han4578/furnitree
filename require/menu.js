@@ -12,6 +12,7 @@ let categoryItems = document.querySelectorAll('[data-category-item]')
 let brandItems = document.querySelectorAll('[data-brand-item]')
 let logo = document.querySelector('[data-logo]')
 let random = document.querySelector('[data-random]')
+let dark = document.querySelector('[data-dark]')
 let furniture = document.querySelector('[data-furniture]') ?? document.createElement('div')
 let brand = document.querySelector('[data-brandM]') ?? document.createElement('div')
 let dataUser = document.querySelector('[data-user]') ?? document.createElement('div')
@@ -70,6 +71,10 @@ let redirect = {
 
     random() {
         window.location = '../require/random.php';
+    },
+
+    dark() {
+        window.location = '../require/dark.php';
     }
 }
 
@@ -78,6 +83,7 @@ darken.addEventListener('click', closeMenu)
 categoryMenu.addEventListener('click', toggleCategory)
 brandMenu.addEventListener('click', toggleBrand)
 random.addEventListener('click', redirect.random)
+dark.addEventListener('click', redirect.dark)
 login.addEventListener('click', redirect.login)
 signup.addEventListener('click', redirect.signup)
 logo.addEventListener('click', redirect.home)

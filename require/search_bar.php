@@ -120,8 +120,8 @@
         </div>
         <div class="space-evenly">
             <div class="php"></div>
-            <button type="button" data-reset  name="" id="" class="custom button">Set semula</button>
-            <button type="submit" name="" id="" class="custom button yes">Terapkan</button>
+            <button type="button" data-reset class="custom button">Set semula</button>
+            <button type="submit" class="custom button yes">Terapkan</button>
         </div>
     </div>
 </form>
@@ -208,6 +208,7 @@
     }
 
     function submitCheck() {
+        checkValue()
         if (priceError) {
             alert("'Dari RM' tidak boleh lebih daripada 'Hingga RM'")
             event.preventDefault()

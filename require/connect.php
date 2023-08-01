@@ -145,6 +145,10 @@
         return key_exists('isLoggedIn' , $_SESSION);
     }
 
+    function checkMode() {
+        return $_SESSION['darkMode'];
+    }
+
     function accessDenied() {
         alertError('Anda tidak dibenarkan mengakses maklumat ini');
     }

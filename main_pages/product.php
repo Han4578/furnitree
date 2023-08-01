@@ -89,7 +89,7 @@
                 </div>
                 <div class="color-list">
                     <?php 
-                        $name = $row1['name'];
+                        $name = $conn->real_escape_string($row1['name']);
                         $query2 = $conn->query("SELECT image, furniture.id AS id FROM furniture LEFT JOIN furniture_info ON furniture.info = furniture_info.id WHERE furniture_info.name = '$name'");
 
                         if ($query2->num_rows > 0) {

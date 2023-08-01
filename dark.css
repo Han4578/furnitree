@@ -1,0 +1,43 @@
+:root {
+    --primary: #121212;
+    --secondary: rgb(73, 73, 73);
+    --third: rgb(149 149 149);
+}
+
+* {
+    color: #e4e4e4;
+}
+
+body, .search-container{
+    background-color: var(--primary);
+}
+
+input {
+    color: black;
+}
+
+.top {
+    background-image: none;
+    background-color: var(--secondary);
+}
+
+#filter-menu {
+    background-color: rgb(28, 28, 28);
+}
+
+ form.vertical, #user-menu, #menu-list, .filter-label, .button {
+    background-color: var(--secondary);
+}
+
+#user-menu {
+    box-shadow: 0 0 5px 5px rgb(60, 60, 60);
+}
+
+[data-category-item], [data-brand-item] {
+    background-color: var(--secondary);
+    margin-bottom: 1%;
+}
+
+[data-imgCon] {
+    background-color: var(--third);
+}

@@ -65,7 +65,7 @@ label {
     filter: brightness(0.9);
 }
 
-.menu-button, .menu-item {
+.menu-button, .menu-item, .settings {
     font-size: 20px;
     padding: 10%;
     height: 10vh;
@@ -123,6 +123,10 @@ label {
 
 .menu-button:hover {
     background-color: var(--hover);
+}
+
+.settings {
+    background-color: transparent !important;
 }
 
 .user-button:hover {
