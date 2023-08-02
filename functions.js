@@ -366,7 +366,7 @@ function sortResult(criteria, container) {
         }
     })
 
-    if (criteria == 'name') {
+    if (criteria == 'name' || criteria == 'brand') {
         criteriaArray.sort()
     } else criteriaArray.sort((a, b) => {return a - b})
 

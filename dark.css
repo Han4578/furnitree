@@ -1,7 +1,7 @@
 :root {
-    --primary: #121212;
-    --secondary: rgb(73, 73, 73);
-    --third: rgb(149 149 149);
+    --primary: #212121;
+    --secondary: #3a3a3a;
+    --third: #757575;
 }
 
 * {
@@ -12,32 +12,93 @@ body, .search-container{
     background-color: var(--primary);
 }
 
-input {
+input, .info > div > div,.info > div > label, textarea, select, option {
     color: black;
+}
+
+form.vertical, #user-menu, #menu-list, .filter-label {
+   background-color: var(--third);
 }
 
 .top {
     background-image: none;
-    background-color: var(--secondary);
+    background-color: var(--third);
 }
 
 #filter-menu {
-    background-color: rgb(28, 28, 28);
+    background-color: #3a3a3a;
+    border-radius: 20px;
 }
 
- form.vertical, #user-menu, #menu-list, .filter-label, .button {
-    background-color: var(--secondary);
+.label-highlight {
+    background-color: orange;
 }
+
+.search {
+    color: black;
+    background-color: orange;
+}
+
+.search:hover {
+    background-color: rgb(255, 217, 147);
+}
+
+.sort-button {
+    background-color: #3a3a3a;
+}
+
+.sort-button.sort {
+    background-color: var(--third);
+}
+
+ button, .button {
+    background-color: orange;
+    color: black;
+    border: none;
+ }
+
+ button:hover {
+    background-color: var(--hover);
+ }
+
+ .background {
+    background-image: none;
+    background-color: var(--third);
+ }
+
+ .yes:hover {
+    background-color: darkgreen !important;
+ }
+
+ .icon:hover {
+    background-color: var(--secondary);
+
+ }
+
+ .item, .result-item, .related-item {
+    border-color: #FAFAFA;
+ }
+
+ .add {
+    color: orange;
+ }
+
+ .variant-delete {
+    background-color: var(--third);
+ }
+
+ .counter > span {
+    color: black;
+ }
 
 #user-menu {
-    box-shadow: 0 0 5px 5px rgb(60, 60, 60);
+    box-shadow: 0 0 5px 5px var(--secondary);
 }
 
 [data-category-item], [data-brand-item] {
     background-color: var(--secondary);
-    margin-bottom: 1%;
 }
 
-[data-imgCon] {
-    background-color: var(--third);
+.item, .result-item, .related-item, .product-image {
+    background-color: var(--secondary);
 }

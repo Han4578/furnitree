@@ -73,7 +73,7 @@
             </div>
             <div class="options grow">
                 <button class="custom button" data-profile2 type="button">Batalkan</button>
-                <button class="custom button yes" type="submit">Kemas kini</button>
+                <button class="custom button" type="submit">Kemas kini</button>
             </div>
         </form>
     </div>

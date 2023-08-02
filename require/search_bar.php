@@ -121,7 +121,7 @@
         <div class="space-evenly">
             <div class="php"></div>
             <button type="button" data-reset class="custom button">Set semula</button>
-            <button type="submit" class="custom button yes">Terapkan</button>
+            <button type="submit" class="custom button">Terapkan</button>
         </div>
     </div>
 </form>
