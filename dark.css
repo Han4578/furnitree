@@ -24,7 +24,7 @@ form.vertical, #user-menu, #menu-list, .filter-label {
     background-image: none;
     background-color: var(--third);
 }
-
+ 
 #filter-menu {
     background-color: #3a3a3a;
     border-radius: 20px;
