@@ -31,6 +31,10 @@ label {
     align-items: center;
 }
 
+input[type=range] {
+    accent-color: black;
+}
+
 .main, .related {
     margin: 1vh 10vw;
     display: flex;
@@ -993,6 +997,15 @@ label {
     height: 400px;
     justify-content: space-between;
     gap: 5%;
+}
+
+.font {
+    display: flex;
+    flex-direction: column;
+}
+
+.save {
+    background-color: rgb(115, 238, 115);
 }
 
 /* --------------------------------------------------------------------------------------------------- */

@@ -3,10 +3,13 @@
     session_start();
 
     $_SESSION['darkMode'] = $_SESSION['darkMode'] ?? false;
+    $_SESSION['font'] = $_SESSION['font'] ?? 2;
 ?>
 
 <link rel="stylesheet" href="../style.css">
 <?php if (checkMode()) echo "<link rel='stylesheet' href='../dark.css'>" ?>
+<?php if ($_SESSION['font'] == 1) echo "<link rel='stylesheet' href='../small.css'>" ?>
+<?php if ($_SESSION['font'] == 3) echo "<link rel='stylesheet' href='../big.css'>" ?>
 <script src="../functions.js"></script>
 
 <div class="top print">
@@ -88,4 +91,15 @@
     </div>
     <div class="menu-button random" data-random>Produk Rawak<img src="../images/shuffle.png" alt=""></div>
     <div class="menu-button random" data-dark>Mod <?php echo (checkMode())? "Cahaya" : "Gelap"; ?><img src="../images/swap.webp" alt=""></div>
+    <form class="font" action="../require/font.php" method="post">
+        <div class="menu-button">
+            <h4>A</h4>
+            <input type="range" name="font" min="1" max="3">
+            <h1>A</h1>
+        </div>
+        <div class="space-around">
+            <div></div>
+            <button type="submit" class="custom button save">Tukar saiz fon</button>
+        </div>
+    </form>
 </div>
