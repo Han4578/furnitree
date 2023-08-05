@@ -74,7 +74,7 @@
         </div>
         <div class="main split">
             <div class="product-info">
-                <div class="space-between">
+                <div class="space-between product-column">
                     <div>
                         <div class="name"><?php echo htmlspecialchars($row1['name']); ?></div>
                         <div class="brand">Dari <a href="./brand.php?id=<?php echo $brandID; ?>" class="brand"><?php echo htmlspecialchars($row1['brand']); ?></a></div>

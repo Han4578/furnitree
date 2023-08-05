@@ -41,3 +41,10 @@ button[type='submit'], button[type='reset'] {
 #password {
     width: 100%;
 }
+
+@media all and (max-width: 100vh) {
+    form {
+        width: 90%;
+        padding-top: 5vh;
+    }
+}

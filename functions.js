@@ -402,3 +402,10 @@ function sortResult(criteria, container) {
         }
     }
 }
+
+function changeFont(size) {
+    let root = document.querySelector(":root")
+    let font = 4 * size
+    root.style.fontSize = font + "px"
+
+}

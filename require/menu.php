@@ -7,10 +7,11 @@
 ?>
 
 <link rel="stylesheet" href="../style.css">
-<?php if (checkMode()) echo "<link rel='stylesheet' href='../dark.css'>" ?>
-<?php if ($_SESSION['font'] == 1) echo "<link rel='stylesheet' href='../small.css'>" ?>
-<?php if ($_SESSION['font'] == 3) echo "<link rel='stylesheet' href='../big.css'>" ?>
 <script src="../functions.js"></script>
+<?php 
+    if (checkMode()) echo "<link rel='stylesheet' href='../dark.css'>"; 
+    changeFont($_SESSION['font']); 
+ ?>
 
 <div class="top print">
     <div class="icon" id="menu">
@@ -94,7 +95,7 @@
     <form class="font" action="../require/font.php" method="post">
         <div class="menu-button">
             <h4>A</h4>
-            <input type="range" name="font" min="1" max="3">
+            <input type="range" name="font" min="2" max="6" value="<?php echo $_SESSION["font"] ?>" onchange="changeFont(this.value)">
             <h1>A</h1>
         </div>
         <div class="space-around">

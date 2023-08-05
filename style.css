@@ -70,7 +70,7 @@ input[type=range] {
 }
 
 .menu-button, .menu-item, .settings {
-    font-size: 20px;
+    font-size: 1.25rem;
     padding: 10%;
     height: 10vh;
     display: flex;
@@ -244,6 +244,7 @@ input[type=range] {
     position: absolute;
     transform: translateY(-38vh);
     transition: transform 1s;
+    border-radius: 20px;
 }
 
 #filter-menu.down {
@@ -303,7 +304,7 @@ input[type=range] {
 .sort-bar {
     width: 100%;
     height: 5vh;
-    font-size: 18px;
+    font-size: 1.125rem;
     display: flex;
     align-items: center;
     gap: 5vw;
@@ -313,7 +314,6 @@ input[type=range] {
 .sort-button {
     width: 10%;
     height: 100%;
-    font-size: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -348,7 +348,7 @@ input[type=range] {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    flex: 0 0 20vw;
+    flex: 0 0 300px;
     gap: 0.5vw;
     width: 100%;
 }
@@ -403,6 +403,7 @@ input[type=range] {
     flex-direction: column;
     align-items: center;
     border-radius: 50%;
+    margin-bottom: 5vh;
 }
 
 .category > span {
@@ -475,7 +476,7 @@ input[type=range] {
     height: 100% !important;
     background-color: rgba(255, 255, 255, 0.5);
     padding: 10%;
-    font-size: 1.5vw;
+    font-size: 1.5rem;
     display: flex;
     gap: 5%;
     height: 50%;
@@ -634,21 +635,23 @@ input[type=range] {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 70vh;
     border-radius: 20px;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .product-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .product-image {
-    aspect-ratio: 9 / 10;
     border: 2px solid #d5d5d5;
     border-radius: 20px;
     margin-left: 10%;
+    height: 100%;
 }
 
 .product-image > img {
@@ -658,16 +661,17 @@ input[type=range] {
 }
 
 .name {
-    font-size: 1.7vw;
+    font-size: 2rem;
 }
 
 .brand {
     color: gray;
-    font-size: 1.2vw;
+    font-size: 1.2rem;
 }
 
 .price {
-    font-size: 2.5vw;
+    margin-left: 5%;
+    font-size: 2.5rem;
 }
 
 .related-list {
@@ -720,7 +724,7 @@ input[type=range] {
 
 .related {
     align-items: flex-start;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .highlighted {
@@ -735,10 +739,14 @@ input[type=range] {
     position: absolute;
     height: 3vh;
     margin: 0 5%;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: orange;
     display: flex;
     align-items: center;
+}
+
+.back:hover {
+    filter: brightness(0.8);
 }
 
 .action-bar {
@@ -820,7 +828,7 @@ input[type=range] {
     border-right: 1px solid grey;
     text-align: center;
     width: 10%;
-    font-size: 1.25vw;
+    font-size: 1.25rem;
     height: 8vh;
     display: flex;
     align-items: center;
@@ -890,7 +898,7 @@ input[type=range] {
 }
 
 .add {
-    font-size: 25px;
+    font-size: 1.8rem;
     color: blue;
     font-weight: bold;
 }
@@ -944,11 +952,11 @@ input[type=range] {
     height: 50%;
     padding-left: 5%;
     padding-bottom: 1%;
-    font-size: 18px;
+    font-size: 1.125rem;
 }
 
 .brand-name > span {
-    font-size: 3vw;
+    font-size: 3rem;
 }
 
 .social {
@@ -977,7 +985,7 @@ input[type=range] {
 }
 
 .brand-description {
-    font-size: 20px;
+    font-size: 1.25rem;
     text-align: center;
     white-space: pre-line;
 }
@@ -1048,7 +1056,7 @@ input[type=range] {
 #search-bar {
     width: 80%;
     height: 5vh;
-    margin: 0;
+    margin-left: 4.6vh;
     border-radius: 15px 0 0 15px;
     padding-left: 1vw;
 }
@@ -1073,18 +1081,18 @@ input[type=range] {
 [data-name],
 [data-brand] {
     padding: 2%;
-    font-size: 1.2vw;
+    font-size: 1.3rem;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 [data-brand] {
-    font-size: 1.1vw;
+    font-size: 1.1rem;
     color: gray;
 }
 
 [data-price] {
-    font-size: 1.3vw;
+    font-size: 1.3rem;
 }
 
 [data-imgCon] {
@@ -1109,8 +1117,16 @@ input[type=range] {
 }
 
 @media all and (max-width: 100vh) {
+    button {
+        font-size: 0.6rem;
+    }
+
     .top {
         height: 10vh;
+    }
+
+    .banner {
+        width: 100%;
     }
 
     .card {
@@ -1124,21 +1140,24 @@ input[type=range] {
     }
 
     .price {
-        font-size: 4vw;
-    }
-
-    .description {
-        font-size: 2vw;
-    }
-
-    .user-button {
-        font-size: 2vw;
-        height: auto;
+        font-size: 2rem;
     }
 
     .recommended-list {
-        flex: 0 0 50vw;
+        flex: 0 0 70vw;
         gap: 5vw;
+    }
+
+    .menu-button, .settings {
+        padding: 3vh 5vw;
+    }
+
+    .menu-item {
+        padding: 1vh 5vw;
+    }
+
+    .font > div > input {
+        width: 50%;
     }
 
     .results {
@@ -1152,11 +1171,11 @@ input[type=range] {
     .sort-button {
         width: 15%;
         height: 50%;
-        font-size: 10px;
+        font-size: 0.625rem;
     }
     
     .sort-bar {
-        font-size: 10px;
+        font-size: 0.625rem;
     }
 
     .action-button {
@@ -1171,16 +1190,20 @@ input[type=range] {
         flex-direction: row;
     }
 
+    .input-split {
+        font-size: 0.9rem;
+    }
+
     .name {
-        font-size:5vw;
+        font-size:1.5rem;
     }
 
     .brand {
-        font-size: 2.5vw;
+        font-size: 1rem;
     }
 
     .description {
-        font-size: 3vw;
+        font-size: 1rem;
         margin-top: 1vh;
     }
 
@@ -1197,6 +1220,33 @@ input[type=range] {
         flex-direction: column-reverse;
         margin-top: 5vh;
     }
+    
+    .background {
+        height: auto;
+        padding: 0 0 5% 0;
+    }
+    
+    .equal {
+        display: flex;
+        flex-direction: column-reverse;
+        height: 80vh;
+        padding: 5%;
+        gap: 5vh;
+    }
+
+    .product-column {
+        flex-direction: column;
+        gap: 5%;
+        height: 15vh;
+    }
+
+    .price {
+        margin: 0;
+    }
+
+    .column {
+        font-size: 0.5rem;
+    }
 
     .product-image {
         height: 20vh;
@@ -1211,16 +1261,31 @@ input[type=range] {
 
     .product-info {
         width: 100%;
+        height: 50vh;
     }
 
     .filter-label {
-        height: 8vh;
         width: 100%;
+        flex-basis: 19vw;
+        gap: 0;
         font-size: 0px;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .filter-label > img {
+        width: 90%;
+        height: auto;
+    }
+
+    .search-container.down {
+        margin-bottom: 40vh;
     }
 
     #filter-menu {
-        font-size: 1px;
+        font-size: 0.5rem;
+        width: 80vw;
+        left: 10vw;
     }
 
     #menu-list {
@@ -1232,22 +1297,21 @@ input[type=range] {
         transform: translateX(100%);
     }
 
+    #user-menu {
+        width: 30vw;
+    }
+    
+    .user-button {
+        font-size: 1rem;
+        height: 5vh;
+        padding-left: 5%;
+    }
+
     .category {
         width: 120px;
     }
 
-    [data-price],
-    [data-name],
-    [data-brand] {
-        font-size: 3vw;
-    }
-
-    [data-brand] {
-        font-size: 2.8vw;
-        color: gray;
-    }
-
-    [data-price] {
-        font-size: 3.1vw;
+    .category-list {
+        justify-content: center;
     }
 }

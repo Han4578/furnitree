@@ -160,4 +160,8 @@
             </script>";
         die;
     }
+
+    function changeFont($size) {
+        echo "<script>changeFont($size)</script>";
+    }
 ?>
