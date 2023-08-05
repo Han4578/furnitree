@@ -3,7 +3,7 @@
     session_start();
 
     $_SESSION['darkMode'] = $_SESSION['darkMode'] ?? false;
-    $_SESSION['font'] = $_SESSION['font'] ?? 2;
+    $_SESSION['font'] = $_SESSION['font'] ?? 4;
 ?>
 
 <link rel="stylesheet" href="../style.css">
@@ -65,7 +65,7 @@
         </div>
         <span>Menu</span>
     </h1>
-    <div class="menu-button" onclick="redirect.home()">Home</div>
+    <div class="menu-button" onclick="redirect.home()">Home <img src="../images/home.png" alt="home"></div>
     <div class="menu-button" data-category-menu>Kategori<img src="../images/dropdown-icon.png" alt="" class="transition"></div>
     <div class="menu-list none" data-category-list>
         <?php
@@ -90,8 +90,8 @@
             }
         ?>
     </div>
-    <div class="menu-button random" data-random>Produk Rawak<img src="../images/shuffle.png" alt=""></div>
-    <div class="menu-button random" data-dark>Mod <?php echo (checkMode())? "Cahaya" : "Gelap"; ?><img src="../images/swap.webp" alt=""></div>
+    <div class="menu-button" data-random>Produk Rawak<img src="../images/shuffle.png" alt=""></div>
+    <div class="menu-button" data-dark>Mod <?php echo (checkMode())? "Cahaya" : "Gelap"; ?><img src="../images/swap.webp" alt=""></div>
     <form class="font" action="../require/font.php" method="post">
         <div class="menu-button">
             <h4>A</h4>

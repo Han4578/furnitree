@@ -71,7 +71,7 @@ input[type=range] {
 
 .menu-button, .menu-item, .settings {
     font-size: 1.25rem;
-    padding: 10%;
+    padding: 8% 10% 8% 10%;
     height: 10vh;
     display: flex;
     justify-content: space-between;
@@ -103,10 +103,6 @@ input[type=range] {
 
 .menu-item:hover {
     filter: brightness(0.9);
-}
-
-.random {
-    padding: 8% 10% 8% 10%;
 }
 
 .flip {

@@ -20,7 +20,7 @@ form.vertical, #user-menu, #menu-list, .filter-label {
    background-color: var(--third);
 }
 
-.top {
+.top, .background {
     background-image: none;
     background-color: var(--third);
 }
@@ -37,6 +37,7 @@ form.vertical, #user-menu, #menu-list, .filter-label {
 .search {
     color: black;
     background-color: orange;
+    border: 2px solid black;
 }
 
 .search:hover {
@@ -48,7 +49,7 @@ form.vertical, #user-menu, #menu-list, .filter-label {
 }
 
 .sort-button.sort {
-    background-color: var(--third);
+    background-color: orange;
 }
 
  button, .button {
@@ -61,18 +62,8 @@ form.vertical, #user-menu, #menu-list, .filter-label {
     background-color: var(--hover);
  }
 
- .background {
-    background-image: none;
-    background-color: var(--third);
- }
-
  .yes:hover {
     background-color: darkgreen !important;
- }
-
- .icon:hover {
-    background-color: var(--secondary);
-
  }
 
  .item, .result-item, .related-item {
@@ -95,10 +86,6 @@ form.vertical, #user-menu, #menu-list, .filter-label {
     box-shadow: 0 0 5px 5px var(--secondary);
 }
 
-[data-category-item], [data-brand-item] {
-    background-color: var(--secondary);
-}
-
-.item, .result-item, .related-item, .product-image {
+[data-category-item], [data-brand-item], .icon:hover, .item, .result-item, .related-item, .product-image{
     background-color: var(--secondary);
 }
