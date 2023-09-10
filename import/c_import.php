@@ -70,7 +70,7 @@
                 continue;
             } else $colorID = $colorQuery->fetch_assoc()['id'];
 
-            $colorExistsQuery = $conn->query("SELECT id FROM furniture WHERE color = $color AND info = $id");
+            $colorExistsQuery = $conn->query("SELECT id FROM furniture WHERE color = $colorID AND info = $info");
 
             if ($colorExistsQuery->num_rows > 0) {
                 $error .= "Warna ini sudah wujud untuk produk ini di baris $numRow \\n";
