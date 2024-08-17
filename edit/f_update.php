@@ -18,6 +18,7 @@
     $query = "UPDATE furniture_info SET name = '$name', brand = $brand, price = $price, description = '$description' WHERE id = $info";
 
     $stmt = $conn->query($query);
+    $stmt = true;
 
     $query2 = $conn->query("SELECT color, image, id FROM furniture WHERE info = $info");
     while ($row = $query2->fetch_assoc()) {
@@ -35,13 +36,13 @@
             unlink($path);
             $stmt2 = $conn->query("UPDATE furniture SET color = $c, image = '$newName' WHERE id = $id");
             move_uploaded_file($imgTempName, '../images/' . $newName);
-        }
-
+        } else if ($c != $row["color"]) $stmt2 = $conn->query("UPDATE furniture SET color = $c WHERE id = $id");
+        else $stmt2 = true;
         $count++;
         
     }
 
-    if ($stmt) {
+    if ($stmt && $stmt2) {
         echo "<script>
         alert('Produk berjaya dikemas kini.');
         history.go(-2)

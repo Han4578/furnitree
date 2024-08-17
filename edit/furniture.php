@@ -80,12 +80,10 @@
                         <select name="color[]" data-color>
                             <?php
                                 $query3 = $conn->query("SELECT color.name AS name, color.id AS id FROM color");
-                                $f = 1;
                                 while ($row3 = $query3->fetch_assoc()) {
                                     ?>
                                     <option value="<?php echo $row3['id'] ?>" <?php if ($row3['id'] == $row2['color']) echo 'selected' ?>><?php echo $row3['name'] ?></option>
                                     <?php
-                                    $f++;
                                 }
                             ?>
                         </select>
